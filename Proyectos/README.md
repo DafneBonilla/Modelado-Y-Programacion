@@ -4,6 +4,6 @@
 
 ### Proyectos realizados durante el curso de Modelado y Programación.
 
-> - Proyecto 01
+> - Proyecto 1
 
 
