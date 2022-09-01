@@ -16,7 +16,6 @@ public interface Fighter {
 
     public boolean isAlive();
 
-    public <T> void transform(SpSkill<T> skill);
-
+    public <Fighter> void transform(SpSkill<Fighter> skill);
 
 }

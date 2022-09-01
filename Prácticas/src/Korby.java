@@ -10,7 +10,7 @@ public class Korby implements Fighter {
         this.name = "Korby";
         this.health = 100;
         this.block = 0;
-        skill = new DefaultSkill<Korby>();
+        skill = new DefaultSkill<Fighter>();
     }
 
     @Override
@@ -24,12 +24,14 @@ public class Korby implements Fighter {
         }
     }
     
+    @Override
     public int defend() {
         int newBlock = skill.defend();
         block += newBlock;
         return newBlock;
     }
 
+    @Override
     public String getName() {
         return this.name;
     }
@@ -56,12 +58,14 @@ public class Korby implements Fighter {
         return skill.getName();
     }
 
+    @Override
     public boolean isAlive() {
         return health != 0;
     }
 
     @Override
-    public <T> void transform(SpSkill<Korby> skill) {
-        this.skill = skill;    
+    public <Korby> void transform(SpSkill<Korby> skill) {
+        this.skill = (SpSkill<Korby>) skill;
     }
+
 }    
