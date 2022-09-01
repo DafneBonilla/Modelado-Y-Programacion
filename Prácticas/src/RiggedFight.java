@@ -1,8 +1,5 @@
 public interface RiggedFight {
-    public Action nextAction();
+    // public Action nextAction();
     public boolean isOver();
-
-
-
 
 }

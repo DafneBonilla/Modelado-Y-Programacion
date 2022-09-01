@@ -1,15 +1,68 @@
-public class MeganMan extends Fighter {
+public class Meganman implements Fighter {
 
-    private SpSkill<MeganMan> skill;
+    // Atributos
+    private String name;
+    private int health;
+    private int block;
+    private SpSkill<Korby> skill;
 
-    public MeganMan() {
-        this.name = "MeganMan";
+    public Meganman() {
+        this.name = "Korby";
         this.health = 100;
         this.block = 0;
-        skill = new DefaultSkill<MeganMan>();
+        skill = new DefaultSkill<Korby>();
     }
 
-    public void transform(SpSkill<MeganMan> spSkill) {
+    @Override
+    public int hit(Fighter target) {
+        if (target.isAlive()) {
+            int damage = skill.hit(target);
+            target.lowerHealth(damage);
+            return damage;
+        } else {
+            return Integer.MIN_VALUE;
+        }
+    }
+    
+    public int defend() {
+        int newBlock = skill.defend();
+        block += newBlock;
+        return newBlock;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public int getHealth() {
+        return this.health;
+    }
+    
+    @Override
+    public int getBlock() {
+        return this.block;
+    }  
+
+    @Override 
+    public void lowerHealth(int damage) {
+        if (damage > 0) {
+            this.health -= damage;
+        }
+    }
+    
+    @Override 
+    public String getSkillName() {
+        return skill.getName();
+    }
+
+    public boolean isAlive() {
+        return health != 0;
+    }
+
+    @Override 
+    public <Meganman> void transform(SpSkill<Meganman> spSkill) {
         this.skill = spSkill;
     }
+
 }    
