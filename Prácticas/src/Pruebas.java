@@ -15,6 +15,9 @@ public class Pruebas {
         System.out.println(p2.getBlock());
         System.out.println(p1.hit(p2));
         System.out.println(p2.getHP());
+        p2.lowerHealth(70);
+        System.out.println(p2.isAlive());
+        System.out.println(p1.hit(p2));
 
     }
 

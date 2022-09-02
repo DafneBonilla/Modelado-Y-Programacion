@@ -60,3 +60,5 @@ public abstract class Fighter<T extends Fighter<T>> {
     protected abstract SpSkill<T> generator(); // esto puede estar mal xd
 
 }
+
+// https://stackoverflow.com/questions/28618279/defining-generic-property-in-abstract-class-as-a-type-of-the-implementing-class
