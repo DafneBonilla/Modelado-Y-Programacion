@@ -1,21 +1,62 @@
-public interface Fighter {
+public abstract class Fighter<T extends Fighter<T>> {
 
-    public int hit(Fighter target);
+    protected String name;
 
-    public int defend();
+    protected int hp;
 
-    public String getName();
+    protected int block;
 
-    public int getHealth();
+    protected SpSkill<T> skill;
 
-    public int getBlock();
+    public Fighter() {
+        this.hp = 100;
+        this.block = 0;
+    }
 
-    public void lowerHealth(int damage);
+    public int hit(Fighter<T> target) {
+        if (target.isAlive()) {
+            int damage = skill.hit(target);
+            target.lowerHealth(damage);
+            return damage;
+        } else {
+            return Integer.MIN_VALUE;
+        }
+    }
 
-    public String getSkillName();
+    public int defend() {
+        int newBlock = skill.defend();
+        block += newBlock;
+        return newBlock;
+    }
 
-    public boolean isAlive();
+    public String getName() {
+        return this.name;
+    }
 
-    public <T extends Fighter> void transform(SpSkill<T> skill);
+    public int getHP() {
+        return this.hp;
+    }
+
+    public int getBlock() {
+        return this.block;
+    }
+
+    public void lowerHealth(int damage) {
+        if (damage > 0) {
+            this.hp -= damage;
+        }
+    }
+
+    public String getSkillName() {
+        return skill.getName();
+    }
+
+    public boolean isAlive() {
+        return hp != 0;
+    }
+
+    public abstract void transform();
+
+    protected abstract SpSkill<T> generator(); // esto puede estar mal xd
 
 }

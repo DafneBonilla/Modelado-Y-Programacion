@@ -1,13 +1,25 @@
-public interface SpSkill<T extends Fighter> {
+public abstract class SpSkill<T extends Fighter<T>> {
 
-    public int getAtkBoost();
+    protected int atkBoost;
 
-    public int getDefBoost();
+    protected int defBoost;
 
-    public int hit(Fighter target);
+    protected String name;
 
-    public int defend();
+    public int getAtkBoost() {
+        return atkBoost;
+    }
 
-    public String getName();
+    public int getDefBoost() {
+        return defBoost;
+    }
+
+    public abstract int hit(Fighter<T> target);
+
+    public abstract int defend();
+
+    public String getName() {
+        return name;
+    }
 
 }
