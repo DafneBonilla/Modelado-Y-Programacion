@@ -23,7 +23,7 @@ public class Korby implements Fighter {
             return Integer.MIN_VALUE;
         }
     }
-    
+
     @Override
     public int defend() {
         int newBlock = skill.defend();
@@ -40,20 +40,20 @@ public class Korby implements Fighter {
     public int getHealth() {
         return this.health;
     }
-    
+
     @Override
     public int getBlock() {
         return this.block;
-    }  
+    }
 
-    @Override 
+    @Override
     public void lowerHealth(int damage) {
         if (damage > 0) {
             this.health -= damage;
         }
     }
-    
-    @Override 
+
+    @Override
     public String getSkillName() {
         return skill.getName();
     }
@@ -68,4 +68,4 @@ public class Korby implements Fighter {
         this.skill = (SpSkill<Korby>) skill;
     }
 
-}    
+}

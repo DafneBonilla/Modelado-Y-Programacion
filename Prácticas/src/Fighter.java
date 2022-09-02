@@ -7,15 +7,15 @@ public interface Fighter {
     public String getName();
 
     public int getHealth();
-    
+
     public int getBlock();
-    
+
     public void lowerHealth(int damage);
-        
+
     public String getSkillName();
 
     public boolean isAlive();
 
-    public <Fighter> void transform(SpSkill<Fighter> skill);
+    public <T extends Fighter> void transform(SpSkill<T> skill);
 
 }
