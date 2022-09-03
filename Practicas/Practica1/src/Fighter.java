@@ -16,13 +16,13 @@ public abstract class Fighter<T extends Fighter<T>> {
     public int hit(Fighter<T> target) {
         if (target.isAlive()) {
             int damage = skill.hit(target);
-            target.lowerHealth(damage);
+            target.lowerHP(damage);
             return damage;
         } else {
             return Integer.MIN_VALUE;
         }
     }
-
+    
     public int defend() {
         int newBlock = skill.defend();
         block += newBlock;
@@ -41,9 +41,31 @@ public abstract class Fighter<T extends Fighter<T>> {
         return this.block;
     }
 
-    public void lowerHealth(int damage) {
+    public void lowerBlock() {
+        this.block = 0;
+    }
+
+    public void lowerHP(int damage) {
         if (damage > 0) {
             this.hp -= damage;
+            if (hp < 0) {
+                hp = 0;
+            }
+        }
+    }
+
+    public void gainBlock(int block) {
+        if (block > 0) {
+            this.block += block;
+        }
+    }
+
+    public void gainHP(int hp) {
+        if (hp > 0) {
+            this.hp += hp;
+            if (hp > 100) {
+                hp = 100;
+            }
         }
     }
 

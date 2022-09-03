@@ -12,7 +12,7 @@ public class Korby extends Fighter<Korby> {
     }
 
     protected SpSkill<Korby> generator() {
-        return new DragonSkill();
+        return null;
     }
 
 }
