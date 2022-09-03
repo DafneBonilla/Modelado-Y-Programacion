@@ -1,6 +1,6 @@
 public class DefaultSkill<T extends Fighter> extends SpSkill<T> {
 
-    public DefaultSkill(Fighter owner) {
+    public DefaultSkill(T owner) {
         atkBoost = 20;
         defBoost = 20;
         name = "Defeault";
