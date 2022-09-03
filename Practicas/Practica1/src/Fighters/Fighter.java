@@ -1,4 +1,4 @@
-public abstract class Fighter<T extends Fighter<T>> {
+public abstract class Fighter {
 
     protected String name;
 
@@ -6,26 +6,14 @@ public abstract class Fighter<T extends Fighter<T>> {
 
     protected int block;
 
-    protected SpSkill<T> skill;
-
     public Fighter() {
         this.hp = 100;
         this.block = 0;
     }
 
-    public int hit(Fighter target) {
-        if (target.isAlive()) {
-            return skill.hit(target);
-        } else {
-            return Integer.MIN_VALUE;
-        }
-    }
-    
-    public int defend() {
-        int newBlock = skill.defend();
-        gainBlock(newBlock);
-        return block;
-    }
+    public abstract int hit(Fighter target);
+
+    public abstract int defend();
 
     public String getName() {
         return this.name;
@@ -67,9 +55,7 @@ public abstract class Fighter<T extends Fighter<T>> {
         }
     }
 
-    public String getSkillName() {
-        return skill.getName();
-    }
+    public abstract String getSkillName();
 
     public boolean isAlive() {
         return hp != 0;
@@ -77,8 +63,6 @@ public abstract class Fighter<T extends Fighter<T>> {
 
     public abstract void transform();
 
-    protected abstract SpSkill<T> generator(); // esto puede estar mal xd
+    public abstract String getInfo();
 
 }
-
-// https://stackoverflow.com/questions/28618279/defining-generic-property-in-abstract-class-as-a-type-of-the-implementing-class

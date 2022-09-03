@@ -1,6 +1,6 @@
-public class DefaultSkill<T extends Fighter<T>> extends SpSkill<T> {
+public class DefaultSkill<T extends Fighter> extends SpSkill<T> {
 
-    public DefaultSkill(Fighter<T> owner) {
+    public DefaultSkill(Fighter owner) {
         atkBoost = 20;
         defBoost = 20;
         name = "Defeault";
@@ -16,6 +16,11 @@ public class DefaultSkill<T extends Fighter<T>> extends SpSkill<T> {
     @Override
     public int defend() {
         return defBoost;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Atk: " + atkBoost + " Def: " + defBoost;
     }
 
 }

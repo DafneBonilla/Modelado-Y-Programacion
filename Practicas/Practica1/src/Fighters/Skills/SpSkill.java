@@ -1,4 +1,4 @@
-public abstract class SpSkill<T extends Fighter<T>> {
+public abstract class SpSkill<T extends Fighter> {
 
     protected int atkBoost;
 
@@ -23,5 +23,7 @@ public abstract class SpSkill<T extends Fighter<T>> {
     public String getName() {
         return name;
     }
+
+    public abstract String getDescription();
 
 }
