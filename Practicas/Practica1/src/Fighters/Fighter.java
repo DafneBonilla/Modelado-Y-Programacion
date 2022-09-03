@@ -61,7 +61,7 @@ public abstract class Fighter {
         return hp != 0;
     }
 
-    public abstract void transform();
+    public abstract String transform();
 
     public abstract String getInfo();
 

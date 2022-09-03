@@ -20,7 +20,7 @@ public class SnorlaxSkill extends SpSkill<Dittuu> {
 
     @Override
     public String getDescription() {
-        return "Atk: " + atkBoost + " Def: " + defBoost + " Al defender te curas 10 de vida";
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al defender te curas 10 de vida";
     }
 
 }

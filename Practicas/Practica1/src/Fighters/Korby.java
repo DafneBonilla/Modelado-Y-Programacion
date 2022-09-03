@@ -40,8 +40,9 @@ public class Korby extends Fighter {
     }
 
     @Override
-    public void transform() {
+    public String transform() {
         this.skill = generator();
+        return skill.getDescription();
     }
 
     private SpSkill<Korby> generator() {

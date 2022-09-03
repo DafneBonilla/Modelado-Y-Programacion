@@ -24,7 +24,7 @@ public class Rayquaza extends SpSkill<Dittuu> {
 
     @Override
     public String getDescription() {
-        return "Atk: " + atkBoost + " Def: " + defBoost
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost
                 + " Al atacar aumenta tu ataque en 20 y disminuye tu defensa en 10";
     }
 }

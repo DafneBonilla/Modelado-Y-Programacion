@@ -21,6 +21,6 @@ public class HammerSkill extends SpSkill<Korby> {
 
     @Override
     public String getDescription() {
-        return "Atk: " + atkBoost + " Def: " + defBoost + " Al atacar ganas " + defBoost + " de escudo";
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al atacar ganas " + defBoost + " de escudo";
     }
 }

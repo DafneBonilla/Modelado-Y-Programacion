@@ -21,6 +21,6 @@ public class MetalSkill extends SpSkill<MeganMan> {
 
     @Override
     public String getDescription() {
-        return "Atk: " + atkBoost + " Def: " + defBoost + " Al atacar ganas 20 de escudo";
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al atacar ganas 20 de escudo";
     }
 }

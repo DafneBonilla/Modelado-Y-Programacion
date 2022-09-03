@@ -40,9 +40,9 @@ public class Dittuu extends Fighter {
     }
 
     @Override
-    public void transform() {
+    public String transform() {
         this.skill = generator();
-
+        return skill.getDescription();
     }
 
     private SpSkill<Dittuu> generator() {
@@ -64,5 +64,4 @@ public class Dittuu extends Fighter {
         return "Dittuu: " + getHP() + " HP, " + skill.getAtkBoost() + " ATK, " + skill.getDefBoost() + " DEF, "
                 + getBlock() + " Escudo y Habilidad " + skill.getName();
     }
-
 }

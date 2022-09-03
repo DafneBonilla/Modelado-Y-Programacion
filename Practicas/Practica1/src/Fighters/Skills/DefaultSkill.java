@@ -20,7 +20,7 @@ public class DefaultSkill<T extends Fighter> extends SpSkill<T> {
 
     @Override
     public String getDescription() {
-        return "Atk: " + atkBoost + " Def: " + defBoost;
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost;
     }
 
 }

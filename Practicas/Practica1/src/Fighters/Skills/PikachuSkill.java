@@ -22,7 +22,7 @@ public class PikachuSkill extends SpSkill<Dittuu> {
 
     @Override
     public String getDescription() {
-        return "Atk: " + atkBoost + " Def: " + defBoost
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost
                 + " Al defender aumenta tu ataque en 5 y al atacar te hace 5 de daño";
     }
 

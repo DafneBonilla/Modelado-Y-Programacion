@@ -21,6 +21,6 @@ public class ZeroSkill extends SpSkill<MeganMan> {
 
     @Override
     public String getDescription() {
-        return "Atk: " + atkBoost + " Def: " + defBoost + " Al atacar aumenta tu ataque en 10";
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al atacar aumenta tu ataque en 10";
     }
 }

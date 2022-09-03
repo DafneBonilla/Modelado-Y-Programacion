@@ -19,7 +19,7 @@ public class DragonSkill extends SpSkill<Korby> {
 
     @Override
     public String getDescription() {
-        return "Atk: " + atkBoost + " Def: " + defBoost + " Al atacar tomas la mitad del escudo del enemigo";
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al atacar tomas la mitad del escudo del enemigo";
     }
 
 }
