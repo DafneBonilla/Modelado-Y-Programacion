@@ -1,3 +1,5 @@
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Dittuu extends Fighter<Dittuu> {
 
     public Dittuu() {
@@ -12,7 +14,16 @@ public class Dittuu extends Fighter<Dittuu> {
     }
 
     protected SpSkill<Dittuu> generator() {
-        return null;
+        int random = ThreadLocalRandom.current().nextInt(1, 3 + 1);
+        switch (random) {
+            case 1:
+                return new PikachuSkill(this);
+            case 2:
+                return new SnorlaxSkill(this);
+            case 3:
+                return new Rayquaza(this);
+            default:
+                return new DefaultSkill<Dittuu>(this);
+        }
     }
-
 }

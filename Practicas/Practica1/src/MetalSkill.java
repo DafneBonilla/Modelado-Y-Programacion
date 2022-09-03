@@ -1,15 +1,16 @@
 public class MetalSkill extends SpSkill<MeganMan> {
 
-     public MetalSkill() {
+     public MetalSkill(Fighter<MeganMan> owner) {
         atkBoost = 5;
         defBoost = 35;
         name = "Metal";
+        this.owner = owner;
     }
 
     @Override
     public int hit(Fighter target) {
         int damage = atkBoost - target.getBlock();
-        target.gainBlock(20);
+        owner.gainBlock(20);
         if (damage < 0) {
             target.lowerBlock();
             return 0;

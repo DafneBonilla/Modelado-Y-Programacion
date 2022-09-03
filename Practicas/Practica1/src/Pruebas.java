@@ -1,3 +1,5 @@
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Pruebas {
 
     public static void main(String[] args) {
@@ -30,6 +32,8 @@ public class Pruebas {
         System.out.println(p2.isAlive());
 
         System.out.println(p1.hit(p2));
+
+        int random = ThreadLocalRandom.current().nextInt(1, 3 + 1);
 
     }
 }

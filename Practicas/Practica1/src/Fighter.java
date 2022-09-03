@@ -23,8 +23,8 @@ public abstract class Fighter<T extends Fighter<T>> {
     
     public int defend() {
         int newBlock = skill.defend();
-        block += newBlock;
-        return newBlock;
+        gainBlock(newBlock);
+        return block;
     }
 
     public String getName() {

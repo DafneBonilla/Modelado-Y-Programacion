@@ -1,9 +1,10 @@
 public class ZeroSkill extends SpSkill<MeganMan> {
 
-    public ZeroSkill() {
+    public ZeroSkill(Fighter<MeganMan> owner) {
         atkBoost = 40;
         defBoost = 0;
         name = "Zero";
+        this.owner = owner;
     }
 
     @Override
@@ -24,5 +25,4 @@ public class ZeroSkill extends SpSkill<MeganMan> {
     public int defend() {
         return defBoost;
     }
-    
 } 

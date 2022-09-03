@@ -1,14 +1,15 @@
 public class SnorlaxSkill extends SpSkill<Dittuu> {
     
-    public SnorlaxSkill() {
+    public SnorlaxSkill(Fighter<Dittuu> owner) {
         atkBoost = 7;
         defBoost = 33;
         name = "Snorlax";
+        this.owner = owner;
     }
 
     @Override
     public int hit(Fighter target) {
-        int damage = atkBoost - (target.getBlock());
+        int damage = atkBoost - target.getBlock();
         if (damage < 0) {
             target.lowerBlock();
             return 0;
@@ -21,7 +22,7 @@ public class SnorlaxSkill extends SpSkill<Dittuu> {
     
     @Override
     public int defend() {
-
+        owner.gainHP(10);
         return defBoost;
     } 
 

@@ -1,15 +1,19 @@
 public class Rayquaza extends SpSkill<Dittuu> {
     
-    public Rayquaza() {
-        atkBoost = 40;
-        defBoost = 0;
-        name = "Zero";
+    public Rayquaza(Fighter<Dittuu> owner) {
+        atkBoost = 20;
+        defBoost = 20;
+        name = "Rayquaza";
+        this.owner = owner;
     }
 
     @Override
     public int hit(Fighter target) {
-        int damage = atkBoost - (target.getBlock());
-        atkBoost += 10;
+        int damage = atkBoost - target.getBlock();
+        atkBoost += 20;
+        if (defBoost > 0) {
+            defBoost -= 10;
+        }
         if (damage < 0) {
             target.lowerBlock();
             return 0;
@@ -23,5 +27,5 @@ public class Rayquaza extends SpSkill<Dittuu> {
     @Override
     public int defend() {
         return defBoost;
-    } 
+    }
 }

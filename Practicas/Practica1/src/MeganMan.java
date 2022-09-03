@@ -1,3 +1,5 @@
+import java.util.concurrent.ThreadLocalRandom;
+
 public class MeganMan extends Fighter<MeganMan> {
 
     public MeganMan() {
@@ -12,7 +14,16 @@ public class MeganMan extends Fighter<MeganMan> {
     }
 
     protected SpSkill<MeganMan> generator() {
-        return null;
+        int random = ThreadLocalRandom.current().nextInt(1, 3 + 1);
+        switch (random) {
+            case 1:
+                return new ElectricSkill(this);
+            case 2:
+                return new MetalSkill(this);
+            case 3:
+                return new ZeroSkill(this);
+            default:
+                return new DefaultSkill<MeganMan>(this);
+        }
     }
-
 }

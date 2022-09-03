@@ -1,14 +1,16 @@
 public class PikachuSkill extends SpSkill<Dittuu> {
-    public PikachuSkill() {
-        atkBoost = 5;
-        defBoost = 35;
+
+    public PikachuSkill(Fighter<Dittuu> owner) {
+        atkBoost = 23;
+        defBoost = 17;
         name = "Pikachu";
+        this.owner = owner;
     }
 
     @Override
     public int hit(Fighter target) {
         int damage = atkBoost - target.getBlock();
-        target.gainBlock(20);
+        owner.lowerHP(5);
         if (damage < 0) {
             target.lowerBlock();
             return 0;
@@ -21,6 +23,7 @@ public class PikachuSkill extends SpSkill<Dittuu> {
     
     @Override
     public int defend() {
+        atkBoost += 5;
         return defBoost;
     }
     
