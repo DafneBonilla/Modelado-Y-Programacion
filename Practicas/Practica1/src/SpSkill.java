@@ -6,6 +6,8 @@ public abstract class SpSkill<T extends Fighter<T>> {
 
     protected String name;
 
+    protected Fighter owner;
+
     public int getAtkBoost() {
         return atkBoost;
     }
@@ -14,7 +16,7 @@ public abstract class SpSkill<T extends Fighter<T>> {
         return defBoost;
     }
 
-    public abstract int hit(Fighter<T> target);
+    public abstract int hit(Fighter target);
 
     public abstract int defend();
 

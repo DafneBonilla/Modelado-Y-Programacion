@@ -13,7 +13,7 @@ public abstract class Fighter<T extends Fighter<T>> {
         this.block = 0;
     }
 
-    public int hit(Fighter<T> target) {
+    public int hit(Fighter target) {
         if (target.isAlive()) {
             return skill.hit(target);
         } else {

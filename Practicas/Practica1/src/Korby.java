@@ -3,7 +3,7 @@ public class Korby extends Fighter<Korby> {
     public Korby() {
         super();
         this.name = "Korby";
-        this.skill = new DefaultSkill<Korby>();
+        this.skill = new DefaultSkill<Korby>(this);
     }
 
     @Override
@@ -14,5 +14,4 @@ public class Korby extends Fighter<Korby> {
     protected SpSkill<Korby> generator() {
         return null;
     }
-
 }

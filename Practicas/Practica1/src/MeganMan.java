@@ -3,7 +3,7 @@ public class MeganMan extends Fighter<MeganMan> {
     public MeganMan() {
         super();
         this.name = "MeganMan";
-        this.skill = new DefaultSkill<MeganMan>();
+        this.skill = new DefaultSkill<MeganMan>(this);
     }
 
     @Override

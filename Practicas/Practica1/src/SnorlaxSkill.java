@@ -1,15 +1,14 @@
-public class BoomerangSkill extends SpSkill<Korby> {
-
-    public BoomerangSkill(Fighter<Korby> owner) {
-        atkBoost = 10;
-        defBoost = 30;
-        name = "Boomerang";
-        this.owner = owner;
+public class SnorlaxSkill extends SpSkill<Dittuu> {
+    
+    public SnorlaxSkill() {
+        atkBoost = 7;
+        defBoost = 33;
+        name = "Snorlax";
     }
 
     @Override
     public int hit(Fighter target) {
-        int damage = atkBoost - target.getBlock();
+        int damage = atkBoost - (target.getBlock());
         if (damage < 0) {
             target.lowerBlock();
             return 0;
@@ -19,10 +18,11 @@ public class BoomerangSkill extends SpSkill<Korby> {
             return damage;
         }
     }
-
+    
     @Override
     public int defend() {
-        return (int) (defBoost * 1.5);
-    }
+
+        return defBoost;
+    } 
 
 }
