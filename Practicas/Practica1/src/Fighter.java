@@ -15,9 +15,7 @@ public abstract class Fighter<T extends Fighter<T>> {
 
     public int hit(Fighter<T> target) {
         if (target.isAlive()) {
-            int damage = skill.hit(target);
-            target.lowerHP(damage);
-            return damage;
+            return skill.hit(target);
         } else {
             return Integer.MIN_VALUE;
         }

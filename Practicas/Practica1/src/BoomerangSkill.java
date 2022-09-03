@@ -1,14 +1,14 @@
-public class DragonSkill extends SpSkill<Korby> {
+public class BoomerangSkill extends SpSkill<Korby> {
 
-    public DragonSkill() {
-        atkBoost = 30;
-        defBoost = 10;
-        name = "Dragon";
+    public BoomerangSkill() {
+        atkBoost = 10;
+        defBoost = 30;
+        name = "Boomerang";
     }
 
     @Override
     public int hit(Fighter<Korby> target) {
-        int damage = atkBoost - (target.getBlock() / 2);
+        int damage = atkBoost - (target.getBlock());
         if (damage < 0) {
             target.lowerBlock();
             return 0;
@@ -21,7 +21,7 @@ public class DragonSkill extends SpSkill<Korby> {
 
     @Override
     public int defend() {
-        return defBoost;
+        return (int) (defBoost * 1.5);
     }
 
 }
