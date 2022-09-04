@@ -18,7 +18,7 @@ public class Viewer implements Observer {
     public Viewer(String name, Ring watch, String support) {
         this.name = name;
         this.watch = watch;
-        this.history = "";
+        this.history = "Bienvenido!\nEstas apoyando a " + support + "\n";
         this.support = support;
         this.move = "";
     }

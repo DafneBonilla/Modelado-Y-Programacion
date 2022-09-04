@@ -6,19 +6,18 @@ public class Pruebas {
     public static void main(String[] args) {
 
         List<Fighter> fighters = new ArrayList<>();
+        fighters.add(new Dittuu());
         fighters.add(new Korby());
         fighters.add(new MeganMan());
-        fighters.add(new Dittuu());
         
-        RiggedFight order = new Case2();
+        RiggedFight order = new Case3();
 
         Ring show = new Ring(fighters, order);
 
-        show.registerObserver(new Viewer("BlackDragon", show, "Dittuu"));
-        show.registerObserver(new Viewer("CamiloElPoderoso", show, "Korby"));
-        show.registerObserver(new Viewer("Dracarys", show, "MeganMan"));
+        show.registerObserver(new Viewer("BlackDragon", show, "Korby"));
+        show.registerObserver(new Viewer("CamiloElPoderoso", show, "MeganMan"));
+        show.registerObserver(new Viewer("Dracarys", show, "Dittuu"));
 
         show.start();
-
     }
 }

@@ -90,7 +90,7 @@ public class Ring implements Subject {
                 switch (action.getMovement()) {
                     case "a":
                         int target = action.getTarget();
-                       Fighter targetF = fighters.get(target);
+                        Fighter targetF = fighters.get(target);
                         if (targetF.isAlive()) {
                             int dmg = actorF.hit(targetF);
                             move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName() + " por " + dmg + " puntos de danio";
@@ -107,7 +107,7 @@ public class Ring implements Subject {
                         move = "Movimiento " + round + ": " + actorF.getName() + " se transforma en " + transform;
                         break;
                     default:
-                        move = "Movimiento "+ ": Invalid move";
+                        move = "Movimiento " + ": Invalid move";
                         break;
                 }
             } else {
