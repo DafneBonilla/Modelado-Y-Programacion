@@ -1,0 +1,39 @@
+El estado de los luchadores es: 
+Korby: 100 HP, 20 ATK, 20 DEF, 0 Escudo y Habilidad Defeault
+MeganMan: 100 HP, 20 ATK, 20 DEF, 0 Escudo y Habilidad Defeault
+Dittuu: 100 HP, 20 ATK, 20 DEF, 0 Escudo y Habilidad Defeault
+
+Movimiento 1: Korby golpea a MeganMan por 20 puntos de dano
+Movimiento 2: MeganMan golpea a Dittuu por 20 puntos de dano
+Movimiento 3: Dittuu se transforma en Nombre: Rayquaza Atk: 20 Def: 20 Al atacar aumenta tu ataque en 20 y disminuye tu defensa en 10
+El estado de los luchadores es: 
+Korby: 100 HP, 20 ATK, 20 DEF, 0 Escudo y Habilidad Defeault
+MeganMan: 80 HP, 20 ATK, 20 DEF, 0 Escudo y Habilidad Defeault
+Dittuu: 80 HP, 20 ATK, 20 DEF, 0 Escudo y Habilidad Rayquaza
+
+Movimiento 4: Korby se defiende y obtiene 20 puntos de escudo
+Movimiento 5: MeganMan se transforma en Nombre: Electric Atk: 15 Def: 25 Al atacar te curas el daño que haces
+Movimiento 6: Dittuu golpea a Korby por 0 puntos de dano
+El estado de los luchadores es: 
+Korby: 100 HP, 20 ATK, 20 DEF, 0 Escudo y Habilidad Defeault
+MeganMan: 80 HP, 15 ATK, 25 DEF, 0 Escudo y Habilidad Electric
+Dittuu: 80 HP, 40 ATK, 10 DEF, 0 Escudo y Habilidad Rayquaza
+
+Movimiento 7: Korby se transforma en Nombre: Hammer Atk: 35 Def: 5 Al atacar ganas 5 de escudo
+Movimiento 8: MeganMan golpea a Dittuu por 15 puntos de dano
+Movimiento 9: Dittuu golpea a Korby por 40 puntos de dano
+El estado de los luchadores es: 
+Korby: 60 HP, 35 ATK, 5 DEF, 0 Escudo y Habilidad Hammer
+MeganMan: 95 HP, 15 ATK, 25 DEF, 0 Escudo y Habilidad Electric
+Dittuu: 65 HP, 60 ATK, 0 DEF, 0 Escudo y Habilidad Rayquaza
+
+Movimiento 10: Korby golpea a Dittuu por 35 puntos de dano
+Movimiento 11: MeganMan golpea a Dittuu por 15 puntos de dano
+Movimiento 12: Dittuu se transforma en Nombre: Pikachu Atk: 23 Def: 17 Al defender aumenta tu ataque en 5 y al atacar te hace 5 de daño
+El estado de los luchadores es: 
+Korby: 60 HP, 35 ATK, 5 DEF, 5 Escudo y Habilidad Hammer
+MeganMan: 110 HP, 15 ATK, 25 DEF, 0 Escudo y Habilidad Electric
+Dittuu: 15 HP, 23 ATK, 17 DEF, 0 Escudo y Habilidad Pikachu
+
+Fue un empate
+Lo siento, el peleador que apoyaste perdio!

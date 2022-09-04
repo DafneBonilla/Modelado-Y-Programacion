@@ -1,15 +1,24 @@
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pruebas {
 
     public static void main(String[] args) {
 
-        int random = ThreadLocalRandom.current().nextInt(1, 3 + 1);
-        System.out.println(random);
+        List<Fighter> fighters = new ArrayList<>();
+        fighters.add(new Korby());
+        fighters.add(new MeganMan());
+        fighters.add(new Dittuu());
+        
+        RiggedFight order = new Case1();
+
+        Ring show = new Ring(fighters, order);
+
+        show.registerObserver(new Viewer("Black Dragon", show, "MeganMan"));
+        show.registerObserver(new Viewer("Camilo el Poderoso", show, "Dittuu"));
+        show.registerObserver(new Viewer("Dracarys", show, "Korby"));
+
+        show.start();
 
     }
 }
-
-// Desde Practica 1
-// javac -d classes src/*.java
-// java -cp classes Pruebas

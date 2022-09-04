@@ -21,6 +21,6 @@ public class ElectricSkill extends SpSkill<MeganMan> {
 
     @Override
     public String getDescription() {
-        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al atacar te curas el daño que haces";
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al atacar te curas el danio que haces";
     }
 }

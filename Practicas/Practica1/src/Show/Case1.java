@@ -8,7 +8,7 @@ public class Case1 implements RiggedFight {
     private int maxRounds;
 
     public Case1() {
-        List<Action> actions = new ArrayList<Action>();
+        actions = new ArrayList<Action>();
 
         actions.add(new Action(0, "a", 1));
         actions.add(new Action(1, "a", 2));
@@ -31,6 +31,9 @@ public class Case1 implements RiggedFight {
 
     @Override
     public Action getAction() {
+        if (actions.size() == 0) {
+            return null;
+        }
         Action actual = actions.get(0);
         actions.remove(0);
         return actual;

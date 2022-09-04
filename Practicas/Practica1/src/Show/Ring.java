@@ -22,7 +22,7 @@ public class Ring implements Subject {
 
     private Action action;
 
-    public Ring(ArrayList<Fighter> fighters, RiggedFight order) {
+    public Ring(List<Fighter> fighters, RiggedFight order) {
         viewers = new ArrayList<Viewer>();
         this.fighters = fighters;
         over = false;
@@ -70,7 +70,7 @@ public class Ring implements Subject {
                 over = true;
                 break;
             }
-            if (round % 3 == 0) {
+            if (round % 3 == 1) {
                 String aux = "El estado de los luchadores es: " + "\n";
                 for (Fighter f : fighters) {
                     aux += f.getInfo() + "\n";
@@ -79,6 +79,11 @@ public class Ring implements Subject {
                 notifyObserver();
             }
             action = order.getAction();
+            if (action == null) {
+                over = true;
+                break;
+            }   
+            {} 
             int actor = action.getActor();
             Fighter actorF = fighters.get(actor);
             if (actorF.isAlive()) {
@@ -88,7 +93,9 @@ public class Ring implements Subject {
                         Fighter targetF = fighters.get(target);
                         if (targetF.isAlive()) {
                             int dmg = actorF.hit(targetF);
-                            move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName() + " por " + dmg + " puntos de daño";
+                            move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName() + " por " + dmg + " puntos de dano";
+                            move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName() + " por " + dmg + " puntos de dano";
+                            move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName() + " por " + dmg + " puntos de dano";
                         } else {
                             move = "Movimiento " + round + ": " + actorF.getName() + " ataca a " + targetF.getName() + " pero este ya esta muerto";
                         }

@@ -49,8 +49,8 @@ public abstract class Fighter {
     public void gainHP(int hp) {
         if (hp > 0) {
             this.hp += hp;
-            if (hp > 100) {
-                hp = 100;
+            if (this.hp > 100) {
+                this.hp = 100;
             }
         }
     }
