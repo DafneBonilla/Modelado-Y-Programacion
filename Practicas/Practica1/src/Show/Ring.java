@@ -90,12 +90,10 @@ public class Ring implements Subject {
                 switch (action.getMovement()) {
                     case "a":
                         int target = action.getTarget();
-                        Fighter targetF = fighters.get(target);
+                       Fighter targetF = fighters.get(target);
                         if (targetF.isAlive()) {
                             int dmg = actorF.hit(targetF);
-                            move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName() + " por " + dmg + " puntos de dano";
-                            move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName() + " por " + dmg + " puntos de dano";
-                            move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName() + " por " + dmg + " puntos de dano";
+                            move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName() + " por " + dmg + " puntos de danio";
                         } else {
                             move = "Movimiento " + round + ": " + actorF.getName() + " ataca a " + targetF.getName() + " pero este ya esta muerto";
                         }
@@ -113,7 +111,7 @@ public class Ring implements Subject {
                         break;
                 }
             } else {
-                move = "Movimiento" + round + ": El luchador " + actorF.getName() + " paso a mejor vida, no puede hacer nada";
+                move = "Movimiento " + round + ": El luchador " + actorF.getName() + " paso a mejor vida, no puede hacer nada";
             }
             notifyObserver();
             round++;
@@ -150,7 +148,7 @@ public class Ring implements Subject {
             for (Viewer v : viewers) {
                 try {
                     v.leave();
-                } catch (IOException e) {
+                } catch (IOException ioe) {
                     System.out.println("Hubo un error de entrada/salida del observador " + v.getName());
                     continue;
                 }

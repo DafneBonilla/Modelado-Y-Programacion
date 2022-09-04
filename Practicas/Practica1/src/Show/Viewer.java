@@ -1,4 +1,5 @@
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -49,7 +50,7 @@ public class Viewer implements Observer {
     }
 
     public void leave() throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(name + "History.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(new File(name + "History.txt")));
         bw.write(history);
         bw.flush();
         bw.close();
