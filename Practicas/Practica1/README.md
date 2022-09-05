@@ -7,5 +7,5 @@
 > - Práctica 01: Uso de Strategy y Observer.
 
 Desde Practica 1
-compilar javac -d classes src/*.java
-correr -cp classes Pruebas
+compilar javac -d classes src/\*.java
+correr java -cp classes Practica1
