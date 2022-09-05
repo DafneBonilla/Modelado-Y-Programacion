@@ -1,14 +1,29 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class to the make everythings work
+ */
 public class Practica1 {
 
-    /* Metodo que genera numeros aleatorios entre 0 y max. */
+    /**
+     * Generates a random number between 0 and max
+     * 
+     * @param max the maximum number that the random number can be
+     * @return a random number between 0 and max
+     */
     public static int random(int max) {
         int resultadorand = (int) Math.round(Math.random() * max + 0.5);
         return resultadorand;
     }
 
+    /**
+     * Generates a list of fighters
+     * The order of the fighters in the list is random
+     * 
+     * @param version a random number between 0 and 2
+     * @return a list of fighters
+     */
     public static List<Fighter> createList(int version) {
         List<Fighter> list = new ArrayList<Fighter>();
         switch (version) {
@@ -47,6 +62,12 @@ public class Practica1 {
         }
     }
 
+    /**
+     * Generates the order that the fight will take
+     * 
+     * @param version a random number between 0 and 2
+     * @return the order that the fight will take
+     */
     public static RiggedFight generateFight(int version) {
         switch (version) {
             case 0:
@@ -60,6 +81,12 @@ public class Practica1 {
         }
     }
 
+    /**
+     * Returns the name of a random fighter
+     * 
+     * @param version a random number between 0 and 2
+     * @return the name of a random fighter
+     */
     public static String support(int version) {
         switch (version) {
             case 0:
@@ -73,6 +100,11 @@ public class Practica1 {
         }
     }
 
+    /**
+     * Main method
+     * 
+     * @param args the arguments of the main method
+     */
     public static void main(String[] args) {
         List<Fighter> fighters = createList(random(5));
         RiggedFight riggedFight = generateFight(random(2));

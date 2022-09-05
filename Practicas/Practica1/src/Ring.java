@@ -2,26 +2,40 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class to represent the ring where the fights will take place
+ * The ring has a list of fighters, a list of skills, a boolean to know if the
+ * fight is over, and a list of actions, the move in text that happened , a
+ * winner, a maximum number of rounds, a
+ * current round and a current action
+ */
 public class Ring implements Subject {
 
+    /* The list of viewers */
     private List<Viewer> viewers = new ArrayList<Viewer>();
-
+    /* The list of fighters */
     private List<Fighter> fighters = new ArrayList<Fighter>();
-
+    /* The boolean to know if the fight is over */
     private boolean over;
-
+    /* The list of actions */
     private RiggedFight order;
-
+    /* The move in text that happened */
     private String move;
-
+    /* The winner of the fight */
     private String winner;
-
+    /* The maximum number of rounds */
     private int maxRounds;
-
+    /* The current round */
     private int round;
-
+    /* The current action */
     private Action action;
 
+    /**
+     * Constructor of the ring
+     * 
+     * @param fighters the list of fighters
+     * @param order    the order that the fight will take
+     */
     public Ring(List<Fighter> fighters, RiggedFight order) {
         viewers = new ArrayList<Viewer>();
         this.fighters = fighters;
@@ -34,16 +48,29 @@ public class Ring implements Subject {
         this.action = null;
     }
 
+    /**
+     * Registers a viewer to the ring
+     * 
+     * @param viewer the viewer to be registered
+     */
     @Override
     public void registerObserver(Observer o) {
         viewers.add((Viewer) o);
     }
 
+    /**
+     * Removes a viewer from the ring
+     * 
+     * @param viewer the viewer to be removed
+     */
     @Override
     public void removeObserver(Observer o) {
         viewers.remove(o);
     }
 
+    /**
+     * Notifies the viewers of the ring
+     */
     @Override
     public void notifyObserver() {
         if (viewers.size() > 0) {
@@ -53,10 +80,18 @@ public class Ring implements Subject {
         }
     }
 
+    /**
+     * Returns the move in text that happened
+     * 
+     * @return the move in text that happened
+     */
     public String getMove() {
         return move;
     }
 
+    /**
+     * Begins the fight
+     */
     public void start() {
         while (round <= maxRounds) {
             int i = 0;
@@ -113,6 +148,9 @@ public class Ring implements Subject {
         }
     }
 
+    /**
+     * Notifies the viewers of the status of the fighters
+     */
     private void fighterStatus() {
         String aux = "El estado de los luchadores es: " + "\n";
         for (Fighter f : fighters) {
@@ -122,6 +160,9 @@ public class Ring implements Subject {
         notifyObserver();
     }
 
+    /**
+     * Does the current action
+     */
     private void doAction() {
         int actor = action.getActor();
         Fighter actorF = fighters.get(actor);
@@ -159,6 +200,9 @@ public class Ring implements Subject {
         notifyObserver();
     }
 
+    /**
+     * Ends the fight and makes the viewers leave (write their files)
+     */
     private void end() {
         for (Viewer v : viewers) {
             try {
