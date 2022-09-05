@@ -33,8 +33,7 @@ public class Ring implements Subject {
         this.round = 1;
         this.action = null;
     }
-    
-        
+
     @Override
     public void registerObserver(Observer o) {
         viewers.add((Viewer) o);
@@ -52,7 +51,7 @@ public class Ring implements Subject {
                 o.update();
             }
         }
-    }   
+    }
 
     public String getMove() {
         return move;
@@ -71,49 +70,14 @@ public class Ring implements Subject {
                 break;
             }
             if (round % 3 == 1) {
-                String aux = "El estado de los luchadores es: " + "\n";
-                for (Fighter f : fighters) {
-                    aux += f.getInfo() + "\n";
-                }
-                move = aux;
-                notifyObserver();
+                fighterStatus();
             }
             action = order.getAction();
             if (action == null) {
                 over = true;
                 break;
-            }   
-            {} 
-            int actor = action.getActor();
-            Fighter actorF = fighters.get(actor);
-            if (actorF.isAlive()) {
-                switch (action.getMovement()) {
-                    case "a":
-                        int target = action.getTarget();
-                        Fighter targetF = fighters.get(target);
-                        if (targetF.isAlive()) {
-                            int dmg = actorF.hit(targetF);
-                            move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName() + " por " + dmg + " puntos de danio";
-                        } else {
-                            move = "Movimiento " + round + ": " + actorF.getName() + " ataca a " + targetF.getName() + " pero este ya esta muerto";
-                        }
-                        break;
-                    case "d":
-                        int blk = actorF.defend();
-                        move = "Movimiento " + round + ": " + actorF.getName() + " se defiende y obtiene " + blk + " puntos de escudo";
-                        break;
-                    case "t":
-                        String transform = actorF.transform();
-                        move = "Movimiento " + round + ": " + actorF.getName() + " se transforma en " + transform;
-                        break;
-                    default:
-                        move = "Movimiento " + ": Invalid move";
-                        break;
-                }
-            } else {
-                move = "Movimiento " + round + ": El luchador " + actorF.getName() + " paso a mejor vida, no puede hacer nada";
             }
-            notifyObserver();
+            doAction();
             round++;
             if (over) {
                 break;
@@ -145,13 +109,63 @@ public class Ring implements Subject {
                     v.finish(winner);
                 }
             }
-            for (Viewer v : viewers) {
-                try {
-                    v.leave();
-                } catch (IOException ioe) {
-                    System.out.println("Hubo un error de entrada/salida del observador " + v.getName());
-                    continue;
-                }
+            end();
+        }
+    }
+
+    private void fighterStatus() {
+        String aux = "El estado de los luchadores es: " + "\n";
+        for (Fighter f : fighters) {
+            aux += f.getInfo() + "\n";
+        }
+        move = aux;
+        notifyObserver();
+    }
+
+    private void doAction() {
+        int actor = action.getActor();
+        Fighter actorF = fighters.get(actor);
+        if (actorF.isAlive()) {
+            switch (action.getMovement()) {
+                case "a":
+                    int target = action.getTarget();
+                    Fighter targetF = fighters.get(target);
+                    if (targetF.isAlive()) {
+                        int dmg = actorF.hit(targetF);
+                        move = "Movimiento " + round + ": " + actorF.getName() + " golpea a " + targetF.getName()
+                                + " por " + dmg + " puntos de danio";
+                    } else {
+                        move = "Movimiento " + round + ": " + actorF.getName() + " ataca a " + targetF.getName()
+                                + " pero este ya esta muerto";
+                    }
+                    break;
+                case "d":
+                    int blk = actorF.defend();
+                    move = "Movimiento " + round + ": " + actorF.getName() + " se defiende y obtiene " + blk
+                            + " puntos de escudo";
+                    break;
+                case "t":
+                    String transform = actorF.transform();
+                    move = "Movimiento " + round + ": " + actorF.getName() + " se transforma en " + transform;
+                    break;
+                default:
+                    move = "Movimiento " + ": Invalid move";
+                    break;
+            }
+        } else {
+            move = "Movimiento " + round + ": El luchador " + actorF.getName()
+                    + " paso a mejor vida, no puede hacer nada";
+        }
+        notifyObserver();
+    }
+
+    private void end() {
+        for (Viewer v : viewers) {
+            try {
+                v.leave();
+            } catch (IOException ioe) {
+                System.out.println("Hubo un error de entrada/salida del observador " + v.getName());
+                continue;
             }
         }
     }

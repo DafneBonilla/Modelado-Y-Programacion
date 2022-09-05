@@ -17,11 +17,11 @@ public class Case1 implements RiggedFight {
         actions.add(new Action(0, "d", -1));
         actions.add(new Action(1, "t", -1));
         actions.add(new Action(2, "a", 0));
-        
+
         actions.add(new Action(0, "t", -1));
         actions.add(new Action(1, "a", 2));
         actions.add(new Action(2, "a", 0));
-        
+
         actions.add(new Action(0, "a", 2));
         actions.add(new Action(1, "a", 2));
         actions.add(new Action(2, "t", -1));
@@ -43,5 +43,5 @@ public class Case1 implements RiggedFight {
     public int getMaxRounds() {
         return maxRounds;
     }
-    
+
 }

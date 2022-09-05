@@ -11,7 +11,7 @@ public class Action {
         this.movement = movement;
         this.target = target;
     }
-    
+
     public int getActor() {
         return actor;
     }

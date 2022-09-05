@@ -19,7 +19,8 @@ public class BoomerangSkill extends SpSkill<Korby> {
 
     @Override
     public String getDescription() {
-        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al defender ganas " + (int) (defBoost * 1.5) + " de escudo";
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al defender ganas "
+                + (int) (defBoost * 1.5) + " de escudo";
     }
 
 }

@@ -9,7 +9,7 @@ public class Practica1 {
         return resultadorand;
     }
 
-    public static List<Fighter> createList (int version) {
+    public static List<Fighter> createList(int version) {
         List<Fighter> list = new ArrayList<Fighter>();
         switch (version) {
             case 0:
@@ -71,8 +71,8 @@ public class Practica1 {
             default:
                 return null;
         }
-    }   
-    
+    }
+
     public static void main(String[] args) {
         List<Fighter> fighters = createList(random(5));
         RiggedFight riggedFight = generateFight(random(2));

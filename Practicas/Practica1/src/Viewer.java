@@ -25,18 +25,20 @@ public class Viewer implements Observer {
 
     @Override
     public void update() {
-        this.move = watch.getMove();
-        this.history += move + "\n";
+        if (watch != null) {
+            this.move = watch.getMove();
+            this.history += move + "\n";
+        }
     }
 
     public String getName() {
         return name;
     }
-      
+
     public String getHistory() {
         return history;
     }
-    
+
     public String getSupport() {
         return support;
     }
@@ -55,4 +57,10 @@ public class Viewer implements Observer {
         bw.flush();
         bw.close();
     }
+
+    public void stopWatching() {
+        watch.removeObserver(this);
+        watch = null;
+    }
+
 }
