@@ -1,12 +1,20 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class to represent a case of the game
+ * A case has a list of actions and a maximum number of actions
+ */
 public class Case3 implements RiggedFight {
 
+    /* List of actions of the case */
     private List<Action> actions = new ArrayList<Action>();
-
+    /* Maximum number of actions of the case */
     private int maxRounds;
 
+    /**
+     * Constructor of the case
+     */
     public Case3() {
         actions = new ArrayList<Action>();
 
@@ -97,7 +105,7 @@ public class Case3 implements RiggedFight {
         actions.add(new Action(0, "a", 2));
         actions.add(new Action(1, "d", -1));
         actions.add(new Action(2, "t", -1));
-        
+
         actions.add(new Action(0, "a", 2));
         actions.add(new Action(1, "t", -1));
         actions.add(new Action(2, "d", -1));
@@ -125,7 +133,7 @@ public class Case3 implements RiggedFight {
         actions.add(new Action(0, "a", 2));
         actions.add(new Action(1, "t", -1));
         actions.add(new Action(2, "a", 1));
-        
+
         actions.add(new Action(0, "a", 1));
         actions.add(new Action(1, "a", 0));
         actions.add(new Action(2, "d", -1));
@@ -173,7 +181,7 @@ public class Case3 implements RiggedFight {
         actions.add(new Action(0, "d", -1));
         actions.add(new Action(1, "a", 2));
         actions.add(new Action(2, "a", 0));
-        
+
         actions.add(new Action(0, "a", 2));
         actions.add(new Action(1, "a", 0));
         actions.add(new Action(2, "d", -1));
@@ -201,6 +209,11 @@ public class Case3 implements RiggedFight {
         maxRounds = actions.size() + 1;
     }
 
+    /**
+     * Returns the next action to be executed
+     * 
+     * @return the next action
+     */
     @Override
     public Action getAction() {
         if (actions.size() == 0) {
@@ -211,6 +224,11 @@ public class Case3 implements RiggedFight {
         return actual;
     }
 
+    /**
+     * Returns the maximum number of rounds
+     * 
+     * @return the maximum number of rounds
+     */
     @Override
     public int getMaxRounds() {
         return maxRounds;

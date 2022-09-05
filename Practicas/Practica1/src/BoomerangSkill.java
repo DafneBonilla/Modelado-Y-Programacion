@@ -28,9 +28,10 @@ public class BoomerangSkill extends SpSkill<Korby> {
     }
 
     /**
-     * Calculates and returns the defense that the skill will give to the owner
+     * Calculates and returns the amount of block that the skill will give to the
+     * owner
      * 
-     * @return the defense that the skill will give to the owner
+     * @return the amount of block that the skill will give to the owner
      */
     @Override
     public int defend() {
