@@ -2,14 +2,14 @@
  * Class to represent the rayquaza skill of the fighter Dittuu
  * The rayquaza skill has a damage of 20 and a defense of 20
  */
-public class Rayquaza extends SpSkill<Dittuu> {
+public class RayquazaSkill extends SpSkill<Dittuu> {
 
     /**
      * Constructor of the rayquaza skill
      * 
      * @param owner the owner of the skill
      */
-    public Rayquaza(Dittuu owner) {
+    public RayquazaSkill(Dittuu owner) {
         atkBoost = 20;
         defBoost = 20;
         name = "Rayquaza";

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class to the make everythings work
+ * Class to the make everything work
  */
 public class Practica1 {
 

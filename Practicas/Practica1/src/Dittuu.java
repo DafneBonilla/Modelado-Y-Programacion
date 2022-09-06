@@ -92,7 +92,7 @@ public class Dittuu extends Fighter {
             case 2:
                 return new SnorlaxSkill(this);
             case 3:
-                return new Rayquaza(this);
+                return new RayquazaSkill(this);
             default:
                 return new DefaultSkill<Dittuu>(this);
         }
