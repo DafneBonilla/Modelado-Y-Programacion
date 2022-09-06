@@ -2,7 +2,16 @@
  * Class to represent the rayquaza skill of the fighter Dittuu
  * The rayquaza skill has a damage of 20 and a defense of 20
  */
-public class RayquazaSkill extends SpSkill<Dittuu> {
+public class RayquazaSkill implements SpSkillDittuu {
+
+    /* The attack boost of the skill */
+    private int atkBoost;
+    /* The defense boost of the skill */
+    private int defBoost;
+    /* The name of the skill */
+    private String name;
+    /* The owner of the skill */
+    private Dittuu owner;
 
     /**
      * Constructor of the rayquaza skill
@@ -14,6 +23,26 @@ public class RayquazaSkill extends SpSkill<Dittuu> {
         defBoost = 20;
         name = "Rayquaza";
         this.owner = owner;
+    }
+
+    /**
+     * Returns the attack boost of the skill
+     * 
+     * @return the attack boost of the skill
+     */
+    @Override
+    public int getAtkBoost() {
+        return atkBoost;
+    }
+
+    /**
+     * Returns the attack boost of the skill
+     * 
+     * @return the attack boost of the skill
+     */
+    @Override
+    public int getDefBoost() {
+        return defBoost;
     }
 
     /**
@@ -44,6 +73,16 @@ public class RayquazaSkill extends SpSkill<Dittuu> {
     }
 
     /**
+     * Returns the name of the skill
+     * 
+     * @return the name of the skill
+     */
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    /**
      * Returns a description of the skill, this description contains the name, the
      * attack boost, the defense boost, and the special effect
      * 
@@ -54,4 +93,15 @@ public class RayquazaSkill extends SpSkill<Dittuu> {
         return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost
                 + " Al atacar aumenta tu ataque en 20 y disminuye tu defensa en 10";
     }
+
+    /**
+     * Returns the owner of the skill
+     * 
+     * @return the owner of the skill
+     */
+    @Override
+    public Dittuu getOwner() {
+        return owner;
+    }
+
 }

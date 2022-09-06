@@ -1,8 +1,8 @@
 /**
- * Class to represent the zero skill of the fighter megaman
- * The zero skill has a damage of 40 and a defense of 0
+ * Class to represent the default skill of Dittuu
+ * The default skill has a damage of 20 and a defense of 20
  */
-public class ZeroSkill implements SpSkillMeganMan {
+public class DefaultSkillDittuu implements SpSkillDittuu {
 
     /* The attack boost of the skill */
     private int atkBoost;
@@ -11,17 +11,17 @@ public class ZeroSkill implements SpSkillMeganMan {
     /* The name of the skill */
     private String name;
     /* The owner of the skill */
-    private MeganMan owner;
+    private Dittuu owner;
 
     /**
-     * Constructor of the zero skill
+     * Constructor of the default skill
      * 
      * @param owner the owner of the skill
      */
-    public ZeroSkill(MeganMan owner) {
-        atkBoost = 40;
-        defBoost = 0;
-        name = "Zero";
+    public DefaultSkillDittuu(Dittuu owner) {
+        atkBoost = 20;
+        defBoost = 20;
+        name = "Defeault";
         this.owner = owner;
     }
 
@@ -53,9 +53,8 @@ public class ZeroSkill implements SpSkillMeganMan {
      */
     @Override
     public int hit(Fighter target) {
-        int damage = atkBoost - target.getBlock();
-        atkBoost += 10;
-        return damage;
+        int dmg = atkBoost - target.getBlock();
+        return dmg;
     }
 
     /**
@@ -81,13 +80,13 @@ public class ZeroSkill implements SpSkillMeganMan {
 
     /**
      * Returns a description of the skill, this description contains the name, the
-     * attack boost, the defense boost, and the special effect
+     * attack boost and the defense boost
      * 
      * @return a description of the skill
      */
     @Override
     public String getDescription() {
-        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al atacar aumenta tu ataque en 10";
+        return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost;
     }
 
     /**
@@ -96,7 +95,7 @@ public class ZeroSkill implements SpSkillMeganMan {
      * @return the owner of the skill
      */
     @Override
-    public MeganMan getOwner() {
+    public Dittuu getOwner() {
         return owner;
     }
 

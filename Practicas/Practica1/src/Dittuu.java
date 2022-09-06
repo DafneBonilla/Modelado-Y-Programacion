@@ -108,4 +108,5 @@ public class Dittuu extends Fighter {
         return "Dittuu: " + getHP() + " HP, " + skill.getAtkBoost() + " ATK, " + skill.getDefBoost() + " DEF, "
                 + getBlock() + " Escudo y Habilidad " + skill.getName();
     }
+
 }

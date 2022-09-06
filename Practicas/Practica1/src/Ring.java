@@ -187,7 +187,11 @@ public class Ring implements Subject {
                     break;
                 case "t":
                     String transform = actorF.transform();
-                    move = "Movimiento " + round + ": " + actorF.getName() + " se transforma en " + transform;
+                    if (transform == null) {
+                        move = "Movimiento " + round + ": " + actorF.getName() + " no puede transformarse";
+                    } else {
+                        move = "Movimiento " + round + ": " + actorF.getName() + " se transforma en " + transform;
+                    }
                     break;
                 default:
                     move = "Movimiento " + ": Invalid move";

@@ -1,35 +1,21 @@
 /*+
- * Class to represent the special skill of a fighter
- * The special skill has a name, an attack boost, a defense boost, and an owner
+ * Interface to represent the special skill of a Dittuu
  */
-public abstract class SpSkill<T extends Fighter> {
-
-    /* The attack boost of the skill */
-    protected int atkBoost;
-    /* The defense boost of the skill */
-    protected int defBoost;
-    /* The name of the skill */
-    protected String name;
-    /* The owner of the skill */
-    protected Fighter owner;
+public interface SpSkillDittuu {
 
     /**
      * Returns the attack boost of the skill
      * 
      * @return the attack boost of the skill
      */
-    public int getAtkBoost() {
-        return atkBoost;
-    }
+    public abstract int getAtkBoost();
 
     /**
      * Returns the defense boost of the skill
      * 
      * @return the defense boost of the skill
      */
-    public int getDefBoost() {
-        return defBoost;
-    }
+    public abstract int getDefBoost();
 
     /**
      * Returns the damage that the skill will do to the target
@@ -51,9 +37,7 @@ public abstract class SpSkill<T extends Fighter> {
      * 
      * @return the name of the skill
      */
-    public String getName() {
-        return name;
-    }
+    public abstract String getName();
 
     /**
      * Returns a description of the skill, this description contains the name, the
@@ -62,5 +46,12 @@ public abstract class SpSkill<T extends Fighter> {
      * @return a description of the skill
      */
     public abstract String getDescription();
+
+    /**
+     * Returns the owner of the skill
+     * 
+     * @return the owner of the skill
+     */
+    public abstract Dittuu getOwner();
 
 }

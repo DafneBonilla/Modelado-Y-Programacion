@@ -2,7 +2,16 @@
  * Class to represent the metal skill of the fighter MeganMan
  * The metal skill has a damage of 5 and a defense of 35
  */
-public class MetalSkill extends SpSkill<MeganMan> {
+public class MetalSkill implements SpSkillMeganMan {
+
+    /* The attack boost of the skill */
+    private int atkBoost;
+    /* The defense boost of the skill */
+    private int defBoost;
+    /* The name of the skill */
+    private String name;
+    /* The owner of the skill */
+    private MeganMan owner;
 
     /**
      * Constructor of the metal Skill
@@ -14,6 +23,26 @@ public class MetalSkill extends SpSkill<MeganMan> {
         defBoost = 35;
         name = "Metal";
         this.owner = owner;
+    }
+
+    /**
+     * Returns the attack boost of the skill
+     * 
+     * @return the attack boost of the skill
+     */
+    @Override
+    public int getAtkBoost() {
+        return atkBoost;
+    }
+
+    /**
+     * Returns the attack boost of the skill
+     * 
+     * @return the attack boost of the skill
+     */
+    @Override
+    public int getDefBoost() {
+        return defBoost;
     }
 
     /**
@@ -41,6 +70,16 @@ public class MetalSkill extends SpSkill<MeganMan> {
     }
 
     /**
+     * Returns the name of the skill
+     * 
+     * @return the name of the skill
+     */
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    /**
      * Returns a description of the skill, this description contains the name, the
      * attack boost, the defense boost, and the special effect
      * 
@@ -50,4 +89,15 @@ public class MetalSkill extends SpSkill<MeganMan> {
     public String getDescription() {
         return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al atacar ganas 20 de escudo";
     }
+
+    /**
+     * Returns the owner of the skill
+     * 
+     * @return the owner of the skill
+     */
+    @Override
+    public MeganMan getOwner() {
+        return owner;
+    }
+
 }
