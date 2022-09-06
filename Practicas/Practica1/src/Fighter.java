@@ -112,13 +112,6 @@ public abstract class Fighter {
     }
 
     /**
-     * Returns the name of the figher skill
-     * 
-     * @return the name of the figher skill
-     */
-    public abstract String getSkillName();
-
-    /**
      * Returns true if the fighter is alive
      * 
      * @return true if the fighter is alive
@@ -129,6 +122,7 @@ public abstract class Fighter {
 
     /**
      * Returns the name of the new skill that the fighter will have
+     * If the fighter cannot transform, it will return null
      * 
      * @return the name of the new skill that the fighter will have
      */

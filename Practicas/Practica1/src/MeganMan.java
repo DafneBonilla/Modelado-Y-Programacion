@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MeganMan extends Fighter {
 
     /* The skill of MeganMan */
-    private SpSkill<MeganMan> skill;
+    private SpSkillMeganMan skill;
 
     /**
      * Constructor of MeganMan
@@ -15,7 +15,7 @@ public class MeganMan extends Fighter {
     public MeganMan() {
         super();
         this.name = "MeganMan";
-        this.skill = new DefaultSkill<MeganMan>(this);
+        this.skill = new DefaultSkillMeganMan(this);
     }
 
     /**
@@ -61,7 +61,6 @@ public class MeganMan extends Fighter {
      * 
      * @return the name of the skill
      */
-    @Override
     public String getSkillName() {
         return skill.getName();
     }
@@ -84,7 +83,7 @@ public class MeganMan extends Fighter {
      * 
      * @return a skill of the "MeganMan" type
      */
-    private SpSkill<MeganMan> generator() {
+    private SpSkillMeganMan generator() {
         int random = ThreadLocalRandom.current().nextInt(1, 3 + 1);
         switch (random) {
             case 1:
@@ -94,7 +93,7 @@ public class MeganMan extends Fighter {
             case 3:
                 return new ZeroSkill(this);
             default:
-                return new DefaultSkill<MeganMan>(this);
+                return new DefaultSkillMeganMan(this);
         }
     }
 

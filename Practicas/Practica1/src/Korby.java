@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Korby extends Fighter {
 
     /* The skill of Dittuu */
-    private SpSkill<Korby> skill;
+    private SpSkillKorby skill;
 
     /**
      * Constructor of Korby
@@ -15,7 +15,7 @@ public class Korby extends Fighter {
     public Korby() {
         super();
         this.name = "Korby";
-        this.skill = new DefaultSkill<Korby>(this);
+        this.skill = new DefaultSkillKorby(this);
     }
 
     /**
@@ -61,7 +61,6 @@ public class Korby extends Fighter {
      * 
      * @return the name of the skill
      */
-    @Override
     public String getSkillName() {
         return skill.getName();
     }
@@ -84,7 +83,7 @@ public class Korby extends Fighter {
      * 
      * @return a skill of the "Korby" type
      */
-    private SpSkill<Korby> generator() {
+    private SpSkillKorby generator() {
         int random = ThreadLocalRandom.current().nextInt(1, 3 + 1);
         switch (random) {
             case 1:
@@ -94,7 +93,7 @@ public class Korby extends Fighter {
             case 3:
                 return new HammerSkill(this);
             default:
-                return new DefaultSkill<Korby>(this);
+                return new DefaultSkillKorby(this);
         }
     }
 

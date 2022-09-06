@@ -18,51 +18,6 @@ public class Practica1 {
     }
 
     /**
-     * Generates a list of fighters
-     * The order of the fighters in the list is random
-     * 
-     * @param version a random number between 0 and 2
-     * @return a list of fighters
-     */
-    public static List<Fighter> createList(int version) {
-        List<Fighter> list = new ArrayList<Fighter>();
-        switch (version) {
-            case 0:
-                list.add(new Korby());
-                list.add(new MeganMan());
-                list.add(new Dittuu());
-                return list;
-            case 1:
-                list.add(new Korby());
-                list.add(new Dittuu());
-                list.add(new MeganMan());
-                return list;
-            case 2:
-                list.add(new MeganMan());
-                list.add(new Korby());
-                list.add(new Dittuu());
-                return list;
-            case 3:
-                list.add(new MeganMan());
-                list.add(new Dittuu());
-                list.add(new Korby());
-                return list;
-            case 4:
-                list.add(new Dittuu());
-                list.add(new Korby());
-                list.add(new MeganMan());
-                return list;
-            case 5:
-                list.add(new Dittuu());
-                list.add(new MeganMan());
-                list.add(new Korby());
-                return list;
-            default:
-                return null;
-        }
-    }
-
-    /**
      * Generates the order that the fight will take
      * 
      * @param version a random number between 0 and 2
@@ -106,7 +61,10 @@ public class Practica1 {
      * @param args the arguments of the main method
      */
     public static void main(String[] args) {
-        List<Fighter> fighters = createList(random(5));
+        List<Fighter> fighters = new ArrayList<Fighter>();
+        fighters.add(new Korby());
+        fighters.add(new MeganMan());
+        fighters.add(new Dittuu());
         RiggedFight riggedFight = generateFight(random(2));
         Ring ring = new Ring(fighters, riggedFight);
         ring.registerObserver(new Viewer("ViewerBlackDragon", ring, support(random(2))));

@@ -2,7 +2,16 @@
  * Class to represent the boomerang skill of the fighter Korby
  * The boomerang skill has a damage of 10 and a defense of 30
  */
-public class BoomerangSkill extends SpSkill<Korby> {
+public class BoomerangSkill implements SpSkillKorby {
+
+    /* The attack boost of the skill */
+    private int atkBoost;
+    /* The defense boost of the skill */
+    private int defBoost;
+    /* The name of the skill */
+    private String name;
+    /* The owner of the skill */
+    private Korby owner;
 
     /**
      * Constructor of the boomerang skill
@@ -14,6 +23,26 @@ public class BoomerangSkill extends SpSkill<Korby> {
         defBoost = 30;
         name = "Boomerang";
         this.owner = owner;
+    }
+
+    /**
+     * Returns the attack boost of the skill
+     * 
+     * @return the attack boost of the skill
+     */
+    @Override
+    public int getAtkBoost() {
+        return atkBoost;
+    }
+
+    /**
+     * Returns the attack boost of the skill
+     * 
+     * @return the attack boost of the skill
+     */
+    @Override
+    public int getDefBoost() {
+        return defBoost;
     }
 
     /**
@@ -39,6 +68,16 @@ public class BoomerangSkill extends SpSkill<Korby> {
     }
 
     /**
+     * Returns the name of the skill
+     * 
+     * @return the name of the skill
+     */
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    /**
      * Returns a description of the skill, this description contains the name, the
      * attack boost, the defense boost, and the special effect
      * 
@@ -48,6 +87,16 @@ public class BoomerangSkill extends SpSkill<Korby> {
     public String getDescription() {
         return "Nombre: " + name + " Atk: " + atkBoost + " Def: " + defBoost + " Al defender ganas "
                 + (int) (defBoost * 1.5) + " de escudo";
+    }
+
+    /**
+     * Returns the owner of the skill
+     * 
+     * @return the owner of the skill
+     */
+    @Override
+    public Korby getOwner() {
+        return owner;
     }
 
 }

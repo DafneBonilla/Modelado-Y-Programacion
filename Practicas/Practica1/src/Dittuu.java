@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Dittuu extends Fighter {
 
     /* The skill of Dittuu */
-    private SpSkill<Dittuu> skill;
+    private SpSkillDittuu skill;
 
     /**
      * Constructor of Dittuu
@@ -15,7 +15,7 @@ public class Dittuu extends Fighter {
     public Dittuu() {
         super();
         this.name = "Dittuu";
-        this.skill = new DefaultSkill<Dittuu>(this);
+        this.skill = new DefaultSkillDittuu(this);
     }
 
     /**
@@ -61,7 +61,6 @@ public class Dittuu extends Fighter {
      * 
      * @return the name of the skill
      */
-    @Override
     public String getSkillName() {
         return skill.getName();
     }
@@ -84,7 +83,7 @@ public class Dittuu extends Fighter {
      * 
      * @return a skill of the "Dittuu" type
      */
-    private SpSkill<Dittuu> generator() {
+    private SpSkillDittuu generator() {
         int random = ThreadLocalRandom.current().nextInt(1, 3 + 1);
         switch (random) {
             case 1:
@@ -94,7 +93,7 @@ public class Dittuu extends Fighter {
             case 3:
                 return new RayquazaSkill(this);
             default:
-                return new DefaultSkill<Dittuu>(this);
+                return new DefaultSkillDittuu(this);
         }
     }
 
