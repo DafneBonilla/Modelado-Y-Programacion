@@ -51,7 +51,7 @@ public class Ring implements Subject {
     /**
      * Registers a viewer to the ring
      * 
-     * @param viewer the viewer to be registered
+     * @param o the viewer to be registered
      */
     @Override
     public void registerObserver(Observer o) {
@@ -61,7 +61,7 @@ public class Ring implements Subject {
     /**
      * Removes a viewer from the ring
      * 
-     * @param viewer the viewer to be removed
+     * @param o the viewer to be removed
      */
     @Override
     public void removeObserver(Observer o) {

@@ -6,14 +6,14 @@ public interface Subject {
     /**
      * Registers an observer to the ring
      * 
-     * @param viewer the observer to be registered
+     * @param o the observer to be registered
      */
     public void registerObserver(Observer o);
 
     /**
      * Removes an observer from the ring
      * 
-     * @param viewer the observer to be removed
+     * @param o the observer to be removed
      */
     public void removeObserver(Observer o);
 
