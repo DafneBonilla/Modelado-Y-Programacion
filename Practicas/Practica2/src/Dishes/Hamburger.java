@@ -21,8 +21,6 @@ public abstract class Hamburger implements Dish {
         putMustard();
         prepareMeat();
         putMeat();
-        prepareVegeterianMeat();
-        putVegeterianMeat();
         putCheese();
         putVegetables();
         putKetchup();
@@ -45,15 +43,9 @@ public abstract class Hamburger implements Dish {
 
     protected abstract void putMeat();
 
-    protected abstract void prepareVegeterianMeat();
-
-    protected abstract void putVegeterianMeat();
-
     protected abstract void putCheese();
 
-    private void putVegetables() {
-        System.out.println("Poniendo lechuga");
-    }
+    protected abstract void putVegetables();
 
     private void putKetchup() {
         System.out.println("Poniendo ketchup");

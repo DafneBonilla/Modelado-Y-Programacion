@@ -4,6 +4,9 @@ public interface Dish {
 
     public void cook();
 
+    @Override
+    public String toString();
+
     public int getID();
 
     public void setID(int id);
