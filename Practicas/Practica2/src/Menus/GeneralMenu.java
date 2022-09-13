@@ -6,7 +6,11 @@ public class GeneralMenu implements Menu {
 
     private class GeneralMenuIterator implements MenuIterator {
 
-        private int index = 0;
+        private int index;
+
+        private GeneralMenuIterator() {
+            index = 0;
+        }
 
         @Override
         public boolean hasNext() {
@@ -37,6 +41,11 @@ public class GeneralMenu implements Menu {
 
     public GeneralMenu() {
         this.name = "Menu general";
+        dishes = new Dish[3];
+        numberOfDishes = dishes.length;
+        dishes[0] = new Dishes.CheeseHamburger();
+        dishes[1] = new Dishes.TofuHamburger();
+        dishes[2] = new Dishes.ChickenHamburger();
 
     }
 
@@ -48,7 +57,6 @@ public class GeneralMenu implements Menu {
         }
         newDishes[numberOfDishes] = dish;
         dishes = newDishes;
-        numberOfDishes++;
     }
 
     @Override
@@ -72,7 +80,6 @@ public class GeneralMenu implements Menu {
                 }
             }
             dishes = temp;
-            numberOfDishes--;
         }
     }
 
@@ -85,7 +92,7 @@ public class GeneralMenu implements Menu {
     }
 
     @Override
-    public Iterator<Dish> iterator() {
+    public MenuIterator iterator() {
         return new GeneralMenuIterator();
     }
 

@@ -3,7 +3,7 @@ package Dishes;
 public class AvocadoHamburger extends Hamburger {
 
     public AvocadoHamburger() {
-        this.id = 32;
+        this.id = 33;
         this.name = "Hamburguesa de aguacate";
         this.description = "Hamburguesa vegetariana con aguacate premiun, lechuga, tomate, cebolla, garbanzos, ketchup, mostaza y mayonesa";
         this.price = 7.95;

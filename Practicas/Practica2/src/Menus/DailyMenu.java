@@ -1,36 +1,43 @@
 package Menus;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+
 import Dishes.Dish;
 
 public class DailyMenu implements Menu {
 
     private class DailyMenuIterator implements MenuIterator {
 
-        private int index = 0;
+        private Iterator<Dish> iterator;
+
+        private DailyMenuIterator() {
+            iterator = dishes.iterator();
+        }
 
         @Override
         public boolean hasNext() {
-            return index < dishes.length;
+            return iterator.hasNext();
         }
 
         @Override
         public Dish next() {
-            return dishes[index++];
+            return iterator.next();
         }
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException();
+            iterator.remove();
         }
 
         @Override
         public void restart() {
-            index = 0;
+            iterator = dishes.iterator();
         }
+
     }
 
-    private Dish[] dishes;
+    private ArrayList<Dish> dishes;
 
     private int numberOfDishes;
 
@@ -38,30 +45,21 @@ public class DailyMenu implements Menu {
 
     public DailyMenu() {
         this.name = "Menu del dia";
-        dishes = new Dish[3];
-        numberOfDishes = 3;
-        dishes[0] = new Dishes.CanekHamburger();
-        dishes[1] = new Dishes.MushroomHamburger();
-        dishes[2] = new Dishes.MasterChiefHamburger();
+        dishes = new ArrayList<Dish>();
+        numberOfDishes = dishes.size();
+        dishes.add(new Dishes.CanekHamburger());
+        dishes.add(new Dishes.MushroomHamburger());
+        dishes.add(new Dishes.MasterChiefHamburger());
     }
 
     @Override
     public void add(Dish dish) {
-
+        dishes.add(dish);
     }
 
     @Override
     public void remove(Dish dish) {
-        Dish[] newDishes = new Dish[numberOfDishes - 1];
-        int j = 0;
-        for (int i = 0; i < numberOfDishes; i++) {
-            if (dishes[i].getID() != dish.getID()) {
-                newDishes[j] = dishes[i];
-                j++;
-            }
-        }
-        dishes = newDishes;
-        numberOfDishes--;
+        dishes.remove(dish);
     }
 
     public String getName() {
@@ -73,7 +71,7 @@ public class DailyMenu implements Menu {
     }
 
     @Override
-    public Iterator<Dish> iterator() {
+    public MenuIterator iterator() {
         return new DailyMenuIterator();
     }
 

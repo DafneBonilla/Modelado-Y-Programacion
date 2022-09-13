@@ -3,7 +3,7 @@ package Dishes;
 public class OstrichHamburger extends Hamburger {
 
     public OstrichHamburger() {
-        this.id = 33;
+        this.id = 31;
         this.name = "Hamburguesa de avestruz";
         this.description = "Hamburguesa con carne de avestruz, lechuga, raiz de zanahoria, grillos, ketchup, mostaza y mayonesa";
         this.price = 14.99;

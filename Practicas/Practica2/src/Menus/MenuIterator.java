@@ -2,7 +2,7 @@ package Menus;
 
 import Dishes.Dish;
 
-public interface MenuIterator extends java.util.Iterator<Dish> {
+public interface MenuIterator {
 
     public boolean hasNext();
 
