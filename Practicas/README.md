@@ -5,3 +5,4 @@
 ### Prácticas realizadas durante el curso de Modelado y Programación.
 
 > - Práctica 01: Uso de Strategy y Observer.
+> - Práctica 02: Uso de Template, State e Iterator.
