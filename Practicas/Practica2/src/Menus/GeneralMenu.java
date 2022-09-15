@@ -31,6 +31,11 @@ public class GeneralMenu implements Menu {
         public void restart() {
             index = 0;
         }
+
+        @Override
+        public String getName() {
+            return name;
+        }
     }
 
     private Dish[] dishes;

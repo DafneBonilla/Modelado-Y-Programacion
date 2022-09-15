@@ -12,4 +12,6 @@ public interface MenuIterator {
 
     public void restart();
 
+    public String getName();
+
 }

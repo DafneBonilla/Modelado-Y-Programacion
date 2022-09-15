@@ -37,6 +37,11 @@ public class SpecialMenu implements Menu {
         public void restart() {
             iterator = keys.iterator();
         }
+
+        @Override
+        public String getName() {
+            return name;
+        }
     }
 
     private Hashtable<String, Dish> dishes;

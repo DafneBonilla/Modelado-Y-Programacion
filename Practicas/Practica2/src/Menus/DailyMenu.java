@@ -35,6 +35,11 @@ public class DailyMenu implements Menu {
             iterator = dishes.iterator();
         }
 
+        @Override
+        public String getName() {
+            return name;
+        }
+
     }
 
     private ArrayList<Dish> dishes;
@@ -60,10 +65,6 @@ public class DailyMenu implements Menu {
     @Override
     public void remove(Dish dish) {
         dishes.remove(dish);
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getNumberOfDishes() {
