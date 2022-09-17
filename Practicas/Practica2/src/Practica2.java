@@ -29,9 +29,9 @@ public class Practica2 {
         Scanner scanner = new Scanner(System.in);
         int option;
         System.out.println("Bienvenido a McBurguer, " + name);
-        System.out.println("Estado del robot: " + robot.getState());
-        System.out.println("¿Que desea que el robot haga?");
         do {
+            System.out.println("Estado del robot: " + robot.getState());
+            System.out.println("¿Que desea que el robot haga?");
             System.out.println("1. Dormir");
             System.out.println("2. Activar");
             System.out.println("3. Caminar hacia el cliente");
