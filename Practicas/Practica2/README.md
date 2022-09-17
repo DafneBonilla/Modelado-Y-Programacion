@@ -15,7 +15,7 @@
 - Compilar desde `Practica2/`:
   
 ```
-javac -d classes src/*.java src/Dishes/*.java src/Menus/*.java src/Robot/*.java 
+javac -d classes src/*.java src/Dishes/*.java src/Menus/*.java src/Robots/*.java 
 ```
 - Correr desde `Practica2/`:
 ```
