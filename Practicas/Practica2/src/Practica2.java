@@ -11,9 +11,14 @@ public class Practica2 {
 
     public static void uso() {
         System.out.println("Uso: java Practica2 <nombre>");
+        System.exit(0);
     }
 
     public static void main(String[] args) {
+
+        if (args.length != 1) {
+            uso();
+        }
 
         String name = args[0];
         List<MenuIterator> menus = new ArrayList<>();
