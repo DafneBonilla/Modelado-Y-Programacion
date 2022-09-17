@@ -28,7 +28,7 @@ public class WalkMode implements RobotMode {
     @Override
     public void takeOrder() {
         if (this.robot.isWithClient()) {
-            System.out.println("Bienvenido al restaurante, " + this.robot.getCName());
+            System.out.println("Estoy listo para atenderte, " + this.robot.getCName());
             this.robot.setState(this.robot.getAttendMode());
         } else {
             System.out.println("No puedo tomar ordenes, no estoy con un cliente");

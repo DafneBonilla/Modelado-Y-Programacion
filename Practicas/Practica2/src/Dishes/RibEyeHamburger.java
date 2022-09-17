@@ -35,7 +35,7 @@ public class RibEyeHamburger extends Hamburger {
 
     @Override
     public String toString() {
-        return "[ ID: " + id + " | Nombre: " + name + " | Descripción: " + description + " | Precio: " + price
+        return "[ ID: " + id + " | Nombre: " + name + " | Descripcion: " + description + " | Precio: " + price
                 + "$(USD) | Queso: " + cheese + " | Vegetariano: " + vegetarian + " ]";
     }
 
