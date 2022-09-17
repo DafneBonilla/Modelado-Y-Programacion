@@ -7,13 +7,24 @@ import Menus.MenuIterator;
 import Menus.SpecialMenu;
 import Robots.Robot;
 
+/**
+ * Class to the make everything work
+ */
 public class Practica2 {
 
+    /**
+     * Prints how to use the program and finish it
+     */
     public static void uso() {
         System.out.println("Uso: java Practica2 <nombre>");
         System.exit(0);
     }
 
+    /**
+     * Main method
+     * 
+     * @param args the arguments of the main method, the name of the client
+     */
     public static void main(String[] args) {
 
         if (args.length != 1) {
@@ -90,4 +101,5 @@ public class Practica2 {
         } while (option != 0);
         System.out.println("Gracias por su visita");
     }
+
 }

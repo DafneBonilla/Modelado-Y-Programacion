@@ -1,7 +1,13 @@
 package Dishes;
 
+/**
+ * Class to represent a cheese hamburger.
+ */
 public class CheeseHamburger extends Hamburger {
 
+    /**
+     * Constructor for the cheese hamburger.
+     */
     public CheeseHamburger() {
         this.id = 11;
         this.name = "Hamburguesa con queso";
@@ -11,16 +17,25 @@ public class CheeseHamburger extends Hamburger {
         this.vegetarian = false;
     }
 
+    /**
+     * Method to prepare the meat of the hamburger
+     */
     @Override
     protected void prepareMeat() {
         System.out.println("Cociendo carne de res");
     }
 
+    /**
+     * Method to put the meat of the hamburger
+     */
     @Override
     protected void putMeat() {
         System.out.println("Poniendo carne de res");
     }
 
+    /**
+     * Method to put the cheese of the hamburger
+     */
     @Override
     protected void putCheese() {
         if (cheese) {
@@ -28,11 +43,19 @@ public class CheeseHamburger extends Hamburger {
         }
     }
 
+    /**
+     * Method to put the vegetables of the hamburger
+     */
     @Override
     protected void putVegetables() {
         System.out.println("Poniendo lechuga, tomate, cebolla y pepinillos");
     }
 
+    /**
+     * Returns a cheese hamburger in string format
+     * 
+     * @return a cheese hamburger in string format
+     */
     @Override
     public String toString() {
         return "[ ID: " + id + " | Nombre: " + name + " | Descripcion: " + description + " | Precio: " + price

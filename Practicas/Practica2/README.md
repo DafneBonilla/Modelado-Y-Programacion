@@ -1,29 +1,33 @@
 # **Práctica 2** 🤖🍔
 
 **Equipo: Los Peaky Blinders**
-  
-319089660 - Bonilla Reyes Dafne 
+
+319089660 - Bonilla Reyes Dafne
 
 319053315 - Castañón Maldonado Carlos Emilio
 
-319210536 - García Ponce José Camilo 
+319210536 - García Ponce José Camilo
 
 ---
 
 ## **Uso**
 
-- Compilar desde `Practica2/`:
-  
+- Compilar desde `src/`:
+
 ```
-javac -d classes src/*.java src/Dishes/*.java src/Menus/*.java src/Robots/*.java 
+javac *.java Dishes/*.java Menus/*.java Robots/*.java
 ```
-- Correr desde `Practica2/`:
+
+- Correr desde `src/`:
+
 ```
-java -cp classes Practica2
+java Practica2 <nombre>
 ```
-- Generar documentación desde `Practica2/`:
+
+- Generar documentación desde `src/`:
+
 ```
-javadoc -d docs src/*.java src/Dishes/*.java src/Menus/*.java src/Robots/*.java
+javadoc -d docs *.java Dishes/*.java Menus/*.java Robots/*.java
 ```
 
 ## **Explicación**

@@ -1,7 +1,13 @@
 package Dishes;
 
+/**
+ * Class to represent an ostrich hamburger.
+ */
 public class OstrichHamburger extends Hamburger {
 
+    /**
+     * Constructor for the ostrich hamburger.
+     */
     public OstrichHamburger() {
         this.id = 31;
         this.name = "Hamburguesa de avestruz";
@@ -11,17 +17,26 @@ public class OstrichHamburger extends Hamburger {
         this.vegetarian = false;
     }
 
+    /**
+     * Method to prepare the meat of the hamburger
+     */
     @Override
     protected void prepareMeat() {
         System.out.println("Cociendo carne de avestruz");
     }
 
+    /**
+     * Method to put the meat of the hamburger
+     */
     @Override
     protected void putMeat() {
         System.out.println("Poniendo carne de avestruz");
 
     }
 
+    /**
+     * Method to put the cheese of the hamburger
+     */
     @Override
     protected void putCheese() {
         if (cheese) {
@@ -29,11 +44,19 @@ public class OstrichHamburger extends Hamburger {
         }
     }
 
+    /**
+     * Method to put the vegetables of the hamburger
+     */
     @Override
     protected void putVegetables() {
         System.out.println("Poniendo raiz de zanahoria y grillos");
     }
 
+    /**
+     * Returns an ostrich hamburger in string format
+     * 
+     * @return an ostrich hamburger in string format
+     */
     @Override
     public String toString() {
         return "[ ID: " + id + " | Nombre: " + name + " | Descripcion: " + description + " | Precio: " + price

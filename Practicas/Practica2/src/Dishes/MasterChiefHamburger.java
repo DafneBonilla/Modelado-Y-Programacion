@@ -1,7 +1,13 @@
 package Dishes;
 
+/**
+ * Class to represent a MasterChief hamburger.
+ */
 public class MasterChiefHamburger extends Hamburger {
 
+    /**
+     * Constructor for the MasterChief hamburger.
+     */
     public MasterChiefHamburger() {
         this.id = 23;
         this.name = "Master Chief Burger";
@@ -11,16 +17,25 @@ public class MasterChiefHamburger extends Hamburger {
         this.vegetarian = false;
     }
 
+    /**
+     * Method to prepare the meat of the hamburger
+     */
     @Override
     protected void prepareMeat() {
         System.out.println("Cociendo carne de covenant");
     }
 
+    /**
+     * Method to put the meat of the hamburger
+     */
     @Override
     protected void putMeat() {
         System.out.println("Poniendo carne de covenant");
     }
 
+    /**
+     * Method to put the cheese of the hamburger
+     */
     @Override
     protected void putCheese() {
         if (cheese) {
@@ -28,11 +43,19 @@ public class MasterChiefHamburger extends Hamburger {
         }
     }
 
+    /**
+     * Method to put the vegetables of the hamburger
+     */
     @Override
     protected void putVegetables() {
         System.out.println("Poniendo lechuga, tomate, y jalapenios");
     }
 
+    /**
+     * Returns a MasterChief hamburger in string format
+     * 
+     * @return a MasterChief hamburger in string format
+     */
     @Override
     public String toString() {
         return "[ ID: " + id + " | Nombre: " + name + " | Descripcion: " + description + " | Precio: " + price

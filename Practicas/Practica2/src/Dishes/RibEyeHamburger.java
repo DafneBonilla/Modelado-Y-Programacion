@@ -1,7 +1,13 @@
 package Dishes;
 
+/**
+ * Class to represent a rib eye hamburger.
+ */
 public class RibEyeHamburger extends Hamburger {
 
+    /**
+     * Constructor for the rib eye hamburger.
+     */
     public RibEyeHamburger() {
         this.id = 32;
         this.name = "Hamburguesa de Rib Eye";
@@ -11,16 +17,25 @@ public class RibEyeHamburger extends Hamburger {
         this.vegetarian = false;
     }
 
+    /**
+     * Method to prepare the meat of the hamburger
+     */
     @Override
     protected void prepareMeat() {
         System.out.println("Cociendo Rib Eye y tocino");
     }
 
+    /**
+     * Method to put the meat of the hamburger
+     */
     @Override
     protected void putMeat() {
         System.out.println("Poniendo Rib Eye y tocino");
     }
 
+    /**
+     * Method to put the cheese of the hamburger
+     */
     @Override
     protected void putCheese() {
         if (cheese) {
@@ -28,11 +43,19 @@ public class RibEyeHamburger extends Hamburger {
         }
     }
 
+    /**
+     * Method to put the vegetables of the hamburger
+     */
     @Override
     protected void putVegetables() {
         System.out.println("Poniendo jalapenios");
     }
 
+    /**
+     * Returns a rib eye hamburger in string format
+     * 
+     * @return a rib eye hamburger in string format
+     */
     @Override
     public String toString() {
         return "[ ID: " + id + " | Nombre: " + name + " | Descripcion: " + description + " | Precio: " + price
