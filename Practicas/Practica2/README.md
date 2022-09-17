@@ -23,7 +23,7 @@ java -cp classes Practica2
 ```
 - Generar documentación desde `Practica2/`:
 ```
-javadoc -d docs src/*.java
+javadoc -d docs src/*.java src/Dishes/*.java src/Menus/*.java src/Robots/*.java
 ```
 
 ## **Explicación**
