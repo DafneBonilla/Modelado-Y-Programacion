@@ -129,7 +129,7 @@ public abstract class Hamburger implements Dish {
     /**
      * Sets the name of the hamburger
      * 
-     * @return the name of the hamburger
+     * @param name the name of the hamburger
      */
     @Override
     public void setName(String name) {

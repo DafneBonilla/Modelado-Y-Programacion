@@ -277,9 +277,9 @@ public class Robot {
     }
 
     /**
-     * Sets the sleep mode
+     * Returns the active mode
      * 
-     * @param sleepMode the sleep mode
+     * @return the active mode
      */
     public RobotMode getActiveMode() {
         return this.activeMode;
@@ -295,9 +295,9 @@ public class Robot {
     }
 
     /**
-     * Sets the active mode
+     * Returns the attend mode
      * 
-     * @param activeMode the active mode
+     * @return the attend mode
      */
     public RobotMode getAttendMode() {
         return this.attendMode;

@@ -44,7 +44,7 @@ public interface Dish {
     /**
      * Sets the name of the dish
      * 
-     * @return the name of the dish
+     * @param name the name of the dish
      */
     public void setName(String name);
 
