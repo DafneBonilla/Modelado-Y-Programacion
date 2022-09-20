@@ -41,5 +41,5 @@ Primero, es necesario compilar y ejecutar el programa. Una vez hecho esto, se ge
 ## **- Nota**
 
 <div align="justify">
-Si se quiere generar la documentación, esto ser ́ıa con el comando dado arriba, y luego los archivos se generarán en el directorio llamado docs/.
+Si se quiere generar la documentación, esto sería con el comando dado arriba, y luego los archivos se generarán en el directorio llamado docs/.
 </div>
