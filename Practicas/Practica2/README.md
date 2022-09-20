@@ -52,7 +52,9 @@ Si se quiere generar la documentación, esto sería con el comando dado arriba, 
 ## **- Implementación**
 
 <div align="justify">
-Para poder facilitar la forma en la que se muestra el menú al cliente, elegimos usar el patrón de Iterator. Después, en la parte de las hamburguesas usamos el patrón Template para así poder hacer que ciertas hamburguesas hagan ciertos pasos (principalmente cocinar la carne) de la mejor manera.
+Para poder facilitar la forma en la que se muestra el menú al cliente, elegimos usar el patrón de Iterator. 
+
+Después, en la parte de las hamburguesas usamos el patrón Template para así poder hacer que ciertas hamburguesas hagan ciertos pasos (principalmente cocinar la carne) de la mejor manera.
 
 Por último, usamos State para que el robot tenga la capacidad de poder hacer las mismas acciones, pero de maneras diferentes dependiendo del punto de la ejecución en el que se encuentre.
 
