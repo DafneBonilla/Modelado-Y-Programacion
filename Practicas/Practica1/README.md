@@ -1,17 +1,45 @@
-# Practica 1
+# **Práctica 1** 🎮🥊
 
-## Los Peaky Blinders
+**Equipo: Los Peaky Blinders**
 
-**Nombres:**  
-Bonilla Reyes Dafne - 319089660
-Castañón Maldonado Carlos Emilio - 319053315
-García Ponce José Camilo - 319210536
+319089660 - Bonilla Reyes Dafne
 
-Uso (desde Practica1/):
+319053315 - Castañón Maldonado Carlos Emilio
 
-compilar javac -d classes src/*.java
-correr java -cp classes Practica1
-generar documentacion javadoc -d docs src/*.java
+319210536 - García Ponce José Camilo
 
-Luego de ejecutar el programa, genera los espectadores (ya tienen nombre, lo unico aleatorio es a quien apoyaran), luego se genera un orden aleatorio para la pelea (existen 3 casos, uno pequeño, uno mediano y uno largo), con eso listo la pelea empezara.
-Al finalizar la pelea los archivos de los espectadores se generan en Practica1/, en caso de que un error de entrada/salida ocurra en la terminal se mostrara el error.
+---
+
+## **Uso**
+
+- Compilar desde `src/`:
+
+```
+javac *.java
+```
+
+- Correr desde `src/`:
+
+```
+java Practica1
+```
+
+- Generar documentación desde `src/`:
+
+```
+javadoc -d docs *.java
+```
+
+## **- Explicación**
+
+<div align="justify">
+Primero, es necesario compilar y ejecutar el programa. Una vez hecho esto, se generan los espectadores. Estos ya tienen un nombre predefinido, pero se elige aleatoriamente a quién apoyarán. A continuación, se realiza un orden aleatorio para la pelea. Existen 3 casos de distintos tamaños, uno pequeño, uno mediano y uno largo. Con todo esto listo, la pelea empezará. Al finalizar la pelea, los archivos de los espectadores se generarán en el directorio src/, sin embargo, en caso de que ocurra un error de entrada salida, se mostrará el error en la terminal.
+</div>
+
+----------------------------------------------------------------
+
+## **- Nota**
+
+<div align="justify">
+Si se quiere generar la documentación, esto ser ́ıa con el comando dado arriba, y luego los archivos se generarán en el directorio llamado docs/.
+</div>
