@@ -4,5 +4,5 @@
 
 ### Teoría dada durante el curso:
 
-> - Presentaciones de clases.
+> - Presentaciones de clases y ayudantías.
 > - Código y UML de ayudantías.
