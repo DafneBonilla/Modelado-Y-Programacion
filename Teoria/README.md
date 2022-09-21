@@ -4,6 +4,14 @@
 
 ### Teoría dada durante el curso:
 
-> - Práctica 01: Uso de Strategy y Observer.
-> - Práctica 02: Uso de Template, State e Iterator.
-> - Práctica 03: Uso de Decorator y Adapter.
+ 1. Paradigmas de programación
+ 2. Revisión de código
+ 3. UML
+ 4. Control de versiones
+ 5. Metodologías de desarrollo de sotfware
+ 6. Patrones de diseño
+ 7. 
+ 8. 
+ 9.
+ 10.
+ 11.
