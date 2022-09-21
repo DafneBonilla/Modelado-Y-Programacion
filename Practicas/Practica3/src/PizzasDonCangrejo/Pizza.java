@@ -16,7 +16,9 @@ public abstract class Pizza {
         return name;
     }
 
-    public double 
+    public double getPrice(){
+        return price;
+    }
     
     public String  getMeat(){
         return meat;

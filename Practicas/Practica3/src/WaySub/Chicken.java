@@ -4,7 +4,7 @@ public class Chicken extends Ingredient {
 
     public Chicken(Sandwich filling) {
         this.filling = filling;
-        name = "Chicken";
+        name = "Pollo";
         price = 1.00;
         description = "Pollo";
     }
