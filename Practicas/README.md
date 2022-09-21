@@ -1,4 +1,4 @@
-# Prácticas 💻🧩
+# Prácticas 🧩
 
 ## Curso de Modelado y Programación 2023-1
 
