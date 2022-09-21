@@ -14,4 +14,4 @@
  8. Observer
  9. Template
  10. State
- 11. Iterator
+ 11. Iterator y Composite
