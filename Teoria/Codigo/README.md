@@ -1,8 +1,8 @@
-# Código 🗂️
+# Código 🖱️
 
 ## Curso de Modelado y Programación 2023-1
 
-### Código dado durante el curso:
+### Código y UML dado durante el curso:
 
  1. 
  2. 
