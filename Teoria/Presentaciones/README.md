@@ -16,6 +16,6 @@
  10. State
  11. Iterator y Composite
  12. Decorator
- 13.
- 14.
+ 13. Adapter
+ 14. Facade
  15.
