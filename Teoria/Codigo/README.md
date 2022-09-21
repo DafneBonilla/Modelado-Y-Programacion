@@ -4,11 +4,11 @@
 
 ### Código y UML dados durante el curso:
 
- 1. UML diagramas
- 2. Strategy: Zoológico Cheems
- 3. Observer: Cheems distópico
- 4. State: Constructora Cheems
- 5. 
+ 1. **UML:** Diagramas
+ 2. **Strategy:** Zoológico Cheems
+ 3. **Observer:** Cheems distópico
+ 4. **State:** Constructora Cheems
+ 5. **Template:** Universidad Cheems
  6. 
  7. 
  8. 
