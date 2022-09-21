@@ -1,9 +1,8 @@
-Teoría 📓
-=========================================
+# Teoría 📓
 
-Ciclos en Java
--------------------------------------------
+## Curso de Modelado y Programación 2023-1
 
-### Universidad Java - De Cero a Experto
+### Teoría dada durante el curso:
 
-Práctica y teoría del curso de Java.
+> - Presentaciones de clases.
+> - Código y UML de ayudantías.
