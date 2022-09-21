@@ -10,7 +10,7 @@
  4. Control de versiones
  5. Metodologías de desarrollo de sotfware
  6. Patrones de diseño
- 7. 
+ 7. Strategy
  8. 
  9.
  10.
