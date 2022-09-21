@@ -2,7 +2,7 @@
 
 ## Curso de Modelado y Programación 2023-1
 
-### Código y UML dado durante el curso:
+### Código y UML dados durante el curso:
 
  1. 
  2. 
