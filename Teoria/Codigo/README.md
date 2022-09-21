@@ -10,6 +10,6 @@
  4. **State:** Constructora Cheems
  5. **Template:** Universidad Cheems
  6. **Iterator y Composite:** Cheems doctor y Cheems momazon
- 7. 
+ 7. **Decorator:** Cheeems gamer
  8. 
  9.
