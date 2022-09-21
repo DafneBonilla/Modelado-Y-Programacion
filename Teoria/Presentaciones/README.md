@@ -12,6 +12,6 @@
  6. Patrones de diseño
  7. Strategy
  8. Observer
- 9.
- 10.
- 11.
+ 9. Template
+ 10. State
+ 11. Iterator
