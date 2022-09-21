@@ -5,7 +5,7 @@
 ### Código y UML dados durante el curso:
 
  1. UML diagramas
- 2. 
+ 2. Strategy: Zoológico Cheems
  3. 
  4. 
  5. 
