@@ -11,7 +11,7 @@
  5. Metodologías de desarrollo de sotfware
  6. Patrones de diseño
  7. Strategy
- 8. 
+ 8. Observer
  9.
  10.
  11.
