@@ -1,8 +1,8 @@
-# Presentaciones 📄
+# Presentaciones 🗂️
 
 ## Curso de Modelado y Programación 2023-1
 
-### Teoría dada durante el curso:
+### Presentaciones dadas durante el curso:
 
  1. Paradigmas de programación
  2. Revisión de código
