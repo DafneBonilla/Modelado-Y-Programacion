@@ -18,4 +18,4 @@
  12. Decorator
  13. Adapter
  14. Facade
- 15.
+ 15. Builder
