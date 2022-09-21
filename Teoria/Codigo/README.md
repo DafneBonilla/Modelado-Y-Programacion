@@ -6,8 +6,8 @@
 
  1. UML diagramas
  2. Strategy: Zoológico Cheems
- 3. 
- 4. 
+ 3. Observer: Cheems distópico
+ 4. State: Constructora Cheems
  5. 
  6. 
  7. 
