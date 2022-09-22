@@ -6,7 +6,11 @@ public class Pepperoni extends Ingredient {
         this.filling = filling;
         name = "Pepperoni";
         price = 1.00;
-        description = "Pepperoni";
+    }
+
+    @Override
+    public String getDescription() {
+        return filling.getDescription() + ", Pepperoni";
     }
 
 }

@@ -6,7 +6,11 @@ public class Lettuce extends Ingredient {
         this.filling = filling;
         name = "Lechuga";
         price = 1.00;
-        description = "Lechuga";
     }
-    
+
+    @Override
+    public String getDescription() {
+        return filling.getDescription() + ", Lechuga";
+    }
+
 }

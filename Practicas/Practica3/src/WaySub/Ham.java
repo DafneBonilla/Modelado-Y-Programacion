@@ -6,7 +6,11 @@ public class Ham extends Ingredient {
         this.filling = filling;
         name = "Jamon";
         price = 1.00;
-        description = "Jamon";
     }
-    
+
+    @Override
+    public String getDescription() {
+        return filling.getDescription() + ", Jamon";
+    }
+
 }

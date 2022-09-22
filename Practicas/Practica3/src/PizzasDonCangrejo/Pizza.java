@@ -5,7 +5,7 @@ public abstract class Pizza {
     protected String name;
 
     protected double price;
-    
+
     protected String meat;
 
     protected String cheese;
@@ -16,20 +16,20 @@ public abstract class Pizza {
         return name;
     }
 
-    public double getPrice(){
+    public double getPrice() {
         return price;
     }
-    
-    public String  getMeat(){
+
+    public String getMeat() {
         return meat;
     }
-    
-    public String  getCheese(){
+
+    public String getCheese() {
         return cheese;
     }
 
     public String getDough() {
         return dough;
     }
-    
+
 }

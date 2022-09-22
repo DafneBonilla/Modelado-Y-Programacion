@@ -6,16 +6,9 @@ public abstract class Bread implements Sandwich {
 
     protected double price;
 
-    protected String description;
-
     @Override
     public double getPrice() {
         return price;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
     }
 
     @Override
@@ -27,6 +20,7 @@ public abstract class Bread implements Sandwich {
         }
     }
 
+    @Override
     public String getName() {
         return name;
     }

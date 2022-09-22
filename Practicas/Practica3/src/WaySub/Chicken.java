@@ -6,7 +6,11 @@ public class Chicken extends Ingredient {
         this.filling = filling;
         name = "Pollo";
         price = 1.00;
-        description = "Pollo";
+    }
+
+    @Override
+    public String getDescription() {
+        return filling.getDescription() + ", Pollo";
     }
 
 }

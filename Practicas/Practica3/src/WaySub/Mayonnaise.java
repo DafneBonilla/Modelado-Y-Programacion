@@ -6,7 +6,11 @@ public class Mayonnaise extends Ingredient {
         this.filling = filling;
         name = "Mayonesa";
         price = 1.00;
-        description = "Mayonesa";
     }
-    
+
+    @Override
+    public String getDescription() {
+        return filling.getDescription() + ", Mayonesa";
+    }
+
 }

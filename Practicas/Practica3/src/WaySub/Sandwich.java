@@ -8,4 +8,6 @@ public interface Sandwich {
 
     public int checkIngredient(String ing);
 
+    public String getName();
+
 }

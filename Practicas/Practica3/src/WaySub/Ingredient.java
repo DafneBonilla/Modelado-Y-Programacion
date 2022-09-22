@@ -6,18 +6,11 @@ public abstract class Ingredient implements Sandwich {
 
     protected double price;
 
-    protected String description;
-
     protected Sandwich filling;
 
     @Override
     public double getPrice() {
         return price + filling.getPrice();
-    }
-
-    @Override
-    public String getDescription() {
-        return filling.getDescription() + ", " + description;
     }
 
     @Override

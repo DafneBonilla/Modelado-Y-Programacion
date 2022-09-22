@@ -6,7 +6,11 @@ public class Onion extends Ingredient {
         this.filling = filling;
         name = "Cebolla";
         price = 1.00;
-        description = "Cebolla";
     }
-    
+
+    @Override
+    public String getDescription() {
+        return filling.getDescription() + ", Cebolla";
+    }
+
 }
