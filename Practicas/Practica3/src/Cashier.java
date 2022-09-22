@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import PizzasDonCangrejo.*;
 import WaySub.*;
 
@@ -59,7 +58,6 @@ public class Cashier {
         } else {
             askPizza();
         }
-        System.out.println("Tu orden es: " + order.getDescription());
     }
 
     private void askSandwich() {
@@ -94,36 +92,91 @@ public class Cashier {
         }
         question += "\n(9) Terminar";
         int answer;
+        int num;
         do {
             answer = askOption(question, 0, 9);
             switch (answer) {
                 case 0:
-                    order = new Chicken(order);
-                    break;
+                    num = order.checkIngredient(ingredients.get(0).getName());
+                    if (num > 3) {
+                        System.out.println("Solo puedes agregar 3 ingredientes de Pollo");
+                        break;
+                    } else {
+                        order = new Chicken(order);
+                        break;
+                    }
                 case 1:
-                    order = new Pepperoni(order);
-                    break;
+                    num = order.checkIngredient(ingredients.get(1).getName());
+                    if (num > 3) {
+                        System.out.println("Solo puedes agregar 3 ingredientes de Pepperoni");
+                        break;
+                    } else {
+                        order = new Pepperoni(order);
+                        break;
+                    }
                 case 2:
-                    order = new Ham(order);
-                    break;
+                    num = order.checkIngredient(ingredients.get(2).getName());
+                    if (num > 3) {
+                        System.out.println("Solo puedes agregar 3 ingredientes de Jamon");
+                        break;
+                    } else {
+                        order = new Ham(order);
+                        break;
+                    }
                 case 3:
-                    order = new Lettuce(order);
-                    break;
+                    num = order.checkIngredient(ingredients.get(3).getName());
+                    if (num > 3) {
+                        System.out.println("Solo puedes agregar 3 ingredientes de Lechuga");
+                        break;
+                    } else {
+                        order = new Lettuce(order);
+                        break;
+                    }
                 case 4:
-                    order = new Tomato(order);
-                    break;
+                    num = order.checkIngredient(ingredients.get(4).getName());
+                    if (num > 3) {
+                        System.out.println("Solo puedes agregar 3 ingredientes de Tomate");
+                        break;
+                    } else {
+                        order = new Tomato(order);
+                        break;
+                    }
                 case 5:
-                    order = new Onion(order);
-                    break;
+                    num = order.checkIngredient(ingredients.get(5).getName());
+                    if (num > 3) {
+                        System.out.println("Solo puedes agregar 3 ingredientes de Cebolla");
+                        break;
+                    } else {
+                        order = new Onion(order);
+                        break;
+                    }
                 case 6:
-                    order = new Mustard(order);
-                    break;
+                    num = order.checkIngredient(ingredients.get(6).getName());
+                    if (num > 3) {
+                        System.out.println("Solo puedes agregar 3 ingredientes de Mostaza");
+                        break;
+                    } else {
+                        order = new Mustard(order);
+                        break;
+                    }
                 case 7:
-                    order = new Ketchup(order);
-                    break;
+                    num = order.checkIngredient(ingredients.get(7).getName());
+                    if (num > 3) {
+                        System.out.println("Solo puedes agregar 3 ingredientes de Ketchup");
+                        break;
+                    } else {
+                        order = new Ketchup(order);
+                        break;
+                    }
                 case 8:
-                    order = new Mayonnaise(order);
-                    break;
+                    num = order.checkIngredient(ingredients.get(8).getName());
+                    if (num > 3) {
+                        System.out.println("Solo puedes agregar 3 ingredientes de Mayonesa");
+                        break;
+                    } else {
+                        order = new Mayonnaise(order);
+                        break;
+                    }
                 case 9:
                     break;
                 default:
@@ -168,7 +221,7 @@ public class Cashier {
         boolean valid = false;
         Scanner sc = new Scanner(System.in);
         while (!valid) {
-            System.out.print(message);
+            System.out.println(message);
             try {
                 String text = sc.nextLine();
                 answer = Integer.parseInt(text);
