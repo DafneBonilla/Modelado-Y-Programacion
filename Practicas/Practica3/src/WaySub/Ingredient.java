@@ -30,4 +30,9 @@ public abstract class Ingredient implements Sandwich {
         return filling;
     }
 
+    @Override
+    public double getIngredientPrice() {
+        return price;
+    }
+
 }

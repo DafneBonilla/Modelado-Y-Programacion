@@ -10,4 +10,6 @@ public interface Sandwich {
 
     public String getName();
 
+    public double getIngredientPrice();
+
 }

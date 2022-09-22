@@ -25,4 +25,9 @@ public abstract class Bread implements Sandwich {
         return name;
     }
 
+    @Override
+    public double getIngredientPrice() {
+        return price;
+    }
+
 }

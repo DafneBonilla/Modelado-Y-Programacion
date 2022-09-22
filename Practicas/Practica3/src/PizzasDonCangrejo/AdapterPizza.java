@@ -34,4 +34,9 @@ public class AdapterPizza implements Sandwich {
 		return pizza.getName();
 	}
 
+	@Override
+	public double getIngredientPrice() {
+		return pizza.getPrice();
+	}
+
 }
