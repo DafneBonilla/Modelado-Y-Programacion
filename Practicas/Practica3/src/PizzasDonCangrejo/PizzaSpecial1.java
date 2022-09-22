@@ -1,8 +1,8 @@
 package PizzasDonCangrejo;
 
-public class PizzaCheeseChicken extends Pizza {
+public class PizzaSpecial1 extends Pizza {
 
-    public PizzaCheeseChicken() {
+    public PizzaSpecial1() {
         name = "Pizza Especial 1";
         price = 1.00;
         meat = "Pollo";
