@@ -7,6 +7,8 @@ public class Mustard extends Ingredient {
 
     /**
      * Constructor for the mustard.
+     * 
+     * @param filling the sandwich to be decorated.
      */
     public Mustard(Sandwich filling) {
         this.filling = filling;
@@ -16,6 +18,7 @@ public class Mustard extends Ingredient {
 
     /**
      * Returns the description of the mustard.
+     * 
      * @return the description of the mustard.
      */
     @Override

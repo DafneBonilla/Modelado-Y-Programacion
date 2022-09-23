@@ -15,6 +15,7 @@ public class BreadOat extends Bread {
 
     /**
      * Returns the description of the bread.
+     * 
      * @return the description of the bread.
      */
     @Override

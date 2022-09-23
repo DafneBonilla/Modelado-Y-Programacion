@@ -7,6 +7,8 @@ public class Ham extends Ingredient {
 
     /**
      * Constructor for the ham.
+     * 
+     * @param filling the sandwich to be decorated.
      */
     public Ham(Sandwich filling) {
         this.filling = filling;
@@ -16,6 +18,7 @@ public class Ham extends Ingredient {
 
     /**
      * Returns the description of the ham.
+     * 
      * @return the description of the ham.
      */
     @Override

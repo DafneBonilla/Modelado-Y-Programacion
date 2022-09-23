@@ -7,11 +7,12 @@ import WaySub.Sandwich;
  */
 public class AdapterPizza implements Sandwich {
 
-	/*The pizza of the adapter.*/
+	/* The pizza of the adapter. */
 	private Pizza pizza;
 
 	/**
 	 * Constructor for the adapter of a pizza.
+	 * 
 	 * @param pizza the pizza to be adapted.
 	 */
 	public AdapterPizza(Pizza pizza) {
@@ -19,18 +20,20 @@ public class AdapterPizza implements Sandwich {
 	}
 
 	/**
-     * Returns the price of the pizza.
-     * @return the price of the pizza.
-     */
+	 * Returns the price of the pizza.
+	 * 
+	 * @return the price of the pizza.
+	 */
 	@Override
 	public double getPrice() {
 		return pizza.getPrice();
 	}
 
 	/**
-     * Returns the description of the pizza.
-     * @return the description of the oizza.
-     */
+	 * Returns the description of the pizza.
+	 * 
+	 * @return the description of the oizza.
+	 */
 	@Override
 	public String getDescription() {
 		return pizza.getName() + ", masa: " + pizza.getDough() + ", carne: " + pizza.getMeat() + ", queso: "
@@ -38,10 +41,11 @@ public class AdapterPizza implements Sandwich {
 	}
 
 	/**
-     * Returns the number of times ingredients in the pizza.
-     * @param ing the ingredient to check. 
-     * @return the number of times the ingredient is in the pizza.
-     */
+	 * Returns the number of times ingredients in the pizza.
+	 * 
+	 * @param ing the ingredient to check.
+	 * @return the number of times the ingredient is in the pizza.
+	 */
 	@Override
 	public int checkIngredient(String ing) {
 		if (ing.equals(pizza.getMeat()) || ing.equals(pizza.getCheese()) || ing.equals(pizza.getDough())) {
@@ -49,20 +53,22 @@ public class AdapterPizza implements Sandwich {
 		}
 		return 0;
 	}
-	
+
 	/**
-     * Returns the name of the pizza.
-     * @return the name of the pizza.
-     */
+	 * Returns the name of the pizza.
+	 * 
+	 * @return the name of the pizza.
+	 */
 	@Override
 	public String getName() {
 		return pizza.getName();
 	}
-	
+
 	/**
-     * Returns the price of just the ingredient.
-     * @return the price of just the ingredient.
-     */
+	 * Returns the price of just the ingredient.
+	 * 
+	 * @return the price of just the ingredient.
+	 */
 	@Override
 	public double getIngredientPrice() {
 		return pizza.getPrice();

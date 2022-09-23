@@ -4,7 +4,7 @@ package PizzasDonCangrejo;
  * Class to represent a ham pizza.
  */
 public class PizzaHam extends Pizza {
-    
+
     /**
      * Constructor for a ham pizza.
      */

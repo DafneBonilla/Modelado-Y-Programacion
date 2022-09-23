@@ -7,6 +7,8 @@ public class Lettuce extends Ingredient {
 
     /**
      * Constructor for the lettuce.
+     * 
+     * @param filling the sandwich to be decorated.
      */
     public Lettuce(Sandwich filling) {
         this.filling = filling;
@@ -16,6 +18,7 @@ public class Lettuce extends Ingredient {
 
     /**
      * Returns the description of the lettuce.
+     * 
      * @return the description of the lettuce.
      */
     @Override

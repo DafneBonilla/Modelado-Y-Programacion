@@ -6,22 +6,23 @@ import WaySub.*;
 
 /**
  * Class to represent a cashier.
- * A cashier has an order, a list of breads, a list of ingredients and a list of pizzas.
+ * A cashier has an order, a list of breads, a list of ingredients and a list of
+ * pizzas.
  */
 public class Cashier {
 
-    /*The order of the cashier.*/
+    /* The order of the cashier. */
     private Sandwich order;
 
-    /*The list of breads.*/
+    /* The list of breads. */
     private List<Sandwich> bread;
 
-    /*The list of ingredients.*/
+    /* The list of ingredients. */
     private List<Sandwich> ingredients;
 
-    /*The list of pizzas.*/
+    /* The list of pizzas. */
     private List<Sandwich> pizzas;
-    
+
     /**
      * Constructor for cashier.
      */
@@ -43,7 +44,7 @@ public class Cashier {
         bread.add(new BreadOat());
         bread.add(new BreadOregano());
     }
-    
+
     /**
      * Fills the list of ingredients.
      */
@@ -225,7 +226,7 @@ public class Cashier {
         } while (answer != 9);
         System.out.println("Orden tomada");
     }
-    
+
     /**
      * Ask the client what kind of pizza he wants.
      */
@@ -258,13 +259,12 @@ public class Cashier {
         System.out.println("Orden tomada");
     }
 
-
     /**
      * Ask the client for an option.
      *
      * @param message the question to ask.
-     * @param min the minimum option.
-     * @param max the maximum option.
+     * @param min     the minimum option.
+     * @param max     the maximum option.
      * @return the option chosen by the client.
      */
     private int askOption(String message, int min, int max) {
@@ -286,16 +286,19 @@ public class Cashier {
             }
         }
         return answer;
-    }    
-    
+    }
+
     /**
      * Prints the ticket with a full description of the order.
-    */
+     */
     public void printTicket() {
         if (order != null) {
             System.out.println("Ticket:");
+            System.out.println();
             System.out.println(order.getDescription());
+            System.out.println();
             System.out.println("Precio: " + order.getPrice());
+            System.out.println();
             System.out.println("Gracias por su compra");
         }
     }

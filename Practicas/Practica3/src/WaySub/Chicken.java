@@ -7,6 +7,8 @@ public class Chicken extends Ingredient {
 
     /**
      * Constructor for the chicken.
+     * 
+     * @param filling the sandwich to be decorated.
      */
     public Chicken(Sandwich filling) {
         this.filling = filling;
@@ -16,11 +18,12 @@ public class Chicken extends Ingredient {
 
     /**
      * Returns the description of the chicken.
+     * 
      * @return the description of the chicken.
      */
     @Override
     public String getDescription() {
         return filling.getDescription() + ", Pollo";
     }
-    
+
 }

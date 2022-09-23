@@ -7,6 +7,8 @@ public class Onion extends Ingredient {
 
     /**
      * Constructor for the onion.
+     * 
+     * @param filling the sandwich to be decorated.
      */
     public Onion(Sandwich filling) {
         this.filling = filling;
@@ -16,6 +18,7 @@ public class Onion extends Ingredient {
 
     /**
      * Returns the description of the onion.
+     * 
      * @return the description of the onion.
      */
     @Override

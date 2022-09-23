@@ -7,6 +7,8 @@ public class Pepperoni extends Ingredient {
 
     /**
      * Constructor for the pepperoni.
+     * 
+     * @param filling the sandwich to be decorated.
      */
     public Pepperoni(Sandwich filling) {
         this.filling = filling;
@@ -16,6 +18,7 @@ public class Pepperoni extends Ingredient {
 
     /**
      * Returns the description of the pepperoni.
+     * 
      * @return the description of the pepperoni.
      */
     @Override
