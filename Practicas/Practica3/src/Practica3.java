@@ -1,5 +1,13 @@
+/**
+ * Class to the make everything work.
+ */
 public class Practica3 {
 
+    /**
+     * Main method
+     * 
+     * @param args args
+     */
     public static void main(String[] args) {
 
         try {

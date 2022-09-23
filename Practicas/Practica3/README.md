@@ -15,19 +15,19 @@
 - Compilar desde `src/`:
 
 ```
-javac *.java Dishes/*.java Menus/*.java Robots/*.java
+javac *.java PizzasDonCangrejo/*.java WaySub/*.java
 ```
 
 - Correr desde `src/`:
 
 ```
-java Practica2 <nombre>
+java Practica3
 ```
 
 - Generar documentación desde `src/`:
 
 ```
-javadoc -d docs *.java Dishes/*.java Menus/*.java Robots/*.java
+javadoc -d docs *.java PizzasDonCangrejo/*.java WaySub/*.java
 ```
 
 ## **- Explicación**

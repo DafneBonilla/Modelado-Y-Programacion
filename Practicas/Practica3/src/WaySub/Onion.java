@@ -1,13 +1,23 @@
 package WaySub;
 
+/**
+ * Class to represent onion.
+ */
 public class Onion extends Ingredient {
 
+    /**
+     * Constructor for the onion.
+     */
     public Onion(Sandwich filling) {
         this.filling = filling;
         name = "Cebolla";
-        price = 1.00;
+        price = 11.00;
     }
 
+    /**
+     * Returns the description of the onion.
+     * @return the description of the onion.
+     */
     @Override
     public String getDescription() {
         return filling.getDescription() + ", Cebolla";

@@ -4,16 +4,27 @@ import java.util.Scanner;
 import PizzasDonCangrejo.*;
 import WaySub.*;
 
+/**
+ * Class to represent a cashier.
+ * A cashier has an order, a list of breads, a list of ingredients and a list of pizzas.
+ */
 public class Cashier {
 
+    /*The order of the cashier.*/
     private Sandwich order;
 
+    /*The list of breads.*/
     private List<Sandwich> bread;
 
+    /*The list of ingredients.*/
     private List<Sandwich> ingredients;
 
+    /*The list of pizzas.*/
     private List<Sandwich> pizzas;
-
+    
+    /**
+     * Constructor for cashier.
+     */
     public Cashier() {
         order = null;
         bread = new ArrayList<>();
@@ -24,12 +35,18 @@ public class Cashier {
         makeList3();
     }
 
+    /**
+     * FIlls the list of breads.
+     */
     private void makeList1() {
         bread.add(new BreadWhite());
         bread.add(new BreadOat());
         bread.add(new BreadOregano());
     }
-
+    
+    /**
+     * Fills the list of ingredients.
+     */
     private void makeList2() {
         ingredients.add(new Chicken(null));
         ingredients.add(new Pepperoni(null));
@@ -42,6 +59,9 @@ public class Cashier {
         ingredients.add(new Mayonnaise(null));
     }
 
+    /**
+     * FIlls the list of pizzas.
+     */
     private void makeList3() {
         pizzas.add(new AdapterPizza(new PizzaChicken()));
         pizzas.add(new AdapterPizza(new PizzaHam()));
@@ -50,6 +70,9 @@ public class Cashier {
         pizzas.add(new AdapterPizza(new PizzaSpecial2()));
     }
 
+    /**
+     * Ask the client what is going to order.
+     */
     public void askOrder() {
         String question = "¿Que deseas ordenar?\n(0) Sandwich\n(1) Pizza";
         int answer = askOption(question, 0, 1);
@@ -60,6 +83,9 @@ public class Cashier {
         }
     }
 
+    /**
+     * Ask the client what kind of bread he wants.
+     */
     private void askSandwich() {
         String question = "¿Que tipo de pan deseas?";
         int index = 0;
@@ -84,6 +110,9 @@ public class Cashier {
         askIngredient();
     }
 
+    /**
+     * Ask the client what ingredients he wants for his sandwich.
+     */
     private void askIngredient() {
         String question = "¿Que ingredientes deseas agregar?";
         int index = 0;
@@ -196,7 +225,10 @@ public class Cashier {
         } while (answer != 9);
         System.out.println("Orden tomada");
     }
-
+    
+    /**
+     * Ask the client what kind of pizza he wants.
+     */
     private void askPizza() {
         String question = "¿Que tipo de pizza deseas ordenar?";
         int index = 0;
@@ -226,6 +258,15 @@ public class Cashier {
         System.out.println("Orden tomada");
     }
 
+
+    /**
+     * Ask the client for an option.
+     *
+     * @param message the question to ask.
+     * @param min the minimum option.
+     * @param max the maximum option.
+     * @return the option chosen by the client.
+     */
     private int askOption(String message, int min, int max) {
         int answer = -1;
         boolean valid = false;
@@ -245,8 +286,11 @@ public class Cashier {
             }
         }
         return answer;
-    }
-
+    }    
+    
+    /**
+     * Prints the ticket with a full description of the order.
+    */
     public void printTicket() {
         if (order != null) {
             System.out.println("Ticket:");
