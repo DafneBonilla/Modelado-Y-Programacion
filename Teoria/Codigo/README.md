@@ -12,3 +12,4 @@
  6. **Iterator y Composite:** Cheems doctor y Cheems momazon
  7. **Decorator:** Cheeems gamer
  8. **Adapter:** Cheems piloto de carreras
+ 9. **Builder:** Cheems cocinero
