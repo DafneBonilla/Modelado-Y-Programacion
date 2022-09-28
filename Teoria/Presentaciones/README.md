@@ -19,3 +19,4 @@
  13. Adapter
  14. Facade
  15. Builder
+ 16. Factory y Abstract Factory
