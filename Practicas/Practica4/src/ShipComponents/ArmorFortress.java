@@ -1,4 +1,4 @@
-package Parts;
+package ShipComponents;
 
 public class ArmorFortress extends Armor {
 

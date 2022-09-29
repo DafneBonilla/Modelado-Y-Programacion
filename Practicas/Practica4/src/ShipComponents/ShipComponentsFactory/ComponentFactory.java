@@ -1,6 +1,6 @@
-package Manufacture;
+package ShipComponents.ShipComponentsFactory;
 
-import Parts.Component;
+import ShipComponents.*;
 
 public abstract class ComponentFactory {
 

@@ -1,7 +1,8 @@
-package Manufacture;
+package Ships;
 
 import java.util.concurrent.ThreadLocalRandom;
-import Parts.*;
+
+import ShipComponents.*;
 
 public class Ship {
 

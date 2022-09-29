@@ -1,6 +1,6 @@
-package Manufacture;
+package ShipComponents.ShipComponentsFactory;
 
-import Parts.*;
+import ShipComponents.*;
 
 public class PropulsionFactory extends ComponentFactory {
 

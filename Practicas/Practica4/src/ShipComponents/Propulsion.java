@@ -1,6 +1,6 @@
-package Parts;
+package ShipComponents;
 
-public abstract class Weapon implements Component {
+public abstract class Propulsion implements Component {
 
     protected String name;
 

@@ -1,4 +1,4 @@
-package Parts;
+package ShipComponents;
 
 public abstract class Armor implements Component {
 

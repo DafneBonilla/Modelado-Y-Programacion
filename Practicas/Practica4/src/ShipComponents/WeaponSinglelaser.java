@@ -1,4 +1,4 @@
-package Parts;
+package ShipComponents;
 
 public class WeaponSinglelaser extends Weapon {
 

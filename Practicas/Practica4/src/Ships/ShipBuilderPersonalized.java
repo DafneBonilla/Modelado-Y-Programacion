@@ -1,4 +1,6 @@
-package Manufacture;
+package Ships;
+
+import ShipComponents.ShipComponentsFactory.*;
 
 public class ShipBuilderPersonalized extends ShipBuilder {
 
