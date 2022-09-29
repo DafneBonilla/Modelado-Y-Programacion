@@ -1,7 +1,7 @@
-package Ships;
+package Manufacture;
 
 import java.util.concurrent.ThreadLocalRandom;
-import Parts.Component;
+import Parts.*;
 
 public class Ship {
 
@@ -49,6 +49,10 @@ public class Ship {
 
     public double getPrice() {
         return price;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 }
