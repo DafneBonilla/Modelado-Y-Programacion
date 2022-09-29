@@ -5,7 +5,7 @@ import ShipComponents.*;
 public class PropulsionFactory extends ComponentFactory {
 
     @Override
-    public Component createPart(int i) {
+    public Component build(int i) {
         switch (i) {
             case 1:
                 return new PropulsionIntercontinental();

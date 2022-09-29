@@ -4,6 +4,6 @@ import ShipComponents.*;
 
 public abstract class ComponentFactory {
 
-    public abstract Component createPart(int i);
+    public abstract Component build(int i);
 
 }

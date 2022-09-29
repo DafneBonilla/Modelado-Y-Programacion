@@ -15,7 +15,7 @@ public class ShipBuilderPersonalized extends ShipBuilder {
     @Override
     public ShipBuilder propulsion(int i) {
         factory = new PropulsionFactory();
-        propulsion = factory.createPart(i);
+        propulsion = factory.build(i);
         updateStats(propulsion);
         return this;
     }
@@ -23,7 +23,7 @@ public class ShipBuilderPersonalized extends ShipBuilder {
     @Override
     public ShipBuilder armor(int i) {
         factory = new ArmorFactory();
-        armor = factory.createPart(i);
+        armor = factory.build(i);
         updateStats(armor);
         return this;
     }
@@ -31,7 +31,7 @@ public class ShipBuilderPersonalized extends ShipBuilder {
     @Override
     public ShipBuilder cabin(int i) {
         factory = new CabinFactory();
-        cabin = factory.createPart(i);
+        cabin = factory.build(i);
         updateStats(cabin);
         return this;
     }
@@ -39,7 +39,7 @@ public class ShipBuilderPersonalized extends ShipBuilder {
     @Override
     public ShipBuilder weapon(int i) {
         factory = new WeaponFactory();
-        weapon = factory.createPart(i);
+        weapon = factory.build(i);
         updateStats(weapon);
         return this;
     }
