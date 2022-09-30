@@ -7,6 +7,7 @@ public class ShipBuilderPersonalized extends ShipBuilder {
     @Override
     public Ship build() {
         if (propulsion == null || cabin == null || weapon == null || armor == null) {
+            System.out.println("algo paso");
             return null;
         }
         return new Ship(this);

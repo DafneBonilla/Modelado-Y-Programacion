@@ -7,11 +7,11 @@ public class CabinFactory extends ComponentFactory {
     @Override
     public Component build(int i) {
         switch (i) {
-            case 1:
+            case 0:
                 return new CabinOnepilot();
-            case 2:
+            case 1:
                 return new CabinSmallcrew();
-            case 3:
+            case 2:
                 return new CabinArmy();
             default:
                 return null;

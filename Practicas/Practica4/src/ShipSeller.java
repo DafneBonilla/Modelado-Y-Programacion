@@ -175,7 +175,7 @@ public class ShipSeller {
     }
 
     private void askPropulsion() {
-        String wowi = "Ingresa el numero de la propulsion que deseas: ";
+        String wowi = "Ingresa el numero de la propulsion que deseas: \n";
         int i = 0;
         for (Component c : propulsions) {
             wowi += "[" + i + "] " + c.getDescription() + "\n";
@@ -186,7 +186,7 @@ public class ShipSeller {
     }
 
     private void askArmor() {
-        String wowi = "Ingresa el numero de armadura que deseas: ";
+        String wowi = "Ingresa el numero de armadura que deseas: \n";
         int i = 0;
         for (Component c : armors) {
             wowi += "[" + i + "] " + c.getDescription() + "\n";
@@ -197,7 +197,7 @@ public class ShipSeller {
     }
 
     private void askCabin() {
-        String wowi = "Ingresa el numero de cabina que deseas: ";
+        String wowi = "Ingresa el numero de cabina que deseas: \n";
         int i = 0;
         for (Component c : cabins) {
             wowi += "[" + i + "] " + c.getDescription() + "\n";
@@ -208,7 +208,7 @@ public class ShipSeller {
     }
 
     private void askWeapon() {
-        String wowi = "Ingresa el numero de arma que deseas: ";
+        String wowi = "Ingresa el numero de arma que deseas: \n";
         int i = 0;
         for (Component c : weapons) {
             wowi += "[" + i + "] " + c.getDescription() + "\n";
@@ -223,10 +223,10 @@ public class ShipSeller {
     }
 
     private void askCatalog() {
-        showCatalog();
+        String s = showCatalog();
         int res;
         if (capable) {
-            res = askOption("Ingresa el numero de la nave que deseas: ", 0, catalog.size() - 1);
+            res = askOption(s + "Ingresa el numero de la nave que deseas: ", 0, catalog.size() - 1);
             order = catalog.get(res);
         } else {
             res = askOption("Ingresa el numero de la nave que deseas: ", 0, catalog.size());
@@ -238,18 +238,18 @@ public class ShipSeller {
         }
     }
 
-    private void showCatalog() {
+    private String showCatalog() {
         System.out.println("Estas son las naves que tenemos en el catalogo");
         int i = 0;
-        String wowi = "Naves en catalogo: ";
+        String wowi = "Naves en catalogo: \n";
         for (Ship s : catalog) {
             wowi += "[" + i + "] " + s.getDescription() + "\n";
             i++;
         }
         if (!checkB()) {
-            wowi += "[" + i + "] " + "Salir";
+            wowi += "[" + i + "] " + "Salir\n";
         }
-        System.out.println(wowi);
+        return wowi;
     }
 
     private boolean checkB() {
