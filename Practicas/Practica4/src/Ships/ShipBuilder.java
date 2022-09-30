@@ -36,11 +36,13 @@ public abstract class ShipBuilder {
     public abstract ShipBuilder weapon(int i);
 
     protected void updateStats(Component c) {
-        atk += c.getAtk();
-        def += c.getDef();
-        spd += c.getSpd();
-        wt += c.getWt();
-        price += c.getPrice();
+        if (c != null) {
+            atk += c.getAtk();
+            def += c.getDef();
+            spd += c.getSpd();
+            wt += c.getWt();
+            price += c.getPrice();
+        }
     }
 
 }

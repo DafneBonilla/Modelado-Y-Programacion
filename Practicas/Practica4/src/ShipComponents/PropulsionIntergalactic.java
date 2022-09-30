@@ -4,12 +4,13 @@ public class PropulsionIntergalactic extends Propulsion {
 
     public PropulsionIntergalactic() {
         name = "Propulsion Intergalactica";
-        description = "";
+        description = name + ", Ataque: " + atk + ", Defensa: " + def + ", Velocidad: " + spd + ", Peso: " + wt
+                + ", Precio: $" + price;
         atk = 0;
         def = 0;
-        spd = 0;
-        wt = 0;
-        price = 0;
+        spd = 100;
+        wt = 128;
+        price = 5879.00;
     }
 
 }
