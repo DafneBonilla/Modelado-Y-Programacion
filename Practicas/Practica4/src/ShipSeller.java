@@ -5,35 +5,64 @@ import ShipComponents.*;
 import ShipComponents.ShipComponentsFactory.*;
 import Ships.*;
 
+/**
+ * Class to represent a ship seller, it sells ships to the client
+ * A ship seller has an order (an instance of the class {@link Ship}), an
+ * instance of the class {@link ShipBuilder} to build the ship, an instance of
+ * the class {@link ShipFactory} to create predefined ships, an instance of the
+ * class {@link ShipComponentsFactory} to fill components lists, a list of
+ * instances of the class {@link Ship} for a catalog, also has a list of
+ * propulsions, armors, cabins and weapons (all of them are lists of instances
+ * of the class {@link Component}), the budget of a client and a boolean to know
+ * if the user can pay for a ship
+ */
 public class ShipSeller {
 
+    /* Order of the ship seller */
     private Ship order;
 
+    /* Ship builder of the ship seller */
     private ShipBuilder builder;
 
+    /* Ship factory of the ship seller */
     private ShipFactory factory;
 
+    /* Component factory of the ship seller */
     private ComponentFactory tinyFactory;
 
+    /* Catalog of the ship seller */
     private List<Ship> catalog;
 
+    /* List of propulsions of the ship seller */
     private List<Component> propulsions;
 
+    /* List of armors of the ship seller */
     private List<Component> armors;
 
+    /* List of cabins of the ship seller */
     private List<Component> cabins;
 
+    /* List of weapons of the ship seller */
     private List<Component> weapons;
 
+    /* Budget of client */
     private double bugdet;
 
+    /* Boolean to know if the user can pay for a ship */
     private boolean capable;
 
+    /**
+     * Constructor of the ship seller
+     * Makes the catalog and fill the lists of components
+     */
     public ShipSeller() {
         makeCatalog();
         fillComponents();
     }
 
+    /**
+     * Makes the catalog of the ship seller
+     */
     private void makeCatalog() {
         catalog = new LinkedList<Ship>();
         factory = new ShipFactoryGeneric();
@@ -46,6 +75,12 @@ public class ShipSeller {
         }
     }
 
+    /**
+     * Returns the i-th name that the ship in the catalog will have
+     * 
+     * @param i integer of the ship in the catalog
+     * @return the name that the ship will have
+     */
     private String getNameShip(int i) {
         switch (i) {
             case 0:
@@ -59,6 +94,9 @@ public class ShipSeller {
         }
     }
 
+    /**
+     * Fills the lists of components of the ship seller
+     */
     private void fillComponents() {
         fillPropulsions();
         fillArmors();
@@ -66,6 +104,9 @@ public class ShipSeller {
         fillWeapons();
     }
 
+    /**
+     * Fills the list of propulsions of the ship seller
+     */
     private void fillPropulsions() {
         propulsions = new LinkedList<Component>();
         tinyFactory = new PropulsionFactory();
@@ -77,6 +118,9 @@ public class ShipSeller {
         }
     }
 
+    /**
+     * Fills the list of armors of the ship seller
+     */
     private void fillArmors() {
         armors = new LinkedList<Component>();
         tinyFactory = new ArmorFactory();
@@ -88,6 +132,9 @@ public class ShipSeller {
         }
     }
 
+    /**
+     * Fills the list of cabins of the ship seller
+     */
     private void fillCabin() {
         cabins = new LinkedList<Component>();
         tinyFactory = new CabinFactory();
@@ -99,6 +146,9 @@ public class ShipSeller {
         }
     }
 
+    /**
+     * Fills the list of weapons of the ship seller
+     */
     private void fillWeapons() {
         weapons = new LinkedList<Component>();
         tinyFactory = new WeaponFactory();
@@ -110,22 +160,43 @@ public class ShipSeller {
         }
     }
 
+    /**
+     * Makes the ship seller work
+     * This method makes the magic happen
+     */
     public void work() {
         System.out.println("Bienvenido a la tienda de naves espaciales");
         bugdet = askDouble("Ingresa tu presupuesto");
         normal();
     }
 
+    /**
+     * Makes the ship seller work in the normal mode
+     * Normal mode is to build the ship depending on what the client wants and then
+     * check if the client can pay for it
+     */
     private void normal() {
         desingShip();
         check();
     }
 
+    /**
+     * Makes the ship seller work in the not normal mode
+     * Not normal mode is ask the client to choose a ship from the catalog and then
+     * check if the client can pay for it
+     */
     private void notNormal() {
         askCatalog();
         check();
     }
 
+    /**
+     * Checks if the client can pay for the ship
+     * If the client can pay for the ship, the ship will be built and given to the
+     * client, but if the client can't pay for the ship, the seller will ask the
+     * client if they wanto to build another ship (in the normal mode) or if they
+     * want to choose a ship from the catalog (in the not normal mode)
+     */
     private void check() {
         if (checkBudget()) {
             System.out.print("Tu nave se esta construyendo");
@@ -153,6 +224,9 @@ public class ShipSeller {
         }
     }
 
+    /**
+     * Guides the clients to design the ship they are building
+     */
     private void desingShip() {
         System.out.println("Es hora de crear tu nave");
         askPersonalized();
@@ -160,6 +234,11 @@ public class ShipSeller {
         System.out.println(order.getDescription());
     }
 
+    /**
+     * Asks the client what components they want for the ship they are building
+     * After the client chooses the components, it gives the possibility to the
+     * client to give the ship a name
+     */
     private void askPersonalized() {
         resetBuilder();
         askPropulsion();
@@ -174,6 +253,9 @@ public class ShipSeller {
         }
     }
 
+    /**
+     * Asks the client what propulsion they want for the ship they are building
+     */
     private void askPropulsion() {
         String wowi = "Ingresa el numero de la propulsion que deseas: \n";
         int i = 0;
@@ -185,6 +267,9 @@ public class ShipSeller {
         builder = builder.propulsion(res);
     }
 
+    /**
+     * Asks the client what armor they want for the ship they are building
+     */
     private void askArmor() {
         String wowi = "Ingresa el numero de armadura que deseas: \n";
         int i = 0;
@@ -196,6 +281,9 @@ public class ShipSeller {
         builder = builder.armor(res);
     }
 
+    /**
+     * Asks the client what cabin they want for the ship they are building
+     */
     private void askCabin() {
         String wowi = "Ingresa el numero de cabina que deseas: \n";
         int i = 0;
@@ -207,6 +295,9 @@ public class ShipSeller {
         builder = builder.cabin(res);
     }
 
+    /**
+     * Asks the client what weapon they want for the ship they are building
+     */
     private void askWeapon() {
         String wowi = "Ingresa el numero de arma que deseas: \n";
         int i = 0;
@@ -218,10 +309,18 @@ public class ShipSeller {
         builder = builder.weapon(res);
     }
 
+    /**
+     * Resets the builder of the ship builder
+     */
     private void resetBuilder() {
         builder = new ShipBuilderPersonalized();
     }
 
+    /**
+     * Asks the client which ship they want from the catalog
+     * If they don't have the budget to buy a ship from the catalog, the client can
+     * exit the shop
+     */
     private void askCatalog() {
         String s = showCatalog();
         s += "Ingresa el numero de la nave que deseas: ";
@@ -239,6 +338,13 @@ public class ShipSeller {
         }
     }
 
+    /**
+     * Returns a string with all the options of ships from the catalog
+     * If the client can't pay for a ship from the catalog, an option to exit the
+     * shop will be added
+     * 
+     * @return a string with all the options of ships from the catalog
+     */
     private String showCatalog() {
         System.out.println("Estas son las naves que tenemos en el catalogo");
         int i = 0;
@@ -253,6 +359,11 @@ public class ShipSeller {
         return wowi;
     }
 
+    /**
+     * Checks if the client has the budget to buy a ship from the catalog
+     * 
+     * @return true if the client has the budget to buy a ship from the catalog
+     */
     private boolean checkB() {
         boolean res = false;
         for (Ship s : catalog) {
@@ -264,6 +375,11 @@ public class ShipSeller {
         return res;
     }
 
+    /**
+     * Checks if the client has the budget to buy the ship they have ordered
+     * 
+     * @return true if the client has the budget to buy the ship they have ordered
+     */
     private boolean checkBudget() {
         if (order == null) {
             return false;
@@ -271,6 +387,15 @@ public class ShipSeller {
         return order.getPrice() <= bugdet;
     }
 
+    /**
+     * Ask the client for an option (an integer)
+     * The option must be between min and max
+     *
+     * @param message the question to ask
+     * @param min     the minimum option
+     * @param max     the maximum option
+     * @return the option chosen by the client
+     */
     private int askOption(String message, int min, int max) {
         int answer = -1;
         boolean valid = false;
@@ -292,6 +417,13 @@ public class ShipSeller {
         return answer;
     }
 
+    /**
+     * Ask the client for a string
+     * The string can't be empty
+     *
+     * @param message the question to ask
+     * @return the string chosen by the client
+     */
     private String askString(String message) {
         String answer = "";
         boolean valid = false;
@@ -308,6 +440,13 @@ public class ShipSeller {
         return answer;
     }
 
+    /**
+     * Ask the client for a double
+     * The double must be greater than 0
+     *
+     * @param message the question to ask
+     * @return the double chosen by the client
+     */
     private double askDouble(String message) {
         double answer = -1;
         boolean valid = false;

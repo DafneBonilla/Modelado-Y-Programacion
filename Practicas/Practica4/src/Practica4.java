@@ -1,5 +1,5 @@
 /**
- * Class to the make everything work.
+ * Class to the make everything work
  */
 public class Practica4 {
 
