@@ -15,19 +15,19 @@
 - Compilar desde `src/`:
 
 ```
-javac *.java PizzasDonCangrejo/*.java WaySub/*.java
+javac *.java Ships/*.java ShipComponents/*.java
 ```
 
 - Correr desde `src/`:
 
 ```
-java Practica3
+java Practica4
 ```
 
 - Generar documentación desde `src/`:
 
 ```
-javadoc -d docs *.java PizzasDonCangrejo/*.java WaySub/*.java
+javadoc -d docs *.java Ships/*.java ShipComponents/*.java
 ```
 
 ## **- Explicación**
@@ -38,12 +38,13 @@ Para iniciar el programa, primero es necesario compilar y ejecutar el programa. 
 Si se quiere generar la documentación, esto sería con el comando dado arriba, y luego, los archivos se generarán en el directorio llamado docs.
 </div>
 
-----------------------------------------------------------------
+---
 
 ## **- Implementación**
 
 <div align="justify">
-Para poder facilitar la de los sandwiches, elegimos usar el patrón de Decorator. 
+Para poder facilitar la de los sandwiches, elegimos usar el patrón de Decorator.
 
 A continuación, en la parte de las pizzas y su unión a sandwiches usamos el patrón Adapter para así poder tratarlas como sandwiches.
+
 </div>

@@ -139,7 +139,7 @@ public class ShipSeller {
             }
             System.out.println();
             System.out.println("Tu nave esta lista");
-            System.out.println("Estas son las caracteristicas de tu nave:" + order.getDescription());
+            System.out.println("Estas son las caracteristicas de tu nave:\n" + order.getDescription());
             System.out.println("Pasa a la caja para pagar $" + order.getPrice());
             System.out.println("Gracias por comprar en la tienda de naves espaciales");
         } else {
@@ -224,12 +224,13 @@ public class ShipSeller {
 
     private void askCatalog() {
         String s = showCatalog();
+        s += "Ingresa el numero de la nave que deseas: ";
         int res;
         if (capable) {
-            res = askOption(s + "Ingresa el numero de la nave que deseas: ", 0, catalog.size() - 1);
+            res = askOption(s, 0, catalog.size() - 1);
             order = catalog.get(res);
         } else {
-            res = askOption("Ingresa el numero de la nave que deseas: ", 0, catalog.size());
+            res = askOption(s, 0, catalog.size());
             if (res == catalog.size()) {
                 System.out.println("Gracias por visitar la tienda de naves espaciales");
                 System.exit(0);
