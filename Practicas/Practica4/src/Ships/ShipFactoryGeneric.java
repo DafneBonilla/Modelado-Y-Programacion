@@ -15,6 +15,7 @@ public class ShipFactoryGeneric extends ShipFactory {
     /**
      * Builds a predefined ship
      * 
+     * @param i the index of the ship to build
      * @return the ship built
      */
     @Override

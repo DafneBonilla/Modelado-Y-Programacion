@@ -1,7 +1,13 @@
 package ShipComponents;
 
+/**
+ * Class to represent the single laser weapon component of a ship
+ */
 public class WeaponSinglelaser extends Weapon {
 
+    /**
+     * Constructor of the single laser
+     */
     public WeaponSinglelaser() {
         name = "Arma Laser Simple";
 

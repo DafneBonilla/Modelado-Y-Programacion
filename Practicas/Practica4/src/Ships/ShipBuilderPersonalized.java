@@ -26,6 +26,7 @@ public class ShipBuilderPersonalized extends ShipBuilder {
      * Sets the propulsion of the ship to build
      * 
      * @param i integer for the factory to create the propulsion
+     * @return the ship builder with the propulsion set
      */
     @Override
     public ShipBuilder propulsion(int i) {
@@ -39,6 +40,7 @@ public class ShipBuilderPersonalized extends ShipBuilder {
      * Sets the armor of the ship to build
      * 
      * @param i integer for the factory to create the armor
+     * @return the ship builder with the armor set
      */
     @Override
     public ShipBuilder armor(int i) {
@@ -52,6 +54,7 @@ public class ShipBuilderPersonalized extends ShipBuilder {
      * Sets the cabin of the ship to build
      * 
      * @param i integer for the factory to create the cabin
+     * @return the ship builder with the cabin set
      */
     @Override
     public ShipBuilder cabin(int i) {
@@ -65,6 +68,7 @@ public class ShipBuilderPersonalized extends ShipBuilder {
      * Sets the weapon of the ship to build
      * 
      * @param i integer for the factory to create the weapon
+     * @return the ship builder with the weapon set
      */
     @Override
     public ShipBuilder weapon(int i) {

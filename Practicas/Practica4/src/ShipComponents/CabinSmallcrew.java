@@ -1,7 +1,13 @@
 package ShipComponents;
 
+/**
+ * Class to represent the small crew cabin component of a ship
+ */
 public class CabinSmallcrew extends Cabin {
 
+    /**
+     * Constructor of the small crew cabin
+     */
     public CabinSmallcrew() {
         name = "Cabina Tripulacion Pequenia";
         atk = 0;

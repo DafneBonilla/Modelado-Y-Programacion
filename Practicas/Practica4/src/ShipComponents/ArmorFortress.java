@@ -1,7 +1,13 @@
 package ShipComponents;
 
+/**
+ * Class to represent the fortress armor component of a ship
+ */
 public class ArmorFortress extends Armor {
 
+    /**
+     * Constructor of the fortress armor
+     */
     public ArmorFortress() {
         name = "Armadura Fortaleza";
         atk = 0;

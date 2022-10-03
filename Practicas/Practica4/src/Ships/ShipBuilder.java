@@ -7,7 +7,7 @@ import ShipComponents.ShipComponentsFactory.*;
  * Abstract class to represent a builder of the class {@link Ship}
  * A ship builder has a propulsion, an armor, a cabin and a weapon (all of them
  * are an instance of {@link Component}), it has an instance of the class
- * {@link ShipComponentsFactory} to build the components of the ship, also has
+ * {@link ComponentFactory} to build the components of the ship, also has
  * values for attack, defense, speed, weight and price
  */
 public abstract class ShipBuilder {
@@ -53,6 +53,7 @@ public abstract class ShipBuilder {
      * Sets the propulsion of the ship to build
      * 
      * @param i integer for the factory to create the propulsion
+     * @return the ship builder with the propulsion set
      */
     public abstract ShipBuilder propulsion(int i);
 
@@ -60,6 +61,7 @@ public abstract class ShipBuilder {
      * Sets the armor of the ship to build
      * 
      * @param i integer for the factory to create the armor
+     * @return the ship builder with the armor set
      */
     public abstract ShipBuilder armor(int i);
 
@@ -67,6 +69,7 @@ public abstract class ShipBuilder {
      * Sets the cabin of the ship to build
      * 
      * @param i integer for the factory to create the cabin
+     * @return the ship builder with the cabin set
      */
     public abstract ShipBuilder cabin(int i);
 
@@ -74,6 +77,7 @@ public abstract class ShipBuilder {
      * Sets the weapon of the ship to build
      * 
      * @param i integer for the factory to create the weapon
+     * @return the ship builder with the weapon set
      */
     public abstract ShipBuilder weapon(int i);
 

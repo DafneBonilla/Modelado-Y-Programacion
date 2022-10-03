@@ -1,7 +1,13 @@
 package ShipComponents;
 
+/**
+ * Class to represent the one pilot cabin component of a ship
+ */
 public class CabinOnepilot extends Cabin {
 
+    /**
+     * Constructor of the one pilot cabin
+     */
     public CabinOnepilot() {
         name = "Cabina Un Piloto";
         atk = 0;

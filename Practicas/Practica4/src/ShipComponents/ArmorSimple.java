@@ -1,7 +1,13 @@
 package ShipComponents;
 
+/**
+ * Class to represent the simple armor component of a ship
+ */
 public class ArmorSimple extends Armor {
 
+    /**
+     * Constructor of the simple armor
+     */
     public ArmorSimple() {
         name = "Armadura Simple";
         atk = 0;

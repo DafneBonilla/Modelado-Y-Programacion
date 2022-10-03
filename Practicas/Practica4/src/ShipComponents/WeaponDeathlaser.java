@@ -1,7 +1,13 @@
 package ShipComponents;
 
+/**
+ * Class to represent the death laser weapon component of a ship
+ */
 public class WeaponDeathlaser extends Weapon {
 
+    /**
+     * Constructor of the death laser
+     */
     public WeaponDeathlaser() {
         name = "Arma Laser Destructor de Planetas";
         atk = 666;

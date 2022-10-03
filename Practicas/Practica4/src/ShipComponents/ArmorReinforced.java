@@ -1,7 +1,13 @@
 package ShipComponents;
 
+/**
+ * Class to represent the reinforced armor component of a ship
+ */
 public class ArmorReinforced extends Armor {
 
+    /**
+     * Constructor of the reinforced armor
+     */
     public ArmorReinforced() {
         name = "Armadura Reforzada";
         atk = 0;

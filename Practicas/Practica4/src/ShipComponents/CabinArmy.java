@@ -1,7 +1,13 @@
 package ShipComponents;
 
+/**
+ * Class to represent the army cabin component of a ship
+ */
 public class CabinArmy extends Cabin {
 
+    /**
+     * Constructor of the army cabin
+     */
     public CabinArmy() {
         name = "Cabina Ejercito";
         atk = 0;

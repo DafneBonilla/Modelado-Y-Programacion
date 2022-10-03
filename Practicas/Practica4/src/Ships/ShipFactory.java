@@ -13,6 +13,7 @@ public abstract class ShipFactory {
     /**
      * Builds a predefined ship
      * 
+     * @param i the index of the ship to build
      * @return the ship built
      */
     public abstract Ship build(int i);

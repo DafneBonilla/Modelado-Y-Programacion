@@ -2,8 +2,18 @@ package ShipComponents.ShipComponentsFactory;
 
 import ShipComponents.*;
 
+/**
+ * Class to represent a component factory that builds the different types of
+ * weapon components
+ */
 public class WeaponFactory extends ComponentFactory {
 
+    /**
+     * Builds a weapon
+     * 
+     * @param i integer for the factory to create the weapon
+     * @return the weapon built
+     */
     @Override
     public Component build(int i) {
         switch (i) {

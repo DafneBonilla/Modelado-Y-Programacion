@@ -1,7 +1,13 @@
 package ShipComponents;
 
+/**
+ * Class to represent the intergalactic propulsion component of a ship
+ */
 public class PropulsionIntergalactic extends Propulsion {
 
+    /**
+     * Constructor of the intergalactic propulsion
+     */
     public PropulsionIntergalactic() {
         name = "Propulsion Intergalactica";
         atk = 0;

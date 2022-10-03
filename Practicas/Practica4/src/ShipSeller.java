@@ -10,7 +10,7 @@ import Ships.*;
  * A ship seller has an order (an instance of the class {@link Ship}), an
  * instance of the class {@link ShipBuilder} to build the ship, an instance of
  * the class {@link ShipFactory} to create predefined ships, an instance of the
- * class {@link ShipComponentsFactory} to fill components lists, a list of
+ * class {@link ComponentFactory} to fill components lists, a list of
  * instances of the class {@link Ship} for a catalog, also has a list of
  * propulsions, armors, cabins and weapons (all of them are lists of instances
  * of the class {@link Component}), the budget of a client and a boolean to know
