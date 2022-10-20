@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 public class Microwave extends Product {
 

@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 public interface CatalogIterator<T> {
 

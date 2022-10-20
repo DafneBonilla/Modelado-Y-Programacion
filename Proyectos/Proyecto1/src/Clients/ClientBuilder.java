@@ -1,4 +1,4 @@
-package Clients;
+package clients;
 
 public abstract class ClientBuilder {
 

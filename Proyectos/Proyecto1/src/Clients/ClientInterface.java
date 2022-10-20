@@ -1,8 +1,11 @@
-package Clients;
+package clients;
 
 import java.io.Serializable;
+import java.util.Iterator;
 
-public interface ClientInterface extends Serializable {
+import walmart.Walmart2;
+
+public interface ClientInterface extends Serializable, Observer {
 
     public String getUsername();
 
@@ -20,8 +23,12 @@ public interface ClientInterface extends Serializable {
 
     public long getBankNumber();
 
-    public void setCoupon(Coupon coupon);
-
     public Coupon getCoupon();
+
+    public void update();
+
+    public boolean check(Iterator<Country> iter); 
+    
+    public void setWalmart(Walmart2 walmart);
 
 }

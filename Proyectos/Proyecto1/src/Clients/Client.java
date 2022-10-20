@@ -1,4 +1,8 @@
-package Clients;
+package clients;
+
+import java.util.Iterator;
+
+import walmart.Walmart2;
 
 public class Client implements ClientInterface {
 
@@ -19,6 +23,8 @@ public class Client implements ClientInterface {
     private long bankNumber;
 
     private Coupon coupon;
+
+    private Walmart2 walmart;
 
     public Client(ClientBuilder builder) {
         this.username = builder.username;
@@ -77,13 +83,32 @@ public class Client implements ClientInterface {
     }
 
     @Override
-    public void setCoupon(Coupon coupon) {
-        this.coupon = coupon;
-    }
-
-    @Override
     public Coupon getCoupon() {
         return coupon;
     }
+
+	@Override
+	public void update() {
+        if (walmart != null) {
+            this.coupon = walmart.getCoupon();
+        }
+	}
+
+	@Override
+	public boolean check(Iterator<Country> iter) {
+        Country c;
+        while (iter.hasNext()) {
+            c = iter.next();
+            if (c.getInt() == nationality.getInt()) {
+                return true;
+            } 
+        }
+        return false;
+	}
+
+	@Override
+	public void setWalmart(Walmart2 walmart) {
+        this.walmart = walmart;
+	}
 
 }

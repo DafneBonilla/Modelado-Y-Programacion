@@ -1,4 +1,8 @@
-package Clients;
+package clients;
+
+import java.util.Iterator;
+
+import walmart.Walmart2;
 
 public class ClientProxy implements ClientInterface {
 
@@ -49,13 +53,23 @@ public class ClientProxy implements ClientInterface {
     }
 
     @Override
-    public void setCoupon(Coupon coupon) {
-        client.setCoupon(coupon);
+    public Coupon getCoupon() {
+        return client.getCoupon();
     }
 
     @Override
-    public Coupon getCoupon() {
-        return client.getCoupon();
+    public void update() {
+        client.update();
+    }
+
+    @Override
+    public boolean check(Iterator<Country> iter) {
+        return client.check(iter);
+    }
+
+    @Override
+    public void setWalmart(Walmart2 walmart) {
+        client.setWalmart(walmart);
     }
 
 }

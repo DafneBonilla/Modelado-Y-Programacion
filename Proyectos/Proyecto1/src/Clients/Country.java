@@ -1,6 +1,6 @@
-package Clients;
+package clients;
 
-import Products.Department;
+import products.Department;
 
 public enum Country {
 
