@@ -1,14 +1,13 @@
 package walmart;
 
 import java.util.List;
-
 import stores.*;
 import clients.*;
 import products.*;
 
 public class Walmart2 implements Subject {
     
-    private List<Observer> clients;
+    private List<ClientInterface> clients;
     
     private Catalog<Catalog<Product>> catalog;
 
@@ -18,7 +17,7 @@ public class Walmart2 implements Subject {
     
     private Coupon coupon;
 
-    public Walmart2(List<Observer> clients, Catalog<Catalog<Product>> catalog) {
+    public Walmart2(List<ClientInterface> clients, Catalog<Catalog<Product>> catalog) {
         this.clients = clients;
         this.catalog = catalog;
     }
@@ -31,7 +30,7 @@ public class Walmart2 implements Subject {
         
     }
 
-    public void work(){
+    public void work() {
         
     }
 
@@ -43,18 +42,18 @@ public class Walmart2 implements Subject {
         return null;
     }
 
-    private void close(){
+    private void close() {
 
     }
     
     @Override
     public void registerObserver(Observer o) {
-        clients.add(o);
+        clients.add((ClientInterface) o);
     }
 
     @Override
     public void removeObserver(Observer o) {
-        clients.remove(o);
+        clients.remove((ClientInterface) o);
     }
 
     @Override

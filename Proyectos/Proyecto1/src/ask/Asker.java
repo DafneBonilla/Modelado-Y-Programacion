@@ -6,12 +6,12 @@ import clients.Country;
 
 public class Asker {
 
-    private Asker asker = new Asker();
+    private static Asker asker = new Asker();
 
     private Asker() {
     }
 
-    public Asker getAsker() {
+    public static Asker getAsker() {
         return asker;
     }
 

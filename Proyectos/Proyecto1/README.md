@@ -1,10 +1,10 @@
-# **Proyecto 1** 🤖🍔
+# **Proyecto 1** 🏪💵
 
 **Equipo: Los Peaky Blinders**
 
 319089660 - Bonilla Reyes Dafne
 
-319053315 - Castañón Maldonado Carlos Emilio
+319053315 - Castañon Maldonado Carlos Emilio
 
 319210536 - García Ponce José Camilo
 
@@ -24,13 +24,13 @@ javac *.java Dishes/*.java Menus/*.java Robots/*.java
 java Practica2 <nombre>
 ```
 
-- Generar documentación desde `src/`:
+- Generar documentacion desde `src/`:
 
 ```
 javadoc -d docs *.java Dishes/*.java Menus/*.java Robots/*.java
 ```
 
-## **- Explicación**
+## **- Explicacion**
 
 <div align="justify">
 Para iniciar el programa, primero es necesario compilar y ejecutar el programa escribiendo el nombre del cliente después de Practica2/. Después, los pasos para ordenar un platillo son los siguientes:
@@ -44,22 +44,22 @@ Para iniciar el programa, primero es necesario compilar y ejecutar el programa e
 7. Se pone a cocinar al robot.
 8. Se pide que se entregue la comida.
 
-Si se quiere generar la documentación, esto sería con el comando dado arriba, y luego, los archivos se generarán en el directorio llamado docs.
+Si se quiere generar la documentacion, esto sería con el comando dado arriba, y luego, los archivos se generarán en el directorio llamado docs.
 
 </div>
 
 ---
 
-## **- Implementación**
+## **- Implementacion** 🔎
 
 <div align="justify">
-Para poder facilitar la forma en la que se muestra el menú al cliente, elegimos usar el patrón de Iterator.
+Para poder facilitar la forma en la que se muestra el menú al cliente, elegimos usar el patron de Iterator.
 
-Después, en la parte de las hamburguesas usamos el patrón Template para así poder hacer que ciertas hamburguesas hagan ciertos pasos (principalmente cocinar la carne) de la mejor manera.
+Después, en la parte de las hamburguesas usamos el patron Template para así poder hacer que ciertas hamburguesas hagan ciertos pasos (principalmente cocinar la carne) de la mejor manera.
 
-Por último, usamos State para que el robot tenga la capacidad de poder hacer las mismas acciones, pero de maneras diferentes dependiendo del punto de la ejecución en el que se encuentre.
+Por último, usamos State para que el robot tenga la capacidad de poder hacer las mismas acciones, pero de maneras diferentes dependiendo del punto de la ejecucion en el que se encuentre.
 
-Además, para la parte del menú de opciones, intentamos ponerlas en un orden lógico, sin embargo, hay
-una en particular que quedó extraña: mostrar menú.
+Además, para la parte del menú de opciones, intentamos ponerlas en un orden logico, sin embargo, hay
+una en particular que quedo extraña: mostrar menú.
 
 </div>

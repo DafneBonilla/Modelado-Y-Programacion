@@ -25,6 +25,7 @@ public interface ClientInterface extends Serializable, Observer {
 
     public Coupon getCoupon();
 
+    @Override
     public void update();
 
     public boolean check(Iterator<Country> iter); 
