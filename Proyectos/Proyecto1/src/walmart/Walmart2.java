@@ -35,7 +35,8 @@ public class Walmart2 implements Subject {
     }
 
     private ClientInterface verify() {
-        return null;
+        manager = new AccountManager(clients);
+        return manager.getAccount();
     }
 
     private Store store (ClientInterface client) {
