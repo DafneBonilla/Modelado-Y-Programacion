@@ -1,24 +1,24 @@
 package walmart;
 
 import stores.*;
+import utility.*;
 import clients.*;
 import products.*;
-import ask.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Walmart2 implements Subject {
-    
+
     private List<ClientInterface> clients;
-    
+
     private Catalog<Catalog<Product>> catalog;
 
     private AccountManager manager;
 
     private StoreBuilder storeB;
-    
+
     private Coupon coupon;
 
     public Walmart2(List<ClientInterface> clients, Catalog<Catalog<Product>> catalog) {
@@ -33,7 +33,7 @@ public class Walmart2 implements Subject {
             client.update();
         }
     }
-    
+
     private void randomCoupon() {
         int random2 = ThreadLocalRandom.current().nextInt(0, 3 + 1);
         if (random2 == 0) {
@@ -42,9 +42,9 @@ public class Walmart2 implements Subject {
             List<Country> countries = generateList(random2);
             int random = ThreadLocalRandom.current().nextInt(10, 65 + 1);
             coupon = new Coupon(random, countries);
-        }     
+        }
     }
-    
+
     private List<Country> generateList(int i) {
         List<Country> countries = new LinkedList<>();
         for (int j = 0; j < i; j++) {
@@ -71,7 +71,7 @@ public class Walmart2 implements Subject {
         }
         return countries;
     }
-    
+
     private void giveCoupons() {
         if (coupon != null) {
             for (ClientInterface client : clients) {
@@ -84,15 +84,15 @@ public class Walmart2 implements Subject {
     }
 
     public void work() {
-        
+
     }
 
     private ClientInterface verify() {
         manager = new AccountManager(clients);
         return manager.getAccount();
     }
-    
-    private Store store (ClientInterface client) {    
+
+    private Store store(ClientInterface client) {
         storeB = new StoreBuilder();
         storeB = storeB.client(client);
         storeB = storeB.iterator(generate());
@@ -110,12 +110,12 @@ public class Walmart2 implements Subject {
         }
         return cat.iterator();
     }
-            
+
     private void close() {
-        Files file = file.getFiles();
+        Files file = Files.getFiles();
         file.zipClients(clients);
     }
-    
+
     @Override
     public void registerObserver(Observer o) {
         clients.add((ClientInterface) o);
@@ -135,6 +135,6 @@ public class Walmart2 implements Subject {
 
     public Coupon getCoupon() {
         return coupon;
-    }  
-    
+    }
+
 }

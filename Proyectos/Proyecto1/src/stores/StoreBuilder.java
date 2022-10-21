@@ -22,5 +22,5 @@ public class StoreBuilder {
     public StoreBuilder client(ClientInterface client) {
         return this;
     }
-    
+
 }

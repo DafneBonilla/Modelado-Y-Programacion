@@ -87,28 +87,28 @@ public class Client implements ClientInterface {
         return coupon;
     }
 
-	@Override
-	public void update() {
+    @Override
+    public void update() {
         if (walmart != null) {
             this.coupon = walmart.getCoupon();
         }
-	}
+    }
 
-	@Override
-	public boolean check(Iterator<Country> iter) {
+    @Override
+    public boolean check(Iterator<Country> iter) {
         Country c;
         while (iter.hasNext()) {
             c = iter.next();
             if (c.getInt() == nationality.getInt()) {
                 return true;
-            } 
+            }
         }
         return false;
-	}
+    }
 
-	@Override
-	public void setWalmart(Walmart2 walmart) {
+    @Override
+    public void setWalmart(Walmart2 walmart) {
         this.walmart = walmart;
-	}
+    }
 
 }

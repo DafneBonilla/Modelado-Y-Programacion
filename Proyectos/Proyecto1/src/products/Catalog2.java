@@ -40,9 +40,9 @@ public class Catalog2 implements Catalog<CatalogIterator<Product>> {
         public String getName() {
             return "Catalog2";
         }
-        
+
     }
-    
+
     public Catalog2() {
         list = new LinkedList<>();
     }

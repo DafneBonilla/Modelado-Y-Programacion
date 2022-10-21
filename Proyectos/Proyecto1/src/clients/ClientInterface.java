@@ -2,8 +2,7 @@ package clients;
 
 import java.io.Serializable;
 import java.util.Iterator;
-
-import walmart.Walmart2;
+import walmart.*;
 
 public interface ClientInterface extends Serializable, Observer {
 
@@ -28,8 +27,8 @@ public interface ClientInterface extends Serializable, Observer {
     @Override
     public void update();
 
-    public boolean check(Iterator<Country> iter); 
-    
+    public boolean check(Iterator<Country> iter);
+
     public void setWalmart(Walmart2 walmart);
 
 }

@@ -1,7 +1,6 @@
-package ask;
+package utility;
 
 import java.util.Scanner;
-
 import clients.Country;
 
 public class Asker {
