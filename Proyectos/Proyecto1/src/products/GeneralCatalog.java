@@ -58,7 +58,7 @@ public class GeneralCatalog implements Catalog<ProductCatalog> {
     }
 
     @Override
-    public CatalogIterator<ProductCatalog> Iterator() {
+    public CatalogIterator<ProductCatalog> iterator() {
         return new GeneralCatalogIterator();
     }
 

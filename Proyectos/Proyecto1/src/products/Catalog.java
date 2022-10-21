@@ -8,7 +8,7 @@ public interface Catalog<T> extends Serializable {
 
     public void remove(T item);
 
-    public CatalogIterator<T> Iterator();
+    public CatalogIterator<T> iterator();
 
     public String getName();
 

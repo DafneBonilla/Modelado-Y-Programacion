@@ -4,17 +4,15 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ProductCatalog implements Catalog<Product> {
+public class Catalog2 implements Catalog<CatalogIterator<Product>> {
 
-    private List<Product> list;
+    private List<CatalogIterator<Product>> list;
 
-    private Department department;
+    private class Catalog2Iterator implements CatalogIterator<CatalogIterator<Product>> {
 
-    private class ProductCatalogIterator implements CatalogIterator<Product> {
+        private Iterator<CatalogIterator<Product>> iterator;
 
-        private Iterator<Product> iterator;
-
-        private ProductCatalogIterator() {
+        private Catalog2Iterator() {
             iterator = list.iterator();
         }
 
@@ -24,7 +22,7 @@ public class ProductCatalog implements Catalog<Product> {
         }
 
         @Override
-        public Product next() {
+        public CatalogIterator<Product> next() {
             return iterator.next();
         }
 
@@ -40,34 +38,33 @@ public class ProductCatalog implements Catalog<Product> {
 
         @Override
         public String getName() {
-            return department.toString();
+            return "Catalog2";
         }
-
+        
     }
-
-    public ProductCatalog(Department department) {
-        this.list = new LinkedList<>();
-        this.department = department;
+    
+    public Catalog2() {
+        list = new LinkedList<>();
     }
 
     @Override
-    public void add(Product item) {
+    public void add(CatalogIterator<Product> item) {
         list.add(item);
     }
 
     @Override
-    public void remove(Product item) {
+    public void remove(CatalogIterator<Product> item) {
         list.remove(item);
     }
 
     @Override
-    public CatalogIterator<Product> iterator() {
-        return new ProductCatalogIterator();
+    public CatalogIterator<CatalogIterator<Product>> iterator() {
+        return new Catalog2Iterator();
     }
 
     @Override
     public String getName() {
-        return department.toString();
+        return "Catalog2";
     }
 
 }
