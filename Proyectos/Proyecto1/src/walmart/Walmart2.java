@@ -13,7 +13,7 @@ public class Walmart2 implements Subject {
 
     private List<ClientInterface> clients;
 
-    private Catalog<Catalog<Product>> catalog;
+    private Catalog catalog;
 
     private AccountManager manager;
 
@@ -21,7 +21,7 @@ public class Walmart2 implements Subject {
 
     private Coupon coupon;
 
-    public Walmart2(List<ClientInterface> clients, Catalog<Catalog<Product>> catalog) {
+    public Walmart2(List<ClientInterface> clients, Catalog catalog) {
         this.clients = clients;
         this.catalog = catalog;
     }
@@ -95,20 +95,9 @@ public class Walmart2 implements Subject {
     private Store store(ClientInterface client) {
         storeB = new StoreBuilder();
         storeB = storeB.client(client);
-        storeB = storeB.iterator(generate());
+        storeB = storeB.iterator(catalog.iterator());
         return storeB.build();
 
-    }
-
-    private CatalogIterator<CatalogIterator<Product>> generate() {
-        Catalog2 cat = new Catalog2();
-        CatalogIterator<Catalog<Product>> it = catalog.iterator();
-        while (it.hasNext()) {
-            Catalog<Product> cat2 = it.next();
-            CatalogIterator<Product> it2 = cat2.iterator();
-            cat.add(it2);
-        }
-        return cat.iterator();
     }
 
     private void close() {

@@ -1,13 +1,16 @@
 package stores;
 
+import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import products.*;
 import utility.*;
 import clients.*;
 
 public class Store {
 
-    private CatalogIterator<CatalogIterator<Product>> iter;
+    private CatalogIterator iter;
 
     private ClientInterface client;
 
@@ -17,8 +20,13 @@ public class Store {
 
     private Asker asker;
 
-    public Store() {
-
+    public Store(StoreBuilder builder) {
+        this.iter = builder.iter;
+        this.client = builder.client;
+        this.lang = builder.lang;
+        lang.setStore(this);
+        this.cart = new LinkedList<>();
+        this.asker = Asker.getAsker();
     }
 
     public void work() {
@@ -45,12 +53,18 @@ public class Store {
 
     }
 
+    // fuente: https://stackoverflow.com/a/40253413
     private String generateDate() {
-        return null;
+        LocalDate startD = LocalDate.now();
+        long start = startD.toEpochDay();
+        LocalDate endD = LocalDate.of(2030, 12, 31);
+        long end = endD.toEpochDay();
+        long randomDate = ThreadLocalRandom.current().longs(start, end).findAny().getAsLong();
+        return LocalDate.ofEpochDay(randomDate).toString();
     }
 
     private String printX() {
-        return null;
+        return lang.printX();
     }
 
 }

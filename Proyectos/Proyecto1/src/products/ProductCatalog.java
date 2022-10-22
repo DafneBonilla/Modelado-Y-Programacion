@@ -4,13 +4,11 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ProductCatalog implements Catalog<Product> {
+public class ProductCatalog implements Catalog {
 
     private List<Product> list;
 
-    private Department department;
-
-    private class ProductCatalogIterator implements CatalogIterator<Product> {
+    private class ProductCatalogIterator implements CatalogIterator {
 
         private Iterator<Product> iterator;
 
@@ -40,14 +38,13 @@ public class ProductCatalog implements Catalog<Product> {
 
         @Override
         public String getName() {
-            return department.toString();
+            return "Catalogo";
         }
 
     }
 
-    public ProductCatalog(Department department) {
+    public ProductCatalog() {
         this.list = new LinkedList<>();
-        this.department = department;
     }
 
     @Override
@@ -61,13 +58,13 @@ public class ProductCatalog implements Catalog<Product> {
     }
 
     @Override
-    public CatalogIterator<Product> iterator() {
+    public CatalogIterator iterator() {
         return new ProductCatalogIterator();
     }
 
     @Override
     public String getName() {
-        return department.toString();
+        return "Catalogo";
     }
 
 }

@@ -1,10 +1,10 @@
 package products;
 
-public interface CatalogIterator<T> {
+public interface CatalogIterator {
 
     public boolean hasNext();
 
-    public T next();
+    public Product next();
 
     public void remove();
 

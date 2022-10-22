@@ -2,13 +2,13 @@ package products;
 
 import java.io.Serializable;
 
-public interface Catalog<T> extends Serializable {
+public interface Catalog extends Serializable {
 
-    public void add(T item);
+    public void add(Product item);
 
-    public void remove(T item);
+    public void remove(Product item);
 
-    public CatalogIterator<T> iterator();
+    public CatalogIterator iterator();
 
     public String getName();
 

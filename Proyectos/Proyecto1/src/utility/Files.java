@@ -76,7 +76,7 @@ public class Files {
         }
     }
 
-    public void zipCatalog(Catalog<Catalog<Product>> list) {
+    public void zipCatalog(Catalog list) {
         try {
             FileOutputStream fos = new FileOutputStream("catalogo.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -89,12 +89,12 @@ public class Files {
         }
     }
 
-    public Catalog<Catalog<Product>> unzipCatalog() {
+    public Catalog unzipCatalog() {
         try {
             FileInputStream fis = new FileInputStream("catalogo.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
             @SuppressWarnings("unchecked")
-            Catalog<Catalog<Product>> catalog = (Catalog<Catalog<Product>>) ois.readObject();
+            Catalog catalog = (Catalog) ois.readObject();
             ois.close();
             return catalog;
         } catch (Exception e) {
