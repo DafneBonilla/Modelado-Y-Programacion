@@ -2,10 +2,21 @@ package clients;
 
 import products.Department;
 
+/**
+ * Enum to represent countries
+ */
 public enum Country {
 
+    /* The countries */
     MEXICO, USA, SPAIN;
 
+    /**
+     * Method to get the country from an integer
+     * In case of not finding the country, the method will return null
+     * 
+     * @param i the integer to convert
+     * @return the country associated with the integer
+     */
     public static Country getCountry(int i) {
         switch (i) {
             case 0:
@@ -19,6 +30,12 @@ public enum Country {
         }
     }
 
+    /**
+     * Method to return an integer from the country that is calling the method
+     * In case of not finding the country, the method will return -1
+     * 
+     * @return the integer associated with the country
+     */
     public int getInt() {
         switch (this) {
             case MEXICO:
@@ -32,6 +49,12 @@ public enum Country {
         }
     }
 
+    /**
+     * Method to return a department from the country that is calling the method
+     * In case of not finding the country, the method will return null
+     * 
+     * @return the department associated with the country
+     */
     public Department getDeparment() {
         switch (this) {
             case MEXICO:
@@ -46,6 +69,11 @@ public enum Country {
 
     }
 
+    /**
+     * Method to return the country as a string
+     * 
+     * @return the country as a string
+     */
     @Override
     public String toString() {
         switch (this) {

@@ -1,31 +1,52 @@
 package clients;
 
 import java.util.Iterator;
-
 import walmart.Walmart2;
 
+/**
+ * Class to represent a client
+ * A client has a username, a password, a nationality (instance of
+ * {@link Country}),
+ * a name, a phone number, an address, an id, a bank number, a coupon (instance
+ * of {@link Coupon}) and a Walmart2 (instance of {@link Walmart2})
+ */
 public class Client implements ClientInterface {
 
+    /* The username of the client */
     private String username;
 
+    /* The password of the client */
     private String password;
 
+    /* The nationality of the client */
     private Country nationality;
 
+    /* The name of the client */
     private String name;
 
+    /* The phone number of the client */
     private long phone;
 
+    /* The address of the client */
     private String address;
 
+    /* The id of the client */
     private int id;
 
+    /* The bank number of the client */
     private long bankNumber;
 
+    /* The coupon of the client */
     private Coupon coupon;
 
+    /* The Walmart2 of the client */
     private Walmart2 walmart;
 
+    /**
+     * Constructor
+     * 
+     * @param builder the builder to build the client
+     */
     public Client(ClientBuilder builder) {
         this.username = builder.username;
         this.password = builder.password;
@@ -42,51 +63,99 @@ public class Client implements ClientInterface {
         this.coupon = null;
     }
 
+    /**
+     * Method to get the username of the client
+     * 
+     * @return the username of the client
+     */
     @Override
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Method to get the password of the client
+     * 
+     * @return the password of the client
+     */
     @Override
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Method to get nationality of the client
+     * 
+     * @return the nationality of the client
+     */
     @Override
     public Country getNationality() {
         return nationality;
     }
 
+    /**
+     * Method to get the name of the client
+     * 
+     * @return the name of the client
+     */
     @Override
     public String getName() {
         return name;
     }
 
+    /**
+     * Method to get the phone number of the client
+     * 
+     * @return the phone number of the client
+     */
     @Override
     public long getPhone() {
         return phone;
     }
 
+    /**
+     * Method to get the address of the client
+     * 
+     * @return the address of the client
+     */
     @Override
     public String getAddress() {
         return address;
     }
 
+    /**
+     * Method to get the id of the client
+     * 
+     * @return the id of the client
+     */
     @Override
     public int getId() {
         return id;
     }
 
+    /**
+     * Method to get the bank number of the client
+     * 
+     * @return the bank number of the client
+     */
     @Override
     public long getBankNumber() {
         return bankNumber;
     }
 
+    /**
+     * Method to get the coupon that the client has
+     * 
+     * @return the coupon that the client has
+     */
     @Override
     public Coupon getCoupon() {
         return coupon;
     }
 
+    /**
+     * Method to update the client
+     */
     @Override
     public void update() {
         if (walmart != null) {
@@ -94,6 +163,14 @@ public class Client implements ClientInterface {
         }
     }
 
+    /**
+     * Method to check if the clients country is in the list of countries that is
+     * given
+     * 
+     * @param iter the iterator of the list of countries
+     * @return true if the client's country is in the list of countries, false if
+     *         not
+     */
     @Override
     public boolean check(Iterator<Country> iter) {
         Country c;
@@ -106,6 +183,11 @@ public class Client implements ClientInterface {
         return false;
     }
 
+    /**
+     * Method to set the Walmart2 of the client
+     * 
+     * @param walmart the Walmart2 of the client
+     */
     @Override
     public void setWalmart(Walmart2 walmart) {
         this.walmart = walmart;
