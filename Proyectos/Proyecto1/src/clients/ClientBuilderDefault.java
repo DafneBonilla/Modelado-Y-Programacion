@@ -1,7 +1,7 @@
 package clients;
 
 /**
- * Class to represent a client builder
+ * Class to represent a client builder default
  * A client builder default will build a client (instance of {@link Client})
  */
 public class ClientBuilderDefault extends ClientBuilder {

@@ -1,9 +1,20 @@
 package products;
 
+/**
+ * Enum to represent departments
+ */
 public enum Department {
 
+    /* The departments */
     ELECTRONICS, GROCERY, PETS, HOMEAPPLIANCES, VIDEOGAMES;
 
+    /**
+     * Method to get the department from an integer
+     * In case of not finding the department, the method will return null
+     * 
+     * @param i the integer to convert
+     * @return the department associated with the integer
+     */
     public static Department getDepartment(int i) {
         switch (i) {
             case 0:
@@ -21,6 +32,12 @@ public enum Department {
         }
     }
 
+    /**
+     * Method to return an integer from the department that is calling the method
+     * In case of not finding the department, the method will return -1
+     * 
+     * @return the integer associated with the department
+     */
     public int getInt() {
         switch (this) {
             case ELECTRONICS:
@@ -38,6 +55,11 @@ public enum Department {
         }
     }
 
+    /**
+     * Method to return the department as a string
+     * 
+     * @return the department as a string
+     */
     @Override
     public String toString() {
         switch (this) {

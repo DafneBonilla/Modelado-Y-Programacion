@@ -9,23 +9,46 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Class to represent a Walmart2
+ * A Walmart2 has a list of clients (instances of {@link ClientInterface}), a
+ * catalog (instance of {@link Catalog}), a manager (instance of
+ * {@link AccountManager}), a store builder (instance of {@link StoreBuilder}),
+ * a store (instance of {@link StoreInterface}) and a coupon (instance of
+ * {@link Coupon})
+ */
 public class Walmart2 implements Subject {
 
+    /* The list of clients */
     private List<ClientInterface> clients;
 
+    /* The catalog */
     private Catalog catalog;
 
+    /* The manager */
     private AccountManager manager;
 
+    /* The store builder */
     private StoreBuilder storeB;
 
+    /* The coupon */
     private Coupon coupon;
 
+    /**
+     * Constructor
+     * 
+     * @param clients the list of clients
+     * @param catalog the catalog
+     */
     public Walmart2(List<ClientInterface> clients, Catalog catalog) {
         this.clients = clients;
         this.catalog = catalog;
     }
 
+    /**
+     * Method to remove the coupon from all the clients and set the walmart2 of the
+     * clients to this
+     */
     private void removeCoupon() {
         this.coupon = null;
         for (ClientInterface client : clients) {
@@ -34,6 +57,9 @@ public class Walmart2 implements Subject {
         }
     }
 
+    /**
+     * Method to generate a random new coupon
+     */
     private void randomCoupon() {
         int random2 = ThreadLocalRandom.current().nextInt(0, 3 + 1);
         if (random2 == 0) {
@@ -45,6 +71,12 @@ public class Walmart2 implements Subject {
         }
     }
 
+    /**
+     * Method to generate a list of random countries
+     * 
+     * @param i the number of countries to generate
+     * @return the list of countries
+     */
     private List<Country> generateList(int i) {
         List<Country> countries = new LinkedList<>();
         for (int j = 0; j < i; j++) {
@@ -72,6 +104,9 @@ public class Walmart2 implements Subject {
         return countries;
     }
 
+    /**
+     * Method to give the coupon to all the clients
+     */
     private void giveCoupons() {
         if (coupon != null) {
             for (ClientInterface client : clients) {
@@ -83,15 +118,29 @@ public class Walmart2 implements Subject {
         }
     }
 
+    /**
+     * Method to make Walmart2 work
+     */
     public void work() {
 
     }
 
+    /**
+     * Method to get a client using the account manager
+     * 
+     * @return the client that the account manager obtained
+     */
     private ClientInterface verify() {
         manager = new AccountManager(clients);
         return manager.getAccount();
     }
 
+    /**
+     * Method to build a store that fits the client
+     * 
+     * @param client the client
+     * @return the store that fits the client
+     */
     private Store store(ClientInterface client) {
         storeB = new StoreBuilder();
         storeB = storeB.client(client);
@@ -100,21 +149,37 @@ public class Walmart2 implements Subject {
 
     }
 
+    /**
+     * Method to close Walmart2 and save in a file the clients
+     */
     private void close() {
         Files file = Files.getFiles();
         file.zipClients(clients);
     }
 
+    /**
+     * Method to register an observer
+     * 
+     * @param observer the observer to register
+     */
     @Override
     public void registerObserver(Observer o) {
         clients.add((ClientInterface) o);
     }
 
+    /**
+     * Method to remove an observer
+     * 
+     * @param observer the observer to remove
+     */
     @Override
     public void removeObserver(Observer o) {
         clients.remove((ClientInterface) o);
     }
 
+    /**
+     * Method to notify the observers
+     */
     @Override
     public void notifyObservers() {
         for (Observer o : clients) {
@@ -122,6 +187,11 @@ public class Walmart2 implements Subject {
         }
     }
 
+    /**
+     * Method to get the coupon
+     * 
+     * @return the coupon
+     */
     public Coupon getCoupon() {
         return coupon;
     }

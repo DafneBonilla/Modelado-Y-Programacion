@@ -4,26 +4,50 @@ import java.util.List;
 import clients.*;
 import utility.*;
 
+/**
+ * Class to represent an account manager
+ * An account manager has a list of clients (instances of
+ * {@link ClientInterface}), a client builder (instance of
+ * {@link ClientBuilder}), an account (instance of {@link ClientInterface}) and
+ * an asker (instance of {@link Asker})
+ */
 public class AccountManager {
 
+    /* The list of clients */
     private List<ClientInterface> clients;
 
+    /* The client builder */
     private ClientBuilder builder;
 
+    /* The account */
     private ClientInterface account;
 
+    /* The asker */
     private Asker asker;
 
-    public AccountManager(List<ClientInterface> clientes) {
-        this.clients = clientes;
+    /**
+     * Constructor
+     * 
+     * @param clients the list of clients
+     */
+    public AccountManager(List<ClientInterface> clients) {
+        this.clients = clients;
         this.asker = Asker.getAsker();
     }
 
+    /**
+     * Method to get the account that the account manager obtained
+     * 
+     * @return the account that the account manager obtained
+     */
     public ClientInterface getAccount() {
         workAccount();
         return account;
     }
 
+    /**
+     * Method to obtain an account from the user
+     */
     private void workAccount() {
         System.out.println("Bienvenido a Walmart2");
         boolean working = true;
@@ -51,6 +75,10 @@ public class AccountManager {
         }
     }
 
+    /**
+     * Method to ask for the username and password of the user in order to log in
+     * And then set the account using a proxy of the account requested
+     */
     private void normalUse() {
         String ques = "Ingrese su usuario";
         String user = asker.askString(ques, "Usuario invalido");
@@ -64,6 +92,14 @@ public class AccountManager {
         }
     }
 
+    /**
+     * Method to verify if the username and password are correct using the list of
+     * clients
+     * 
+     * @param user the username of the account
+     * @param pass the password of the account
+     * @return the account if it is correct, null otherwise
+     */
     private ClientInterface verifyAccount(String user, String pas) {
         ClientInterface clie = null;
         for (ClientInterface client : clients) {
@@ -74,6 +110,10 @@ public class AccountManager {
         return clie;
     }
 
+    /**
+     * Method to create a new account based on the users input
+     * And then set the account using the new account
+     */
     private void createAccount() {
         builder = new ClientBuilderDefault();
         String ques;
@@ -115,6 +155,12 @@ public class AccountManager {
         }
     }
 
+    /**
+     * Method to verify if the username is already taken
+     * 
+     * @param user the username to verify
+     * @return true if the username is not taken, false otherwise
+     */
     private boolean verifyUsername(String user) {
         boolean valid = true;
         for (ClientInterface client : clients) {
