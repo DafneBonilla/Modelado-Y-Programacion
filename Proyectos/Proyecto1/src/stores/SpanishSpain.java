@@ -19,8 +19,48 @@ public class SpanishSpain implements Language {
     }
 
     @Override
-    public String printX() {
-        return "Hola";
+    public String printShow() {
+        return "Este es el fliplante catalogo de productos";
+    }
+
+    @Override
+    public String printAskProd() {
+        return "Ingrese el numero del articulo que desea comprar";
+    }
+
+    @Override
+    public String printInvalid() {
+        return "Entrada incorrecta";
+    }
+
+    @Override
+    public String printFinishBuy() {
+        return "Finalizar de comprar";
+    }
+
+    @Override
+    public String printBank() {
+        return "Ingrese el numero de su cuenta bancaria relacionada a su cuenta";
+    }
+
+    @Override
+    public String printClient() {
+        return "Comprador";
+    }
+
+    @Override
+    public String printDate() {
+        return "Tiempo";
+    }
+
+    @Override
+    public String printProd() {
+        return "Articulos";
+    }
+
+    @Override
+    public String printDeliver() {
+        return "Fecha esperada de entrega";
     }
 
 }

@@ -19,8 +19,48 @@ public class EnglishUsa implements Language {
     }
 
     @Override
-    public String printX() {
-        return "Hello";
+    public String printShow() {
+        return "This is the product catalog";
+    }
+
+    @Override
+    public String printAskProd() {
+        return "Enter the product number you want to buy";
+    }
+
+    @Override
+    public String printInvalid() {
+        return "Invalid input";
+    }
+
+    @Override
+    public String printFinishBuy() {
+        return "Finish buying";
+    }
+
+    @Override
+    public String printBank() {
+        return "Enter your accounts bank number";
+    }
+
+    @Override
+    public String printClient() {
+        return "Client";
+    }
+
+    @Override
+    public String printDate() {
+        return "Date";
+    }
+
+    @Override
+    public String printProd() {
+        return "Product";
+    }
+
+    @Override
+    public String printDeliver() {
+        return "Expected delivery date";
     }
 
 }

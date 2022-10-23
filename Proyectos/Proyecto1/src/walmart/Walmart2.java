@@ -122,7 +122,22 @@ public class Walmart2 implements Subject {
      * Method to make Walmart2 work
      */
     public void work() {
-
+        while (true) {
+            ClientInterface client = verify();
+            if (client == null) {
+                break;
+            }
+            if (client.getClass().equals(Client.class)) {
+                registerObserver(client);
+                client = new ClientProxy((Client) client);
+            }
+            removeCoupon();
+            randomCoupon();
+            giveCoupons();
+            Store store = store(client);
+            store.work();
+        }
+        close();
     }
 
     /**
