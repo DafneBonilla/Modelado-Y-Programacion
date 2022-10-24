@@ -63,7 +63,21 @@ public class Files {
      */
     public void generateCatalog() {
         Catalog catalog = new ProductCatalog();
-        // TODO: add products to the catalog
+        catalog.add(new Computer());
+        catalog.add(new Headphones());
+        catalog.add(new Cellphone());
+        catalog.add(new Cheese());
+        catalog.add(new Milk());
+        catalog.add(new Bread());
+        catalog.add(new DogFood());
+        catalog.add(new CatLitter());
+        catalog.add(new DogToys());
+        catalog.add(new Fridge());
+        catalog.add(new Microwave());
+        catalog.add(new AirFryer());
+        catalog.add(new Halo());
+        catalog.add(new NintendoSwitch());
+        catalog.add(new Xbox());
         try {
             FileOutputStream fos = new FileOutputStream("catalogo.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);

@@ -55,7 +55,7 @@ public enum Country {
      * 
      * @return the department associated with the country
      */
-    public Department getDeparment() {
+    public Department getDepartment() {
         switch (this) {
             case MEXICO:
                 return Department.GROCERY;

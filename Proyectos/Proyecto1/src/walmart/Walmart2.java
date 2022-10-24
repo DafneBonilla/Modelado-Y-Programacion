@@ -157,7 +157,7 @@ public class Walmart2 implements Subject {
      * @return the store that fits the client
      */
     private Store store(ClientInterface client) {
-        storeB = new StoreBuilder();
+        storeB = new StoreBuilderDefault();
         storeB = storeB.client(client);
         storeB = storeB.iterator(catalog.iterator());
         return storeB.build();
