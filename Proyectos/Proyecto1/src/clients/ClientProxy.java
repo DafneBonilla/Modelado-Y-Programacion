@@ -113,6 +113,15 @@ public class ClientProxy implements ClientInterface {
     }
 
     /**
+     * Method to set the clients money
+     * 
+     * @param money the clients money
+     */
+    public void setMoney(double money) {
+        client.setMoney(money);
+    }
+
+    /**
      * Method to get the coupon of the client
      * 
      * @return the coupon of the client

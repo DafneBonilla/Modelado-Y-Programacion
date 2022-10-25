@@ -151,4 +151,129 @@ public class EnglishUsa implements Language {
         return "Expected delivery date";
     }
 
+    /**
+     * Method to get in a string the message "Direction" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printDirection() {
+        return "Direction";
+    }
+
+    /**
+     * Method to get in a string the message "good try but thats not correct, aborting the purchase" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printNotSecure() {
+        return "Good try, but thats not correct, aborting the purchase";
+    }
+
+    /**
+     * Method to get in a string the message "the purchase was successful" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printBye() {
+        return "The purchase was successful";
+    }
+
+    /**
+     * Method to get in a string the message "your account doesnt have money, aborting the purchase" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printNoMoney() {
+        return "Your account doesnt have enough money, aborting the purchase";
+    }
+
+    /**
+     * Method to get in a string the message "the purchase is secure" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printSecure() {
+        return "The purchase is secure";
+    }
+
+    /**
+     * Method to get in a string the menu of the store in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printMenu() {
+        String answer = "";
+        answer += "What do you want to do?\n";
+        answer += "[0] Show the products in the catalog\n";
+        answer += "[1] Start buying\n";
+        answer += "[2] Exit\n";
+        return answer;
+    }
+
+    /**
+     * Method to get in a string the message "Percentage" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printpercent() {
+        return "Percentage";
+    }
+
+    /**
+     * Method to get in a string the message "Coupon" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printCoup() {
+        return "Coupon";
+    }
+
+    /**
+     * Method to get in a string the message "welcome to the store" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printWelcome() {
+        return "Welcome to Walmart2";
+    }
+    
+    /**
+     * Method to get in a string the message "successful purchase" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printSuccess() {
+        return "Successful purchase";
+    }
+
+    /**
+     * Method to get in a string the message "Total" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printTotal() {
+        return "Total";
+    }
+
+    /**
+     * Method to get in a string the message "your balance is" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printMoney() {
+        return "Your balance is";
+    }
+
 }

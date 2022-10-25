@@ -42,7 +42,18 @@ public class Files {
     public void generateClients() {
         List<ClientInterface> clients = new LinkedList<>();
         ClientBuilder clientBuilder = new ClientBuilderDefault();
-        // TODO: add clients to the list
+        clientBuilder = clientBuilder.username("Cheems").password("ContraseniaSegura99").nationality(Country.MEXICO).name("Cheems Oaxaquenio").phone(5569359016L).address("San Francisco Tutla, Oaxaca").bankNumber(98643790L).money(7574000.23);
+        clients.add(clientBuilder.build());
+        clientBuilder = clientBuilder.username("Canek").password("KimPossible").nationality(Country.MEXICO).name("Canek Pelaez").phone(5556223899L).address("Av. Independencia 96, San Simon, Benito Juarez, Ciudad de Mexico").bankNumber(4567894256L).money(10000000.99);
+        clients.add(clientBuilder.build());
+        clientBuilder = clientBuilder.username("Maximo").password("Ronroneos21").nationality(Country.USA).name("Maximo Decimo Meridio").phone(8309319176L).address("148 East 126th Street New York").bankNumber(81029973L).money(90375.23);
+        clients.add(clientBuilder.build());
+        clientBuilder = clientBuilder.username("Fernando").password("Pg9tBP95").nationality(Country.USA).name("Fernando Lopez").phone(4232677284L).address("800 Florida Ave, NE Washington DC").bankNumber(456787820L).money(667539.59);
+        clients.add(clientBuilder.build());
+        clientBuilder = clientBuilder.username("Itzel").password("33jG5gM").nationality(Country.SPAIN).name("Itzel Azucena").phone(3464296089L).address("C. de Ausias March, 31-19, Barcelona").bankNumber(9486024L).money(5680135);
+        clients.add(clientBuilder.build());
+        clientBuilder = clientBuilder.username("Arturo").password("kCFtV327bzJ").nationality(Country.SPAIN).name("Arturo Lemus").phone(3479325785L).address("Ciudad Universitaria de Cantoblanco, Madrid").bankNumber(34670135L).money(25.01);
+        clients.add(clientBuilder.build());
         try {
             FileOutputStream fos = new FileOutputStream("clientes.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);

@@ -138,7 +138,7 @@ public class SpanishMexico implements Language {
      */
     @Override
     public String printApply() {
-        return "precios con el descuento aplicado";
+        return "Precios con el descuento aplicado";
     }
 
     /**
@@ -149,6 +149,131 @@ public class SpanishMexico implements Language {
     @Override
     public String printDeliver() {
         return "Fecha estimada de entrega";
+    }
+
+    /**
+     * Method to get in a string the message "Direction" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printDirection() {
+        return "Direccion";
+    }
+
+    /**
+     * Method to get in a string the message "good try but thats not correct, aborting the purchase" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printNotSecure() {
+        return "Buen intento, pero eso no es correcto, abortando la compra";
+    }
+
+    /**
+     * Method to get in a string the message "the purchase was successful" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printBye() {
+        return "La compra fue exitosa";
+    }
+
+    /**
+     * Method to get in a string the message "your account doesnt have money, aborting the purchase" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printNoMoney() {
+        return "Tu cuenta no tiene dinero suficiente, abortando la compra. Hoy no se fia, maniana si.";
+    }
+
+    /**
+     * Method to get in a string the message "the purchase is secure" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printSecure() {
+        return "La compra es segura";
+    }
+
+    /**
+     * Method to get in a string the menu of the store in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printMenu() {
+        String answer = "";
+        answer += "¿Que quieres hacer?\n";
+        answer += "[0] Mostrar los productos del catalogo\n";
+        answer += "[1] Empezar a comprar\n";
+        answer += "[2] Salir\n";
+        return answer;
+    }
+
+    /**
+     * Method to get in a string the message "Percentage" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printpercent() {
+        return "Porcentaje";
+    }
+
+    /**
+     * Method to get in a string the message "Coupon" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printCoup() {
+        return "Cupon";
+    }
+
+    /**
+     * Method to get in a string the message "welcome to the store" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printWelcome() {
+        return "Bienvenido a Walmart2";
+    }
+    
+    /**
+     * Method to get in a string the message "successful purchase" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printSuccess() {
+        return "Compra exitosa";
+    }
+
+    /**
+     * Method to get in a string the message "Total" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printTotal() {
+        return "Total";
+    }
+
+    /**
+     * Method to get in a string the message "your balance is" in the language
+     * 
+     * @return the message
+     */
+    @Override
+    public String printMoney() {
+        return "Tu saldo es";
     }
 
 }

@@ -158,6 +158,15 @@ public class Client implements ClientInterface {
     }
 
     /**
+     * Method to set the clients money
+     * 
+     * @param money the clients money
+     */
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    /**
      * Method to get the coupon that the client has
      * 
      * @return the coupon that the client has

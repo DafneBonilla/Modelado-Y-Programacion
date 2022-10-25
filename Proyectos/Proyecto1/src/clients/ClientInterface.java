@@ -74,6 +74,13 @@ public interface ClientInterface extends Serializable, Observer {
     public double getMoney();
 
     /**
+     * Method to set the clients money
+     * 
+     * @param money the clients money
+     */
+    public void setMoney(double money);
+
+    /**
      * Method to get the coupon that the client has
      * 
      * @return the coupon that the client has

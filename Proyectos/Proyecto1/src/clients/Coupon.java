@@ -4,13 +4,13 @@ import java.util.List;
 
 /**
  * Class to represent a coupon
- * A coupon has a porcentage of discount and a list of countries (instances of
+ * A coupon has a percentage of discount and a list of countries (instances of
  * {@link Country}) that can use it
  */
 public class Coupon {
 
-    /* The porcentage of discount */
-    private int porcentage;
+    /* The percentage of discount */
+    private int percentage;
 
     /* The list of countries that can use the coupon */
     private List<Country> countries;
@@ -18,21 +18,21 @@ public class Coupon {
     /**
      * Constructor
      * 
-     * @param porcentage the porcentage of discount
+     * @param percentage the percentage of discount
      * @param countries  the list of countries that can use the coupon
      */
-    public Coupon(int porcentage, List<Country> countries) {
-        this.porcentage = porcentage;
+    public Coupon(int percentage, List<Country> countries) {
+        this.percentage = percentage;
         this.countries = countries;
     }
 
     /**
-     * Method to get the porcentage of discount
+     * Method to get the percentage of discount
      * 
-     * @return the porcentage of discount
+     * @return the percentage of discount
      */
-    public int getPorcentage() {
-        return porcentage;
+    public int getpercentage() {
+        return percentage;
     }
 
     /**

@@ -69,10 +69,56 @@ public class Store {
      * Method to make the store work
      */
     public void work() {
-        // TODO: Implement this method
+        System.out.println(printWelcome());
+        System.out.println(printClient() + ": " + client.getName() + "\t id;" + client.getId());
+        System.out.println(printDate() + ": " + LocalDate.now());
+        System.out.println(printMoney() + ": $ " + client.getMoney());
+        Coupon coupon = client.getCoupon();
+        if (coupon != null) {
+            System.out.println(printCoup() + client.getNationality().getDepartment().toString() + printpercent() + coupon.getpercentage() + "%");
+        }
+        boolean exit = false;
+        boolean back = true;
+        while (back) {
+            int i = asker.askOption(printMenu(), 0, 2, printInvalid());
+            switch (i) {
+                case 0:
+                    showCatalog();
+                    break;
+                case 1:
+                    buy();
+                    back = false;
+                    break;
+                case 2:
+                    exit = true;
+                    break;
+            }
+        }
+        if (!exit) {
+            boolean secure = checkAccount();
+            if (secure) {
+                System.out.println(printSecure());
+                money();
+                boolean pay = verifyMoney();
+                if (pay) {
+                    System.out.println(printSuccess());
+                    client.setMoney(client.getMoney() - price);
+                    generateTicket();
+                    System.out.println(printBye());
+                } else {
+                    System.out.println(printNoMoney());
+                    System.out.println(printBye());
+                }
+            } else {
+                System.out.println(printNotSecure());
+                System.out.println(printBye());
+            }
+        } else {
+            System.out.println(printBye());
+        }
     }
 
-    /**
+	/**
      * Method to show the products in the catalog
      */
     private void showCatalog() {
@@ -136,7 +182,7 @@ public class Store {
         double sum = 0;
         if (coupon != null) {
             Department department = country.getDepartment();
-            int discount = coupon.getPorcentage();
+            int discount = coupon.getpercentage();
             for (Product product : cart) {
                 if (product.getDepartment() == department) {
                     sum += product.getPrice() * (1 - discount / 100.0);
@@ -176,12 +222,13 @@ public class Store {
         for (Product product : cart) {
             ticket += product.toString() + "\n";
         }
-        ticket += "Total: $" + price + ", " + printApply() + "\n";
+        ticket += printTotal() + ": $" + price + ", " + printApply() + "\n";
         ticket += printDeliver() + ": " + generateDate() + "\n";
+        ticket += printDirection() + ": " + client.getAddress() + "\n";
         System.out.println(ticket);
     }
 
-    /**
+	/**
      * Method to generate a date for the delivery
      * Source: https://stackoverflow.com/a/40253413
      * 
@@ -300,5 +347,125 @@ public class Store {
     private String printDeliver() {
         return lang.printDeliver();
     }
+
+    /**
+     * Method to get in a string the message "Direction" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printDirection() {
+        return lang.printDirection();
+    }
+
+    /**
+     * Method to get in a string the message "good try but thats not correct, aborting the purchase" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printNotSecure() {
+        return lang.printNotSecure();
+    }
+
+    /**
+     * Method to get in a string the message "the purchase was successful" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printBye() {
+        return lang.printBye();
+    }
+
+    /**
+     * Method to get in a string the message "your account doesnt have money, aborting the purchase" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printNoMoney() {
+        return lang.printNoMoney();
+    }
+
+    /**
+     * Method to get in a string the message "the purchase is secure" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printSecure() {
+        return lang.printSecure();
+    }
+
+    /**
+     * Method to get in a string the menu of the store in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printMenu() {
+        return lang.printMenu();
+    }
+
+    /**
+     * Method to get in a string the message "Percentage" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printpercent() {
+        return lang.printpercent();
+    }
+
+    /**
+     * Method to get in a string the message "Coupon" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printCoup() {
+        return lang.printCoup();
+    }
+
+    /**
+     * Method to get in a string the message "welcome to the store" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printWelcome() {
+        return lang.printWelcome();
+    }
+    
+    /**
+     * Method to get in a string the message "successful purchase" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printSuccess() {
+        return lang.printSuccess();
+    }
+
+    /**
+     * Method to get in a string the message "Total" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printTotal() {
+		return lang.printTotal();
+	}
+
+    /**
+     * Method to get in a string the message "your balance is" in the clients
+     * language
+     * 
+     * @return the message
+     */
+    private String printMoney() {
+		return lang.printMoney();
+	}
 
 }

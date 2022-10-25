@@ -101,4 +101,88 @@ public interface Language {
      */
     public String printDeliver();
 
+    /**
+     * Method to get in a string the message "Direction" in the language
+     * 
+     * @return the message
+     */
+    public String printDirection();
+
+    /**
+     * Method to get in a string the message "good try but thats not correct, aborting the purchase" in the language
+     * 
+     * @return the message
+     */
+    public String printNotSecure();
+
+    /**
+     * Method to get in a string the message "the purchase was successful" in the language
+     * 
+     * @return the message
+     */
+    public String printBye();
+
+    /**
+     * Method to get in a string the message "your account doesnt have money, aborting the purchase" in the language
+     * 
+     * @return the message
+     */
+    public String printNoMoney();
+
+    /**
+     * Method to get in a string the message "the purchase is secure" in the language
+     * 
+     * @return the message
+     */
+    public String printSecure();
+
+    /**
+     * Method to get in a string the menu of the store in the language
+     * 
+     * @return the message
+     */
+    public String printMenu();
+
+    /**
+     * Method to get in a string the message "Percentage" in the language
+     * 
+     * @return the message
+     */
+    public String printpercent();
+
+    /**
+     * Method to get in a string the message "Coupon" in the language
+     * 
+     * @return the message
+     */
+    public String printCoup();
+
+    /**
+     * Method to get in a string the message "welcome to the store" in the language
+     * 
+     * @return the message
+     */
+    public String printWelcome();
+    
+    /**
+     * Method to get in a string the message "successful purchase" in the language
+     * 
+     * @return the message
+     */
+    public String printSuccess();
+
+    /**
+     * Method to get in a string the message "Total" in the language
+     * 
+     * @return the message
+     */
+    public String printTotal();
+
+    /**
+     * Method to get in a string the message "your balance is" in the language
+     * 
+     * @return the message
+     */
+    public String printMoney();
+
 }
