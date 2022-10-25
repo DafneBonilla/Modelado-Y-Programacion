@@ -47,4 +47,15 @@ public abstract class Product implements Serializable {
                 + " | Departamento: " + getDepartment();
     }
 
+    /**
+     * Method to return the product as a string but with a discount in the price
+     * 
+     * @param por the percentage of the discount
+     * @return the product as a string with a discount in the price
+     */
+    public String toString(int por) {
+        return "Nombre: " + getName() + " | Codigo de Barras: " + getBarcode() + " | Precio: $"
+                + (getPrice() * (1 - por / 100.0)) + " | Departamento: " + getDepartment();
+    }
+
 }

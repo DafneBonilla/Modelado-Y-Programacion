@@ -7,8 +7,9 @@ import walmart.Walmart2;
  * Class to represent a client
  * A client has a username, a password, a nationality (instance of
  * {@link Country}),
- * a name, a phone number, an address, an id, a bank number, a coupon (instance
- * of {@link Coupon}) and a Walmart2 (instance of {@link Walmart2})
+ * a name, a phone number, an address, an id, a bank number, a amount of money,
+ * a coupon (instance of {@link Coupon}) and a Walmart2 (instance of
+ * {@link Walmart2})
  */
 public class Client implements ClientInterface {
 
@@ -36,6 +37,8 @@ public class Client implements ClientInterface {
     /* The bank number of the client */
     private long bankNumber;
 
+    private double money;
+
     /* The coupon of the client */
     private Coupon coupon;
 
@@ -60,6 +63,7 @@ public class Client implements ClientInterface {
                 + num.charAt(0) + num.charAt(num.length() - 1) + address.charAt(0)
                 + address.charAt(address.length() - 1);
         this.bankNumber = builder.bankNumber;
+        this.money = builder.money;
         this.coupon = null;
     }
 
@@ -141,6 +145,16 @@ public class Client implements ClientInterface {
     @Override
     public long getBankNumber() {
         return bankNumber;
+    }
+
+    /**
+     * Method to get the money of the client
+     * 
+     * @return the money of the client
+     */
+    @Override
+    public double getMoney() {
+        return money;
     }
 
     /**

@@ -103,6 +103,16 @@ public class ClientProxy implements ClientInterface {
     }
 
     /**
+     * Method to get the money of the client
+     * 
+     * @return the money of the client
+     */
+    @Override
+    public double getMoney() {
+        return client.getMoney();
+    }
+
+    /**
      * Method to get the coupon of the client
      * 
      * @return the coupon of the client

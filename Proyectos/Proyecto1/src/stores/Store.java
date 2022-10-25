@@ -69,7 +69,7 @@ public class Store {
      * Method to make the store work
      */
     public void work() {
-
+        // TODO: Implement this method
     }
 
     /**
@@ -153,19 +153,31 @@ public class Store {
     }
 
     /**
+     * Method to check if the client has enough money to pay for the list of
+     * products
+     * 
+     * @return true if the client has enough money to pay for the list of products,
+     *         false otherwise
+     */
+    private boolean verifyMoney() {
+        double actual = client.getMoney();
+        return actual >= price;
+    }
+
+    /**
      * Method to generate a ticket for the client
      */
     private void generateTicket() {
         String ticket = "";
-        ticket += "Ticket " + ThreadLocalRandom.current().nextInt(0, 1000) + "\n";
+        ticket += printTicket() + " " + ThreadLocalRandom.current().nextInt(0, 1000) + "\n";
         ticket += printClient() + ": " + client.getName() + "\t id;" + client.getId() + "\n";
-        ticket += printDate() + ":" + LocalDate.now().toString() + "\n";
+        ticket += printDate() + ": " + LocalDate.now().toString() + "\n";
         ticket += printProd() + ":\n";
         for (Product product : cart) {
             ticket += product.toString() + "\n";
         }
-        ticket += "Total: $" + price + "\n";
-        ticket += printDeliver() + ":" + generateDate() + "\n";
+        ticket += "Total: $" + price + ", " + printApply() + "\n";
+        ticket += printDeliver() + ": " + generateDate() + "\n";
         System.out.println(ticket);
     }
 
@@ -184,38 +196,107 @@ public class Store {
         return LocalDate.ofEpochDay(randomDate).toString();
     }
 
+    /**
+     * Method to get in a string the message "show the products in the catalog" in
+     * the clients language
+     * 
+     * @return the message
+     */
     private String printShow() {
         return lang.printShow();
     }
 
+    /**
+     * Method to get in a string the message "choose a product" in the clients
+     * language
+     * 
+     * @return the message
+     */
     private String printAskProd() {
         return lang.printAskProd();
     }
 
+    /**
+     * Method to get in a string the message "invalid input" in the clients language
+     * 
+     * @return the message
+     */
     private String printInvalid() {
         return lang.printInvalid();
     }
 
+    /**
+     * Method to get in a string the message "finish buying" in the clients language
+     * 
+     * @return the message
+     */
     private String printFinishBuy() {
         return lang.printFinishBuy();
     }
 
+    /**
+     * Method to get in a string the message "enter the bank number of your account"
+     * in the clients language
+     * 
+     * @return the message
+     */
     private String printBank() {
         return lang.printBank();
     }
 
+    /**
+     * Method to get in a string the message "Ticket" in the clients language
+     * 
+     * @return the message
+     */
+    private String printTicket() {
+        return lang.printTicket();
+    }
+
+    /**
+     * Method to get in a string the message "Client" in the clients language
+     * 
+     * @return the message
+     */
     private String printClient() {
         return lang.printClient();
     }
 
+    /**
+     * Method to get in a string the message "Date" in the clients language
+     * 
+     * @return the message
+     */
     private String printDate() {
         return lang.printDate();
     }
 
+    /**
+     * Method to get in a string the message "Products" in the clients
+     * language
+     * 
+     * @return the message
+     */
     private String printProd() {
         return lang.printProd();
     }
 
+    /**
+     * Method to get in a string the message "prices have the discount applied" in
+     * the clients language
+     * 
+     * @return the message
+     */
+    private String printApply() {
+        return lang.printApply();
+    }
+
+    /**
+     * Method to get in a string the message "Delivery date" in the clients
+     * language
+     * 
+     * @return the message
+     */
     private String printDeliver() {
         return lang.printDeliver();
     }

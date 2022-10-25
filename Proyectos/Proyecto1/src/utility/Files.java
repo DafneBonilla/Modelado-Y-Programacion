@@ -41,6 +41,7 @@ public class Files {
      */
     public void generateClients() {
         List<ClientInterface> clients = new LinkedList<>();
+        ClientBuilder clientBuilder = new ClientBuilderDefault();
         // TODO: add clients to the list
         try {
             FileOutputStream fos = new FileOutputStream("clientes.txt");

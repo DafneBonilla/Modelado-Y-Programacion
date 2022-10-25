@@ -4,8 +4,9 @@ package clients;
  * Abstract class to implement the Builder pattern
  * A client builder will build a client (instance of {@link Client})
  * A client builder has a username, a password, a nationality (instance of
- * {@link Country}), a name, a phone number, an address and a bank number, all
- * of this attributes will be the same as the client that will be built
+ * {@link Country}), a name, a phone number, an address and a bank number, an
+ * amount of money, all of this attributes will be the same as the client that
+ * will be built
  */
 public abstract class ClientBuilder {
 
@@ -29,6 +30,9 @@ public abstract class ClientBuilder {
 
     /* The bank number of the client to build */
     protected long bankNumber;
+
+    /* The money of the client to build */
+    protected double money;
 
     /**
      * Builds a client with the attributes of the client builder
@@ -92,5 +96,13 @@ public abstract class ClientBuilder {
      * @return the client builder
      */
     public abstract ClientBuilder bankNumber(long bankNumber);
+
+    /**
+     * Method to set the money of the client to build
+     * 
+     * @param money the money of the client to build
+     * @return the client builder
+     */
+    public abstract ClientBuilder money(double money);
 
 }

@@ -105,4 +105,16 @@ public class ClientBuilderDefault extends ClientBuilder {
         return this;
     }
 
+    /**
+     * Method to set the money of the client to build
+     * 
+     * @param money the money of the client to build
+     * @return the client builder
+     */
+    @Override
+    public ClientBuilder money(double money) {
+        this.money = money;
+        return this;
+    }
+
 }

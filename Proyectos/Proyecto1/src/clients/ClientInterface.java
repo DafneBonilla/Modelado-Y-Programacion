@@ -67,6 +67,13 @@ public interface ClientInterface extends Serializable, Observer {
     public long getBankNumber();
 
     /**
+     * Method to get the money of the client
+     * 
+     * @return the money of the client
+     */
+    public double getMoney();
+
+    /**
      * Method to get the coupon that the client has
      * 
      * @return the coupon that the client has

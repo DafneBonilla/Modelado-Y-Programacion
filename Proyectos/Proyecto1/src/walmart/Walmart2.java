@@ -122,18 +122,18 @@ public class Walmart2 implements Subject {
      * Method to make Walmart2 work
      */
     public void work() {
+        notify();
         while (true) {
             ClientInterface client = verify();
             if (client == null) {
                 break;
             }
             if (client.getClass().equals(Client.class)) {
+                client.setWalmart(this);
+                client.update();
                 registerObserver(client);
                 client = new ClientProxy((Client) client);
             }
-            removeCoupon();
-            randomCoupon();
-            giveCoupons();
             Store store = store(client);
             store.work();
         }
@@ -197,9 +197,9 @@ public class Walmart2 implements Subject {
      */
     @Override
     public void notifyObservers() {
-        for (Observer o : clients) {
-            o.update();
-        }
+        removeCoupon();
+        randomCoupon();
+        giveCoupons();
     }
 
     /**
