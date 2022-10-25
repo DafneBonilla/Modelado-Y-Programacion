@@ -10,17 +10,49 @@ import walmart.*;
 public class Proyecto1 {
 
     /**
+     * How to use the program
+     */
+    public static void use() {
+        System.out.println("Uso: java Proyecto1 <option>");
+        System.out.println("Opciones:");
+        System.out.println("0: Uso normal");
+        System.out.println("1: Generar archivo de clientes");
+        System.out.println("2: Generar archivo de productos");
+        System.exit(0);
+    }
+
+    /**
      * Main method
      * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
+        if (args.length != 1) {
+            use();
+        }
         Files files = Files.getFiles();
-        List<ClientInterface> clients = files.unzipClients();
-        Catalog catalog = files.unzipCatalog();
-        Walmart2 walmart = new Walmart2(clients, catalog);
-        walmart.work();
+        try {
+            int option = Integer.parseInt(args[0]);
+            switch (option) {
+                case 0:
+                    List<ClientInterface> clients = files.unzipClients();
+                    Catalog catalog = files.unzipCatalog();
+                    Walmart2 walmart = new Walmart2(clients, catalog);
+                    walmart.work();
+                    break;
+                case 1:
+                    files.generateClients();
+                    break;
+                case 2:
+                    files.generateCatalog();
+                    break;
+                default:
+                    use();
+            }
+        } catch (NumberFormatException e) {
+            use();
+        }
 
     }
 
