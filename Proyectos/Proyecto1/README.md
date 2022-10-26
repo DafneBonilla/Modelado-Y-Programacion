@@ -27,7 +27,6 @@ java Proyecto1 0
 - En caso de necesitar generlos archivos (1 para clientes y 2 para catalogo), correr desde `src/`:
 
 ```
-
 java Proyecto1 1
 ```
 
