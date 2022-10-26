@@ -21,7 +21,18 @@ javac Proyecto1.java
 - Correr desde `src/`:
 
 ```
-java Proyecto1
+java Proyecto1 0
+```
+
+- En caso de necesitar generlos archivos (1 para clientes y 2 para catalogo), correr desde `src/`:
+
+```
+
+java Proyecto1 1
+```
+
+```
+java Proyecto1 2
 ```
 
 - Generar documentacion desde `src/`:
