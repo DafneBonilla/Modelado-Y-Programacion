@@ -91,6 +91,7 @@ public class Store {
                     back = false;
                     break;
                 case 2:
+                    back = false;
                     exit = false;
                     break;
             }
