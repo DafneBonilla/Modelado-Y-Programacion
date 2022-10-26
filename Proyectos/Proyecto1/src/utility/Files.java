@@ -158,26 +158,6 @@ public class Files {
     }
 
     /**
-     * Method to save a catalog in a file
-     * The file will be named "catalogo.txt"
-     * In case of error, the method will show a message to the user
-     * 
-     * @param catalog the catalog to save
-     */
-    public void zipCatalog(Catalog catalog) {
-        try {
-            FileOutputStream fos = new FileOutputStream("catalogo.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(catalog);
-            oos.flush();
-            oos.close();
-        } catch (Exception e) {
-            System.out.println("Error al intentar guardar el archivo de catalogo");
-            System.out.println("Los cambios no se guardaron");
-        }
-    }
-
-    /**
      * Method to read and return a catalog from a file
      * The file to read will be named "catalogo.txt"
      * In case of error, the method will show a message to the user and null will be

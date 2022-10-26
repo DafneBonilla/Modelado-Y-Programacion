@@ -88,7 +88,9 @@ public class Store {
                     break;
                 case 1:
                     buy();
-                    back = false;
+                    if (cart.size() > 0) {
+                        back = false;
+                    }
                     break;
                 case 2:
                     back = false;
