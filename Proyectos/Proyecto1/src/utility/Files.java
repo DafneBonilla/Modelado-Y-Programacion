@@ -164,11 +164,11 @@ public class Files {
      * 
      * @param catalog the catalog to save
      */
-    public void zipCatalog(Catalog list) {
+    public void zipCatalog(Catalog catalog) {
         try {
             FileOutputStream fos = new FileOutputStream("catalogo.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(list);
+            oos.writeObject(catalog);
             oos.flush();
             oos.close();
         } catch (Exception e) {

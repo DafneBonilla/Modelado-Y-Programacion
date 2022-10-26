@@ -10,7 +10,7 @@ import clients.*;
 
 /**
  * Class to represent a store
- * A store has a iterator of products (instance of {@link CatalogueIterator}), a
+ * A store has a iterator of products (instance of {@link CatalogIterator}), a
  * client (instance of {@link ClientInterface}), a language (instance of
  * {@link Language}), a list of products (instance of {@link Product}), an asker
  * (instance of {@link Asker}), a number of products in the iterator and a price

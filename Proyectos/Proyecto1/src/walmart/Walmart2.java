@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * A Walmart2 has a list of clients (instances of {@link ClientInterface}), a
  * catalog (instance of {@link Catalog}), a manager (instance of
  * {@link AccountManager}), a store builder (instance of {@link StoreBuilder}),
- * a store (instance of {@link StoreInterface}) and a coupon (instance of
+ * a store (instance of {@link Store}) and a coupon (instance of
  * {@link Coupon})
  */
 public class Walmart2 implements Subject {
@@ -175,7 +175,7 @@ public class Walmart2 implements Subject {
     /**
      * Method to register an observer
      * 
-     * @param observer the observer to register
+     * @param o the observer to register
      */
     @Override
     public void registerObserver(Observer o) {
@@ -185,7 +185,7 @@ public class Walmart2 implements Subject {
     /**
      * Method to remove an observer
      * 
-     * @param observer the observer to remove
+     * @param o the observer to remove
      */
     @Override
     public void removeObserver(Observer o) {

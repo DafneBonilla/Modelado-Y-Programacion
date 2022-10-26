@@ -10,14 +10,14 @@ public interface Subject {
     /**
      * Method to register an observer
      * 
-     * @param observer the observer to register
+     * @param o the observer to register
      */
     public void registerObserver(Observer o);
 
     /**
      * Method to remove an observer
      * 
-     * @param observer the observer to remove
+     * @param o the observer to remove
      */
     public void removeObserver(Observer o);
 

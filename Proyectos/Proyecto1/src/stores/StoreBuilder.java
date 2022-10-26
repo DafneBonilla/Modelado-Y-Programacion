@@ -7,7 +7,7 @@ import products.*;
  * Abstract class to implement the Builder pattern
  * A store builder will build a store (instance of {@link Store})
  * A store builder has a iterator of products (instance of
- * {@link CatalogueIterator}), a client (instance of {@link ClientInterface}), a
+ * {@link CatalogIterator}), a client (instance of {@link ClientInterface}), a
  * language (instance of {@link Language})
  */
 public abstract class StoreBuilder {
