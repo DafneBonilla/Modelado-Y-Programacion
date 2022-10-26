@@ -129,6 +129,7 @@ public class Store {
         while (iter.hasNext()) {
             Product product = iter.next();
             System.out.println("[" + i + "]" + product);
+            i++;
         }
     }
 
