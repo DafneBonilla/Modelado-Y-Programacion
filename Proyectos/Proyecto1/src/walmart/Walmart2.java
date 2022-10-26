@@ -5,6 +5,7 @@ import utility.*;
 import clients.*;
 import products.*;
 import java.util.List;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -12,24 +13,16 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Class to represent a Walmart2
  * A Walmart2 has a list of clients (instances of {@link ClientInterface}), a
- * catalog (instance of {@link Catalog}), a manager (instance of
- * {@link AccountManager}), a store builder (instance of {@link StoreBuilder}),
- * a store (instance of {@link Store}) and a coupon (instance of
- * {@link Coupon})
+ * catalog (instance of {@link Catalog}), a store (instance of {@link Store})
+ * and a coupon (instance of {@link Coupon})
  */
-public class Walmart2 implements Subject {
+public class Walmart2 implements Subject, Serializable {
 
     /* The list of clients */
     private List<ClientInterface> clients;
 
     /* The catalog */
     private Catalog catalog;
-
-    /* The manager */
-    private AccountManager manager;
-
-    /* The store builder */
-    private StoreBuilder storeB;
 
     /* The coupon */
     private Coupon coupon;
@@ -122,7 +115,7 @@ public class Walmart2 implements Subject {
      * Method to make Walmart2 work
      */
     public void work() {
-        notify();
+        notifyObservers();
         while (true) {
             ClientInterface client = verify();
             if (client == null) {
@@ -146,7 +139,7 @@ public class Walmart2 implements Subject {
      * @return the client that the account manager obtained
      */
     private ClientInterface verify() {
-        manager = new AccountManager(clients);
+        AccountManager manager = new AccountManager(clients);
         return manager.getAccount();
     }
 
@@ -157,7 +150,7 @@ public class Walmart2 implements Subject {
      * @return the store that fits the client
      */
     private Store store(ClientInterface client) {
-        storeB = new StoreBuilderDefault();
+        StoreBuilder storeB = new StoreBuilderDefault();
         storeB = storeB.client(client);
         storeB = storeB.iterator(catalog.iterator());
         return storeB.build();

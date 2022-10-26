@@ -15,7 +15,7 @@
 - Compilar desde `src/`:
 
 ```
-javac -d classes Proyecto1.java
+javac Proyecto1.java
 ```
 
 - Correr desde `src/`:

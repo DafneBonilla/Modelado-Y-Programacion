@@ -91,7 +91,7 @@ public class Store {
                     back = false;
                     break;
                 case 2:
-                    exit = true;
+                    exit = false;
                     break;
             }
         }
@@ -413,7 +413,7 @@ public class Store {
     }
 
     /**
-     * Method to get in a string the message "Percentage" in the clients
+     * Method to get in a string the message "with a discount of" in the clients
      * language
      * 
      * @return the message
@@ -423,7 +423,7 @@ public class Store {
     }
 
     /**
-     * Method to get in a string the message "Coupon" in the clients
+     * Method to get in a string the message "you have a coupon in" in the clients
      * language
      * 
      * @return the message

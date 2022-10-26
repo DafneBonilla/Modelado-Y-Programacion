@@ -56,7 +56,6 @@ public class Asker {
                 System.out.println(error);
             }
         }
-        sc.close();
         return answer;
     }
 
@@ -89,7 +88,6 @@ public class Asker {
                 System.out.println(error);
             }
         }
-        sc.close();
         return answer;
     }
 
@@ -122,7 +120,6 @@ public class Asker {
                 System.out.println(error);
             }
         }
-        sc.close();
         return answer;
     }
 
@@ -141,14 +138,17 @@ public class Asker {
         Scanner sc = new Scanner(System.in);
         while (!valid) {
             System.out.println(message);
-            answer = sc.nextLine();
-            if (answer.length() > 0) {
-                valid = true;
-            } else {
+            try {
+                answer = sc.nextLine();
+                if (!answer.isEmpty()) {
+                    valid = true;
+                } else {
+                    System.out.println(error);
+                }
+            } catch (NumberFormatException nfe) {
                 System.out.println(error);
             }
         }
-        sc.close();
         return answer;
     }
 
@@ -182,7 +182,6 @@ public class Asker {
                 System.out.println(error);
             }
         }
-        sc.close();
         return ans;
     }
 

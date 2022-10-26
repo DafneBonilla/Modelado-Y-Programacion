@@ -1,5 +1,6 @@
 package walmart;
 
+import java.io.Serializable;
 import java.util.List;
 import clients.*;
 import utility.*;

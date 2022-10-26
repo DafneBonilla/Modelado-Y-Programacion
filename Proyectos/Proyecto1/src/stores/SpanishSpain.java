@@ -221,23 +221,23 @@ public class SpanishSpain implements Language {
     }
 
     /**
-     * Method to get in a string the message "Percentage" in the language
+     * Method to get in a string the message "with a discount of" in the language
      * 
      * @return the message
      */
     @Override
     public String printpercent() {
-        return "Porcentaje";
+        return "con un flipante descuento del ";
     }
 
     /**
-     * Method to get in a string the message "Coupon" in the language
+     * Method to get in a string the message "you have a coupon in" in the language
      * 
      * @return the message
      */
     @Override
     public String printCoup() {
-        return "Vale de descuento";
+        return "Voz teneis un cupon en ";
     }
 
     /**

@@ -148,14 +148,14 @@ public interface Language {
     public String printMenu();
 
     /**
-     * Method to get in a string the message "Percentage" in the language
+     * Method to get in a string the message "with a discount of" in the language
      * 
      * @return the message
      */
     public String printpercent();
 
     /**
-     * Method to get in a string the message "Coupon" in the language
+     * Method to get in a string the message "you have a coupon in" in the language
      * 
      * @return the message
      */

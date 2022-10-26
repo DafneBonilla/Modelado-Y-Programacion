@@ -37,15 +37,25 @@ public class Proyecto1 {
             switch (option) {
                 case 0:
                     List<ClientInterface> clients = files.unzipClients();
+                    if (clients == null) {
+                        System.out.println("Genera los archivos de clientes con java Proyecto1 1");
+                        System.exit(0);
+                    }
                     Catalog catalog = files.unzipCatalog();
+                    if (catalog == null) {
+                        System.out.println("Genera los archivos de productos con java Proyecto1 2");
+                        System.exit(0);
+                    }
                     Walmart2 walmart = new Walmart2(clients, catalog);
                     walmart.work();
                     break;
                 case 1:
                     files.generateClients();
+                    System.out.println("Archivo de clientes generado");
                     break;
                 case 2:
                     files.generateCatalog();
+                    System.out.println("Archivo de productos generado");
                     break;
                 default:
                     use();

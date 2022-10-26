@@ -44,12 +44,12 @@ public class Files {
         ClientBuilder clientBuilder = new ClientBuilderDefault();
         clientBuilder = clientBuilder.username("Cheems").password("ContraseniaSegura99").nationality(Country.MEXICO)
                 .name("Cheems Oaxaquenio").phone(5569359016L).address("San Francisco Tutla, Oaxaca")
-                .bankNumber(98643790L).money(7574000.23);
+                .bankNumber(98643790L).money(757400.23);
         clients.add(clientBuilder.build());
         clientBuilder = clientBuilder.username("Canek").password("KimPossible").nationality(Country.MEXICO)
                 .name("Canek Pelaez").phone(5556223899L)
                 .address("Av. Independencia 96, San Simon, Benito Juarez, Ciudad de Mexico").bankNumber(4567894256L)
-                .money(10000000.99);
+                .money(1000000.99);
         clients.add(clientBuilder.build());
         clientBuilder = clientBuilder.username("Maximo").password("Ronroneos21").nationality(Country.USA)
                 .name("Maximo Decimo Meridio").phone(8309319176L).address("148 East 126th Street New York")

@@ -37,6 +37,7 @@ public class Client implements ClientInterface {
     /* The bank number of the client */
     private long bankNumber;
 
+    /* The amount of money of the client */
     private double money;
 
     /* The coupon of the client */

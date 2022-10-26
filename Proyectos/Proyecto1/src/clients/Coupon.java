@@ -1,5 +1,6 @@
 package clients;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * A coupon has a percentage of discount and a list of countries (instances of
  * {@link Country}) that can use it
  */
-public class Coupon {
+public class Coupon implements Serializable {
 
     /* The percentage of discount */
     private int percentage;
