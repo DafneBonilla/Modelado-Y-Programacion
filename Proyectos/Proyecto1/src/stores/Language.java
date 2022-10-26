@@ -152,7 +152,7 @@ public interface Language {
      * 
      * @return the message
      */
-    public String printpercent();
+    public String printPercent();
 
     /**
      * Method to get in a string the message "you have a coupon in" in the language

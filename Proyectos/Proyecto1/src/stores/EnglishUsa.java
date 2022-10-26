@@ -226,7 +226,7 @@ public class EnglishUsa implements Language {
      * @return the message
      */
     @Override
-    public String printpercent() {
+    public String printPercent() {
         return "with a discount of ";
     }
 

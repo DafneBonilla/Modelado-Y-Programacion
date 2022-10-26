@@ -226,7 +226,7 @@ public class SpanishSpain implements Language {
      * @return the message
      */
     @Override
-    public String printpercent() {
+    public String printPercent() {
         return "con un flipante descuento del ";
     }
 

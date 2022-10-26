@@ -75,7 +75,7 @@ public class Store {
         System.out.println(printMoney() + ": $ " + client.getMoney());
         Coupon coupon = client.getCoupon();
         if (coupon != null) {
-            System.out.println(printCoup() + client.getNationality().getDepartment().toString() + printpercent()
+            System.out.println(printCoup() + client.getNationality().getDepartment().toString() + printPercent()
                     + coupon.getpercentage() + "%");
         }
         boolean exit = false;
@@ -422,8 +422,8 @@ public class Store {
      * 
      * @return the message
      */
-    private String printpercent() {
-        return lang.printpercent();
+    private String printPercent() {
+        return lang.printPercent();
     }
 
     /**
