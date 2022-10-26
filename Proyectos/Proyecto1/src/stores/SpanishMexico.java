@@ -56,7 +56,7 @@ public class SpanishMexico implements Language {
      */
     @Override
     public String printAskProd() {
-        return "Ingresa el numero del producto que quieres comprar";
+        return "Poned el numero del producto que quieres comprar";
     }
 
     /**
@@ -87,7 +87,7 @@ public class SpanishMexico implements Language {
      */
     @Override
     public String printBank() {
-        return "Ingresa el numero de tu cuenta bancaria de tu cuenta";
+        return "Poned el numero de tu cuenta bancaria de tu cuenta";
     }
 
     /**
@@ -162,7 +162,8 @@ public class SpanishMexico implements Language {
     }
 
     /**
-     * Method to get in a string the message "good try but thats not correct, aborting the purchase" in the language
+     * Method to get in a string the message "good try but thats not correct,
+     * aborting the purchase" in the language
      * 
      * @return the message
      */
@@ -172,7 +173,8 @@ public class SpanishMexico implements Language {
     }
 
     /**
-     * Method to get in a string the message "the purchase was successful" in the language
+     * Method to get in a string the message "the purchase was successful" in the
+     * language
      * 
      * @return the message
      */
@@ -182,7 +184,8 @@ public class SpanishMexico implements Language {
     }
 
     /**
-     * Method to get in a string the message "your account doesnt have money, aborting the purchase" in the language
+     * Method to get in a string the message "your account doesnt have money,
+     * aborting the purchase" in the language
      * 
      * @return the message
      */
@@ -192,7 +195,8 @@ public class SpanishMexico implements Language {
     }
 
     /**
-     * Method to get in a string the message "the purchase is secure" in the language
+     * Method to get in a string the message "the purchase is secure" in the
+     * language
      * 
      * @return the message
      */
@@ -245,7 +249,7 @@ public class SpanishMexico implements Language {
     public String printWelcome() {
         return "Bienvenido a Walmart2";
     }
-    
+
     /**
      * Method to get in a string the message "successful purchase" in the language
      * 
@@ -273,7 +277,7 @@ public class SpanishMexico implements Language {
      */
     @Override
     public String printMoney() {
-        return "Tu saldo es";
+        return "Vuestro saldo es";
     }
 
 }

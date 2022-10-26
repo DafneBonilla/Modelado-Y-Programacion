@@ -147,6 +147,9 @@ public class AccountManager {
         ques = "Ingrese su numero de cuenta bancaria:";
         data2 = asker.askLong(ques, 0L, Long.MAX_VALUE, "Numero de cuenta invalido");
         builder.bankNumber(data2);
+        ques = "Ingrese la cantidad de dinero para su cuenta:";
+        data2 = asker.askLong(ques, 0L, Long.MAX_VALUE, "Cantidad invalida");
+        builder.money(data2);
         account = builder.build();
         if (account != null) {
             System.out.println("Cuenta creada exitosamente");

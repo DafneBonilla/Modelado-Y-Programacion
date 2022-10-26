@@ -109,28 +109,32 @@ public interface Language {
     public String printDirection();
 
     /**
-     * Method to get in a string the message "good try but thats not correct, aborting the purchase" in the language
+     * Method to get in a string the message "good try but thats not correct,
+     * aborting the purchase" in the language
      * 
      * @return the message
      */
     public String printNotSecure();
 
     /**
-     * Method to get in a string the message "the purchase was successful" in the language
+     * Method to get in a string the message "the purchase was successful" in the
+     * language
      * 
      * @return the message
      */
     public String printBye();
 
     /**
-     * Method to get in a string the message "your account doesnt have money, aborting the purchase" in the language
+     * Method to get in a string the message "your account doesnt have money,
+     * aborting the purchase" in the language
      * 
      * @return the message
      */
     public String printNoMoney();
 
     /**
-     * Method to get in a string the message "the purchase is secure" in the language
+     * Method to get in a string the message "the purchase is secure" in the
+     * language
      * 
      * @return the message
      */
@@ -163,7 +167,7 @@ public interface Language {
      * @return the message
      */
     public String printWelcome();
-    
+
     /**
      * Method to get in a string the message "successful purchase" in the language
      * 

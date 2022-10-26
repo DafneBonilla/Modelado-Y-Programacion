@@ -160,9 +160,10 @@ public class SpanishSpain implements Language {
     public String printDirection() {
         return "Destino";
     }
-    
+
     /**
-     * Method to get in a string the message "good try but thats not correct, aborting the purchase" in the language
+     * Method to get in a string the message "good try but thats not correct,
+     * aborting the purchase" in the language
      * 
      * @return the message
      */
@@ -172,7 +173,8 @@ public class SpanishSpain implements Language {
     }
 
     /**
-     * Method to get in a string the message "the purchase was successful" in the language
+     * Method to get in a string the message "the purchase was successful" in the
+     * language
      * 
      * @return the message
      */
@@ -182,7 +184,8 @@ public class SpanishSpain implements Language {
     }
 
     /**
-     * Method to get in a string the message "your account doesnt have money, aborting the purchase" in the language
+     * Method to get in a string the message "your account doesnt have money,
+     * aborting the purchase" in the language
      * 
      * @return the message
      */
@@ -192,7 +195,8 @@ public class SpanishSpain implements Language {
     }
 
     /**
-     * Method to get in a string the message "the purchase is secure" in the language
+     * Method to get in a string the message "the purchase is secure" in the
+     * language
      * 
      * @return the message
      */
@@ -245,7 +249,7 @@ public class SpanishSpain implements Language {
     public String printWelcome() {
         return "Bienvenido a Walmart2";
     }
-    
+
     /**
      * Method to get in a string the message "successful purchase" in the language
      * 

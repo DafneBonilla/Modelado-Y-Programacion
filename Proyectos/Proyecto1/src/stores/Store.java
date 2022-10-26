@@ -75,7 +75,8 @@ public class Store {
         System.out.println(printMoney() + ": $ " + client.getMoney());
         Coupon coupon = client.getCoupon();
         if (coupon != null) {
-            System.out.println(printCoup() + client.getNationality().getDepartment().toString() + printpercent() + coupon.getpercentage() + "%");
+            System.out.println(printCoup() + client.getNationality().getDepartment().toString() + printpercent()
+                    + coupon.getpercentage() + "%");
         }
         boolean exit = false;
         boolean back = true;
@@ -118,7 +119,7 @@ public class Store {
         }
     }
 
-	/**
+    /**
      * Method to show the products in the catalog
      */
     private void showCatalog() {
@@ -228,7 +229,7 @@ public class Store {
         System.out.println(ticket);
     }
 
-	/**
+    /**
      * Method to generate a date for the delivery
      * Source: https://stackoverflow.com/a/40253413
      * 
@@ -359,7 +360,8 @@ public class Store {
     }
 
     /**
-     * Method to get in a string the message "good try but thats not correct, aborting the purchase" in the clients
+     * Method to get in a string the message "good try but thats not correct,
+     * aborting the purchase" in the clients
      * language
      * 
      * @return the message
@@ -369,7 +371,8 @@ public class Store {
     }
 
     /**
-     * Method to get in a string the message "the purchase was successful" in the clients
+     * Method to get in a string the message "the purchase was successful" in the
+     * clients
      * language
      * 
      * @return the message
@@ -379,7 +382,8 @@ public class Store {
     }
 
     /**
-     * Method to get in a string the message "your account doesnt have money, aborting the purchase" in the clients
+     * Method to get in a string the message "your account doesnt have money,
+     * aborting the purchase" in the clients
      * language
      * 
      * @return the message
@@ -437,7 +441,7 @@ public class Store {
     private String printWelcome() {
         return lang.printWelcome();
     }
-    
+
     /**
      * Method to get in a string the message "successful purchase" in the clients
      * language
@@ -455,8 +459,8 @@ public class Store {
      * @return the message
      */
     private String printTotal() {
-		return lang.printTotal();
-	}
+        return lang.printTotal();
+    }
 
     /**
      * Method to get in a string the message "your balance is" in the clients
@@ -465,7 +469,7 @@ public class Store {
      * @return the message
      */
     private String printMoney() {
-		return lang.printMoney();
-	}
+        return lang.printMoney();
+    }
 
 }
