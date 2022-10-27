@@ -70,7 +70,7 @@ public class Store {
      */
     public void work() {
         System.out.println(printWelcome());
-        System.out.println(printClient() + ": " + client.getName() + "\t id;" + client.getId());
+        System.out.println(printClient() + ": " + client.getName() + "\t id: " + client.getId());
         System.out.println(printDate() + ": " + LocalDate.now());
         System.out.println(printMoney() + ": $ " + client.getMoney());
         Coupon coupon = client.getCoupon();
@@ -134,6 +134,7 @@ public class Store {
             System.out.println("[" + i + "] " + product);
             i++;
         }
+        System.out.println();
     }
 
     /**
@@ -143,7 +144,7 @@ public class Store {
         boolean working = true;
         while (working) {
             showCatalog();
-            System.out.println("[" + total + "] " + printFinishBuy());
+            System.out.println("[" + total + "] " + printFinishBuy() + "\n");
             working = addElement();
         }
     }
