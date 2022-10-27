@@ -246,6 +246,7 @@ public class Cashier {
                 break;
             case 2:
                 order = new AdapterPizza(new PizzaSausage());
+                break;
             case 3:
                 order = new AdapterPizza(new PizzaSpecial1());
                 break;
