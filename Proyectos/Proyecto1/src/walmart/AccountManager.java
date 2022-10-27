@@ -133,7 +133,7 @@ public class AccountManager {
         ques = "Ingrese su contrasenia:";
         data = asker.askString(ques, "Contrasenia invalida");
         builder.password(data);
-        ques = "Ingrese su nacionalidad:";
+        ques = "Ingrese su nacionalidad\n 0 Mexico \n 1 Estados Unidos \n 2 España";
         Country con = asker.askCountry(ques, "Nacionalidad invalida");
         builder.nationality(con);
         ques = "Ingrese su nombre completo:";
