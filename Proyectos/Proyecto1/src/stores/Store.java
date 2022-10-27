@@ -220,8 +220,9 @@ public class Store {
      * Method to generate a ticket for the client
      */
     private void generateTicket() {
+        Coupon coupon = client.getCoupon();
         int por;
-        if (client.getCoupon() == null) {
+        if (coupon == null) {
             por = 0;
         } else {
             por = client.getCoupon().getPercentage();
@@ -232,7 +233,15 @@ public class Store {
         ticket += printDate() + ": " + LocalDate.now().toString() + "\n";
         ticket += printProd() + ":\n";
         for (Product product : cart) {
-            ticket += product.toString(por) + "\n";
+            if (coupon != null) {
+                if (product.getDepartment() == client.getNationality().getDepartment()) {
+                    ticket += product.toString(por) + "\n";
+                } else {
+                    ticket += product.toString() + "\n";
+                }
+            } else {
+                ticket += product.toString() + "\n";
+            }
         }
         ticket += printTotal() + ": $" + price + ", " + printApply() + "\n";
         ticket += printDeliver() + ": " + generateDate() + "\n";
