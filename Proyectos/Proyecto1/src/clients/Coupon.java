@@ -32,7 +32,7 @@ public class Coupon implements Serializable {
      * 
      * @return the percentage of discount
      */
-    public int getpercentage() {
+    public int getPercentage() {
         return percentage;
     }
 

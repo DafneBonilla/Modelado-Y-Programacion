@@ -51,11 +51,11 @@ public class Proyecto1 {
                     break;
                 case 1:
                     files.generateClients();
-                    System.out.println("Archivo de clientes generado");
+                    System.out.println("Archivo de clientes generado :)");
                     break;
                 case 2:
                     files.generateCatalog();
-                    System.out.println("Archivo de productos generado");
+                    System.out.println("Archivo de productos generado :)");
                     break;
                 default:
                     use();

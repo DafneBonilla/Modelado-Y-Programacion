@@ -75,8 +75,8 @@ public class Store {
         System.out.println(printMoney() + ": $ " + client.getMoney());
         Coupon coupon = client.getCoupon();
         if (coupon != null) {
-            System.out.println(printCoup() + client.getNationality().getDepartment().toString() + printPercent()
-                    + coupon.getpercentage() + "%");
+            System.out.println(printCoup() + client.getNationality().getDepartment().toString() + " " + printPercent()
+                    + coupon.getPercentage() + "%");
         }
         boolean exit = false;
         boolean back = true;
@@ -118,7 +118,7 @@ public class Store {
                 System.out.println(printBye());
             }
         } else {
-            System.out.println(printBye());
+            System.out.println(printBye() + "\n");
         }
     }
 
@@ -131,7 +131,7 @@ public class Store {
         iter.restart();
         while (iter.hasNext()) {
             Product product = iter.next();
-            System.out.println("[" + i + "]" + product);
+            System.out.println("[" + i + "] " + product);
             i++;
         }
     }
@@ -143,7 +143,7 @@ public class Store {
         boolean working = true;
         while (working) {
             showCatalog();
-            System.out.println("[" + total + "]" + printFinishBuy());
+            System.out.println("[" + total + "] " + printFinishBuy());
             working = addElement();
         }
     }
@@ -187,7 +187,7 @@ public class Store {
         double sum = 0;
         if (coupon != null) {
             Department department = country.getDepartment();
-            int discount = coupon.getpercentage();
+            int discount = coupon.getPercentage();
             for (Product product : cart) {
                 if (product.getDepartment() == department) {
                     sum += product.getPrice() * (1 - discount / 100.0);
@@ -219,13 +219,14 @@ public class Store {
      * Method to generate a ticket for the client
      */
     private void generateTicket() {
-        String ticket = "";
+        int por = client.getCoupon().getPercentage();
+        String ticket = "\n";
         ticket += printTicket() + " " + ThreadLocalRandom.current().nextInt(0, 1000) + "\n";
-        ticket += printClient() + ": " + client.getName() + "\t id;" + client.getId() + "\n";
+        ticket += printClient() + ": " + client.getName() + "\t id: " + client.getId() + "\n";
         ticket += printDate() + ": " + LocalDate.now().toString() + "\n";
         ticket += printProd() + ":\n";
         for (Product product : cart) {
-            ticket += product.toString() + "\n";
+            ticket += product.toString(por) + "\n";
         }
         ticket += printTotal() + ": $" + price + ", " + printApply() + "\n";
         ticket += printDeliver() + ": " + generateDate() + "\n";
