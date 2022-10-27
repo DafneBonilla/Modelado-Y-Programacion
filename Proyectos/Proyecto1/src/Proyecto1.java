@@ -62,6 +62,9 @@ public class Proyecto1 {
             }
         } catch (NumberFormatException e) {
             use();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Si lees esto, algo salio mal :(");
         }
 
     }

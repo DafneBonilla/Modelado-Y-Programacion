@@ -220,7 +220,12 @@ public class Store {
      * Method to generate a ticket for the client
      */
     private void generateTicket() {
-        int por = client.getCoupon().getPercentage();
+        int por;
+        if (client.getCoupon() == null) {
+            por = 0;
+        } else {
+            por = client.getCoupon().getPercentage();
+        }
         String ticket = "\n";
         ticket += printTicket() + " " + ThreadLocalRandom.current().nextInt(0, 1000) + "\n";
         ticket += printClient() + ": " + client.getName() + "\t id: " + client.getId() + "\n";
