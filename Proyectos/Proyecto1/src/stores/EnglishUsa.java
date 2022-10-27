@@ -173,14 +173,14 @@ public class EnglishUsa implements Language {
     }
 
     /**
-     * Method to get in a string the message "the purchase was successful" in the
+     * Method to get in a string the message "goodbye" in the
      * language
      * 
      * @return the message
      */
     @Override
     public String printBye() {
-        return "The purchase was successful";
+        return "Thanks for coming, goodbye";
     }
 
     /**

@@ -173,14 +173,14 @@ public class SpanishSpain implements Language {
     }
 
     /**
-     * Method to get in a string the message "the purchase was successful" in the
+     * Method to get in a string the message "goodbye" in the
      * language
      * 
      * @return the message
      */
     @Override
     public String printBye() {
-        return "La adquisicion se realizo con exito";
+        return "Muchas gracias por su visita, vuelva pronto";
     }
 
     /**
@@ -277,7 +277,7 @@ public class SpanishSpain implements Language {
      */
     @Override
     public String printMoney() {
-        return "El dinero que tienes en tu cuenta es";
+        return "Vuestro saldo es";
     }
 
 }

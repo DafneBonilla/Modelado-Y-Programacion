@@ -94,7 +94,7 @@ public class Store {
                     break;
                 case 2:
                     back = false;
-                    exit = false;
+                    exit = true;
                     break;
             }
         }
@@ -376,7 +376,7 @@ public class Store {
     }
 
     /**
-     * Method to get in a string the message "the purchase was successful" in the
+     * Method to get in a string the message "goodbye" in the
      * clients
      * language
      * 
@@ -398,7 +398,7 @@ public class Store {
     }
 
     /**
-     * Method to get in a string the message "the purchase is secure" in the clients
+     * Method to get in a string the message "goodbye" in the clients
      * language
      * 
      * @return the message
