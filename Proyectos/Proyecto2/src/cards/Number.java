@@ -13,5 +13,5 @@ public class Number implements Value {
         // TODO Auto-generated method stub
         return 0;
     }
-    
+
 }

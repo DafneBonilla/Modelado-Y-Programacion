@@ -1,6 +1,7 @@
 package cards;
 
 public class Green implements Color {
+
     private Card card;
 
     public Green(Card card) {

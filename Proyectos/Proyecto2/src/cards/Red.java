@@ -1,6 +1,7 @@
 package cards;
 
 public class Red implements Color {
+    // Esperando pacientemente =D
     private Card card;
 
     public Red(Card card) {
@@ -11,15 +12,15 @@ public class Red implements Color {
         return card;
     }
 
-    public int getMerit(){
+    public int getMerit() {
         return 0;
     }
 
-    public String toString(){
+    public String toString() {
         return card.toString();
     }
 
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         return false;
     }
     

@@ -1,6 +1,7 @@
 package cards;
 
 public class White implements Color {
+    
     private Card card;
 
     public White(Card card) {
@@ -15,11 +16,11 @@ public class White implements Color {
         return 0;
     }
 
-    public String toString(){
+    public String toString() {
         return card.toString();
     }
 
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         return false;
     }
     
