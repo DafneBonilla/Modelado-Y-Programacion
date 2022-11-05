@@ -127,7 +127,6 @@ public class Client implements ClientInterface {
     public String getAddress() {
         return address;
     }
-
     /**
      * Method to get the id of the client
      * 
