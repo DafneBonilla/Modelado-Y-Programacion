@@ -12,16 +12,22 @@ public class Green implements Color {
         return card;
     }
 
-    public int getMerit(){
-        return 0;
+    public int getMerit() {
+        return 4;
     }
 
-    public String toString(){
-        return card.toString();
+    public String toString() {
+        return "Verde";
     }
 
-    public boolean equals(Object o){
-        return false;
+    public boolean equals(Object o) {
+        if (!(o instanceof Color))
+            return false;
+        Color color = (Color) o;
+        if (!(this.getMerit() == color.getMerit())) {
+            return false;
+        }
+        return true;
     }
-    
+
 }

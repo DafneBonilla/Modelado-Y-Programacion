@@ -10,26 +10,26 @@ public class Wizard implements Value {
 
     @Override
     public Card getCard() {
-        // TODO Auto-generated method stub
-        return null;
+        return card;
     }
 
     @Override
     public int getValue() {
-        // TODO Auto-generated method stub
-        return 0;
+        return 14;
     }
 
     public String toString() {
-        return "Wizard";
+        return "Mago";
     }
 
-    public boolean equals(Object o) {   
-        if (o instanceof Wizard) {
-            Wizard w = (Wizard) o;
-            return w.getCard().equals(card);
+    public boolean equals(Object o) {
+        if (!(o instanceof Value))
+            return false;
+        Value value = (Value) o;
+        if (!(this.getValue() == value.getValue())) {
+            return false;
         }
-        return false;
+        return true;
     }
-    
+
 }

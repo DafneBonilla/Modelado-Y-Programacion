@@ -10,13 +10,11 @@ public class Joker implements Value {
 
     @Override
     public Card getCard() {
-        // TODO Auto-generated method stub
-        return null;
+        return card;
     }
 
     @Override
     public int getValue() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
@@ -24,12 +22,14 @@ public class Joker implements Value {
         return "Joker";
     }
 
-    public boolean equals(Object o) {   
-        if (o instanceof Joker) {
-            Joker j = (Joker) o;
-            return j.getCard().equals(card);
+    public boolean equals(Object o) {
+        if (!(o instanceof Value))
+            return false;
+        Value value = (Value) o;
+        if (!(this.getValue() == value.getValue())) {
+            return false;
         }
-        return false;
+        return true;
     }
-    
+
 }

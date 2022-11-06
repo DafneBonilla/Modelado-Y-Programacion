@@ -15,7 +15,7 @@
 - Compilar desde `src/`:
 
 ```
-javac Proyecto1.java
+javac Proyecto2.java
 ```
 
 - Correr desde `src/`:

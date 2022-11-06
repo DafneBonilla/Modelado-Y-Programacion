@@ -1,7 +1,7 @@
 package cards;
 
 public class White implements Color {
-    
+
     private Card card;
 
     public White(Card card) {
@@ -12,16 +12,22 @@ public class White implements Color {
         return card;
     }
 
-    public int getMerit(){
-        return 0;
+    public int getMerit() {
+        return 5;
     }
 
     public String toString() {
-        return card.toString();
+        return "Blanco";
     }
 
     public boolean equals(Object o) {
-        return false;
+        if (!(o instanceof Color))
+            return false;
+        Color color = (Color) o;
+        if (!(this.getMerit() == color.getMerit())) {
+            return false;
+        }
+        return true;
     }
-    
+
 }

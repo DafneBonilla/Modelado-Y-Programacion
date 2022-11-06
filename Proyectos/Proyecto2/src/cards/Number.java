@@ -6,32 +6,33 @@ public class Number implements Value {
 
     private int number;
 
-    public Number(int i) {
+    public Number(Card card, int i) {
+        this.card = card;
         this.number = i;
     }
 
     @Override
     public Card getCard() {
-        // TODO Auto-generated method stub
-        return null;
+        return card;
     }
 
     @Override
     public int getValue() {
-        // TODO Auto-generated method stub
-        return 0;
+        return number;
     }
 
     public String toString() {
-        return "Number";
+        return Integer.toString(number);
     }
 
-    public boolean equals(Object o) {   
-        if (o instanceof Number) {
-            Number n = (Number) o;
-            return n.getCard().equals(card);
+    public boolean equals(Object o) {
+        if (!(o instanceof Value))
+            return false;
+        Value value = (Value) o;
+        if (!(this.getValue() == value.getValue())) {
+            return false;
         }
-        return false;
+        return true;
     }
 
 }
