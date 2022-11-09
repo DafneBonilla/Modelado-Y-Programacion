@@ -9,7 +9,9 @@ import cards.CardHolder;
 public class GameMain extends GamePart {
     
     private int numRounds;
+
     private boolean continues;
+    
     private long seed;
 
     public GameMain(int numPlayers, List<Player> players, CardHolder mainDeck) {

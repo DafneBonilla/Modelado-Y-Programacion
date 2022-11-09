@@ -35,4 +35,9 @@ public class View {
     public void showText(String message){
         System.out.println(message);
     }
+
+    public void work() {
+        
+    }
+
 }

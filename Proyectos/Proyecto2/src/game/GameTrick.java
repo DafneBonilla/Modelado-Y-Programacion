@@ -7,7 +7,9 @@ import java.util.List;
 public class GameTrick extends GamePart {
     
     private Color triumph;
-    private Color leader;   
+
+    private Color leader;
+
     private List<Card> plays;
 
     public GameTrick(List<Player> players, CardHolder mainDeck, Color triumph) {  
@@ -176,6 +178,7 @@ public class GameTrick extends GamePart {
     
     private void adjustPlayers(int i) {
         for (int j = 0; j < i; j++) {
+            // :P
             // Player adjust = players.remove(0);
             // Card card = cards.get(i);
             // cards.remove(i);
