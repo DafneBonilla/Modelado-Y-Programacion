@@ -7,32 +7,31 @@ import java.util.List;
 public abstract class GamePart {
     
     private List<Player> players;
-    private Deck mainDeck;
+    
+    private CardHolder mainDeck;
 
-    public GamePart(List<Player> players, Deck mainDeck) {
-        
+    public GamePart(List<Player> players, CardHolder mainDeck) {
+        this.players = players;
+        this.mainDeck = mainDeck;
     }
     
-    public void start() {
-
-    }
+    public abstract void start();
+    
     public void sendText(Player player, String text) {
-
+        player.showText(text);
     }
     
     public void sendText(String text) {
-        
-    }
-    
-    public int askOption(Player player, String question, int min, int max, String error ) {
-        return 0;
+        for (Player player : players) {
+            player.showText(text);
+        }
     }
 
     public List<Player> getPlayers() {
         return players;
     }
 
-    public Deck getDeck() {
+    public CardHolder getDeck() {
         return mainDeck;
     }
 

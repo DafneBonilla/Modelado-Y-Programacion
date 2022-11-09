@@ -1,5 +1,5 @@
 /**
- * Class to make the proyect 1 work
+ * Class to make the proyect 2 work
  */
 public class Proyecto2 {
 
