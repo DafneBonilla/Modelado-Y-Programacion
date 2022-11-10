@@ -6,11 +6,11 @@ import player.Player;
 import java.util.List;
 
 public class GameRound extends GamePart {
-    
+
     private int numRound;
 
     private int numTricks;
-    
+
     private Color triumph;
 
     public GameRound(List<Player> players, CardHolder mainDeck, int numRound) {
@@ -38,14 +38,14 @@ public class GameRound extends GamePart {
 
     private void dealCards() {
         for (int i = 0; i < numRound; i++) {
-            for (Player player: this.getPlayers()) {
+            for (Player player : this.getPlayers()) {
                 Card card = this.getDeck().getCard(0);
                 player.addCard(card);
             }
         }
     }
 
-    private void defineTriumph() throws DCPlayerException{
+    private void defineTriumph() throws DCPlayerException {
         if (!this.getDeck().isEmpty()) {
             Card card = this.getDeck().getCard(0);
             Color triumph1 = card.getColor();
@@ -91,7 +91,8 @@ public class GameRound extends GamePart {
     }
 
     private int askBet(Player player) {
-        sendText(player, "Define tu apuesta (un numero entre 0 y " + numRound + ") (presiona \"h\" para ver todo el historial del juego)");
+        sendText(player, "Define tu apuesta (un numero entre 0 y " + numRound
+                + ") (presiona \"h\" para ver todo el historial del juego)");
         String text = player.leerJugador();
         try {
             int bet = Integer.parseInt(text);

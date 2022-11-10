@@ -4,24 +4,26 @@ import view.*;
 import cards.*;
 
 public interface Player {
-    
+
     public String getName() throws DCPlayerException;
-    
+
     public CardHolder getDeck();
-    
+
     public void setDeck(CardHolder deck) throws DCPlayerException, CException;
-    
-    public int getScore() throws DCPlayerException;
-    
-    public void setScore(int i) throws DCPlayerException;
-    
-    public int getBet() throws DCPlayerException;
-    
-    public void setBet(int i) throws DCPlayerException;
-    
-    public int getWins() throws DCPlayerException;
-    
-    public void setWins(int i) throws DCPlayerException;
+
+    public int getScore();
+
+    public void setScore(int i);
+
+    public int getBet();
+
+    public void setBet(int i);
+
+    public int askBet(int numRound) throws DCPlayerException;
+
+    public int getWins();
+
+    public void setWins(int i);
 
     public int getTriumph() throws DCPlayerException;
 

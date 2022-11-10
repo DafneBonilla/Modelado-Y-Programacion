@@ -11,46 +11,37 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 public class PlayerClient implements Player {
-    
-    private String name;
 
-    private CardHolderIterator deck;
+	private String name;
 
-    private int score;
+	private CardHolderIterator deck;
 
-    private int bet;
+	private Socket socket;
 
-    private int wins;
-
-    private Socket socket;
-
-    private View view;
+	private View view;
 
 	private boolean active;
 
-    public PlayerClient(String name, Socket socket) {
-        this.name = name;
-        this.socket = socket;
-        this.deck = null;
-        this.score = 0;
-        this.bet = 0;
-        this.wins = 0;
-        this.socket = socket;
-        this.view = null;
+	public PlayerClient(String name, Socket socket) {
+		this.name = name;
+		this.socket = socket;
+		this.deck = null;
+		this.socket = socket;
+		this.view = null;
 		this.active = true;
-    }
+	}
 
 	@Override
 	public String getName() throws DCPlayerException {
-        try {
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            writer.write(name);
-            writer.newLine();
-            writer.flush();
-            return name;
-        } catch (IOException e) {
-            throw new DCPlayerException("Error getting name");
-        }
+		try {
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			writer.write(name);
+			writer.newLine();
+			writer.flush();
+			return name;
+		} catch (IOException e) {
+			throw new DCPlayerException("Error getting name");
+		}
 	}
 
 	@Override
@@ -61,90 +52,96 @@ public class PlayerClient implements Player {
 	@Override
 	public void setDeck(CardHolder deck) throws DCPlayerException, CException {
 		try {
-            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-            this.deck = (CardHolderIterator) ois.readObject();
-        } catch (IOException e) {
-            throw new DCPlayerException("Error setting deck");
-        } catch (ClassNotFoundException e) {
-            throw new CException("Error setting deck");
-        }
-	}
-
-	@Override
-	public int getScore() throws DCPlayerException {
-		try {
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            writer.write(score);
-            writer.newLine();
-            writer.flush();
-            return score;
-        } catch (IOException e) {
-            throw new DCPlayerException("Error getting score");
-        }
-	}
-
-	@Override
-	public void setScore(int i) throws DCPlayerException {
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			String line = reader.readLine();
-			this.score = Integer.parseInt(line);
+			ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+			this.deck = (CardHolderIterator) ois.readObject();
 		} catch (IOException e) {
-			throw new DCPlayerException("Error setting score");
+			throw new DCPlayerException("Error setting deck");
+		} catch (ClassNotFoundException e) {
+			throw new CException("Error setting deck");
 		}
 	}
 
 	@Override
-	public int getBet() throws DCPlayerException {
+	public int getScore() {
+		return 0;
+	}
+
+	@Override
+	public void setScore(int i) {
+	}
+
+	@Override
+	public int getBet() {
+		return 0;
+	}
+
+	@Override
+	public void setBet(int i) {
+	}
+
+	@Override
+	public int askBet(int numRound) throws DCPlayerException {
+		int numRound2 = readRound();
+		String cards = showDeck();
+		view.showText("Tu mano es: \n" + cards);
+		String question = "Define tu apuesta (numero entre 0 y " + numRound2 + ")";
+		int answer = -1;
+		while (true) {
+			answer = view.askInt(question);
+			if (answer >= 0 && answer <= numRound2) {
+				break;
+			}
+			view.showText("Respuesta invalida, el numero debe ser entre 0 y " + numRound2);
+			view.showText("Tu mano es: \n" + cards);
+		}
 		try {
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			writer.write(bet);
+			writer.write(answer);
 			writer.newLine();
 			writer.flush();
-			return bet;
 		} catch (IOException e) {
 			throw new DCPlayerException("Error getting bet");
 		}
+		return answer;
 	}
 
-	@Override
-	public void setBet(int i) throws DCPlayerException {
+	private int readRound() throws DCPlayerException {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			String line = reader.readLine();
-			this.bet = Integer.parseInt(line);
+			return Integer.parseInt(reader.readLine());
 		} catch (IOException e) {
-			throw new DCPlayerException("Error setting bet");
+			throw new DCPlayerException("Error reading round");
 		}
 	}
 
 	@Override
-	public int getWins() throws DCPlayerException {
-		try {
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			writer.write(wins);
-			writer.newLine();
-			writer.flush();
-			return wins;
-		} catch (IOException e) {
-			throw new DCPlayerException("Error getting wins");
-		}
+	public int getWins() {
+		return 0;
 	}
 
 	@Override
-	public void setWins(int i) throws DCPlayerException {
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			String line = reader.readLine();
-			this.wins = Integer.parseInt(line);
-		} catch (IOException e) {
-			throw new DCPlayerException("Error setting wins");
-		}
+	public void setWins(int i) {
 	}
 
 	@Override
 	public int getTriumph() throws DCPlayerException {
-		// TODO Auto-generated method stub
+		int answer = -1;
+		while (true) {
+			answer = view.askInt("Escribe el numero del palo de triunfo 1 - Rojo, 2 - Azul, 3 - Amarillo, 4 - Verde");
+			if (answer >= 1 && answer <= 4) {
+				break;
+			}
+			view.showText("Respuesta invalida, el numero debe ser entre 1 y 4");
+		}
+		try {
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			writer.write(answer);
+			writer.newLine();
+			writer.flush();
+		} catch (IOException e) {
+			throw new DCPlayerException("Error getting triumph");
+		}
+		return answer;
 	}
 
 	@Override
@@ -155,7 +152,7 @@ public class PlayerClient implements Player {
 			if (answer == 0 || answer == 1) {
 				break;
 			}
-			view.showText("Respuesta invalida, elija 0 o 1");		
+			view.showText("Respuesta invalida, elija 0 o 1");
 		}
 		try {
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -213,32 +210,20 @@ public class PlayerClient implements Player {
 			case SET_DECK:
 				setDeck(null);
 				break;
-			case GET_SCORE:
-				getScore();
+			case ASK_BET:
+				askBet(0);
 				break;
-			case SET_SCORE:
-				setScore(0);
-				break;
-			case GET_BET:
-				getBet();
-				break;
-			case SET_BET:
-				setBet(0);
-				break;
-			case GET_WINS:
-				getWins();
-				break;
-			case SET_WINS:
-				setWins(0);
+			case GET_TRIUMPH:
+				getTriumph();
 				break;
 			case GET_CONTINUE:
 				getContinue();
 				break;
-			case ASK_CARD:
-				askCard();
-				break;
 			case SHOW_TEXT:
 				showText("");
+				break;
+			case ASK_CARD:
+				askCard();
 				break;
 			case END:
 				end();
@@ -246,7 +231,6 @@ public class PlayerClient implements Player {
 			default:
 				break;
 		}
-
 	}
 
 	@Override
@@ -259,7 +243,7 @@ public class PlayerClient implements Player {
 		String cards = showDeck();
 		view.showText("Tu mano es: \n" + cards);
 		String question = "Ingresa el numero de la carta que quieres jugar\n";
-		int answer = -1; 
+		int answer = -1;
 		while (true) {
 			answer = view.askInt(question);
 			if (answer >= 0 && answer < deck.size()) {
@@ -299,5 +283,5 @@ public class PlayerClient implements Player {
 			throw new DCPlayerException("Error ending");
 		}
 	}
-    
+
 }

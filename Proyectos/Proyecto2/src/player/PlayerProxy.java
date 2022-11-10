@@ -8,14 +8,23 @@ import java.net.Socket;
 
 public class PlayerProxy implements Player {
 
-    private CardHolder deck;
+	private CardHolder deck;
 
-    private Socket socket;
+	private Socket socket;
 
-    public PlayerProxy(Socket socket) {
-        this.deck = null;
-        this.socket = socket;
-    }
+	private int score;
+
+	private int bet;
+
+	private int wins;
+
+	public PlayerProxy(Socket socket) {
+		this.deck = null;
+		this.socket = socket;
+		this.score = 0;
+		this.bet = 0;
+		this.wins = 0;
+	}
 
 	@Override
 	public String getName() throws DCPlayerException {
@@ -44,7 +53,7 @@ public class PlayerProxy implements Player {
 	}
 
 	@Override
-	public void setDeck(CardHolder deck) throws DCPlayerException, CException{
+	public void setDeck(CardHolder deck) throws DCPlayerException, CException {
 		this.deck = deck;
 		try {
 		} catch (Exception e) {
@@ -53,78 +62,82 @@ public class PlayerProxy implements Player {
 	}
 
 	@Override
-	public int getScore() throws DCPlayerException {
-		return 0;
+	public int getScore() {
+		return score;
 	}
 
 	@Override
-	public void setScore(int i) throws DCPlayerException {
-		
+	public void setScore(int i) {
+		this.score = i;
 	}
 
 	@Override
-	public int getBet() throws DCPlayerException {
-		return 0;
+	public int getBet() {
+		return bet;
 	}
 
 	@Override
-	public void setBet(int i) throws DCPlayerException {
-		
+	public void setBet(int i) {
+		this.bet = i;
 	}
 
 	@Override
-	public int getWins() throws DCPlayerException {
-		return 0;
+	public int askBet(int numRound) throws DCPlayerException {
+
 	}
 
 	@Override
-	public void setWins(int i) throws DCPlayerException {
-		
+	public int getWins() {
+		return wins;
 	}
 
 	@Override
-	public int getContinue() throws DCPlayerException {
-		return 0;
+	public void setWins(int i) {
+		this.wins = i;
 	}
 
 	@Override
 	public int getTriumph() throws DCPlayerException {
-		return 0;
+
+	}
+
+	@Override
+	public int getContinue() throws DCPlayerException {
+
 	}
 
 	@Override
 	public void addCard(Card card) {
-		
+		deck.addCard(card);
 	}
 
 	@Override
 	public Card giveCard(int i) {
-		return null;
+		return deck.getCard(i);
 	}
 
 	@Override
 	public void showText(String message) throws DCPlayerException {
-		
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public String read() throws DCPlayerException, CException {
-		return null;
+
 	}
 
 	@Override
 	public void setView(View view) {
-		
 	}
 
 	@Override
 	public int askCard() throws DCPlayerException {
-		return 0;
+
 	}
 
 	@Override
 	public void end() throws DCPlayerException {
-		
+		// TODO Auto-generated method stub
 	}
 
 }

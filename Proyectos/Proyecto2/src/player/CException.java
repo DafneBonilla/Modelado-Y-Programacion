@@ -1,7 +1,5 @@
 package player;
 
-
-
 public class CException extends Exception {
 
     public CException() {
@@ -11,5 +9,5 @@ public class CException extends Exception {
     public CException(String message) {
         super(message);
     }
-    
+
 }

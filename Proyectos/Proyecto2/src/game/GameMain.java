@@ -7,11 +7,11 @@ import java.util.LinkedList;
 import java.io.IOException;
 
 public class GameMain extends GamePart {
-    
+
     private int numRounds;
 
     private boolean continues;
-    
+
     private long seed;
 
     public GameMain(int numPlayers, List<Player> players, CardHolder mainDeck) {
@@ -20,7 +20,7 @@ public class GameMain extends GamePart {
         this.continues = true;
         this.seed = System.currentTimeMillis();
     }
-    
+
     @Override
     public void start() {
         try {
@@ -39,10 +39,11 @@ public class GameMain extends GamePart {
         } catch (DCPlayerException playerIn) {
             try {
                 resultsDC();
-                // TODO: sendText("El jugador " + playerIn.getPlayer().getName() + " se ha desconectado");
+                // TODO: sendText("El jugador " + playerIn.getPlayer().getName() + " se ha
+                // desconectado");
             } catch (DCPlayerException playerOut) {
-                // TODO Auto-generated catch block   
-            }    
+                // TODO Auto-generated catch block
+            }
         }
         try {
             results();
@@ -68,12 +69,12 @@ public class GameMain extends GamePart {
     private void results() throws DCPlayerException {
         String results = "Ahora se anunciara al ganador del juego...\n\n";
         results += winner();
-        sendText(results);  
+        sendText(results);
     }
 
-    private void resultsDC() throws DCPlayerException{
+    private void resultsDC() throws DCPlayerException {
         String results = "Un jugador se pudo haber desconectado, terminando el juego...\n";
-        results+= "Ahora se anunciara al ganador del juego...\n\n";
+        results += "Ahora se anunciara al ganador del juego...\n\n";
         results += winner();
         sendTextDC(results);
         System.exit(0);
@@ -83,7 +84,7 @@ public class GameMain extends GamePart {
         return higher(this.getPlayers());
     }
 
-    private String higher(List<Player> players) throws DCPlayerException{
+    private String higher(List<Player> players) throws DCPlayerException {
         String winner = "Hubo un empate entre los Jugadores ";
         int position = bigger(players);
         Player champ = players.get(position);
@@ -106,7 +107,7 @@ public class GameMain extends GamePart {
         return "El ganador es el jugador " + champ.getName() + " con " + champ.getScore() + " puntos\n";
     }
 
-    private int bigger(List<Player> list) throws DCPlayerException{
+    private int bigger(List<Player> list) throws DCPlayerException {
         int answer = 0;
         int score = list.get(0).getScore();
         for (Player player : list) {
@@ -117,10 +118,10 @@ public class GameMain extends GamePart {
         return answer;
     }
 
-    private void carryOn() throws DCPlayerException{
+    private void carryOn() throws DCPlayerException {
         List<String> yes = new LinkedList<>();
         List<String> no = new LinkedList<>();
-        for (Player player: this.getPlayers()) {
+        for (Player player : this.getPlayers()) {
             int i = player.getContinue();
             if (i == 0) {
                 yes.add("0");

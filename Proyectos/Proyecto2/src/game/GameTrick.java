@@ -6,20 +6,20 @@ import java.util.List;
 import player.DCPlayerException;
 
 public class GameTrick extends GamePart {
-    
+
     private Color triumph;
 
     private Color leader;
 
     private List<Card> plays;
 
-    public GameTrick(List<Player> players, CardHolder mainDeck, Color triumph) {  
+    public GameTrick(List<Player> players, CardHolder mainDeck, Color triumph) {
         super(players, mainDeck);
         this.triumph = triumph;
         this.leader = null;
         this.plays = null;
     }
-    
+
     public void start() {
         sendText("El truco va a empezar");
         for (Player player : this.getPlayers()) {
@@ -43,7 +43,7 @@ public class GameTrick extends GamePart {
         }
         adjustPlayers(winner);
     }
-    
+
     private void defineLeader(Card card) throws DCPlayerException {
         if (leader.getMerit() == -1) {
             if (card.getColor().getMerit() == 5) {
@@ -53,11 +53,11 @@ public class GameTrick extends GamePart {
             sendText("El palo lider es " + leader);
         }
     }
-    
+
     private Card reciveCard(Player player, int i) {
         return player.giveCard(i);
     }
-    
+
     private int validateCard(Player player) throws DCPlayerException {
         int i = -1;
         while (true) {
@@ -70,7 +70,7 @@ public class GameTrick extends GamePart {
             }
         }
     }
-    
+
     private boolean legalCard(Card card, CardHolder hand, int i) {
         hand.getCard(i);
         if (hand.isEmpty()) {
@@ -92,7 +92,7 @@ public class GameTrick extends GamePart {
         }
         return true;
     }
-    
+
     private int winnerCard() {
         int wizzard = playWizard();
         if (wizzard != -1) {
@@ -112,7 +112,7 @@ public class GameTrick extends GamePart {
         }
         return -1;
     }
-    
+
     private int playWizard() {
         for (Card card1 : plays) {
             if (card1.getValue().getValue() == 14) {
@@ -121,7 +121,7 @@ public class GameTrick extends GamePart {
         }
         return -1;
     }
-    
+
     private int playTriumph() {
         int compare = 0;
         int index = -1;
@@ -135,7 +135,7 @@ public class GameTrick extends GamePart {
         }
         return index;
     }
-    
+
     private int playLeader() {
         int compare = 0;
         int index = -1;
@@ -149,7 +149,7 @@ public class GameTrick extends GamePart {
         }
         return index;
     }
-    
+
     private int playJoker() {
         for (Card card1 : plays) {
             if (card1.getValue().getValue() == 0) {
@@ -158,9 +158,9 @@ public class GameTrick extends GamePart {
         }
         return -1;
     }
-    
+
     private void adjustPlayers(int i) {
-        for (int j = 0; j < i; j++) {  
+        for (int j = 0; j < i; j++) {
             List<Player> players = this.getPlayers();
             Player adjust = players.get(0);
             players.remove(adjust);
