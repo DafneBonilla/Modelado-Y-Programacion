@@ -1,7 +1,7 @@
 package player;
 
-import cards.*;
 import view.*;
+import cards.*;
 
 public interface Player {
     
@@ -9,7 +9,7 @@ public interface Player {
     
     public CardHolder getDeck();
     
-    public void setDeck(CardHolder deck) throws DCPlayerException;
+    public void setDeck(CardHolder deck) throws DCPlayerException, CException;
     
     public int getScore() throws DCPlayerException;
     
@@ -23,20 +23,22 @@ public interface Player {
     
     public void setWins(int i) throws DCPlayerException;
 
+    public int getTriumph() throws DCPlayerException;
+
     public int getContinue() throws DCPlayerException;
 
     public void addCard(Card card);
 
     public Card giveCard(int i);
 
-    public String showDeck();
-
     public void showText(String message) throws DCPlayerException;
 
-    public String read() throws DCPlayerException;
+    public String read() throws DCPlayerException, CException;
 
     public void setView(View view);
 
-    public String askCard() throws DCPlayerException;
+    public int askCard() throws DCPlayerException;
+
+    public void end() throws DCPlayerException;
 
 }

@@ -34,6 +34,11 @@ public class Deck implements CardHolder {
             iterator = cards.iterator();
         }
 
+		@Override
+		public int size() {
+			return cards.size();
+		}
+
     }
 
     public Deck() {

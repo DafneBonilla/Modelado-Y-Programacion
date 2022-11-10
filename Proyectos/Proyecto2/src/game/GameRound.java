@@ -1,6 +1,7 @@
 package game;
 
 import cards.*;
+import player.DCPlayerException;
 import player.Player;
 import java.util.List;
 
@@ -12,147 +13,122 @@ public class GameRound extends GamePart {
     
     private Color triumph;
 
-    public GameRound(List<Player> players, Deck mainDeck, int numRound) {
+    public GameRound(List<Player> players, CardHolder mainDeck, int numRound) {
         super(players, mainDeck);
         this.numRound = numRound;
         this.numTricks = 0;
     }
 
     public void start() {
-        enviarMensajeTodos("La ronda " + numRonda + " va a empezar");
-        mazo.shuffle();
-        repartirCartas();
-        defineTriunfo();
-        defineApuestas();
-        for (int i = 1; i <= numTrucos; i++) {
-            Truco actual = new Truco(jugadores, mazo, triunfo, out, log);
-            actual.iniciar();
-            log = actual.getLog();
+        sendText("La ronda " + numRound + " va a empezar");
+        this.getDeck().shuffle();
+        dealCards();
+        defineTriumph();
+        setBets();
+        for (int i = 1; i <= numTricks; i++) {
+            GameTrick actual = new GameTrick(this.getPlayers(), this.getDeck(), triumph);
+            actual.start();
         }
-        verPuntuacion();
-        enviarMensajeTodos("Las puntaciones se ven asi...\n");
-        for (Jugador jugador : jugadores) {
-            enviarMensajeTodos("El jugador " + jugador.getNombre() + " tiene " + jugador.getPuntuacion() + " puntos\n");
+        score();
+        sendText("Las puntaciones se ven asi...\n");
+        for (Player player : this.getPlayers()) {
+            sendText("El jugador " + player.getName() + " tiene " + player.getScore() + " puntos\n");
         }
     }
 
     private void dealCards() {
-        for (int i = 0; i < numRonda; i++) {
-            for (Jugador jugador : jugadores) {
-                Carta cartita = mazo.sacaCarta(0);
-                jugador.recibirCarta(cartita);
+        for (int i = 0; i < numRound; i++) {
+            for (Player player: this.getPlayers()) {
+                Card card = this.getDeck().getCard(0);
+                player.addCard(card);
             }
         }
     }
 
-    private void defineTriumph() {
-        if (!mazo.esVacio()) {
-            Carta cartita = mazo.sacaCarta(0);
-            Color triunfi = cartita.getColor();
-            switch (triunfi.getMerito()) {
+    private void defineTriumph() throws DCPlayerException{
+        if (!this.getDeck().isEmpty()) {
+            Card card = this.getDeck().getCard(0);
+            Color triumph1 = card.getColor();
+            switch (triumph1.getMerit()) {
                 case 5:
-                    if (cartita.getValor().getNumero() == 0) {
-                        enviarMensajeTodos("El palo de triunfo es " + triunfo);
-                        mazo.agregaCarta(cartita);
+                    if (card.getValue().getValue() == 0) {
+                        sendText("El palo de triunfo es " + triumph1);
+                        this.getDeck().addCard(card);
                         return;
                     }
-                    pedirTriunfo();
+                    askTriumph();
                     break;
                 default:
-                    triunfo = triunfi;
+                    triumph = triumph1;
                     break;
             }
-            mazo.agregaCarta(cartita);
-            enviarMensajeTodos("El palo de triunfo es " + triunfo);
+            this.getDeck().addCard(card);
+            sendText("El palo de triunfo es " + triumph);
         }
     }
 
     private void askTriumph() {
-        Jugador elegir = jugadores.buscarIndice(0);
-        enviarMensajeJugador(elegir, "Jugador " + elegir.getNombre() + " elige el palo de triunfo");
-        int i = validarTriunfo(elegir);
-        triunfo = new Color(i);
+        Player player = this.getPlayers().get(0);
+        sendText(player, "Jugador " + player.getName() + " elige el palo de triunfo");
+        int i = validateTriumph(player);
+        triumph = new Color(i);
     }
 
-    private int validateTriumph(Player player) {
-        enviarMensajeJugador(jugador,
+    private int validateTriumph(Player player) throws DCPlayerException {
+        sendText(player,
                 "Escribe el numero del palo de triunfo \n 1 para \u001B[91mrojo\u001B[0m \n 2 para \u001B[94mazul\u001B[0m \n 3 para \u001B[93mamarillo\u001B[0m \n 4 para \u001B[92mverde\u001B[0m (presiona \"h\" para ver todo el historial del juego)");
-        String respuesta = jugador.leerJugador();
-        try {
-            int i = Integer.parseInt(respuesta);
-            if (i < 1 || i > 4) {
-                throw new NumberFormatException();
-            }
-            return i;
-        } catch (NumberFormatException nfe) {
-            if (respuesta.equals("h")) {
-                enviarMensajeJugador(jugador, "Historial:");
-                enviarMensajeJugador(jugador, log);
-                return validarTriunfo(jugador);
-            }
-            enviarMensajeJugador(jugador, "No es un numero valido");
-            return validarTriunfo(jugador);
-        }
+        return player.getTriumph();
     }
 
-    private void setBets() {
-        for (Jugador jugador : jugadores) {
-            enviarMensajeJugador(jugador, "Jugador " + jugador.getNombre() + " es tu turno de ver tus cartas.");
-            enviarMensajeJugador(jugador, "Tu mano actual es\n" + jugador.verBarajaOrdenada());
-            enviarMensajeJugador(jugador, "\nEl palo de triunfo es " + triunfo + "\n");
-            int ap = pedirApuesta(jugador);
-            jugador.setApuesta(ap);
-            enviarMensajeTodos("El jugador " + jugador.getNombre() + " ha apostado " + ap);
+    private void setBets() throws DCPlayerException {
+        for (Player player : this.getPlayers()) {
+            sendText(player, "Jugador " + player.getName() + " es tu turno de ver tus cartas.");
+            sendText(player, "\nEl palo de triunfo es " + triumph + "\n");
+            int bet = askBet(player);
+            player.setBet(bet);
+            sendText("El jugador " + player.getName() + " ha apostado " + bet);
         }
     }
 
     private int askBet(Player player) {
-        enviarMensajeJugador(jugador, "Define tu apuesta (un numero entre 0 y " + numRonda + ") (presiona \"h\" para ver todo el historial del juego)");
-        String cadenita = jugador.leerJugador();
+        sendText(player, "Define tu apuesta (un numero entre 0 y " + numRound + ") (presiona \"h\" para ver todo el historial del juego)");
+        String text = player.leerJugador();
         try {
-            int apuesta = Integer.parseInt(cadenita);
-            if (apuesta < 0 || apuesta > numRonda) {
-                enviarMensajeJugador(jugador, "Apuesta invalida");
-                return pedirApuesta(jugador);
+            int bet = Integer.parseInt(text);
+            if (bet < 0 || bet > numRound) {
+                sendText(player, "Apuesta invalida");
+                return askBet(player);
             }
-            return apuesta;
+            return bet;
         } catch (NumberFormatException nfe) {
-            if (cadenita.equals("h")){
-                enviarMensajeJugador(jugador, "Historial:");
-                enviarMensajeJugador(jugador, log);
-                enviarMensajeJugador(jugador, "Jugador " + jugador.getNombre() + " es tu turno de ver tus cartas.");
-                enviarMensajeJugador(jugador, "Tu mano actual es\n" + jugador.verBarajaOrdenada());
-                enviarMensajeJugador(jugador, "\nEl palo de triunfo es " + triunfo + "\n");
-                return pedirApuesta(jugador);
-            }
-            enviarMensajeJugador(jugador, "No ingresaste un numero");
-            return pedirApuesta(jugador);
+            sendText(player, "No ingresaste un numero");
+            return askBet(player);
         }
     }
 
-    private void score() {
-        for (Jugador jugador : jugadores) {
-            if (jugador.getApuesta() == jugador.getGanados()) {
-                int punt = jugador.getPuntuacion();
-                punt += 20 + 10 * jugador.getGanados();
-                jugador.setPuntuacion(punt);
+    private void score() throws DCPlayerException {
+        for (Player player : this.getPlayers()) {
+            if (player.getBet() == player.getWins()) {
+                int score = player.getScore();
+                score += 20 + 10 * player.getWins();
+                player.setScore(score);
             } else {
-                int gan = jugador.getGanados();
-                int ap = jugador.getApuesta();
-                if (gan > ap) {
-                    int diferencia = gan - ap;
-                    int punt = jugador.getPuntuacion();
-                    punt -= diferencia * 10;
-                    jugador.setPuntuacion(punt);
+                int victories = player.getWins();
+                int bet = player.getBet();
+                if (victories > bet) {
+                    int rest = victories - bet;
+                    int score = player.getScore();
+                    score -= rest * 10;
+                    player.setScore(score);
                 } else {
-                    int diferencia = ap - gan;
-                    int punt = jugador.getPuntuacion();
-                    punt -= diferencia * 10;
-                    jugador.setPuntuacion(punt);
+                    int rest = bet - victories;
+                    int score = player.getScore();
+                    score -= rest * 10;
+                    player.setScore(score);
                 }
             }
-            jugador.setApuesta(0);
-            jugador.setGanados(0);
+            player.setBet(0);
+            player.setWins(0);
         }
     }
 

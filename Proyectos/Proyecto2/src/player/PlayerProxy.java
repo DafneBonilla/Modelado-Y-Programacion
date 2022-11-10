@@ -2,10 +2,8 @@ package player;
 
 import cards.*;
 import view.View;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 
 public class PlayerProxy implements Player {
@@ -21,17 +19,37 @@ public class PlayerProxy implements Player {
 
 	@Override
 	public String getName() throws DCPlayerException {
-		return null;
+		try {
+			BufferedWriter writter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			writter.write(Message.GET_NAME.toString());
+			writter.newLine();
+			writter.flush();
+		} catch (Exception e) {
+			throw new DCPlayerException("Error sending message to player");
+		}
+		String name = "";
+		try {
+			name = read();
+		} catch (DCPlayerException e) {
+			throw new DCPlayerException("Error reading message from player");
+		} catch (CException e) {
+			return name;
+		}
+		return name;
 	}
 
 	@Override
 	public CardHolder getDeck() {
-		return null;
+		return deck;
 	}
 
 	@Override
-	public void setDeck(CardHolder deck) throws DCPlayerException {
-		
+	public void setDeck(CardHolder deck) throws DCPlayerException, CException{
+		this.deck = deck;
+		try {
+		} catch (Exception e) {
+			throw new DCPlayerException("Error sending message to player");
+		}
 	}
 
 	@Override
@@ -70,6 +88,11 @@ public class PlayerProxy implements Player {
 	}
 
 	@Override
+	public int getTriumph() throws DCPlayerException {
+		return 0;
+	}
+
+	@Override
 	public void addCard(Card card) {
 		
 	}
@@ -80,17 +103,12 @@ public class PlayerProxy implements Player {
 	}
 
 	@Override
-	public String showDeck() {
-		return null;
-	}
-
-	@Override
 	public void showText(String message) throws DCPlayerException {
 		
 	}
 
 	@Override
-	public String read() throws DCPlayerException {
+	public String read() throws DCPlayerException, CException {
 		return null;
 	}
 
@@ -100,8 +118,13 @@ public class PlayerProxy implements Player {
 	}
 
 	@Override
-	public String askCard() throws DCPlayerException {
-		return null;
+	public int askCard() throws DCPlayerException {
+		return 0;
+	}
+
+	@Override
+	public void end() throws DCPlayerException {
+		
 	}
 
 }

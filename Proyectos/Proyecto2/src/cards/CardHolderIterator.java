@@ -10,4 +10,6 @@ public interface CardHolderIterator extends Serializable {
 
     public void restart();
 
+    public int size();
+
 }

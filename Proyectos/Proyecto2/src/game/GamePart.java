@@ -17,11 +17,11 @@ public abstract class GamePart {
     
     public abstract void start();
     
-    public void sendText(Player player, String text) {
+    public void sendText(Player player, String text) throws DCPlayerException {
         player.showText(text);
     }
     
-    public void sendText(String text) {
+    public void sendText(String text) throws DCPlayerException {
         for (Player player : players) {
             player.showText(text);
         }

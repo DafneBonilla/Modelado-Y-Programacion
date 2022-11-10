@@ -3,6 +3,7 @@ package game;
 import cards.*;
 import player.Player;
 import java.util.List;
+import player.DCPlayerException;
 
 public class GameTrick extends GamePart {
     
@@ -25,7 +26,6 @@ public class GameTrick extends GamePart {
             sendText(player, "Jugador " + player.getName() + " es tu turno de jugar una carta");
             sendText(player, "El palo leader es " + leader);
             sendText(player, "El palo de triunfo es " + triumph);
-            sendText(player, "Tu mano actual es\n" + player.showDeck());
             int index = validateCard(player);
             Card card = reciveCard(player, index);
             sendText("El jugador " + player.getName() + " jugo la carta " + card);
@@ -37,13 +37,14 @@ public class GameTrick extends GamePart {
         int wins = player1.getWins();
         player1.setWins(wins + 1);
         sendText("El jugador " + player1.getName() + " gana el truco");
+        CardHolder deck = this.getDeck();
         for (Card card : plays) {
-            mainDeck.addCard(card);
+            deck.addCard(card);
         }
         adjustPlayers(winner);
     }
     
-    private void defineLeader(Card card) {
+    private void defineLeader(Card card) throws DCPlayerException {
         if (leader.getMerit() == -1) {
             if (card.getColor().getMerit() == 5) {
                 return;
@@ -57,37 +58,20 @@ public class GameTrick extends GamePart {
         return player.giveCard(i);
     }
     
-    private int validateCard(Player player) {
-        sendText(player,"Ingresa el numero (entre 0 y " + (player.getDeck().size() - 1) + ") de la carta a jugar (presiona \"h\" para ver todo el historial del juego)");
-        String text = player.leerJugador();
-        try {
-            int i = Integer.parseInt(text);
-            if (i < 0 || i > (player.getDeck().size() - 1)) {
-                sendText(player, "Numero invalido");
-                return validateCard(player);
-            }
+    private int validateCard(Player player) throws DCPlayerException {
+        int i = -1;
+        while (true) {
+            i = player.askCard();
             Card card = player.getDeck().checkCard(i);
             if (legalCard(card, player.getDeck().copy(), i)) {
                 return i;
             } else {
                 sendText(player, "Carta invalida, debes jugar otra carta");
-                return validateCard(player);
             }
-        } catch (NumberFormatException nfe) {
-            if (text.equals("h")){
-                sendText(player, "Historial:");
-                sendText(player, "Jugador " + player.getName() + " es tu turno de jugar una carta");
-                sendText(player, "El palo lider es " + leader);
-                sendText(player, "El palo de triunfo es " + triumph);
-                sendText(player, "Tu mano actual es\n" + player.showDeck());
-                return validateCard(player);  
-            }
-            sendText(player, "No ingresaste un numero");
-            return validateCard(player);
         }
     }
     
-    private boolean legalCard(Card card, Deck hand, int i) {
+    private boolean legalCard(Card card, CardHolder hand, int i) {
         hand.getCard(i);
         if (hand.isEmpty()) {
             return true;
@@ -177,8 +161,10 @@ public class GameTrick extends GamePart {
     
     private void adjustPlayers(int i) {
         for (int j = 0; j < i; j++) {  
-            this.getPlayers().get(0);
-            Player adjust = this.getPlayers().remove(0);
+            List<Player> players = this.getPlayers();
+            Player adjust = players.get(0);
+            players.remove(adjust);
+            players.add(adjust);
         }
     }
 
