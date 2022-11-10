@@ -21,7 +21,7 @@ public class GameTrick extends GamePart {
     
     public void start() {
         sendText("El truco va a empezar");
-        for (Player player : players) {
+        for (Player player : this.getPlayers()) {
             sendText(player, "Jugador " + player.getName() + " es tu turno de jugar una carta");
             sendText(player, "El palo leader es " + leader);
             sendText(player, "El palo de triunfo es " + triumph);
@@ -33,12 +33,12 @@ public class GameTrick extends GamePart {
             plays.add(card);
         }
         int winner = winnerCard();
-        Player player1 = players.buscarIndice(winner);
+        Player player1 = getPlayers().get(winner);
         int wins = player1.getWins();
         player1.setWins(wins + 1);
         sendText("El jugador " + player1.getName() + " gana el truco");
-        for(Card card : plays) {
-            mazo.agregaCarta(card);
+        for (Card card : plays) {
+            mainDeck.addCard(card);
         }
         adjustPlayers(winner);
     }
@@ -76,7 +76,6 @@ public class GameTrick extends GamePart {
         } catch (NumberFormatException nfe) {
             if (text.equals("h")){
                 sendText(player, "Historial:");
-                sendText(player, log);
                 sendText(player, "Jugador " + player.getName() + " es tu turno de jugar una carta");
                 sendText(player, "El palo lider es " + leader);
                 sendText(player, "El palo de triunfo es " + triumph);
@@ -177,13 +176,9 @@ public class GameTrick extends GamePart {
     }
     
     private void adjustPlayers(int i) {
-        for (int j = 0; j < i; j++) {
-            // :P
-            // Player adjust = players.remove(0);
-            // Card card = cards.get(i);
-            // cards.remove(i);
-            // return card;
-            // players.add(adjust);
+        for (int j = 0; j < i; j++) {  
+            this.getPlayers().get(0);
+            Player adjust = this.getPlayers().remove(0);
         }
     }
 

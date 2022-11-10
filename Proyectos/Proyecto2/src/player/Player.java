@@ -5,34 +5,38 @@ import view.*;
 
 public interface Player {
     
-    public String getName();
+    public String getName() throws DCPlayerException;
     
     public CardHolder getDeck();
     
-    public void setDeck(CardHolder deck);
+    public void setDeck(CardHolder deck) throws DCPlayerException;
     
-    public int getScore();
+    public int getScore() throws DCPlayerException;
     
-    public void setScore(int i);
+    public void setScore(int i) throws DCPlayerException;
     
-    public int getBet();
+    public int getBet() throws DCPlayerException;
     
-    public void setBet(int i);
+    public void setBet(int i) throws DCPlayerException;
     
-    public int getWins();
+    public int getWins() throws DCPlayerException;
     
-    public void setWins(int i);
+    public void setWins(int i) throws DCPlayerException;
 
-    public int getContinue();
+    public int getContinue() throws DCPlayerException;
 
     public void addCard(Card card);
 
     public Card giveCard(int i);
 
-    public void showText(String message);
-
     public String showDeck();
 
+    public void showText(String message) throws DCPlayerException;
+
+    public String read() throws DCPlayerException;
+
     public void setView(View view);
+
+    public String askCard() throws DCPlayerException;
 
 }
