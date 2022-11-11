@@ -85,7 +85,7 @@ public class PlayerClient implements Player {
 		String cards = showDeck();
 		view.showText("Tu mano es: \n" + cards);
 		String question = "Define tu apuesta (numero entre 0 y " + numRound2 + ")";
-		int answer = -1;
+		int answer = 0;
 		while (true) {
 			answer = view.askInt(question);
 			if (answer >= 0 && answer <= numRound2) {
@@ -125,7 +125,7 @@ public class PlayerClient implements Player {
 
 	@Override
 	public int getTriumph() throws DCPlayerException {
-		int answer = -1;
+		int answer = 0;
 		while (true) {
 			answer = view.askInt("Escribe el numero del palo de triunfo 1 - Rojo, 2 - Azul, 3 - Amarillo, 4 - Verde");
 			if (answer >= 1 && answer <= 4) {
@@ -146,7 +146,7 @@ public class PlayerClient implements Player {
 
 	@Override
 	public int getContinue() throws DCPlayerException {
-		int answer = -1;
+		int answer = 0;
 		while (true) {
 			answer = view.askInt("Se votara para continuar o no. 0 para continuar, 1 para no continuar");
 			if (answer == 0 || answer == 1) {
@@ -280,7 +280,8 @@ public class PlayerClient implements Player {
 		try {
 			socket.close();
 		} catch (IOException e) {
-			throw new DCPlayerException("Error ending");
+			view.showText("Hubo un error cerrando la conexion");
+			System.exit(0);
 		}
 	}
 
