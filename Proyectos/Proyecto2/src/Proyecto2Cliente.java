@@ -11,7 +11,7 @@ import view.View;
 public class Proyecto2Cliente {
 
     public static void use() {
-        System.out.println("Usage: java Proyecto2Cliente <host> <port>");
+        System.out.println("Uso: java Proyecto2Cliente <host> <puerto>");
         System.exit(0);
     }
 
