@@ -1,8 +1,9 @@
 package cards;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface CardHolder {
+public interface CardHolder extends Serializable {
 
     public void addCard(Card card);
 
