@@ -1,27 +1,57 @@
 package cards;
 
+/**
+ * Class to represent the joker value
+ * A joker value has a value of 0 and a card associated to it
+ */
 public class Joker implements Value {
 
+    /* The card associated to this value */
     private Card card;
 
+    /**
+     * Constructor
+     * 
+     * @param card the card associated to this value
+     */
     public Joker(Card card) {
         this.card = card;
     }
 
-    @Override
+    /**
+     * Returns the card associated to this value
+     * 
+     * @return the card associated to this value
+     */
     public Card getCard() {
         return card;
     }
 
-    @Override
+    /**
+     * Returns a integer representation of the value
+     * 
+     * @return a integer representation of the value
+     */
     public int getValue() {
         return 0;
     }
 
+    /**
+     * Returns a string representation of the value
+     * 
+     * @return a string representation of the value
+     */
+    @Override
     public String toString() {
         return "Joker";
     }
 
+    /**
+     * Returns true if the object received as parameter is equal to this value
+     * 
+     * @param o the object to compare
+     * @return true if it is equal, false otherwise
+     */
     public boolean equals(Object o) {
         if (!(o instanceof Value))
             return false;
