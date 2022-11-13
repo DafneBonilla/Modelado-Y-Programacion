@@ -15,27 +15,23 @@
 - Compilar desde `src/`:
 
 ```
-javac Proyecto2.java
+javac *.java cards/*.java games/*.java players/*.java views/*.java
 ```
 
-- Correr desde `src/`:
+- Correr desde `src/` para iniciar con Servidor:
 
 ```
-java Proyecto1 0
+java Proyecto2Servidor <#jugadores> <puerto>
 ```
 
-- En caso de necesitar generlos archivos (1 para clientes y 2 para catalogo), correr desde `src/`:
+- Correr desde `src/` para iniciar con Cliente:
 
 ```
-java Proyecto1 1
-```
-
-```
-java Proyecto1 2
+java Proyecto2Cliente <host> <puerto>
 ```
 
 - Generar documentacion desde `src/`:
 
 ```
-javadoc -d docs *.java clients/*.java products/*.java stores/*.java utility/*.java walmart/*.java
+javadoc -d docs *.java cards/*.java games/*.java players/*.java views/*.java
 ```

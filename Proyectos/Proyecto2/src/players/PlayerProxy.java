@@ -1,13 +1,13 @@
-package player;
+package players;
 
 import cards.*;
-import view.View;
+import views.View;
 
+import java.net.Socket;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
-import java.net.Socket;
 
 public class PlayerProxy implements Player {
 

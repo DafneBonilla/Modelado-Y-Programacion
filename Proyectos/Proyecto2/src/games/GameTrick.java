@@ -1,11 +1,10 @@
-package game;
+package games;
 
 import cards.*;
-import player.Player;
+import players.CException;
+import players.DCPlayerException;
+import players.Player;
 import java.util.List;
-
-import player.CException;
-import player.DCPlayerException;
 
 public class GameTrick extends GamePart {
 

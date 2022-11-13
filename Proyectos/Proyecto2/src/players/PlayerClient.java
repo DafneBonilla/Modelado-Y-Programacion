@@ -1,14 +1,15 @@
-package player;
+package players;
 
 import cards.*;
-import view.View;
+import views.View;
+
+import java.net.Socket;
+import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
-import java.io.InputStreamReader;
-import java.net.Socket;
 
 public class PlayerClient implements Player {
 

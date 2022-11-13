@@ -1,7 +1,7 @@
+import players.DCPlayerException;
+import views.View;
 import java.io.IOException;
-import game.GameControl;
-import player.DCPlayerException;
-import view.View;
+import games.GameControl;
 
 /**
  * Class to make the proyect 2 work with the server.
@@ -9,7 +9,7 @@ import view.View;
 public class Proyecto2Servidor {
 
     public static void use() {
-        System.out.println("Uso: java Proyecto2Servidor <#jugadores> <puerto>");
+        System.out.println("Uso: java Proyecto2Servidor <#jugadores> <puerto>\nEl numero de jugadores debe ser entre 3 y 6");
         System.exit(0);
     }
 
@@ -31,6 +31,9 @@ public class Proyecto2Servidor {
         } catch (NumberFormatException e) {
             use();
         }
+        if (numPlayers > 2 || numPlayers < 7) {
+            use();
+        }
         View auxView = new View(null, null);
         GameControl gameControl = new GameControl(port, numPlayers);
         try {
@@ -47,5 +50,6 @@ public class Proyecto2Servidor {
             System.exit(0);
         }
     }
-    
+    // 20 15 12 10 
+    // 10 12 15 20
 }

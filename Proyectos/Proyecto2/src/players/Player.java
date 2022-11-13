@@ -1,7 +1,7 @@
-package player;
+package players;
 
-import view.*;
 import cards.*;
+import views.*;
 
 public interface Player {
 

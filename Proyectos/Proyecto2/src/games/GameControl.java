@@ -1,12 +1,12 @@
-package game;
+package games;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.LinkedList;
-import java.util.List;
 import cards.*;
-import player.*;
+import players.*;
+import java.util.List;
+import java.net.Socket;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.net.ServerSocket;
 
 public class GameControl {
 

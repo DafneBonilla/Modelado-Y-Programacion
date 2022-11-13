@@ -1,10 +1,9 @@
-package game;
+package games;
 
 import cards.*;
-import player.*;
+import players.*;
 import java.util.List;
 import java.util.LinkedList;
-import java.io.IOException;
 
 public class GameMain extends GamePart {
 
@@ -16,9 +15,24 @@ public class GameMain extends GamePart {
 
     public GameMain(int numPlayers, List<Player> players, CardHolder mainDeck) {
         super(players, mainDeck);
-        this.numRounds = numPlayers;
+        this.numRounds = getNumRounds(numPlayers);
         this.continues = true;
         this.seed = System.currentTimeMillis();
+    }
+
+    private int getNumRounds(int numPlayers) {
+        switch (numPlayers) {
+            case 3:
+                return 20;
+            case 4:
+                return 15;
+            case 5:
+                return 12;
+            case 6:
+                return 10;
+            default:
+                return 10;
+        }
     }
 
     @Override

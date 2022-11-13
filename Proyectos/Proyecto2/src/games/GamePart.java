@@ -1,7 +1,7 @@
-package game;
+package games;
 
-import player.*;
 import cards.*;
+import players.*;
 import java.util.List;
 
 public abstract class GamePart {

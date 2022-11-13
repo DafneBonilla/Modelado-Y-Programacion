@@ -1,6 +1,6 @@
-package view;
+package views;
 
-import player.*;
+import players.*;
 import java.net.Socket;
 import java.util.Scanner;
 

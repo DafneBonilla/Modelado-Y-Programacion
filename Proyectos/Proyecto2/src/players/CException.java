@@ -1,4 +1,4 @@
-package player;
+package players;
 
 public class CException extends Exception {
 
