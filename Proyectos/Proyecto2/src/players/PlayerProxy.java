@@ -2,10 +2,11 @@ package players;
 
 import cards.*;
 import views.View;
-
 import java.net.Socket;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 
@@ -21,30 +22,37 @@ public class PlayerProxy implements Player {
 
 	private int wins;
 
-	public PlayerProxy(Socket socket) {
+	private BufferedWriter writer;
+
+	private BufferedReader reader;
+
+	public PlayerProxy(Socket socket) throws IOException {
 		this.deck = null;
 		this.socket = socket;
 		this.score = 0;
 		this.bet = 0;
 		this.wins = 0;
+		if (socket != null) {
+			writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		}
 	}
 
 	@Override
 	public String getName() throws DCPlayerException {
 		try {
-			BufferedWriter writter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			writter.write(Message.GET_NAME.toString());
-			writter.newLine();
-			writter.flush();
+			writer.write(Message.GET_NAME.toString());
+			writer.newLine();
+			writer.flush();
 		} catch (Exception e) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		String name = "";
 		try {
 			name = read();
-		} catch (DCPlayerException e) {
+		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
-		} catch (CException e) {
+		} catch (CException ce) {
 			return name;
 		}
 		return name;
@@ -90,21 +98,20 @@ public class PlayerProxy implements Player {
 	@Override
 	public int askBet(int numRound) throws DCPlayerException {
 		try {
-			BufferedWriter writter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			writter.write(Message.ASK_BET.toString());
-			writter.newLine();
-			writter.write(numRound);
-			writter.newLine();
-			writter.flush();
+			writer.write(Message.ASK_BET.toString());
+			writer.newLine();
+			writer.write(numRound);
+			writer.newLine();
+			writer.flush();
 		} catch (Exception e) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int bet = 0;
 		try {
 			bet = Integer.parseInt(read());
-		} catch (DCPlayerException e) {
+		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
-		} catch (CException e) {
+		} catch (CException ce) {
 			return bet;
 		}
 		return bet;
@@ -123,19 +130,18 @@ public class PlayerProxy implements Player {
 	@Override
 	public int getTriumph() throws DCPlayerException {
 		try {
-			BufferedWriter writter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			writter.write(Message.GET_TRIUMPH.toString());
-			writter.newLine();
-			writter.flush();
+			writer.write(Message.GET_TRIUMPH.toString());
+			writer.newLine();
+			writer.flush();
 		} catch (Exception e) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int triumph = 0;
 		try {
 			triumph = Integer.parseInt(read());
-		} catch (DCPlayerException e) {
+		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
-		} catch (CException e) {
+		} catch (CException ce) {
 			return triumph;
 		}
 		return triumph;
@@ -144,19 +150,18 @@ public class PlayerProxy implements Player {
 	@Override
 	public int getContinue() throws DCPlayerException {
 		try {
-			BufferedWriter writter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			writter.write(Message.GET_CONTINUE.toString());
-			writter.newLine();
-			writter.flush();
+			writer.write(Message.GET_CONTINUE.toString());
+			writer.newLine();
+			writer.flush();
 		} catch (Exception e) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int cont = 0;
 		try {
 			cont = Integer.parseInt(read());
-		} catch (DCPlayerException e) {
+		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
-		} catch (CException e) {
+		} catch (CException ce) {
 			return cont;
 		}
 		return cont;
@@ -175,12 +180,11 @@ public class PlayerProxy implements Player {
 	@Override
 	public void showText(String message) throws DCPlayerException {
 		try {
-			BufferedWriter writter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			writter.write(Message.SHOW_TEXT.toString());
-			writter.newLine();
-			writter.write(message);
-			writter.newLine();
-			writter.flush();
+			writer.write(Message.SHOW_TEXT.toString());
+			writer.newLine();
+			writer.write(message);
+			writer.newLine();
+			writer.flush();
 		} catch (Exception e) {
 			throw new DCPlayerException("Error sending message to player");
 		}
@@ -189,7 +193,6 @@ public class PlayerProxy implements Player {
 	@Override
 	public String read() throws DCPlayerException, CException {
 		try {
-			BufferedReader reader = new BufferedReader(new java.io.InputStreamReader(socket.getInputStream()));
 			boolean invalid = true;
 			String message = "";
 			while (invalid) {
@@ -211,19 +214,18 @@ public class PlayerProxy implements Player {
 	@Override
 	public int askCard() throws DCPlayerException {
 		try {
-			BufferedWriter writter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			writter.write(Message.ASK_CARD.toString());
-			writter.newLine();
-			writter.flush();
+			writer.write(Message.ASK_CARD.toString());
+			writer.newLine();
+			writer.flush();
 		} catch (Exception e) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int card = 0;
 		try {
 			card = Integer.parseInt(read());
-		} catch (DCPlayerException e) {
+		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
-		} catch (CException e) {
+		} catch (CException ce) {
 			return card;
 		}
 		return card;
@@ -232,10 +234,9 @@ public class PlayerProxy implements Player {
 	@Override
 	public void end() throws DCPlayerException {
 		try {
-			BufferedWriter writter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			writter.write(Message.END.toString());
-			writter.newLine();
-			writter.flush();
+			writer.write(Message.END.toString());
+			writer.newLine();
+			writer.flush();
 		} catch (Exception e) {
 			throw new DCPlayerException("Error sending message to player");
 		}

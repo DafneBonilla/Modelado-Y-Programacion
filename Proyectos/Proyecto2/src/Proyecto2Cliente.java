@@ -29,10 +29,16 @@ public class Proyecto2Cliente {
         int port = 1234;
         try {
             port = Integer.parseInt(args[1]);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException nfe) {
             use();
         }
-        View auxView = new View(null, null);
+        View auxView;
+        try {
+            auxView = new View(null, null);
+        } catch (IOException ioe) {
+            System.out.println("Error al crear la vista");
+            return;
+        }
         String name = auxView.askString("Introduce tu nombre");
         View view = null;
         try {

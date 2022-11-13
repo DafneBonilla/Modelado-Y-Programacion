@@ -23,19 +23,26 @@ public class PlayerClient implements Player {
 
 	private boolean active;
 
-	public PlayerClient(String name, Socket socket) {
+	private BufferedReader reader;
+
+	private BufferedWriter writer;
+
+	public PlayerClient(String name, Socket socket) throws IOException {
 		this.name = name;
 		this.socket = socket;
 		this.deck = null;
 		this.socket = socket;
 		this.view = null;
 		this.active = true;
+		if (socket != null) {
+			this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			this.writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+		}
 	}
 
 	@Override
 	public String getName() throws DCPlayerException {
 		try {
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			writer.write(name);
 			writer.newLine();
 			writer.flush();
@@ -96,7 +103,6 @@ public class PlayerClient implements Player {
 			view.showText("Tu mano es: \n" + cards);
 		}
 		try {
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			writer.write(answer);
 			writer.newLine();
 			writer.flush();
@@ -108,7 +114,6 @@ public class PlayerClient implements Player {
 
 	private int readRound() throws DCPlayerException {
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			return Integer.parseInt(reader.readLine());
 		} catch (IOException e) {
 			throw new DCPlayerException("Error reading round");
@@ -135,7 +140,6 @@ public class PlayerClient implements Player {
 			view.showText("Respuesta invalida, el numero debe ser entre 1 y 4");
 		}
 		try {
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			writer.write(answer);
 			writer.newLine();
 			writer.flush();
@@ -156,7 +160,6 @@ public class PlayerClient implements Player {
 			view.showText("Respuesta invalida, elija 0 o 1");
 		}
 		try {
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			writer.write(answer);
 			writer.newLine();
 			writer.flush();
@@ -178,7 +181,6 @@ public class PlayerClient implements Player {
 	@Override
 	public void showText(String message) throws DCPlayerException {
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			String line = reader.readLine();
 			this.view.showText(line);
 		} catch (IOException e) {
@@ -189,7 +191,6 @@ public class PlayerClient implements Player {
 	@Override
 	public String read() throws DCPlayerException, CException {
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			while (active) {
 				String line = reader.readLine();
 				if (line != null) {
@@ -254,7 +255,6 @@ public class PlayerClient implements Player {
 			view.showText("Tu mano es: \n" + cards);
 		}
 		try {
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			writer.write(answer);
 			writer.newLine();
 			writer.flush();

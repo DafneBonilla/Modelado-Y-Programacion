@@ -1,7 +1,8 @@
-import players.DCPlayerException;
+
 import views.View;
-import java.io.IOException;
 import games.GameControl;
+import java.io.IOException;
+import players.DCPlayerException;
 
 /**
  * Class to make the proyect 2 work with the server.
@@ -37,7 +38,13 @@ public class Proyecto2Servidor {
         if (port < 1024 || port > 65535) {
             use();
         }
-        View auxView = new View(null, null);
+        View auxView;
+        try {
+            auxView = new View(null, null);
+        } catch (IOException ioe) {
+            System.out.println("Error al crear la vista");
+            return;
+        }
         GameControl gameControl = new GameControl(port, numPlayers);
         try {
             gameControl.recivePlayers();

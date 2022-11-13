@@ -3,12 +3,13 @@ package views;
 import players.*;
 import java.net.Socket;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class View {
 
     private PlayerClient player;
 
-    public View(String name, Socket socket) {
+    public View(String name, Socket socket) throws IOException {
         player = new PlayerClient(name, socket);
         player.setView(this);
     }
