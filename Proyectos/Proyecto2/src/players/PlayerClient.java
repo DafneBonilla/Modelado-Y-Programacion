@@ -61,6 +61,9 @@ public class PlayerClient implements Player {
 	public void setDeck(CardHolder deck) throws DCPlayerException, CException {
 		try {
 			ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+			writer.write("ready");
+			writer.newLine();
+			writer.flush();
 			this.deck = (CardHolderIterator) ois.readObject();
 		} catch (IOException e) {
 			throw new DCPlayerException("Error setting deck");

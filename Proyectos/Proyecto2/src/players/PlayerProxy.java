@@ -70,7 +70,14 @@ public class PlayerProxy implements Player {
 			writer.write(Message.SET_DECK.toString());
 			writer.newLine();
 			writer.flush();
+			boolean ready = false;
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+			while (!ready) {
+				String message = read();
+				if (message.equals("ready")) {
+					ready = true;
+				}
+			}
 			oos.writeObject(deck);
 			oos.flush();
 		} catch (Exception e) {
