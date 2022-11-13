@@ -20,7 +20,7 @@ javac *.java cards/*.java games/*.java players/*.java views/*.java
 
 - Correr desde `src/` para iniciar con Servidor:
 
-```
+``` 
 java Proyecto2Servidor <#jugadores> <puerto>
 ```
 

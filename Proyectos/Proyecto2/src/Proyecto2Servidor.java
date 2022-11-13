@@ -9,7 +9,7 @@ import games.GameControl;
 public class Proyecto2Servidor {
 
     public static void use() {
-        System.out.println("Uso: java Proyecto2Servidor <#jugadores> <puerto>\nEl numero de jugadores debe ser entre 3 y 6");
+        System.out.println("Uso: java Proyecto2Servidor <#jugadores> <puerto>\nEl numero de jugadores debe ser entre 3 y 6\nEl puerto debe ser un numero entre 1024 y 65535");
         System.exit(0);
     }
 
@@ -31,7 +31,10 @@ public class Proyecto2Servidor {
         } catch (NumberFormatException e) {
             use();
         }
-        if (numPlayers > 2 || numPlayers < 7) {
+        if (numPlayers < 2 || numPlayers > 7) {
+            use();
+        }
+        if (port < 1024 || port > 65535) {
             use();
         }
         View auxView = new View(null, null);
@@ -50,6 +53,4 @@ public class Proyecto2Servidor {
             System.exit(0);
         }
     }
-    // 20 15 12 10 
-    // 10 12 15 20
 }
