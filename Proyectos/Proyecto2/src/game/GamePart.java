@@ -15,7 +15,7 @@ public abstract class GamePart {
         this.mainDeck = mainDeck;
     }
 
-    public abstract void start();
+    public abstract void start() throws DCPlayerException;
 
     public void sendText(Player player, String text) throws DCPlayerException {
         player.showText(text);

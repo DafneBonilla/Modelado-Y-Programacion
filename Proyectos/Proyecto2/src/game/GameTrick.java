@@ -3,6 +3,8 @@ package game;
 import cards.*;
 import player.Player;
 import java.util.List;
+
+import player.CException;
 import player.DCPlayerException;
 
 public class GameTrick extends GamePart {
@@ -20,7 +22,7 @@ public class GameTrick extends GamePart {
         this.plays = null;
     }
 
-    public void start() {
+    public void start() throws DCPlayerException {
         sendText("El truco va a empezar");
         for (Player player : this.getPlayers()) {
             sendText(player, "Jugador " + player.getName() + " es tu turno de jugar una carta");
@@ -60,6 +62,11 @@ public class GameTrick extends GamePart {
 
     private int validateCard(Player player) throws DCPlayerException {
         int i = -1;
+        try {
+            player.setDeck(player.getDeck());
+        } catch (CException ce) {
+            throw new DCPlayerException("No se pudo pasar cartas al jugador");
+        }
         while (true) {
             i = player.askCard();
             Card card = player.getDeck().checkCard(i);

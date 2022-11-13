@@ -66,7 +66,7 @@ public class GameControl {
         }
     }
 
-    public void startGame() {
+    public void startGame() throws DCPlayerException {
         if (game == null) {
             game.start();
         }

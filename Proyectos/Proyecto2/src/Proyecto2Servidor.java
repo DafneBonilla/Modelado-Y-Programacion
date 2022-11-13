@@ -1,9 +1,10 @@
 import java.io.IOException;
 import game.GameControl;
+import player.DCPlayerException;
 import view.View;
 
 /**
- * Class to make the proyect 2 work with the server
+ * Class to make the proyect 2 work with the server.
  */
 public class Proyecto2Servidor {
 
@@ -13,9 +14,9 @@ public class Proyecto2Servidor {
     }
 
     /**
-     * Main method
+     * Main method.
      * 
-     * @param args the arguments
+     * @param args the arguments.
      */
     public static void main(String[] args) {
 
@@ -38,12 +39,13 @@ public class Proyecto2Servidor {
             gameControl.createGame();
             gameControl.startGame();
             gameControl.closeServer();
+        } catch (DCPlayerException dcpe) {
+            auxView.showText("Error de conexion entre los clientes y el servidor");
         } catch (IOException e) {
             auxView.showText("Error al crear el servidor/recibir jugadores");
             auxView.showText("Terminando la ejecucion");
             System.exit(0);
         }
-
     }
-
+    
 }

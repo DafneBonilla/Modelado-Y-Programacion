@@ -23,6 +23,7 @@ public class GameMain extends GamePart {
 
     @Override
     public void start() {
+        boolean normalFinish = true;
         try {
             sendText("La partida va a empezar, todos listos :)");
             sendText("La seed del juego es " + seed);
@@ -37,26 +38,15 @@ public class GameMain extends GamePart {
                 }
             }
         } catch (DCPlayerException playerIn) {
-            try {
-                resultsDC();
-                // TODO: sendText("El jugador " + playerIn.getPlayer().getName() + " se ha
-                // desconectado");
-            } catch (DCPlayerException playerOut) {
-                // TODO Auto-generated catch block
-            }
+            resultsDC();
+            normalFinish = false;
         }
-        try {
+        if (normalFinish) {
             results();
-            // TODO: sendText("La partida ha terminado");
-            System.exit(0);
-        } catch (IOException ioe) {
-            System.out.println("No se pudo cerrar el archivo, abortando la ejecución...");
-            System.exit(0);
         }
     }
 
     private void sendTextDC(String text) {
-        System.out.println(text + "\n");
         for (Player player : getPlayers()) {
             try {
                 sendText(player, text);
@@ -66,25 +56,25 @@ public class GameMain extends GamePart {
         }
     }
 
-    private void results() throws DCPlayerException {
+    private void results() {
         String results = "Ahora se anunciara al ganador del juego...\n\n";
         results += winner();
-        sendText(results);
+        sendTextDC(results);
     }
 
-    private void resultsDC() throws DCPlayerException {
-        String results = "Un jugador se pudo haber desconectado, terminando el juego...\n";
+    private void resultsDC() {
+        String results = "Un jugador se pudo haber desconectado o tuve un problema de conexion, terminando el juego...\n";
         results += "Ahora se anunciara al ganador del juego...\n\n";
         results += winner();
         sendTextDC(results);
         System.exit(0);
     }
 
-    private String winner() throws DCPlayerException {
+    private String winner() {
         return higher(this.getPlayers());
     }
 
-    private String higher(List<Player> players) throws DCPlayerException {
+    private String higher(List<Player> players) {
         String winner = "Hubo un empate entre los Jugadores ";
         int position = bigger(players);
         Player champ = players.get(position);
@@ -96,18 +86,31 @@ public class GameMain extends GamePart {
         for (Player player1 : rest) {
             if (player1.getScore() == score) {
                 tie = true;
-                winner += player1.getName() + ", ";
+                try {
+                    winner += player1.getName() + ", ";
+                } catch (DCPlayerException playerIn) {
+                    winner += "Jugador desconectado ";
+                    continue;
+                }
             }
         }
         if (tie) {
             winner = winner.substring(0, winner.length() - 2);
-            winner += " y " + champ.getName();
+            try {
+                winner += " y " + champ.getName() ;
+            } catch (DCPlayerException playerIn) {
+                winner += " y Jugador desconectado";
+            }
             return winner + " todos con " + score + " puntos\n";
         }
-        return "El ganador es el jugador " + champ.getName() + " con " + champ.getScore() + " puntos\n";
+        try {
+            return "El ganador es el jugador " + champ.getName() + " con " + champ.getScore() + " puntos\n";
+        } catch (DCPlayerException playerIn) {
+            return "El ganador es el jugador desconectado" + " con " + champ.getScore() + " puntos\n";
+        }
     }
 
-    private int bigger(List<Player> list) throws DCPlayerException {
+    private int bigger(List<Player> list) {
         int answer = 0;
         int score = list.get(0).getScore();
         for (Player player : list) {

@@ -1,9 +1,10 @@
 package game;
 
 import cards.*;
-import player.DCPlayerException;
 import player.Player;
 import java.util.List;
+import player.CException;
+import player.DCPlayerException;
 
 public class GameRound extends GamePart {
 
@@ -19,7 +20,7 @@ public class GameRound extends GamePart {
         this.numTricks = 0;
     }
 
-    public void start() {
+    public void start() throws DCPlayerException {
         sendText("La ronda " + numRound + " va a empezar");
         this.getDeck().shuffle();
         dealCards();
@@ -67,11 +68,31 @@ public class GameRound extends GamePart {
         }
     }
 
-    private void askTriumph() {
+    private void askTriumph() throws DCPlayerException {
         Player player = this.getPlayers().get(0);
         sendText(player, "Jugador " + player.getName() + " elige el palo de triunfo");
         int i = validateTriumph(player);
-        triumph = new Color(i);
+        triumph = null;
+        switch (i) {
+            case 1:
+                triumph = new Red(null);
+                break;
+            case 2:
+                triumph = new Blue(null);
+                break;
+            case 3:
+                triumph = new Yellow(null);
+                break;
+            case 4:
+                triumph = new Green(null);
+                break;
+            case 5: 
+                triumph = new White(null);
+                break;
+            default:
+                triumph = new Red(null);
+                break;
+        }
     }
 
     private int validateTriumph(Player player) throws DCPlayerException {
@@ -90,23 +111,15 @@ public class GameRound extends GamePart {
         }
     }
 
-    private int askBet(Player player) {
-        sendText(player, "Define tu apuesta (un numero entre 0 y " + numRound
-                + ") (presiona \"h\" para ver todo el historial del juego)");
-        String text = player.leerJugador();
+    private int askBet(Player player) throws DCPlayerException {
         try {
-            int bet = Integer.parseInt(text);
-            if (bet < 0 || bet > numRound) {
-                sendText(player, "Apuesta invalida");
-                return askBet(player);
-            }
-            return bet;
-        } catch (NumberFormatException nfe) {
-            sendText(player, "No ingresaste un numero");
-            return askBet(player);
+            player.setDeck(player.getDeck());
+        } catch (CException ce) {
+            throw new DCPlayerException("No se pudo pasar cartas al jugador");
         }
+        return player.askBet(numRound);
     }
-
+    
     private void score() throws DCPlayerException {
         for (Player player : this.getPlayers()) {
             if (player.getBet() == player.getWins()) {

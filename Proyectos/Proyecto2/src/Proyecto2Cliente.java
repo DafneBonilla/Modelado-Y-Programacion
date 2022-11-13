@@ -6,7 +6,7 @@ import player.DCPlayerException;
 import view.View;
 
 /**
- * Class to make the proyect 2 work with the client
+ * Class to make the proyect 2 work with the client.
  */
 public class Proyecto2Cliente {
 
@@ -16,9 +16,9 @@ public class Proyecto2Cliente {
     }
 
     /**
-     * Main method
+     * Main method.
      * 
-     * @param args the arguments
+     * @param args the arguments.
      */
     public static void main(String[] args) {
 
@@ -47,7 +47,7 @@ public class Proyecto2Cliente {
             auxView.showText(ce.getMessage());
             auxView.showText("Hubo un error al no encontrar un clase, por favor revisar que compilaste bien");
             auxView.showText("Terminando la ejecucion");
-            System.out.println(0);
+            System.exit(0);
         } catch (IOException ioe) {
             auxView.showText(ioe.getMessage());
             auxView.showText("Hubo un problema al intentar conectarse al servidor");
