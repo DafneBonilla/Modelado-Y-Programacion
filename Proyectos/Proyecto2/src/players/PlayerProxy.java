@@ -67,6 +67,9 @@ public class PlayerProxy implements Player {
 	public void setDeck(CardHolder deck) throws DCPlayerException, CException {
 		this.deck = deck;
 		try {
+			writer.write(Message.SET_DECK.toString());
+			writer.newLine();
+			writer.flush();
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 			oos.writeObject(deck);
 			oos.flush();

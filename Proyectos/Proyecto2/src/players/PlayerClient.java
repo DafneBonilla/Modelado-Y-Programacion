@@ -197,7 +197,7 @@ public class PlayerClient implements Player {
 					manageMessage(Message.getMessage(line));
 				}
 			}
-		} catch (IOException e) {
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error reading");
 		}
 		view.showText("Gracias por jugar");

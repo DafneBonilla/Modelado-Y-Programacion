@@ -26,7 +26,7 @@ java Proyecto2Servidor <#jugadores> <puerto>
 
 - Correr desde `src/` para iniciar con Cliente:
 
-```
+``` 
 java Proyecto2Cliente <host> <puerto>
 ```
 
