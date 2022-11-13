@@ -35,11 +35,12 @@ public class GameControl {
         players = new LinkedList<>();
         while (players.size() < numPlayers) {
             Socket socket = server.accept();
-            Player player = new PlayerProxy(socket);
+            Socket socket2 = server.accept();
+            Player player = new PlayerProxy(socket, socket2);
             players.add(player);
             player.showText("Bienvenido");
-            player.showText("En unos momentos se iniciará el juego...");
-            player.showText("Esperando a que se conecten los demás jugadores...");
+            player.showText("En unos momentos se iniciara el juego...");
+            player.showText("Esperando a que se conecten los demas jugadores...");
         }
         for (Player player : players) {
             player.showText("Todos los jugadores se han conectado");
@@ -67,7 +68,7 @@ public class GameControl {
     }
 
     public void startGame() throws DCPlayerException {
-        if (game == null) {
+        if (game != null) {
             game.start();
         }
     }

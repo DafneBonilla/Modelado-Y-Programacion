@@ -9,8 +9,8 @@ public class View {
 
     private PlayerClient player;
 
-    public View(String name, Socket socket) throws IOException {
-        player = new PlayerClient(name, socket);
+    public View(String name, Socket socket, Socket socket2) throws IOException {
+        player = new PlayerClient(name, socket, socket2);
         player.setView(this);
     }
 

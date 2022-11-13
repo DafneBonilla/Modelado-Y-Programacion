@@ -86,7 +86,7 @@ public class Deck implements CardHolder {
     private Card[] turnArray() {
         Card[] answer = new Card[cards.size()];
         for (int i = 0; i < answer.length; i++) {
-            answer[i] = getCard(i);
+            answer[i] = checkCard(i);
         }
         return answer;
     }
@@ -102,7 +102,6 @@ public class Deck implements CardHolder {
         Card[] array = turnArray();
         shuffleAux(array);
         turnDeck(array);
-
     }
 
     /*

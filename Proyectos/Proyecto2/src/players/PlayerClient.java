@@ -19,6 +19,8 @@ public class PlayerClient implements Player {
 
 	private Socket socket;
 
+	private Socket socket2;
+
 	private View view;
 
 	private boolean active;
@@ -27,16 +29,21 @@ public class PlayerClient implements Player {
 
 	private BufferedWriter writer;
 
-	public PlayerClient(String name, Socket socket) throws IOException {
+	private ObjectInputStream objectReader;
+
+	public PlayerClient(String name, Socket socket, Socket socket2) throws IOException {
 		this.name = name;
 		this.socket = socket;
+		this.socket2 = socket2;
 		this.deck = null;
-		this.socket = socket;
 		this.view = null;
 		this.active = true;
 		if (socket != null) {
 			this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			this.writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+		}
+		if (socket2 != null) {
+			this.objectReader = new ObjectInputStream(socket2.getInputStream());
 		}
 	}
 
@@ -60,11 +67,7 @@ public class PlayerClient implements Player {
 	@Override
 	public void setDeck(CardHolder deck) throws DCPlayerException, CException {
 		try {
-			ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-			writer.write("ready");
-			writer.newLine();
-			writer.flush();
-			this.deck = (CardHolderIterator) ois.readObject();
+			this.deck = (CardHolderIterator) objectReader.readObject();
 		} catch (IOException e) {
 			throw new DCPlayerException("Error setting deck");
 		} catch (ClassNotFoundException e) {
@@ -197,6 +200,7 @@ public class PlayerClient implements Player {
 			while (active) {
 				String line = reader.readLine();
 				if (line != null) {
+					System.out.println(line);
 					manageMessage(Message.getMessage(line));
 				}
 			}

@@ -16,6 +16,8 @@ public class PlayerProxy implements Player {
 
 	private Socket socket;
 
+	private Socket socket2;
+
 	private int score;
 
 	private int bet;
@@ -26,15 +28,21 @@ public class PlayerProxy implements Player {
 
 	private BufferedReader reader;
 
-	public PlayerProxy(Socket socket) throws IOException {
-		this.deck = null;
+	private ObjectOutputStream objectWriter;
+
+	public PlayerProxy(Socket socket, Socket socket2) throws IOException {
+		this.deck = new Deck();
 		this.socket = socket;
+		this.socket2 = socket2;
 		this.score = 0;
 		this.bet = 0;
 		this.wins = 0;
 		if (socket != null) {
 			writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		}
+		if (socket2 != null) {
+			objectWriter = new ObjectOutputStream(socket2.getOutputStream());
 		}
 	}
 
@@ -70,16 +78,8 @@ public class PlayerProxy implements Player {
 			writer.write(Message.SET_DECK.toString());
 			writer.newLine();
 			writer.flush();
-			boolean ready = false;
-			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-			while (!ready) {
-				String message = read();
-				if (message.equals("ready")) {
-					ready = true;
-				}
-			}
-			oos.writeObject(deck);
-			oos.flush();
+			objectWriter.writeObject(deck.getIterator());
+			objectWriter.flush();
 		} catch (Exception e) {
 			throw new DCPlayerException("Error sending message to player");
 		}

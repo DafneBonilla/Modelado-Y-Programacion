@@ -13,11 +13,14 @@ public class GameMain extends GamePart {
 
     private long seed;
 
+    private int actualRound;
+
     public GameMain(int numPlayers, List<Player> players, CardHolder mainDeck) {
         super(players, mainDeck);
         this.numRounds = getNumRounds(numPlayers);
         this.continues = true;
         this.seed = System.currentTimeMillis();
+        this.actualRound = 0;
     }
 
     private int getNumRounds(int numPlayers) {
@@ -42,7 +45,8 @@ public class GameMain extends GamePart {
             sendText("La partida va a empezar, todos listos :)");
             sendText("La seed del juego es " + seed);
             for (int i = 1; i <= numRounds; i++) {
-                GameRound actual = new GameRound(this.getPlayers(), this.getDeck(), numRounds);
+                GameRound actual = new GameRound(this.getPlayers(), this.getDeck(), i);
+                actualRound = i;
                 actual.start();
                 if (i != numRounds) {
                     carryOn();
@@ -78,6 +82,17 @@ public class GameMain extends GamePart {
 
     private void resultsDC() {
         String results = "Un jugador se pudo haber desconectado o tuve un problema de conexion, terminando el juego...\n";
+        if (actualRound < 2) {
+            sendTextDC(results);
+            for (Player player : getPlayers()) {
+                try {
+                    sendText(player, "El juego se ha terminado por un problema de conexion");
+                    player.end();
+                } catch (DCPlayerException playerIn) {
+                    continue;
+                }
+            }
+        }
         results += "Ahora se anunciara al ganador del juego...\n\n";
         results += winner();
         sendTextDC(results);
@@ -111,7 +126,7 @@ public class GameMain extends GamePart {
         if (tie) {
             winner = winner.substring(0, winner.length() - 2);
             try {
-                winner += " y " + champ.getName() ;
+                winner += " y " + champ.getName();
             } catch (DCPlayerException playerIn) {
                 winner += " y Jugador desconectado";
             }

@@ -4,7 +4,6 @@ import players.DCPlayerException;
 import views.View;
 import java.io.IOException;
 
-
 /**
  * Class to make the proyect 2 work with the client.
  */
@@ -34,7 +33,7 @@ public class Proyecto2Cliente {
         }
         View auxView;
         try {
-            auxView = new View(null, null);
+            auxView = new View(null, null, null);
         } catch (IOException ioe) {
             System.out.println("Error al crear la vista");
             return;
@@ -43,7 +42,8 @@ public class Proyecto2Cliente {
         View view = null;
         try {
             Socket socket = new Socket(host, port);
-            view = new View(name, socket);
+            Socket socket2 = new Socket(host, port);
+            view = new View(name, socket, socket2);
             view.getPlayer().read();
         } catch (DCPlayerException dcpe) {
             auxView.showText(dcpe.getMessage());
