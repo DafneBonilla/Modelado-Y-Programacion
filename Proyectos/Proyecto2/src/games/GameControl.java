@@ -2,7 +2,6 @@ package games;
 
 import cards.*;
 import players.*;
-import java.util.List;
 import java.net.Socket;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -10,7 +9,7 @@ import java.net.ServerSocket;
 
 public class GameControl {
 
-    private List<Player> players;
+    private Player[] players;
 
     private CardHolder cardHolder;
 
@@ -32,12 +31,13 @@ public class GameControl {
 
     public void recivePlayers() throws IOException {
         server = new ServerSocket(port);
-        players = new LinkedList<>();
-        while (players.size() < numPlayers) {
+        players = new Player[numPlayers];
+        int i = 0;
+        while (i < numPlayers) {
             Socket socket = server.accept();
-            Socket socket2 = server.accept();
-            Player player = new PlayerProxy(socket, socket2);
-            players.add(player);
+            Player player = new PlayerProxy(socket);
+            players[i] = player;
+            i++;
             player.showText("Bienvenido");
             player.showText("En unos momentos se iniciara el juego...");
             player.showText("Esperando a que se conecten los demas jugadores...");
@@ -63,7 +63,10 @@ public class GameControl {
 
     public void createGame() {
         if (players != null && cardHolder != null) {
-            game = new GameMain(numPlayers, players, cardHolder);
+            game = new GameMain(numPlayers, new LinkedList<Player>(), cardHolder);
+            for (Player player : players) {
+                game.registerObserver(player);
+            }
         }
     }
 

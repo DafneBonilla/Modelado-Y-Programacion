@@ -3,11 +3,10 @@ package players;
 import cards.*;
 import views.View;
 import java.net.Socket;
+import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 
 public class PlayerProxy implements Player {
@@ -15,8 +14,6 @@ public class PlayerProxy implements Player {
 	private CardHolder deck;
 
 	private Socket socket;
-
-	private Socket socket2;
 
 	private int score;
 
@@ -28,21 +25,15 @@ public class PlayerProxy implements Player {
 
 	private BufferedReader reader;
 
-	private ObjectOutputStream objectWriter;
-
-	public PlayerProxy(Socket socket, Socket socket2) throws IOException {
+	public PlayerProxy(Socket socket) throws IOException {
 		this.deck = new Deck();
 		this.socket = socket;
-		this.socket2 = socket2;
 		this.score = 0;
 		this.bet = 0;
 		this.wins = 0;
 		if (socket != null) {
 			writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		}
-		if (socket2 != null) {
-			objectWriter = new ObjectOutputStream(socket2.getOutputStream());
 		}
 	}
 
@@ -52,7 +43,7 @@ public class PlayerProxy implements Player {
 			writer.write(Message.GET_NAME.toString());
 			writer.newLine();
 			writer.flush();
-		} catch (Exception e) {
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		String name = "";
@@ -60,8 +51,6 @@ public class PlayerProxy implements Player {
 			name = read();
 		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
-		} catch (CException ce) {
-			return name;
 		}
 		return name;
 	}
@@ -72,15 +61,25 @@ public class PlayerProxy implements Player {
 	}
 
 	@Override
-	public void setDeck(CardHolder deck) throws DCPlayerException, CException {
+	public void setDeck(CardHolder deck) throws DCPlayerException {
 		this.deck = deck;
+		String deckString = "";
+		int i = 0;
+		CardHolderIterator it = this.deck.getIterator();
+		while (it.hasNext()) {
+			Card card = it.next();
+			deckString += "[" + i + "] " + " " + card.toString() + "\n";
+			i++;
+		}
 		try {
 			writer.write(Message.SET_DECK.toString());
 			writer.newLine();
+			writer.write(deckString);
+			writer.newLine();
+			writer.write(i-1);
+			writer.newLine();
 			writer.flush();
-			objectWriter.writeObject(deck.getIterator());
-			objectWriter.flush();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 	}
@@ -113,7 +112,7 @@ public class PlayerProxy implements Player {
 			writer.write(numRound);
 			writer.newLine();
 			writer.flush();
-		} catch (Exception e) {
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int bet = 0;
@@ -121,9 +120,9 @@ public class PlayerProxy implements Player {
 			bet = Integer.parseInt(read());
 		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
-		} catch (CException ce) {
-			return bet;
-		}
+		} catch (NumberFormatException nfe) {
+			throw new DCPlayerException("Error reading message from player");
+		} 
 		return bet;
 	}
 
@@ -143,7 +142,7 @@ public class PlayerProxy implements Player {
 			writer.write(Message.GET_TRIUMPH.toString());
 			writer.newLine();
 			writer.flush();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int triumph = 0;
@@ -151,8 +150,8 @@ public class PlayerProxy implements Player {
 			triumph = Integer.parseInt(read());
 		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
-		} catch (CException ce) {
-			return triumph;
+		} catch (NumberFormatException nfe) {
+			throw new DCPlayerException("Error reading message from player");
 		}
 		return triumph;
 	}
@@ -163,7 +162,7 @@ public class PlayerProxy implements Player {
 			writer.write(Message.GET_CONTINUE.toString());
 			writer.newLine();
 			writer.flush();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int cont = 0;
@@ -171,8 +170,8 @@ public class PlayerProxy implements Player {
 			cont = Integer.parseInt(read());
 		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
-		} catch (CException ce) {
-			return cont;
+		} catch (NumberFormatException nfe) {
+			throw new DCPlayerException("Error reading message from player");
 		}
 		return cont;
 	}
@@ -195,13 +194,13 @@ public class PlayerProxy implements Player {
 			writer.write(message);
 			writer.newLine();
 			writer.flush();
-		} catch (Exception e) {
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 	}
 
 	@Override
-	public String read() throws DCPlayerException, CException {
+	public String read() throws DCPlayerException {
 		try {
 			boolean invalid = true;
 			String message = "";
@@ -212,7 +211,7 @@ public class PlayerProxy implements Player {
 				}
 			}
 			return message;
-		} catch (Exception e) {
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error reading message from player");
 		}
 	}
@@ -227,7 +226,7 @@ public class PlayerProxy implements Player {
 			writer.write(Message.ASK_CARD.toString());
 			writer.newLine();
 			writer.flush();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int card = 0;
@@ -235,8 +234,8 @@ public class PlayerProxy implements Player {
 			card = Integer.parseInt(read());
 		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
-		} catch (CException ce) {
-			return card;
+		} catch (NumberFormatException nfe) {
+			throw new DCPlayerException("Error reading message from player");
 		}
 		return card;
 	}
@@ -247,8 +246,12 @@ public class PlayerProxy implements Player {
 			writer.write(Message.END.toString());
 			writer.newLine();
 			writer.flush();
-		} catch (Exception e) {
-			throw new DCPlayerException("Error sending message to player");
+			} catch (IOException ioe) {
+				throw new DCPlayerException("Error sending message to player");
+			}
+		try {
+			socket.close();
+		} catch (IOException ioe) {
 		}
 	}
 

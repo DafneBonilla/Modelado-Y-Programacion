@@ -4,7 +4,7 @@ import cards.*;
 import players.*;
 import java.util.List;
 
-public abstract class GamePart {
+public abstract class GamePart implements Subject {
 
     private List<Player> players;
 
@@ -21,10 +21,21 @@ public abstract class GamePart {
         player.showText(text);
     }
 
+    @Override
     public void sendText(String text) throws DCPlayerException {
         for (Player player : players) {
             player.showText(text);
         }
+    }
+
+    @Override
+    public void registerObserver(Observer o) {
+        players.add((Player) o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        players.remove(o);
     }
 
     public List<Player> getPlayers() {

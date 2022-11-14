@@ -1,8 +1,7 @@
-import java.net.Socket;
-import players.CException;
-import players.DCPlayerException;
 import views.View;
+import java.net.Socket;
 import java.io.IOException;
+import players.DCPlayerException;
 
 /**
  * Class to make the proyect 2 work with the client.
@@ -33,7 +32,7 @@ public class Proyecto2Cliente {
         }
         View auxView;
         try {
-            auxView = new View(null, null, null);
+            auxView = new View(null, null);
         } catch (IOException ioe) {
             System.out.println("Error al crear la vista");
             return;
@@ -42,22 +41,12 @@ public class Proyecto2Cliente {
         View view = null;
         try {
             Socket socket = new Socket(host, port);
-            Socket socket2 = new Socket(host, port);
-            view = new View(name, socket, socket2);
+            view = new View(name, socket);
             view.getPlayer().read();
         } catch (DCPlayerException dcpe) {
             auxView.showText(dcpe.getMessage());
             auxView.showText("Hubo un problema de comunicacion con el servidor");
             auxView.showText("Terminando ejecucion");
-            try {
-                view.getPlayer().end();
-            } catch (DCPlayerException dcpe2) {
-            }
-            System.exit(0);
-        } catch (CException ce) {
-            auxView.showText(ce.getMessage());
-            auxView.showText("Hubo un error al no encontrar un clase, por favor revisar que compilaste bien");
-            auxView.showText("Terminando la ejecucion");
             try {
                 view.getPlayer().end();
             } catch (DCPlayerException dcpe2) {

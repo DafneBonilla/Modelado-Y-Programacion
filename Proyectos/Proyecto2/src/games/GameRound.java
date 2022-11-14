@@ -1,7 +1,6 @@
 package games;
 
 import cards.*;
-import players.CException;
 import players.DCPlayerException;
 import players.Player;
 import java.util.List;
@@ -112,11 +111,7 @@ public class GameRound extends GamePart {
     }
 
     private int askBet(Player player) throws DCPlayerException {
-        try {
-            player.setDeck(player.getDeck());
-        } catch (CException ce) {
-            throw new DCPlayerException("No se pudo pasar cartas al jugador");
-        }
+        player.setDeck(player.getDeck());
         return player.askBet(numRound);
     }
     

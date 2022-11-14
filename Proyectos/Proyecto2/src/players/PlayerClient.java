@@ -2,24 +2,22 @@ package players;
 
 import cards.*;
 import views.View;
-
 import java.net.Socket;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
 
 public class PlayerClient implements Player {
 
 	private String name;
 
-	private CardHolderIterator deck;
+	private String deckString;
+
+	private int numCards;
 
 	private Socket socket;
-
-	private Socket socket2;
 
 	private View view;
 
@@ -29,21 +27,16 @@ public class PlayerClient implements Player {
 
 	private BufferedWriter writer;
 
-	private ObjectInputStream objectReader;
-
-	public PlayerClient(String name, Socket socket, Socket socket2) throws IOException {
+	public PlayerClient(String name, Socket socket) throws IOException {
 		this.name = name;
 		this.socket = socket;
-		this.socket2 = socket2;
-		this.deck = null;
+		this.deckString = "no hay cartas";
+		this.numCards = 0;
 		this.view = null;
 		this.active = true;
 		if (socket != null) {
 			this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			this.writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-		}
-		if (socket2 != null) {
-			this.objectReader = new ObjectInputStream(socket2.getInputStream());
 		}
 	}
 
@@ -54,7 +47,7 @@ public class PlayerClient implements Player {
 			writer.newLine();
 			writer.flush();
 			return name;
-		} catch (IOException e) {
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error getting name");
 		}
 	}
@@ -65,13 +58,12 @@ public class PlayerClient implements Player {
 	}
 
 	@Override
-	public void setDeck(CardHolder deck) throws DCPlayerException, CException {
+	public void setDeck(CardHolder deck) throws DCPlayerException {
 		try {
-			this.deck = (CardHolderIterator) objectReader.readObject();
-		} catch (IOException e) {
+			deckString = reader.readLine();
+			numCards = readNumber();
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error setting deck");
-		} catch (ClassNotFoundException e) {
-			throw new CException("Error setting deck");
 		}
 	}
 
@@ -82,6 +74,7 @@ public class PlayerClient implements Player {
 
 	@Override
 	public void setScore(int i) {
+	
 	}
 
 	@Override
@@ -95,9 +88,8 @@ public class PlayerClient implements Player {
 
 	@Override
 	public int askBet(int numRound) throws DCPlayerException {
-		int numRound2 = readRound();
-		String cards = showDeck();
-		view.showText("Tu mano es: \n" + cards);
+		int numRound2 = readNumber();
+		view.showText("Tu mano es: \n" + deckString);
 		String question = "Define tu apuesta (numero entre 0 y " + numRound2 + ")";
 		int answer = 0;
 		while (true) {
@@ -106,7 +98,7 @@ public class PlayerClient implements Player {
 				break;
 			}
 			view.showText("Respuesta invalida, el numero debe ser entre 0 y " + numRound2);
-			view.showText("Tu mano es: \n" + cards);
+			view.showText("Tu mano es: \n" + deckString);
 		}
 		try {
 			writer.write(answer);
@@ -118,10 +110,12 @@ public class PlayerClient implements Player {
 		return answer;
 	}
 
-	private int readRound() throws DCPlayerException {
+	private int readNumber() throws DCPlayerException {
 		try {
 			return Integer.parseInt(reader.readLine());
-		} catch (IOException e) {
+		} catch (IOException ioe) {
+			throw new DCPlayerException("Error reading round");
+		} catch (NumberFormatException nfe) {
 			throw new DCPlayerException("Error reading round");
 		}
 	}
@@ -189,13 +183,13 @@ public class PlayerClient implements Player {
 		try {
 			String line = reader.readLine();
 			this.view.showText(line);
-		} catch (IOException e) {
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error showing text");
 		}
 	}
 
 	@Override
-	public String read() throws DCPlayerException, CException {
+	public String read() throws DCPlayerException {
 		try {
 			while (active) {
 				String line = reader.readLine();
@@ -211,7 +205,7 @@ public class PlayerClient implements Player {
 		return "end";
 	}
 
-	private void manageMessage(Message message) throws DCPlayerException, CException {
+	private void manageMessage(Message message) throws DCPlayerException {
 		switch (message) {
 			case GET_NAME:
 				getName();
@@ -249,17 +243,16 @@ public class PlayerClient implements Player {
 
 	@Override
 	public int askCard() throws DCPlayerException {
-		String cards = showDeck();
-		view.showText("Tu mano es: \n" + cards);
+		view.showText("Tu mano es: \n" + deckString);
 		String question = "Ingresa el numero de la carta que quieres jugar\n";
 		int answer = -1;
 		while (true) {
 			answer = view.askInt(question);
-			if (answer >= 0 && answer < deck.size()) {
+			if (answer >= 0 && answer < numCards + 1) {
 				break;
 			}
-			view.showText("Respuesta invalida, el numero debe ser entre 0 y " + (deck.size() - 1));
-			view.showText("Tu mano es: \n" + cards);
+			view.showText("Respuesta invalida, el numero debe ser entre 0 y " + numCards);
+			view.showText("Tu mano es: \n" + deckString);
 		}
 		try {
 			writer.write(answer);
@@ -269,17 +262,6 @@ public class PlayerClient implements Player {
 			throw new DCPlayerException("Error asking card");
 		}
 		return answer;
-	}
-
-	private String showDeck() {
-		int i = 0;
-		String cards = "";
-		while (deck.hasNext()) {
-			Card card = deck.next();
-			cards += "[" + i + "] " + " " + card.toString() + "\n";
-			i++;
-		}
-		return cards;
 	}
 
 	@Override

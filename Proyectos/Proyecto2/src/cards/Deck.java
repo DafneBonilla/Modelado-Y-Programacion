@@ -134,11 +134,6 @@ public class Deck implements CardHolder {
     }
 
     @Override
-    public List<Card> getList() {
-        return cards;
-    }
-
-    @Override
     public CardHolderIterator getIterator() {
         return new DeckIterator();
     }

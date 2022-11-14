@@ -1,10 +1,9 @@
 package games;
 
 import cards.*;
-import players.CException;
-import players.DCPlayerException;
 import players.Player;
 import java.util.List;
+import players.DCPlayerException;
 
 public class GameTrick extends GamePart {
 
@@ -61,11 +60,7 @@ public class GameTrick extends GamePart {
 
     private int validateCard(Player player) throws DCPlayerException {
         int i = -1;
-        try {
-            player.setDeck(player.getDeck());
-        } catch (CException ce) {
-            throw new DCPlayerException("No se pudo pasar cartas al jugador");
-        }
+        player.setDeck(player.getDeck());
         while (true) {
             i = player.askCard();
             Card card = player.getDeck().checkCard(i);
@@ -91,7 +86,9 @@ public class GameTrick extends GamePart {
         if (leader.getMerit() == -1) {
             return true;
         }
-        for (Card card1 : hand.getList()) {
+        CardHolderIterator it = hand.getIterator();
+        while (it.hasNext()) {
+            Card card1 = it.next();
             if (card1.getColor().equals(leader)) {
                 return false;
             }

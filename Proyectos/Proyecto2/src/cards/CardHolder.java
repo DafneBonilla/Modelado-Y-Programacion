@@ -1,7 +1,7 @@
 package cards;
 
 import java.io.Serializable;
-import java.util.List;
+
 
 public interface CardHolder extends Serializable {
 
@@ -20,8 +20,6 @@ public interface CardHolder extends Serializable {
     public boolean isEmpty();
 
     public CardHolder copy();
-
-    public List<Card> getList();
 
     public CardHolderIterator getIterator();
 

@@ -3,13 +3,13 @@ package players;
 import cards.*;
 import views.*;
 
-public interface Player {
+public interface Player extends Observer {
 
     public String getName() throws DCPlayerException;
 
     public CardHolder getDeck();
 
-    public void setDeck(CardHolder deck) throws DCPlayerException, CException;
+    public void setDeck(CardHolder deck) throws DCPlayerException;
 
     public int getScore();
 
@@ -33,9 +33,10 @@ public interface Player {
 
     public Card giveCard(int i);
 
+    @Override
     public void showText(String message) throws DCPlayerException;
 
-    public String read() throws DCPlayerException, CException;
+    public String read() throws DCPlayerException;
 
     public void setView(View view);
 

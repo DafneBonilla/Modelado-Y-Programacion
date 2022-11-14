@@ -1,4 +1,3 @@
-
 import views.View;
 import games.GameControl;
 import java.io.IOException;
@@ -41,7 +40,7 @@ public class Proyecto2Servidor {
         }
         View auxView;
         try {
-            auxView = new View(null, null, null);
+            auxView = new View(null, null);
         } catch (IOException ioe) {
             System.out.println("Error al crear la vista");
             return;
