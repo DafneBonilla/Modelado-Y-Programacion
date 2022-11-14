@@ -61,7 +61,6 @@ public class PlayerClient implements Player {
 	public void setDeck(CardHolder deck) throws DCPlayerException {
 		try {
 			deckString = reader.readLine();
-			System.out.println("ya llego el deck");
 			numCards = readNumber();
 			System.out.println("ya llego el numero de cartas");
 		} catch (IOException ioe) {
@@ -76,7 +75,6 @@ public class PlayerClient implements Player {
 
 	@Override
 	public void setScore(int i) {
-	
 	}
 
 	@Override
@@ -106,7 +104,7 @@ public class PlayerClient implements Player {
 			writer.write(answer);
 			writer.newLine();
 			writer.flush();
-		} catch (IOException e) {
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error getting bet");
 		}
 		return answer;
@@ -114,7 +112,9 @@ public class PlayerClient implements Player {
 
 	private int readNumber() throws DCPlayerException {
 		try {
-			return Integer.parseInt(reader.readLine());
+			String line = reader.readLine();
+			System.out.println("lei esto " + line);
+			return Integer.parseInt(line);
 		} catch (IOException ioe) {
 			throw new DCPlayerException("Error reading round");
 		} catch (NumberFormatException nfe) {

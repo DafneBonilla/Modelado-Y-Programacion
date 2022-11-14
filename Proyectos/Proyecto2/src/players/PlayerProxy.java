@@ -76,7 +76,7 @@ public class PlayerProxy implements Player {
 			writer.newLine();
 			writer.write(deckString);
 			writer.newLine();
-			writer.write(i-1);
+			writer.write(Integer.toString(i-1));
 			writer.newLine();
 			writer.flush();
 		} catch (IOException e) {
@@ -109,7 +109,7 @@ public class PlayerProxy implements Player {
 		try {
 			writer.write(Message.ASK_BET.toString());
 			writer.newLine();
-			writer.write(numRound);
+			writer.write(Integer.toString(numRound));
 			writer.newLine();
 			writer.flush();
 		} catch (IOException ioe) {
