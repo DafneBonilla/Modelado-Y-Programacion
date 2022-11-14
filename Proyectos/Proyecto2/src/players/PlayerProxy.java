@@ -75,12 +75,10 @@ public class PlayerProxy implements Player {
 			writer.write(Message.SET_DECK.toString());
 			writer.newLine();
 			writer.write(deckString);
-			writer.newLine();
-			System.out.println(Integer.toString(i-1));
 			writer.write(Integer.toString(i-1));
 			writer.newLine();
 			writer.flush();
-		} catch (IOException e) {
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 	}
