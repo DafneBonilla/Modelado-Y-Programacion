@@ -1,7 +1,17 @@
 package cards;
 
+/**
+ * Class to represent a card factory default
+ */
 public class CardFactoryDefault implements CardFactory {
 
+    /**
+     * Builds a card with the given color and value
+     * 
+     * @param color the color
+     * @param value the value
+     * @return the card built
+     */
     @Override
     public Card build(int color, int value) {
         Card card = new Card();

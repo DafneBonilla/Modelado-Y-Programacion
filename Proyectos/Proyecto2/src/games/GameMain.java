@@ -5,16 +5,32 @@ import players.*;
 import java.util.List;
 import java.util.LinkedList;
 
+/**
+ * Class to represent the main game
+ * The main game has number of rounds, a boolean to know if the game is over, a
+ * seed and a number for the actual round
+ */
 public class GameMain extends GamePart {
 
+    /* The number of rounds */
     private int numRounds;
 
+    /* The boolean to know if the game is over */
     private boolean continues;
 
+    /* The seed of the game */
     private long seed;
 
+    /* The number of the actual round */
     private int actualRound;
 
+    /**
+     * Constructor
+     * 
+     * @param numPlayers the number of players
+     * @param players    the list of players
+     * @param mainDeck   the deck of the game part
+     */
     public GameMain(int numPlayers, List<Player> players, CardHolder mainDeck) {
         super(players, mainDeck);
         this.numRounds = getNumRounds(numPlayers);
@@ -23,6 +39,12 @@ public class GameMain extends GamePart {
         this.actualRound = 0;
     }
 
+    /**
+     * Returns the number of rounds of the game depending on the number of players
+     * 
+     * @param numPlayers the number of players
+     * @return the number of rounds of the game
+     */
     private int getNumRounds(int numPlayers) {
         switch (numPlayers) {
             case 3:
@@ -38,16 +60,22 @@ public class GameMain extends GamePart {
         }
     }
 
+    /**
+     * Starts the game part
+     * 
+     * @throws DCPlayerException if a communication error occurs
+     */
     @Override
     public void start() {
         boolean normalFinish = true;
         try {
             sendText("La partida va a empezar, todos listos :)");
             sendText("La seed del juego es " + seed);
+            actualRound = 1;
             for (int i = 1; i <= numRounds; i++) {
                 GameRound actual = new GameRound(this.getPlayers(), this.getDeck(), i);
-                actualRound = i;
                 actual.start();
+                actualRound++;
                 if (i != numRounds) {
                     carryOn();
                 }
@@ -64,6 +92,12 @@ public class GameMain extends GamePart {
         }
     }
 
+    /**
+     * Updates the observer on what happened and to show
+     * If a communication error occurs its ignored
+     * 
+     * @param text the text to show
+     */
     private void sendTextDC(String text) {
         for (Player player : getPlayers()) {
             try {
@@ -74,6 +108,9 @@ public class GameMain extends GamePart {
         }
     }
 
+    /**
+     * Calculates the results of the game and show them to the players
+     */
     private void results() {
         String results = "Ahora se anunciara al ganador del juego...\n";
         results += winner();
@@ -86,6 +123,11 @@ public class GameMain extends GamePart {
         }
     }
 
+    /**
+     * Calculates the results of the game and show them to the players, in case of a
+     * communication error or player disconnection
+     * If a communication error occurs its ignored
+     */
     private void resultsDC() {
         String results = "Un jugador se pudo haber desconectado o tuve un problema de conexion, terminando el juego...\n";
         if (actualRound < 2) {
@@ -98,17 +140,29 @@ public class GameMain extends GamePart {
                     continue;
                 }
             }
+        } else {
+            results += "Ahora se anunciara al ganador del juego...\n";
+            results += winner();
+            sendTextDC(results);
         }
-        results += "Ahora se anunciara al ganador del juego...\n";
-        results += winner();
-        sendTextDC(results);
-        System.exit(0);
     }
 
+    /**
+     * Returns a string with the winner or winners of the game
+     * 
+     * @return the winner of the game
+     */
     private String winner() {
         return higher(this.getPlayers());
     }
 
+    /**
+     * Returns a string with the higher player of the list, or if there is a tie,
+     * the players with the higher score
+     * 
+     * @param players the list of players
+     * @return the player with the highest score
+     */
     private String higher(List<Player> players) {
         String winner = "Hubo un empate entre los Jugadores ";
         int position = bigger(players);
@@ -145,6 +199,12 @@ public class GameMain extends GamePart {
         }
     }
 
+    /**
+     * Returns the position of the player with the higher score
+     * 
+     * @param list the list of players
+     * @return the position of the player with the higher score
+     */
     private int bigger(List<Player> list) {
         int answer = 0;
         int score = list.get(0).getScore();
@@ -156,6 +216,11 @@ public class GameMain extends GamePart {
         return answer;
     }
 
+    /**
+     * Ask the players if they want to continue playing
+     * 
+     * @throws DCPlayerException if a communication error occurs
+     */
     private void carryOn() throws DCPlayerException {
         List<String> yes = new LinkedList<>();
         List<String> no = new LinkedList<>();
@@ -179,6 +244,12 @@ public class GameMain extends GamePart {
         }
     }
 
+    /**
+     * Returns a copy of the list
+     * 
+     * @param list the list to copy
+     * @return a copy of the list
+     */
     private List<Player> clone(List<Player> players) {
         List<Player> clone = new LinkedList<>();
         for (Player player : players) {

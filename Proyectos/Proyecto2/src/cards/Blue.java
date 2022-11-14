@@ -23,6 +23,7 @@ public class Blue implements Color {
      * 
      * @return the card associated to this color
      */
+    @Override
     public Card getCard() {
         return card;
     }
@@ -32,6 +33,7 @@ public class Blue implements Color {
      * 
      * @return a integer representation of the color
      */
+    @Override
     public int getMerit() {
         return 2;
     }
@@ -52,6 +54,7 @@ public class Blue implements Color {
      * @param o the object to compare
      * @return true if it is equal, false otherwise
      */
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof Color))
             return false;

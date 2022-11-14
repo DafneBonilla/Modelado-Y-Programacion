@@ -1,15 +1,27 @@
 package cards;
 
-import java.io.Serializable;
+/**
+ * Interface to represent a card holder iterator
+ */
+public interface CardHolderIterator {
 
-public interface CardHolderIterator extends Serializable {
-
+    /**
+     * Returns true if there is a next card
+     * 
+     * @return true if there is a next card, false otherwise
+     */
     public boolean hasNext();
 
+    /**
+     * Returns the next card
+     * 
+     * @return the next card
+     */
     public Card next();
 
+    /**
+     * Restarts the iterator
+     */
     public void restart();
-
-    public int size();
 
 }

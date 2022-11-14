@@ -57,6 +57,7 @@ public class Number implements Value {
      * @param o the object to compare
      * @return true if it is equal, false otherwise
      */
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof Value))
             return false;

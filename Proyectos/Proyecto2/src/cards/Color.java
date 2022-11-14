@@ -1,11 +1,9 @@
 package cards;
 
-import java.io.Serializable;
-
 /**
  * Interface to represent a card color
  */
-public interface Color extends Serializable {
+public interface Color {
 
     /**
      * Returns the card that is associated to this color
@@ -35,6 +33,7 @@ public interface Color extends Serializable {
      * @param o the object to compare
      * @return true if it is equal, false otherwise
      */
+    @Override
     public boolean equals(Object o);
 
 }

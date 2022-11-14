@@ -1,11 +1,9 @@
 package cards;
 
-import java.io.Serializable;
-
 /**
  * Interface to represent a card value
  */
-public interface Value extends Serializable {
+public interface Value {
 
     /**
      * Returns the card that is associated to this value
@@ -35,6 +33,7 @@ public interface Value extends Serializable {
      * @param o the object to compare
      * @return true if it is equal, false otherwise
      */
+    @Override
     public boolean equals(Object o);
 
 }

@@ -1,22 +1,27 @@
 import views.View;
+import views.ViewDefault;
+
 import java.net.Socket;
 import java.io.IOException;
 import players.DCPlayerException;
 
 /**
- * Class to make the proyect 2 work with the client.
+ * Class to make the proyect 2 work with the client
  */
 public class Proyecto2Cliente {
 
+    /**
+     * Shows how to use the program and exits
+     */
     public static void use() {
         System.out.println("Uso: java Proyecto2Cliente <host> <puerto>");
         System.exit(0);
     }
 
     /**
-     * Main method.
+     * Main method
      * 
-     * @param args the arguments.
+     * @param args the arguments
      */
     public static void main(String[] args) {
 
@@ -32,7 +37,7 @@ public class Proyecto2Cliente {
         }
         View auxView;
         try {
-            auxView = new View(null, null);
+            auxView = new ViewDefault(null, null);
         } catch (IOException ioe) {
             System.out.println("Error al crear la vista");
             return;
@@ -41,7 +46,7 @@ public class Proyecto2Cliente {
         View view = null;
         try {
             Socket socket = new Socket(host, port);
-            view = new View(name, socket);
+            view = new ViewDefault(name, socket);
             view.getPlayer().read();
         } catch (DCPlayerException dcpe) {
             auxView.showText(dcpe.getMessage());

@@ -5,20 +5,42 @@ import players.DCPlayerException;
 import players.Player;
 import java.util.List;
 
+/**
+ * Class to represent a round of the game
+ * A round has a number of round, a number of tricks and a color of trump
+ * (instance of {@link Color})
+ */
 public class GameRound extends GamePart {
 
+    /* The number of the round */
     private int numRound;
 
+    /* The number of tricks */
     private int numTricks;
 
+    /* The color of trump */
     private Color triumph;
 
+    /**
+     * Constructor
+     * 
+     * @param players  the list of players
+     * @param mainDeck the deck of the game part
+     * @param numRound the number of the round
+     */
     public GameRound(List<Player> players, CardHolder mainDeck, int numRound) {
         super(players, mainDeck);
         this.numRound = numRound;
         this.numTricks = 0;
+        this.triumph = new White(null);
     }
 
+    /**
+     * Starts the game part
+     * 
+     * @throws DCPlayerException if a communication error occurs
+     */
+    @Override
     public void start() throws DCPlayerException {
         sendText("La ronda " + numRound + " va a empezar");
         this.getDeck().shuffle();
@@ -36,6 +58,9 @@ public class GameRound extends GamePart {
         }
     }
 
+    /**
+     * Deals the cards to the players
+     */
     private void dealCards() {
         for (int i = 0; i < numRound; i++) {
             for (Player player : this.getPlayers()) {
@@ -45,6 +70,11 @@ public class GameRound extends GamePart {
         }
     }
 
+    /**
+     * Defines the color of trump
+     * 
+     * @throws DCPlayerException if a communication error occurs
+     */
     private void defineTriumph() throws DCPlayerException {
         if (!this.getDeck().isEmpty()) {
             Card card = this.getDeck().getCard(0);
@@ -67,6 +97,11 @@ public class GameRound extends GamePart {
         }
     }
 
+    /**
+     * Asks the players for the color of trump
+     * 
+     * @throws DCPlayerException if a communication error occurs
+     */
     private void askTriumph() throws DCPlayerException {
         Player player = this.getPlayers().get(0);
         sendText(player, "Jugador " + player.getName() + " elige el palo de triunfo");
@@ -85,7 +120,7 @@ public class GameRound extends GamePart {
             case 4:
                 triumph = new Green(null);
                 break;
-            case 5: 
+            case 5:
                 triumph = new White(null);
                 break;
             default:
@@ -94,12 +129,24 @@ public class GameRound extends GamePart {
         }
     }
 
+    /**
+     * Asks the player for the color of trump
+     * 
+     * @param player the player to ask
+     * @return the color of trump
+     * @throws DCPlayerException if a communication error occurs
+     */
     private int validateTriumph(Player player) throws DCPlayerException {
         sendText(player,
                 "Escribe el numero del palo de triunfo \n 1 para \u001B[91mrojo\u001B[0m \n 2 para \u001B[94mazul\u001B[0m \n 3 para \u001B[93mamarillo\u001B[0m \n 4 para \u001B[92mverde\u001B[0m (presiona \"h\" para ver todo el historial del juego)");
         return player.getTriumph();
     }
 
+    /**
+     * Sets the bets of the players
+     * 
+     * @throws DCPlayerException if a communication error occurs
+     */
     private void setBets() throws DCPlayerException {
         for (Player player : this.getPlayers()) {
             sendText(player, "Jugador " + player.getName() + " es tu turno de ver tus cartas.");
@@ -110,11 +157,21 @@ public class GameRound extends GamePart {
         }
     }
 
+    /**
+     * Asks the player for the bet
+     * 
+     * @param player the player to ask
+     * @return the bet
+     * @throws DCPlayerException if a communication error occurs
+     */
     private int askBet(Player player) throws DCPlayerException {
         player.setDeck(player.getDeck());
         return player.askBet(numRound);
     }
-    
+
+    /**
+     * Updates the score of the players
+     */
     private void score() throws DCPlayerException {
         for (Player player : this.getPlayers()) {
             if (player.getBet() == player.getWins()) {

@@ -1,13 +1,17 @@
 import views.View;
+import views.ViewDefault;
 import games.GameControl;
 import java.io.IOException;
 import players.DCPlayerException;
 
 /**
- * Class to make the proyect 2 work with the server.
+ * Class to make the proyect 2 work with the server
  */
 public class Proyecto2Servidor {
 
+    /**
+     * Shows how to use the program and exits
+     */
     public static void use() {
         System.out.println(
                 "Uso: java Proyecto2Servidor <#jugadores> <puerto>\nEl numero de jugadores debe ser entre 3 y 6\nEl puerto debe ser un numero entre 1024 y 65535");
@@ -15,9 +19,9 @@ public class Proyecto2Servidor {
     }
 
     /**
-     * Main method.
+     * Main method
      * 
-     * @param args the arguments.
+     * @param args the arguments
      */
     public static void main(String[] args) {
 
@@ -40,7 +44,7 @@ public class Proyecto2Servidor {
         }
         View auxView;
         try {
-            auxView = new View(null, null);
+            auxView = new ViewDefault(null, null);
         } catch (IOException ioe) {
             System.out.println("Error al crear la vista");
             return;

@@ -1,10 +1,10 @@
 package cards;
 
 /**
- * Class to represent the white color
- * A white color has a value of 5 and a card associated to it
+ * Class to represent the no color
+ * A no color has a value of -1 and a card associated to it
  */
-public class White implements Color {
+public class NoColor implements Color {
 
     /* The card associated to this color */
     private Card card;
@@ -14,7 +14,7 @@ public class White implements Color {
      * 
      * @param card the card associated to this color
      */
-    public White(Card card) {
+    public NoColor(Card card) {
         this.card = card;
     }
 
@@ -23,7 +23,6 @@ public class White implements Color {
      * 
      * @return the card associated to this color
      */
-    @Override
     public Card getCard() {
         return card;
     }
@@ -33,9 +32,8 @@ public class White implements Color {
      * 
      * @return a integer representation of the color
      */
-    @Override
     public int getMerit() {
-        return 5;
+        return -1;
     }
 
     /**
@@ -45,14 +43,14 @@ public class White implements Color {
      */
     @Override
     public String toString() {
-        return "\u001B[97mBlanco\u001B[0m ";
+        return "No hay";
     }
 
     /**
-     * Returns true if the object received as parameter is equal to this color
+     * Returns a boolean to know if the color is the same as the object
      * 
      * @param o the object to compare
-     * @return true if it is equal, false otherwise
+     * @return a boolean to know if the color is the same as the object
      */
     @Override
     public boolean equals(Object o) {

@@ -2,24 +2,48 @@ package games;
 
 import cards.*;
 import players.Player;
+
+import java.util.LinkedList;
 import java.util.List;
 import players.DCPlayerException;
 
+/**
+ * Class to represent a trick of the game
+ * A trick has a color of trump (instance of {@link Color}), a leader color
+ * (instance of {@link Color}) and a list of played cards (instance of
+ * {@link Card})
+ */
 public class GameTrick extends GamePart {
 
+    /* The color of trump */
     private Color triumph;
 
+    /* The leader color */
     private Color leader;
 
+    /* The list of played cards */
     private List<Card> plays;
 
+    /**
+     * Constructor
+     * 
+     * @param players  the list of players
+     * @param mainDeck the deck of the game part
+     * @param triumph  the color of trump
+     */
     public GameTrick(List<Player> players, CardHolder mainDeck, Color triumph) {
         super(players, mainDeck);
         this.triumph = triumph;
-        this.leader = null;
-        this.plays = null;
+        this.leader = new NoColor(null);
+        this.plays = new LinkedList<>();
     }
 
+    /**
+     * Starts the game part
+     * 
+     * @throws DCPlayerException if a communication error occurs
+     */
+    @Override
     public void start() throws DCPlayerException {
         sendText("El truco va a empezar");
         for (Player player : this.getPlayers()) {
@@ -44,6 +68,12 @@ public class GameTrick extends GamePart {
         adjustPlayers(winner);
     }
 
+    /**
+     * Defines the leader color of the trick
+     * 
+     * @param card the card played
+     * @throws DCPlayerException if a communication error occurs
+     */
     private void defineLeader(Card card) throws DCPlayerException {
         if (leader.getMerit() == -1) {
             if (card.getColor().getMerit() == 5) {
@@ -54,10 +84,25 @@ public class GameTrick extends GamePart {
         }
     }
 
+    /**
+     * Returns the card in the index position of the players hand
+     * 
+     * @param player the player
+     * @param i      the index
+     * @return the card
+     */
     private Card reciveCard(Player player, int i) {
         return player.giveCard(i);
     }
 
+    /**
+     * Validates the card played by the player and returns the index of the card, if
+     * the card is not valid it will ask the player to play again until it is valid
+     * 
+     * @param player the player
+     * @return the index of the card
+     * @throws DCPlayerException if a communication error occurs
+     */
     private int validateCard(Player player) throws DCPlayerException {
         int i = -1;
         player.setDeck(player.getDeck());
@@ -72,6 +117,15 @@ public class GameTrick extends GamePart {
         }
     }
 
+    /**
+     * Checks if the card is legal to play in the trick based on the leader color,
+     * the color of trump and the cards in the players hand
+     * 
+     * @param card the card to check
+     * @param hand the players hand
+     * @param i    the index of the card
+     * @return true if the card is legal, false otherwise
+     */
     private boolean legalCard(Card card, CardHolder hand, int i) {
         hand.getCard(i);
         if (hand.isEmpty()) {
@@ -96,6 +150,11 @@ public class GameTrick extends GamePart {
         return true;
     }
 
+    /**
+     * Returns the index of the winner card
+     * 
+     * @return the index of the winner card
+     */
     private int winnerCard() {
         int wizzard = playWizard();
         if (wizzard != -1) {
@@ -116,6 +175,12 @@ public class GameTrick extends GamePart {
         return -1;
     }
 
+    /**
+     * Returns the index of the first wizard played, if there is no wizard played it
+     * returns -1
+     * 
+     * @return the index of the first wizard played
+     */
     private int playWizard() {
         for (Card card1 : plays) {
             if (card1.getValue().getValue() == 14) {
@@ -125,6 +190,12 @@ public class GameTrick extends GamePart {
         return -1;
     }
 
+    /**
+     * Returns the index of the first card with the color of trump played, if there
+     * is no card with the color of trump played it returns -1
+     * 
+     * @return the index of the first card with the color of trump played
+     */
     private int playTriumph() {
         int compare = 0;
         int index = -1;
@@ -139,6 +210,12 @@ public class GameTrick extends GamePart {
         return index;
     }
 
+    /**
+     * Returns the index of the first card with the leader color played, if there is
+     * no card with the leader color played it returns -1
+     * 
+     * @return the index of the first card with the leader color played
+     */
     private int playLeader() {
         int compare = 0;
         int index = -1;
@@ -153,6 +230,12 @@ public class GameTrick extends GamePart {
         return index;
     }
 
+    /**
+     * Returns the index of the first joker played, if there is no joker played it
+     * returns -1
+     * 
+     * @return the index of the first joker played
+     */
     private int playJoker() {
         for (Card card1 : plays) {
             if (card1.getValue().getValue() == 0) {
@@ -162,6 +245,11 @@ public class GameTrick extends GamePart {
         return -1;
     }
 
+    /**
+     * Adjusts the players list to the winner of the trick
+     * 
+     * @param i the index of the winner
+     */
     private void adjustPlayers(int i) {
         for (int j = 0; j < i; j++) {
             List<Player> players = this.getPlayers();

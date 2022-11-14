@@ -23,6 +23,7 @@ public class Wizard implements Value {
      * 
      * @return the card associated to this value
      */
+    @Override
     public Card getCard() {
         return card;
     }
@@ -32,6 +33,7 @@ public class Wizard implements Value {
      * 
      * @return a integer representation of the value
      */
+    @Override
     public int getValue() {
         return 14;
     }
@@ -52,6 +54,7 @@ public class Wizard implements Value {
      * @param o the object to compare
      * @return true if it is equal, false otherwise
      */
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof Value))
             return false;

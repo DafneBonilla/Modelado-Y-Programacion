@@ -1,13 +1,11 @@
 package cards;
 
-import java.io.Serializable;
-
 /**
  * Class to represent a card
  * A card has a color (instance of {@link Color}) and a value (instance of
  * {@link Value})
  */
-public class Card implements Serializable {
+public class Card {
 
     /* The color of the card */
     private Color color;

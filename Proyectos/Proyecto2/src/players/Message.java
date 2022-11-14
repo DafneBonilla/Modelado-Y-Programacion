@@ -1,25 +1,18 @@
 package players;
 
+/**
+ * Enum to represent the messages betwen the server and the client
+ */
 public enum Message {
 
-    GET_NAME,
+    /* The messages */
+    GET_NAME, SET_DECK, ASK_BET, GET_TRIUMPH, GET_CONTINUE, SHOW_TEXT, ASK_CARD, END, INVALID;
 
-    SET_DECK,
-
-    ASK_BET,
-
-    GET_TRIUMPH,
-
-    GET_CONTINUE,
-
-    SHOW_TEXT,
-
-    ASK_CARD,
-
-    END,
-
-    INVALID;
-
+    /**
+     * Returns the message in a string form
+     * 
+     * @return the message in a string form
+     */
     public String toString() {
         switch (this) {
             case GET_NAME:
@@ -45,6 +38,12 @@ public enum Message {
         }
     }
 
+    /**
+     * Returns the message from a string
+     * 
+     * @param message the string to convert
+     * @return the message
+     */
     public static Message getMessage(String message) {
         switch (message) {
             case "GET_NAME":
