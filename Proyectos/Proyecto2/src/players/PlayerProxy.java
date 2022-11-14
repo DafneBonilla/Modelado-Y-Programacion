@@ -76,6 +76,7 @@ public class PlayerProxy implements Player {
 			writer.newLine();
 			writer.write(deckString);
 			writer.newLine();
+			System.out.println(Integer.toString(i-1));
 			writer.write(Integer.toString(i-1));
 			writer.newLine();
 			writer.flush();
