@@ -61,7 +61,9 @@ public class PlayerClient implements Player {
 	public void setDeck(CardHolder deck) throws DCPlayerException {
 		try {
 			deckString = reader.readLine();
+			System.out.println("ya llego el deck");
 			numCards = readNumber();
+			System.out.println("ya llego el numero de cartas");
 		} catch (IOException ioe) {
 			throw new DCPlayerException("Error setting deck");
 		}
