@@ -75,9 +75,15 @@ public class GameMain extends GamePart {
     }
 
     private void results() {
-        String results = "Ahora se anunciara al ganador del juego...\n\n";
+        String results = "Ahora se anunciara al ganador del juego...\n";
         results += winner();
-        sendTextDC(results);
+        for (Player player : getPlayers()) {
+            try {
+                sendText(player, results);
+            } catch (DCPlayerException playerIn) {
+                continue;
+            }
+        }
     }
 
     private void resultsDC() {
@@ -93,7 +99,7 @@ public class GameMain extends GamePart {
                 }
             }
         }
-        results += "Ahora se anunciara al ganador del juego...\n\n";
+        results += "Ahora se anunciara al ganador del juego...\n";
         results += winner();
         sendTextDC(results);
         System.exit(0);

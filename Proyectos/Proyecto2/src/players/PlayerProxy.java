@@ -218,7 +218,7 @@ public class PlayerProxy implements Player {
 			writer.write(Message.ASK_CARD.toString());
 			writer.newLine();
 			writer.flush();
-		} catch (IOException e) {
+		} catch (IOException ioe) {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int card = 0;

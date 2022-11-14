@@ -103,10 +103,8 @@ public class GameRound extends GamePart {
     private void setBets() throws DCPlayerException {
         for (Player player : this.getPlayers()) {
             sendText(player, "Jugador " + player.getName() + " es tu turno de ver tus cartas.");
-            sendText(player, "\nEl palo de triunfo es " + triumph + "\n");
+            sendText(player, "El palo de triunfo es " + triumph + "\n");
             int bet = askBet(player);
-            System.out.println("ya recibi la apuesta");
-            System.out.println("apuesta: " + bet);
             player.setBet(bet);
             sendText("El jugador " + player.getName() + " ha apostado " + bet);
         }

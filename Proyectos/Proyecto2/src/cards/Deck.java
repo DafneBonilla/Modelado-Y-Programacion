@@ -92,6 +92,7 @@ public class Deck implements CardHolder {
     }
 
     private void turnDeck(Card[] cards) {
+        this.cards = new LinkedList<Card>();
         for (int i = 0; i < cards.length; i++) {
             addCard(cards[i]);
         }
