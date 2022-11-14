@@ -43,7 +43,7 @@ public class Blue implements Color {
      */
     @Override
     public String toString() {
-        return "Azul";
+        return "\u001B[94mAzul\u001B[0m ";
     }
 
     /**

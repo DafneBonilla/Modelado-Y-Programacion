@@ -62,7 +62,6 @@ public class PlayerClient implements Player {
 		try {
 			deckString = reader.readLine();
 			numCards = readNumber();
-			System.out.println("ya llego el numero de cartas");
 		} catch (IOException ioe) {
 			throw new DCPlayerException("Error setting deck");
 		}
@@ -196,7 +195,6 @@ public class PlayerClient implements Player {
 			while (active) {
 				String line = reader.readLine();
 				if (line != null) {
-					System.out.println(line);
 					manageMessage(Message.getMessage(line));
 				}
 			}

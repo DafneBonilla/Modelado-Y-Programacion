@@ -105,6 +105,8 @@ public class GameRound extends GamePart {
             sendText(player, "Jugador " + player.getName() + " es tu turno de ver tus cartas.");
             sendText(player, "\nEl palo de triunfo es " + triumph + "\n");
             int bet = askBet(player);
+            System.out.println("ya recibi la apuesta");
+            System.out.println("apuesta: " + bet);
             player.setBet(bet);
             sendText("El jugador " + player.getName() + " ha apostado " + bet);
         }

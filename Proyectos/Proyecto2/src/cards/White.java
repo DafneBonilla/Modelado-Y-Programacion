@@ -43,7 +43,7 @@ public class White implements Color {
      */
     @Override
     public String toString() {
-        return "Blanco";
+        return "\u001B[97mBlanco\u001B[0m ";
     }
 
     /**

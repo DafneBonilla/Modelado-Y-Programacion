@@ -42,7 +42,7 @@ public class Red implements Color {
      * @return a string representation of the color
      */
     public String toString() {
-        return "Rojo";
+        return "\u001B[91mRojo\u001B[0m ";
     }
 
     /**

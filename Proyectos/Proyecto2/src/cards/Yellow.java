@@ -42,7 +42,7 @@ public class Yellow implements Color {
      * @return a string representation of the color
      */
     public String toString() {
-        return "Amarillo";
+        return "\u001B[93mAmarillo\u001B[0m ";
     }
 
     /**
