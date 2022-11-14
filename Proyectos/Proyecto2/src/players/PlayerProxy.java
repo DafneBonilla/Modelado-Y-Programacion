@@ -115,14 +115,19 @@ public class PlayerProxy implements Player {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int bet = 0;
-		try {
-			bet = Integer.parseInt(read());
-		} catch (DCPlayerException dcpe) {
-			throw new DCPlayerException("Error reading message from player");
-		} catch (NumberFormatException nfe) {
-			throw new DCPlayerException("Error reading message from player");
-		} 
+		bet = readNumber();
 		return bet;
+	}
+
+	private int readNumber() throws DCPlayerException {
+		try {
+			String line = reader.readLine();
+			return Integer.parseInt(line);
+		} catch (IOException ioe) {
+			throw new DCPlayerException("Error reading round");
+		} catch (NumberFormatException nfe) {
+			throw new DCPlayerException("Error reading round");
+		}
 	}
 
 	@Override
@@ -145,13 +150,7 @@ public class PlayerProxy implements Player {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int triumph = 0;
-		try {
-			triumph = Integer.parseInt(read());
-		} catch (DCPlayerException dcpe) {
-			throw new DCPlayerException("Error reading message from player");
-		} catch (NumberFormatException nfe) {
-			throw new DCPlayerException("Error reading message from player");
-		}
+		triumph = readNumber();
 		return triumph;
 	}
 
@@ -165,13 +164,7 @@ public class PlayerProxy implements Player {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int cont = 0;
-		try {
-			cont = Integer.parseInt(read());
-		} catch (DCPlayerException dcpe) {
-			throw new DCPlayerException("Error reading message from player");
-		} catch (NumberFormatException nfe) {
-			throw new DCPlayerException("Error reading message from player");
-		}
+		cont = readNumber();
 		return cont;
 	}
 
@@ -229,13 +222,7 @@ public class PlayerProxy implements Player {
 			throw new DCPlayerException("Error sending message to player");
 		}
 		int card = 0;
-		try {
-			card = Integer.parseInt(read());
-		} catch (DCPlayerException dcpe) {
-			throw new DCPlayerException("Error reading message from player");
-		} catch (NumberFormatException nfe) {
-			throw new DCPlayerException("Error reading message from player");
-		}
+		card = readNumber();
 		return card;
 	}
 

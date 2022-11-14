@@ -100,7 +100,7 @@ public class PlayerClient implements Player {
 			view.showText("Tu mano es: \n" + deckString);
 		}
 		try {
-			writer.write(answer);
+			writer.write(Integer.toString(answer));
 			writer.newLine();
 			writer.flush();
 		} catch (IOException ioe) {
@@ -112,7 +112,6 @@ public class PlayerClient implements Player {
 	private int readNumber() throws DCPlayerException {
 		try {
 			String line = reader.readLine();
-			System.out.println("lei esto " + line);
 			return Integer.parseInt(line);
 		} catch (IOException ioe) {
 			throw new DCPlayerException("Error reading round");
@@ -141,7 +140,7 @@ public class PlayerClient implements Player {
 			view.showText("Respuesta invalida, el numero debe ser entre 1 y 4");
 		}
 		try {
-			writer.write(answer);
+			writer.write(Integer.toString(answer));
 			writer.newLine();
 			writer.flush();
 		} catch (IOException e) {
@@ -161,7 +160,7 @@ public class PlayerClient implements Player {
 			view.showText("Respuesta invalida, elija 0 o 1");
 		}
 		try {
-			writer.write(answer);
+			writer.write(Integer.toString(answer));
 			writer.newLine();
 			writer.flush();
 		} catch (IOException e) {
@@ -255,7 +254,7 @@ public class PlayerClient implements Player {
 			view.showText("Tu mano es: \n" + deckString);
 		}
 		try {
-			writer.write(answer);
+			writer.write(Integer.toString(answer));
 			writer.newLine();
 			writer.flush();
 		} catch (IOException e) {
