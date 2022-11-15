@@ -25,11 +25,13 @@ public class AuxiliaryThread implements Runnable {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < 60 * 1000; i++) {
+            int i = 0;
+            while (i < 60) {
                 if (view.getStarted().get() == true) {
                     return;
                 }
-                Thread.sleep(1);
+                Thread.sleep(1000);
+                i++;
             }
         } catch (InterruptedException ie) {
             throw new RuntimeException(ie);

@@ -47,7 +47,7 @@ public class PlayerProxy implements Player {
 	 * @throws IOException if an I/O error occurs when creating the reader or writer
 	 */
 	public PlayerProxy(Socket socket) throws IOException {
-		this.name = null;
+		this.name = "";
 		this.deck = new Deck();
 		this.socket = socket;
 		this.score = 0;
@@ -83,7 +83,7 @@ public class PlayerProxy implements Player {
 	 */
 	@Override
 	public String getName() throws DCPlayerException {
-		if (name != null) {
+		if (name != "") {
 			return name;
 		}
 		try {

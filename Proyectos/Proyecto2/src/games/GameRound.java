@@ -52,9 +52,9 @@ public class GameRound extends GamePart {
             actual.start();
         }
         score();
-        sendText("Las puntaciones se ven asi...\n");
+        sendText("Las puntaciones se ven asi...");
         for (Player player : this.getPlayers()) {
-            sendText("El jugador " + player.getName() + " tiene " + player.getScore() + " puntos\n");
+            sendText("El jugador " + player.getName() + " tiene " + player.getScore() + " puntos");
         }
     }
 
@@ -148,7 +148,7 @@ public class GameRound extends GamePart {
     private void setBets() throws DCPlayerException {
         for (Player player : this.getPlayers()) {
             sendText(player, "Jugador " + player.getName() + " es tu turno de ver tus cartas.");
-            sendText(player, "El palo de triunfo es " + triumph + "\n");
+            sendText(player, "El palo de triunfo es " + triumph);
             int bet = askBet(player);
             player.setBet(bet);
             sendText("El jugador " + player.getName() + " ha apostado " + bet);
