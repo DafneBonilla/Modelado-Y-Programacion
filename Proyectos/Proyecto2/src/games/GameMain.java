@@ -66,7 +66,7 @@ public class GameMain extends GamePart {
      * @throws DCPlayerException if a communication error occurs
      */
     @Override
-    public void start() {
+    public void start() throws DCPlayerException {
         boolean normalFinish = true;
         try {
             sendText("La partida va a empezar, todos listos :)");

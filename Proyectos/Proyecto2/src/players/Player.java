@@ -117,7 +117,7 @@ public interface Player extends Observer {
     /**
      * Updates the observer on what happened and to show
      * 
-     * @param text the text to show
+     * @param message the text to show
      * @throws DCPlayerException if a communication error occurs
      */
     @Override

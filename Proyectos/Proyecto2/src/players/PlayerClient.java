@@ -287,7 +287,7 @@ public class PlayerClient implements Player {
 	/**
 	 * Updates the observer on what happened and to show
 	 * 
-	 * @param text the text to show
+	 * @param message the text to show
 	 * @throws DCPlayerException if a communication error occurs
 	 */
 	@Override
@@ -312,6 +312,8 @@ public class PlayerClient implements Player {
 			while (active) {
 				String line = reader.readLine();
 				if (line != null) {
+					// TODO: borrar este println
+					System.out.print(line);
 					manageMessage(Message.getMessage(line));
 				}
 			}
