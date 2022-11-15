@@ -60,6 +60,22 @@ public class PlayerProxy implements Player {
 	}
 
 	/**
+	 * Updates the player if the game has started
+	 * 
+	 * @throws DCPlayerException if the player has an error
+	 */
+	@Override
+	public void startUpdate() throws DCPlayerException {
+		try {
+			writer.write(Message.START.toString());
+			writer.newLine();
+			writer.flush();
+		} catch (IOException e) {
+			throw new DCPlayerException("Error sending start message to player");
+		}
+	}
+
+	/**
 	 * Returns the name of the player
 	 * 
 	 * @return the name of the player

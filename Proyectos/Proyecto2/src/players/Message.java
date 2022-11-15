@@ -6,7 +6,7 @@ package players;
 public enum Message {
 
     /* The messages */
-    GET_NAME, SET_DECK, ASK_BET, GET_TRIUMPH, GET_CONTINUE, SHOW_TEXT, ASK_CARD, END, INVALID;
+    START, GET_NAME, SET_DECK, ASK_BET, GET_TRIUMPH, GET_CONTINUE, SHOW_TEXT, ASK_CARD, END, INVALID;
 
     /**
      * Returns the message in a string form
@@ -15,6 +15,8 @@ public enum Message {
      */
     public String toString() {
         switch (this) {
+            case START:
+                return "START";
             case GET_NAME:
                 return "GET_NAME";
             case SET_DECK:
@@ -46,6 +48,8 @@ public enum Message {
      */
     public static Message getMessage(String message) {
         switch (message) {
+            case "START":
+                return START;
             case "GET_NAME":
                 return GET_NAME;
             case "SET_DECK":

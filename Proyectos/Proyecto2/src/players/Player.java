@@ -9,6 +9,13 @@ import views.*;
 public interface Player extends Observer {
 
     /**
+     * Updates the player if the game has started
+     * 
+     * @throws DCPlayerException if the player has an error
+     */
+    public void startUpdate() throws DCPlayerException;
+
+    /**
      * Returns the name of the player
      * 
      * @return the name of the player

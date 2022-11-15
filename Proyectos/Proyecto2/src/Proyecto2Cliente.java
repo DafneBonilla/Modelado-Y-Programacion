@@ -47,6 +47,9 @@ public class Proyecto2Cliente {
         try {
             Socket socket = new Socket(host, port);
             view = new ViewDefault(name, socket);
+            AuxiliaryThread auxy = new AuxiliaryThread(view);
+            Thread thread = new Thread(auxy);
+            thread.start();
             view.getPlayer().read();
         } catch (DCPlayerException dcpe) {
             auxView.showText(dcpe.getMessage());

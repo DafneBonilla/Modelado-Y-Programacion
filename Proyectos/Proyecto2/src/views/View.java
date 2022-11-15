@@ -37,4 +37,17 @@ public interface View {
      */
     public Player getPlayer();
 
+    /**
+     * Updates if the game of the player has started
+     */
+    public void startUpdate();
+
+    /**
+     * Returns if the game of the player that the view is associated with has
+     * started
+     * 
+     * @return if the game has started
+     */
+    public boolean getStarted();
+
 }

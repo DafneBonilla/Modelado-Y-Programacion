@@ -69,6 +69,9 @@ public class GameMain extends GamePart {
     public void start() throws DCPlayerException {
         boolean normalFinish = true;
         try {
+            for (Player player : getPlayers()) {
+                player.startUpdate();
+            }
             sendText("La partida va a empezar, todos listos :)");
             sendText("La seed del juego es " + seed);
             actualRound = 1;

@@ -7,12 +7,16 @@ import java.io.IOException;
 
 /**
  * Class to represent a view default
- * A view has a player (instance of {@link Player})
+ * A view has a player (instance of {@link Player}) and a boolean to indicate if
+ * the game has started
  */
 public class ViewDefault implements View {
 
     /* The player */
     private Player player;
+
+    /* Indicates if the game has started */
+    private boolean started;
 
     /**
      * Constructor
@@ -24,6 +28,7 @@ public class ViewDefault implements View {
     public ViewDefault(String name, Socket socket) throws IOException {
         player = new PlayerClient(name, socket);
         player.setView(this);
+        started = false;
     }
 
     /**
@@ -95,6 +100,25 @@ public class ViewDefault implements View {
     @Override
     public Player getPlayer() {
         return player;
+    }
+
+    /**
+     * Updates if the game of the player has started
+     */
+    @Override
+    public void startUpdate() {
+        started = true;
+    }
+
+    /**
+     * Returns if the game of the player that the view is associated with has
+     * started
+     * 
+     * @return if the game has started
+     */
+    @Override
+    public boolean getStarted() {
+        return started;
     }
 
 }

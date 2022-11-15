@@ -62,6 +62,16 @@ public class PlayerClient implements Player {
 	}
 
 	/**
+	 * Updates the player if the game has started
+	 */
+	@Override
+	public void startUpdate() {
+		if (this.view != null) {
+			this.view.startUpdate();
+		}
+	}
+
+	/**
 	 * Returns the name of the player
 	 * 
 	 * @return the name of the player
