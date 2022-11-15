@@ -3,6 +3,7 @@ package views;
 import players.*;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.io.IOException;
 
 /**
@@ -16,7 +17,7 @@ public class ViewDefault implements View {
     private Player player;
 
     /* Indicates if the game has started */
-    private boolean started;
+    private AtomicBoolean started;
 
     /**
      * Constructor
@@ -28,7 +29,7 @@ public class ViewDefault implements View {
     public ViewDefault(String name, Socket socket) throws IOException {
         player = new PlayerClient(name, socket);
         player.setView(this);
-        started = false;
+        started = new AtomicBoolean(false);
     }
 
     /**
@@ -107,7 +108,7 @@ public class ViewDefault implements View {
      */
     @Override
     public void startUpdate() {
-        started = true;
+        started = new AtomicBoolean(true);
     }
 
     /**
@@ -117,7 +118,7 @@ public class ViewDefault implements View {
      * @return if the game has started
      */
     @Override
-    public boolean getStarted() {
+    public AtomicBoolean getStarted() {
         return started;
     }
 

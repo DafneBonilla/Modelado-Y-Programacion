@@ -1,5 +1,4 @@
 import views.*;
-import players.*;
 
 /**
  * Class to help the player know to disconnect if one minute has passed and the
@@ -26,15 +25,19 @@ public class AuxiliaryThread implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(1000);
+            for (int i = 0; i < 60 * 1000; i++) {
+                if (view.getStarted().get() == true) {
+                    return;
+                }
+                Thread.sleep(1);
+            }
         } catch (InterruptedException ie) {
             throw new RuntimeException(ie);
         }
-        if (!view.getStarted()) {
-            try {
-                view.getPlayer().end();
-            } catch (DCPlayerException dcpe) {
-            }
+        if (view.getStarted().get() == false) {
+            view.showText("El tiempo de espera ha terminado");
+            System.out.println("Terminando ejecucion");
+            System.exit(0);
         }
     }
 

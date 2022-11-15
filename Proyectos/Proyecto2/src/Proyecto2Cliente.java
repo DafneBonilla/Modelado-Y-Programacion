@@ -51,6 +51,10 @@ public class Proyecto2Cliente {
             Thread thread = new Thread(auxy);
             thread.start();
             view.getPlayer().read();
+        } catch (RuntimeException rte) {
+            auxView.showText("Hubo un problema con el tiempo de espera");
+            auxView.showText("Terminando ejecucion");
+            System.exit(0);
         } catch (DCPlayerException dcpe) {
             auxView.showText(dcpe.getMessage());
             auxView.showText("Hubo un problema de comunicacion con el servidor");

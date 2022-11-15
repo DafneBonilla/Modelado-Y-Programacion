@@ -1,5 +1,7 @@
 package views;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import players.*;
 
 /**
@@ -48,6 +50,6 @@ public interface View {
      * 
      * @return if the game has started
      */
-    public boolean getStarted();
+    public AtomicBoolean getStarted();
 
 }

@@ -337,6 +337,7 @@ public class PlayerClient implements Player {
 			throw new DCPlayerException("Error reading");
 		}
 		view.showText("Gracias por jugar");
+		view.startUpdate();
 		return "end";
 	}
 
@@ -348,6 +349,9 @@ public class PlayerClient implements Player {
 	 */
 	private void manageMessage(Message message) throws DCPlayerException {
 		switch (message) {
+			case START:
+				startUpdate();
+				break;
 			case GET_NAME:
 				getName();
 				break;
