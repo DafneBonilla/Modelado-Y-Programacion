@@ -31,7 +31,7 @@ public class GameRound extends GamePart {
     public GameRound(List<Player> players, CardHolder mainDeck, int numRound) {
         super(players, mainDeck);
         this.numRound = numRound;
-        this.numTricks = 0;
+        this.numTricks = numRound;
         this.triumph = new White(null);
     }
 
@@ -137,8 +137,6 @@ public class GameRound extends GamePart {
      * @throws DCPlayerException if a communication error occurs
      */
     private int validateTriumph(Player player) throws DCPlayerException {
-        sendText(player,
-                "Escribe el numero del palo de triunfo \n 1 para \u001B[91mrojo\u001B[0m \n 2 para \u001B[94mazul\u001B[0m \n 3 para \u001B[93mamarillo\u001B[0m \n 4 para \u001B[92mverde\u001B[0m (presiona \"h\" para ver todo el historial del juego)");
         return player.getTriumph();
     }
 

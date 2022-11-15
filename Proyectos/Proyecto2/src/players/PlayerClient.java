@@ -98,8 +98,15 @@ public class PlayerClient implements Player {
 	@Override
 	public void setDeck(CardHolder deck) throws DCPlayerException {
 		try {
-			deckString = reader.readLine();
 			numCards = readNumber();
+			deckString = "";
+			for (int i = 0; i < numCards; i++) {
+				if (i == numCards - 1) {
+					deckString = deckString + reader.readLine();
+				} else {
+					deckString = deckString + reader.readLine() + "\n";
+				}
+			}
 		} catch (IOException ioe) {
 			throw new DCPlayerException("Error setting deck");
 		}
@@ -221,7 +228,8 @@ public class PlayerClient implements Player {
 	public int getTriumph() throws DCPlayerException {
 		int answer = 0;
 		while (true) {
-			answer = view.askInt("Escribe el numero del palo de triunfo 1 - Rojo, 2 - Azul, 3 - Amarillo, 4 - Verde");
+			answer = view.askInt(
+					"Escribe el numero del palo de triunfo \n 1 para \u001B[91mrojo\u001B[0m \n 2 para \u001B[94mazul\u001B[0m \n 3 para \u001B[93mamarillo\u001B[0m \n 4 para \u001B[92mverde\u001B[0m");
 			if (answer >= 1 && answer <= 4) {
 				break;
 			}
@@ -312,8 +320,6 @@ public class PlayerClient implements Player {
 			while (active) {
 				String line = reader.readLine();
 				if (line != null) {
-					// TODO: borrar este println
-					System.out.print(line);
 					manageMessage(Message.getMessage(line));
 				}
 			}
@@ -380,7 +386,7 @@ public class PlayerClient implements Player {
 	@Override
 	public int askCard() throws DCPlayerException {
 		view.showText("Tu mano es: \n" + deckString);
-		String question = "Ingresa el numero de la carta que quieres jugar\n";
+		String question = "Ingresa el numero de la carta que quieres jugar";
 		int answer = -1;
 		while (true) {
 			answer = view.askInt(question);

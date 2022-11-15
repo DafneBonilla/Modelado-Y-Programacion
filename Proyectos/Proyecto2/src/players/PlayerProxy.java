@@ -11,10 +11,13 @@ import java.io.OutputStreamWriter;
 
 /**
  * Class to represent a player proxy
- * A player proxy has a deck (instance of {@link CardHolder}), a socket,
+ * A player proxy has a name, a deck (instance of {@link CardHolder}), a socket,
  * a score, a bet, a number of tricks won, a BufferedReader and a BufferedWriter
  */
 public class PlayerProxy implements Player {
+
+	/* The name of the player */
+	private String name;
 
 	/* The deck of the player */
 	private CardHolder deck;
@@ -44,6 +47,7 @@ public class PlayerProxy implements Player {
 	 * @throws IOException if an I/O error occurs when creating the reader or writer
 	 */
 	public PlayerProxy(Socket socket) throws IOException {
+		this.name = null;
 		this.deck = new Deck();
 		this.socket = socket;
 		this.score = 0;
@@ -63,6 +67,9 @@ public class PlayerProxy implements Player {
 	 */
 	@Override
 	public String getName() throws DCPlayerException {
+		if (name != null) {
+			return name;
+		}
 		try {
 			writer.write(Message.GET_NAME.toString());
 			writer.newLine();
@@ -73,6 +80,7 @@ public class PlayerProxy implements Player {
 		String name = "";
 		try {
 			name = read();
+			this.name = name;
 		} catch (DCPlayerException dcpe) {
 			throw new DCPlayerException("Error reading message from player");
 		}
@@ -98,20 +106,20 @@ public class PlayerProxy implements Player {
 	@Override
 	public void setDeck(CardHolder deck) throws DCPlayerException {
 		this.deck = deck;
-		String deckString = "";
-		int i = 0;
+		int i = deck.size();
+		int y = 0;
 		CardHolderIterator it = this.deck.getIterator();
-		while (it.hasNext()) {
-			Card card = it.next();
-			deckString += "[" + i + "] " + " " + card.toString() + "\n";
-			i++;
-		}
 		try {
 			writer.write(Message.SET_DECK.toString());
 			writer.newLine();
-			writer.write(deckString);
-			writer.write(Integer.toString(i - 1));
+			writer.write(Integer.toString(i));
 			writer.newLine();
+			while (it.hasNext()) {
+				Card card = it.next();
+				writer.write("[" + y + "] " + " " + card.toString());
+				writer.newLine();
+				y++;
+			}
 			writer.flush();
 		} catch (IOException ioe) {
 			throw new DCPlayerException("Error sending message to player");

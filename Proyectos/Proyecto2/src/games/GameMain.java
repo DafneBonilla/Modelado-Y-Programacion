@@ -84,10 +84,12 @@ public class GameMain extends GamePart {
                 }
             }
         } catch (DCPlayerException playerIn) {
+            // TODO revisar que se envie bien
             resultsDC();
             normalFinish = false;
         }
         if (normalFinish) {
+            // TODO revisar que se envie bien
             results();
         }
     }
@@ -193,6 +195,7 @@ public class GameMain extends GamePart {
             return winner + " todos con " + score + " puntos\n";
         }
         try {
+            // TODO: resolver porque aqui sale "ganador es el jugador null con X puntos"
             return "El ganador es el jugador " + champ.getName() + " con " + champ.getScore() + " puntos\n";
         } catch (DCPlayerException playerIn) {
             return "El ganador es el jugador desconectado" + " con " + champ.getScore() + " puntos\n";
