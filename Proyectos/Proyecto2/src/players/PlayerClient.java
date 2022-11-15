@@ -404,10 +404,10 @@ public class PlayerClient implements Player {
 		int answer = -1;
 		while (true) {
 			answer = view.askInt(question);
-			if (answer >= 0 && answer < numCards + 1) {
+			if (answer >= 0 && answer < numCards) {
 				break;
 			}
-			view.showText("Respuesta invalida, el numero debe ser entre 0 y " + numCards);
+			view.showText("Respuesta invalida, el numero debe ser entre 0 y " + (numCards - 1));
 			view.showText("Tu mano es: \n" + deckString);
 		}
 		try {
