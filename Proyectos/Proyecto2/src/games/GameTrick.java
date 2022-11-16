@@ -61,9 +61,8 @@ public class GameTrick extends GamePart {
         int wins = player1.getWins();
         player1.setWins(wins + 1);
         sendText("El jugador " + player1.getName() + " gana el truco");
-        CardHolder deck = this.getDeck();
         for (Card card : plays) {
-            deck.addCard(card);
+            this.getDeck().addCard(card);
         }
         adjustPlayers(winner);
     }
