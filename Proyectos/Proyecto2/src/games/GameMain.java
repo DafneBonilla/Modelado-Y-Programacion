@@ -70,14 +70,8 @@ public class GameMain extends GamePart {
             sendText("La partida va a empezar, todos listos :)");
             sendText("La seed del juego es " + seed);
             for (int i = 1; i <= numRounds; i++) {
-                // TODO borrar system.out
-                System.out.println("Ronda " + i + ", tenemos " + this.getDeck().size()
-                        + " cartas ----------------------------------------------------");
                 GameRound actual = new GameRound(this.getPlayers(), this.getDeck(), i);
                 actual.start();
-                // TODO borrar system.out
-                System.out.println("Ronda " + i + " terminada, tenemos " + this.getDeck().size()
-                        + " cartas ----------------------------------------------------");
                 if (i != numRounds) {
                     carryOn();
                 }

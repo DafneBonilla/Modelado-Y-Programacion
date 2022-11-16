@@ -46,9 +46,6 @@ public class GameTrick extends GamePart {
     @Override
     public void start() throws DCPlayerException {
         sendText("El truco va a empezar");
-        // TODO borrar system.out
-        System.out.println("El truco va a empezar, tenemos " + this.getDeck().size()
-                + " cartas ----------------------------------------------------");
         for (Player player : this.getPlayers()) {
             sendText(player, "Jugador " + player.getName() + " es tu turno de jugar una carta");
             sendText(player, "El palo lider es " + leader);
@@ -68,9 +65,6 @@ public class GameTrick extends GamePart {
             this.getDeck().addCard(card);
         }
         adjustPlayers(winner);
-        // TODO borrar system.out
-        System.out.println("El truco ha terminado, tenemos " + this.getDeck().size()
-                + " cartas ----------------------------------------------------");
     }
 
     /**

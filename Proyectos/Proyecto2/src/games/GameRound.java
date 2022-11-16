@@ -48,14 +48,8 @@ public class GameRound extends GamePart {
         defineTriumph();
         setBets();
         for (int i = 1; i <= numTricks; i++) {
-            // TODO borrar system.out
-            System.out.println("Truco " + i + ", tenemos " + this.getDeck().size()
-                    + " cartas ----------------------------------------------------");
             GameTrick actual = new GameTrick(this.getPlayers(), this.getDeck(), triumph);
             actual.start();
-            // TODO borrar system.out
-            System.out.println("El truco " + i + " ha terminado, tenemos " + this.getDeck().size()
-                    + " cartas ----------------------------------------------------");
         }
         score();
         sendText("Las puntaciones se ven asi...");
