@@ -48,7 +48,7 @@ public class GameTrick extends GamePart {
         sendText("El truco va a empezar");
         for (Player player : this.getPlayers()) {
             sendText(player, "Jugador " + player.getName() + " es tu turno de jugar una carta");
-            sendText(player, "El palo leader es " + leader);
+            sendText(player, "El palo lider es " + leader);
             sendText(player, "El palo de triunfo es " + triumph);
             int index = validateCard(player);
             Card card = reciveCard(player, index);

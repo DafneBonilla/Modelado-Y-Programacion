@@ -121,6 +121,7 @@ public class PlayerProxy implements Player {
 	 */
 	@Override
 	public void setDeck(CardHolder deck) throws DCPlayerException {
+		deck.sort();
 		this.deck = deck;
 		int i = deck.size();
 		int y = 0;
