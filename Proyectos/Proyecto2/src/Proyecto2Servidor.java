@@ -13,9 +13,15 @@ public class Proyecto2Servidor {
      * Shows how to use the program and exits
      */
     public static void use() {
-        System.out.println(
-                "Uso: java Proyecto2Servidor <#jugadores> <puerto>\nEl numero de jugadores debe ser entre 3 y 6\nEl puerto debe ser un numero entre 1024 y 65535");
-        System.exit(0);
+        try {
+            View auxView = new ViewDefault(null, null);
+            auxView.showText(
+                    "Uso: java Proyecto2Servidor <#jugadores> <puerto>\nEl numero de jugadores debe ser entre 3 y 6\nEl puerto debe ser un numero entre 1024 y 65535");
+            System.exit(0);
+        } catch (IOException e) {
+            System.out.println("Error al crear la vista");
+            System.exit(0);
+        }
     }
 
     /**

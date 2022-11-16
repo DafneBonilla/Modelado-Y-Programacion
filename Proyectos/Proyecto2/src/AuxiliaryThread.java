@@ -38,7 +38,7 @@ public class AuxiliaryThread implements Runnable {
         }
         if (view.getStarted().get() == false) {
             view.showText("El tiempo de espera ha terminado");
-            System.out.println("Terminando ejecucion");
+            view.showText("Terminando ejecucion");
             System.exit(0);
         }
     }

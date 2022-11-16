@@ -76,12 +76,12 @@ public class GameControl {
     public void createDeck() {
         CardFactory cardFactory = new CardFactoryDefault();
         cardHolder = new Deck(System.currentTimeMillis());
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < 5; i++) {
             for (int j = 1; j < 14; j++) {
                 cardHolder.addCard(cardFactory.build(i, j));
             }
         }
-        for (int i = 0; i < 4; i++) {
+        for (int i = 1; i < 5; i++) {
             cardHolder.addCard(cardFactory.build(5, 0));
             cardHolder.addCard(cardFactory.build(5, 14));
         }

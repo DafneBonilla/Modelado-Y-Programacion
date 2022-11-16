@@ -14,8 +14,14 @@ public class Proyecto2Cliente {
      * Shows how to use the program and exits
      */
     public static void use() {
-        System.out.println("Uso: java Proyecto2Cliente <host> <puerto>");
-        System.exit(0);
+        try {
+            View auxView = new ViewDefault(null, null);
+            auxView.showText("Uso: java Proyecto2Cliente <host> <puerto>");
+            System.exit(0);
+        } catch (IOException e) {
+            System.out.println("Error al crear la vista");
+            System.exit(0);
+        }
     }
 
     /**
