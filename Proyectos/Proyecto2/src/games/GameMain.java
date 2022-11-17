@@ -175,6 +175,7 @@ public class GameMain extends GamePart {
         for (Player player : list) {
             if (player.getScore() >= score) {
                 answer = list.indexOf(player);
+                score = player.getScore();
             }
         }
         return answer;

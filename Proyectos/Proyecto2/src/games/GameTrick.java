@@ -52,7 +52,7 @@ public class GameTrick extends GamePart {
             sendText(player, "El palo de triunfo es " + triumph);
             int index = validateCard(player);
             Card card = reciveCard(player, index);
-            sendText("El jugador " + player.getName() + " jugo la carta " + card);
+            sendText("El jugador " + player.getName() + " jugo la " + card);
             defineLeader(card);
             plays.add(card);
         }
