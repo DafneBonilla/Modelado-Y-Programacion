@@ -32,7 +32,7 @@ public class GameRound extends GamePart {
         super(players, mainDeck);
         this.numRound = numRound;
         this.numTricks = numRound;
-        this.triumph = new White(null);
+        this.triumph = new NoColor(null);
     }
 
     /**
@@ -82,7 +82,7 @@ public class GameRound extends GamePart {
             switch (triumph1.getMerit()) {
                 case 5:
                     if (card.getValue().getValue() == 0) {
-                        sendText("El palo de triunfo es " + triumph1);
+                        sendText("El palo de triunfo es " + triumph);
                         this.getDeck().addCard(card);
                         return;
                     }
