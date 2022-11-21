@@ -2,11 +2,11 @@
 
 **Equipo: Los Peaky Blinders**
 
-319089660 - Bonilla Reyes Dafne
+- Bonilla Reyes Dafne
 
-319053315 - Castañon Maldonado Carlos Emilio
+- Castañon Maldonado Carlos Emilio
 
-319210536 - Garcia Ponce José Camilo
+- Garcia Ponce José Camilo
 
 ---
 
