@@ -2,11 +2,11 @@
 
 **Equipo: Los Peaky Blinders**
 
-Bonilla Reyes Dafne
+- Bonilla Reyes Dafne
 
-Castañón Maldonado Carlos Emilio
+- Castañón Maldonado Carlos Emilio
 
-García Ponce José Camilo
+- García Ponce José Camilo
 
 ---
 
