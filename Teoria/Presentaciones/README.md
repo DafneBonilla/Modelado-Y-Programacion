@@ -20,3 +20,9 @@
  14. Facade
  15. Builder
  16. Factory y Abstract Factory
+ 17. Proxy
+ 18. Singleton
+ 19. Prototype
+ 20. MVC
+ 21. Test First
+ 22. XML y JSON
