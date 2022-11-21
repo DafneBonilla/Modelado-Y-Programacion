@@ -6,4 +6,3 @@
 
 > - Presentaciones de clases y ayudantías.
 > - Código y diagramas UML de ayudantías.
-- Ejemplo
