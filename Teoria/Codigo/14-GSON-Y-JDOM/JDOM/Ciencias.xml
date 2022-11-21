@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE facultad>
+<facultad id="Ciencias.xml" alumnos="16">
+  <alumno noCuenta="100000001" nombre="GERTRUDE GILBERT ZOLA" carrera="MATEMATICAS" promedio="9.8" />
+  <alumno noCuenta="100000002" nombre="BRANDEE CARMEL GABRIELLE" carrera="MATEMATICAS" promedio="7.6" />
+  <alumno noCuenta="100000003" nombre="CLARK TAMELA RALPH" carrera="MATEMATICAS" promedio="9.1" />
+  <alumno noCuenta="100000004" nombre="VANESSA ZOE KYLA" carrera="MATEMATICAS" promedio="8.7" />
+  <alumno noCuenta="100000005" nombre="MEREDITH KERRY ROLLO" carrera="ACTUARIA" promedio="6.0" />
+  <alumno noCuenta="100000006" nombre="LAURA ANSELMO XOCHITL" carrera="ACTUARIA" promedio="6.3" />
+  <alumno noCuenta="100000007" nombre="LOIDA EMPERATRIZ ROSALIA" carrera="ACTUARIA" promedio="6.1" />
+  <alumno noCuenta="100000008" nombre="SEVERIANO CLAUDIA ERIC" carrera="ACTUARIA" promedio="7.0" />
+  <alumno noCuenta="100000009" nombre="ENRIQUE FERDINAND ANGELA" carrera="FISICA" promedio="7.8" />
+  <alumno noCuenta="100000010" nombre="ELWOOD BERNARDA COLE" carrera="FISICA" promedio="8.2" />
+  <alumno noCuenta="100000011" nombre="ONEIDA EDNA LUKE" carrera="FISICA" promedio="6.1" />
+  <alumno noCuenta="100000012" nombre="CECILY SALUD ELLEN" carrera="FISICA" promedio="9.7" />
+  <alumno noCuenta="100000013" nombre="LUCY NORBERTO RENITA" carrera="CIENCIAS DE LA COMPUTACION" promedio="9.2" />
+  <alumno noCuenta="100000014" nombre="LEONCIO ROSENDO ROSALINA" carrera="CIENCIAS DE LA COMPUTACION" promedio="6.0" />
+  <alumno noCuenta="100000015" nombre="GODOFREDO EUNICE GERALD" carrera="CIENCIAS DE LA COMPUTACION" promedio="7.7" />
+  <alumno noCuenta="100000016" nombre="STEPHANIA DRAKE ELDRED" carrera="CIENCIAS DE LA COMPUTACION" promedio="8.2" />
+</facultad>

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "nombre": "Estado de Mexico",
+    "capital": "Toluca de Lerdo",
+    "superficie": 22351,
+    "poblacion": 16187608,
+    "ciudades": [
+      "Toluca de Lerdo",
+      "Ecatepec de Morelos",
+      "Naucalpan de Juarez"
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Jalisco",
+    "capital": "Guadalajara",
+    "superficie": 78588,
+    "poblacion": 7844830,
+    "ciudades": [
+      "Guadalajara",
+      "Ocotlan",
+      "Puerto Vallarta"
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Guanajuato",
+    "capital": "Guanajuato",
+    "superficie": 30608,
+    "poblacion": 5853677,
+    "ciudades": [
+      "Guanajuato",
+      "Celaya",
+      "Leon"
+    ]
+  }
+]
