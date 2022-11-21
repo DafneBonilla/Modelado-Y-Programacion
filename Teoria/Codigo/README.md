@@ -13,7 +13,7 @@
  7. **Decorator:** Cheeems gamer
  8. **Adapter:** Cheems piloto de carreras
  9. **Builder:** Cheems cocinero
- 10. **Factory y Abstract Factory**: Cheems empresario y mecánico
+ 10. **Factory y Abstract Factory**: Cheems empresario y Cheems mecánico
  11. **Proxy**: Cheems project manager
  12. **Singleton y Threads**: Cheems project manager
  13. **Prototype**: Cheems gamer
