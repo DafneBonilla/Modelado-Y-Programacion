@@ -4,5 +4,5 @@
 
 ### Proyectos realizados durante el curso:
 
-> - Proyecto 01
-> - Proyecto 02
+> - Proyecto 01 terminado.
+> - Proyecto 02 terminado.
