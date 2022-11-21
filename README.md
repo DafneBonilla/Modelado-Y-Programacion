@@ -12,4 +12,4 @@ Curso Completo de Modelado y Programación 2023-1
 * Itzel Azucena Delgado Díaz
 * Fernando López Balcazar
 
-Prácticas y proyectos realizados durante el curso de Modelado y Programación.
+Prácticas, teoría y proyectos realizados durante el curso de Modelado y Programación.
